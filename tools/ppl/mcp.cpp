@@ -3,7 +3,9 @@
 #include "analyzer.h"
 #include "cli.h"
 #include "formatter.h"
+#include "graphics.h"
 #include "jsonrpc.h"
+#include "runner.h"
 #include "services.h"
 #include "utf8.h"
 
@@ -18,7 +20,7 @@ using rpc::Framing;
 const char *kInstructions =
     "Narzędzia dla języka HP PPL (kalkulator HP Prime). Zanim pokażesz użytkownikowi program PPL, sprawdź go "
     "narzędziem ppl_validate i popraw wszystkie błędy. Nie wymyślaj komend: gdy nie masz pewności, użyj "
-    "ppl_search_commands albo ppl_command_help. Zasady języka opisuje ppl_language_guide.";
+    "ppl_search_commands albo ppl_command_help. Narzędziem ppl_run uruchomisz program w symulatorze i sprawdzisz wynik. Zasady języka opisuje ppl_language_guide.";
 
 Json schema(std::initializer_list<std::pair<std::string, Json>> props, std::initializer_list<const char *> required)
 {
@@ -68,6 +70,33 @@ Json toolList()
          {"title", "Szukaj komend PPL"},
          {"description", "Wyszukuje komendy HP PPL po nazwie, kategorii lub opisie (np. 'lista', 'tekst', 'klawisz')."},
          {"inputSchema", schema({{"query", prop("string", "Szukany tekst")}}, {"query"})}}));
+    {
+        Json strArray = Json::object({{"type", "array"}, {"items", Json::object({{"type", "string"}})}});
+        Json intArray = Json::object({{"type", "array"}, {"items", Json::object({{"type", "integer"}})}});
+        Json props = Json::object();
+        props.set("code", prop("string", "Kod programu PPL (albo podaj path)"));
+        props.set("path", prop("string", "Ścieżka do pliku z programem (zamiast code)"));
+        props.set("call", prop("string", "Wywołanie, np. SUMDIV(12). Puste = jedyna funkcja EXPORT bez parametrów."));
+        Json in = strArray;
+        in.set("description", "Kolejne odpowiedzi dla INPUT (każde pole osobno) i CHOOSE (numer opcji); 'cancel' = Anuluj");
+        props.set("inputs", in);
+        Json keys = intArray;
+        keys.set("description", "Kody klawiszy zwracane kolejno przez GETKEY/WAIT(0)/FREEZE, np. 8 (▶), 30 (Enter), 4 (Esc)");
+        props.set("keys", keys);
+        Json ans = strArray;
+        ans.set("description", "Odpowiedzi dla MSGBOX z OK/Cancel: 'ok' lub 'cancel'");
+        props.set("answers", ans);
+        props.set("screenshot", prop("boolean", "Dołącz zrzut ekranu 320×240, jeśli program rysował (domyślnie true)"));
+        props.set("maxSteps", prop("integer", "Limit kroków (domyślnie 2 000 000) — chroni przed nieskończoną pętlą"));
+        tools.push(Json::object(
+            {{"name", "ppl_run"},
+             {"title", "Uruchom program PPL (symulator)"},
+             {"description", "Uruchamia program HP PPL w symulatorze i zwraca wynik, wyjście PRINT/MSGBOX, błędy wykonania "
+                             "(z numerem linii) i zrzut ekranu. Dane dla INPUT/CHOOSE i klawisze podaj z góry. To symulator, "
+                             "nie firmware: nie obsługuje symbolicznego CAS, jednostek, widoków aplikacji ani grafiki 3D — "
+                             "wtedy zgłasza 'nieobsługiwane w symulatorze'. Liczy na double zaokrąglanym do 12 cyfr."},
+             {"inputSchema", Json::object({{"type", "object"}, {"properties", props}, {"required", Json::array()}})}}));
+    }
     tools.push(Json::object(
         {{"name", "ppl_language_guide"},
          {"title", "Przewodnik po PPL"},
@@ -162,6 +191,36 @@ Json callTool(const std::string &name, const Json &args)
         if (res.size() > 40)
             out += "… oraz " + std::to_string(res.size() - 40) + " innych. Zawęź zapytanie.\n";
         return textResult(out);
+    }
+    if (name == "ppl_run") {
+        runner::Options opt;
+        opt.code = args["code"].asString();
+        opt.file = args["path"].asString();
+        if (opt.code.empty() && opt.file.empty())
+            return textResult("Podaj 'code' albo 'path'.", true);
+        opt.call = args["call"].asString();
+        for (const auto &v : args["inputs"].elements())
+            opt.inputs.push_back(v.isString() ? v.asString() : v.dump());
+        for (const auto &v : args["answers"].elements())
+            opt.answers.push_back(v.asString());
+        for (const auto &v : args["keys"].elements())
+            opt.keys.push_back(v.asInt());
+        opt.maxSteps = args["maxSteps"].isNumber() ? static_cast<uint64_t>(args["maxSteps"].asNumber()) : 2000000;
+        opt.screenshot = !args.contains("screenshot") || args["screenshot"].asBool(true);
+        runner::Result r = runner::run(opt);
+        std::string text;
+        for (const auto &l : r.output)
+            text += l + "\n";
+        if (r.ok && !r.killed)
+            text += "Wynik: " + r.result + "\n";
+        if (!r.error.empty())
+            text += "Błąd wykonania" + (r.errorLine ? " (" + r.errorProgram + ", linia " + std::to_string(r.errorLine) + ")" : std::string())
+                    + ": " + r.error + "\n";
+        text += "Kroków: " + std::to_string(r.steps) + (r.screenUsed ? ", program rysował na ekranie" : "") + "\n";
+        Json content = Json::array().push(Json::object({{"type", "text"}, {"text", text}}));
+        if (!r.png.empty())
+            content.push(Json::object({{"type", "image"}, {"data", base64(r.png)}, {"mimeType", "image/png"}}));
+        return Json::object({{"content", content}, {"isError", !r.ok}});
     }
     if (name == "ppl_language_guide")
         return textResult(Services::languageGuide());

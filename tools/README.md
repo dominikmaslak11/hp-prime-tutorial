@@ -16,10 +16,10 @@ Plan i decyzje projektowe: [PLAN.md](PLAN.md).
 
 ### VS Code
 
-1. Zbuduj paczkę (sekcja *Budowanie*) albo użyj gotowej `tools\dist\hp-prime-ppl-1.0.0.vsix`.
+1. Zbuduj paczkę (sekcja *Budowanie*) albo użyj gotowej `tools\dist\hp-prime-ppl-1.1.0.vsix`.
 2. Zainstaluj: *Rozszerzenia › ⋯ › Zainstaluj z pliku VSIX…* albo w terminalu:
    ```
-   code --install-extension tools\dist\hp-prime-ppl-1.0.0.vsix
+   code --install-extension tools\dist\hp-prime-ppl-1.1.0.vsix
    ```
 3. Otwórz albo utwórz plik `*.hpppl` (*Ctrl+Shift+P › HP PPL: Nowy program*).
 
@@ -43,9 +43,31 @@ ppl format --symbols PROGRAM.hpppl zamienia <> <= >= na ≠ ≤ ≥
 ppl help TEXTOUT_P                 opis komendy
 ppl search klawisz                 wyszukiwanie komend
 ppl guide                          przewodnik po PPL (Markdown)
+ppl run PROGRAM.hpppl "SUMDIV(12)" uruchamia program w symulatorze
 ```
 
 Format błędów to `plik:linia:kolumna: error: komunikat [kod]`. Rozumie go większość edytorów i systemów CI.
+
+---
+
+## Uruchamianie programów na komputerze (symulator)
+
+`ppl run` wykonuje program PPL na komputerze. W VS Code to samo robi polecenie **HP PPL: Uruchom program (symulator)** (F5): pyta o wywołanie i dane, pokazuje wynik oraz zrzut ekranu, a przy błędzie wykonania zaznacza linię w edytorze.
+
+```
+ppl run SNAKE.hpppl --keys 8,8,12,4 --screen ekran.png   klawisze dla GETKEY + zrzut ekranu (PNG)
+ppl run AREAC.hpppl --input "2;2.5;1.5"                   odpowiedzi dla CHOOSE i INPUT, po kolei
+ppl run KASUJ.hpppl --answers cancel                      odpowiedź dla MSGBOX(…, 1)
+ppl run PROG.hpppl "F(3)" --json                          wynik w JSON (dla skryptów)
+```
+
+- Dane są podawane z góry, bo symulator nie jest interaktywny. `WAIT` i `TICKS` używają zegara wirtualnego, więc wyniki są powtarzalne. Pętla czekająca na klawisz, którego nie podano, kończy się komunikatem o limicie kroków.
+- Programy z tego samego folderu (`*.hpppl`, `*.ppl`) są widoczne jak inne programy na kalkulatorze, więc ich funkcje z `EXPORT` można wywoływać.
+- **Obsługiwane:** cały język (bloki, pętle, funkcje, rekurencja, `IFERR`, `KILL`), liczby rzeczywiste zaokrąglane do 12 cyfr (np. `0.1+0.2==0.3` daje 1, tak jak na kalkulatorze), liczby `#` z systemami i rozmiarem słowa, liczby zespolone, teksty, listy, macierze (m.in. odwrotność, wyznacznik, RREF), około 250 komend, numeryczne `∂ ∫ Σ Π` i `|`, wybrane funkcje CAS (`idivis`, `isprime`, `ifactor`, `gcd`…), grafika 320×240 z buforami G0–G9, funkcje aplikacji (F0–F9, `ROOT`, `SLOPE`, `AREA`, `SOLVE`, statystyka 1Var/2Var, TVM z Finance) oraz prosty wykres po `STARTVIEW(1)`.
+- **Nieobsługiwane** (z komunikatem „nieobsługiwane w symulatorze”): symboliczny CAS (`diff`, `solve` na wyrażeniach), jednostki, widoki aplikacji inne niż prosty wykres, formy 3D `LINE_P`/`TRIANGLE_P`, `AFiles`. Czcionka tekstu na ekranie jest przybliżona (5×8 skalowana).
+- **To symulator, a nie firmware HP.** Wynik warto na koniec sprawdzić na kalkulatorze. Do pracy krok po kroku służy wbudowany debugger HP Prime (katalog programów › **Debug**), dostępny też w oficjalnym emulatorze *HP Prime Virtual Calculator*.
+
+Testy (`tools/tests`) uruchamiają w symulatorze programy z kursu i porównują wyniki z wartościami podanymi w kursie, w tutorialu Shore'a i w instrukcji HP. Są to m.in. SQIN, MOPMT, SUMDIV, ULAM, QROOTS, SUBEXAM, TERMVEL, AREAC, CALCDEMO, a także rysunki (DRAWHOUSE, DRAWPENT, DRAWARCS) i gra SNAKE.
 
 ---
 
@@ -60,9 +82,10 @@ Format błędów to `plik:linia:kolumna: error: komunikat [kod]`. Rozumie go wi�
 | `ppl_format` | formatuje kod |
 | `ppl_command_help` | opis komendy po polsku |
 | `ppl_search_commands` | wyszukiwanie komend |
+| `ppl_run` | **uruchamia program w symulatorze**: wynik, wyjście PRINT/MSGBOX, błędy wykonania z numerem linii, **zrzut ekranu** (obraz PNG, który model widzi) |
 | `ppl_language_guide` | przewodnik po języku (zasady i lista komend) |
 
-Modele słabo znają HP PPL i często wymyślają komendy albo mylą składnię z Pascalem lub BASIC-iem. Z tymi narzędziami agent pisze program, sam go sprawdza, poprawia błędy i dopiero wtedy pokazuje wynik. Działa to podobnie jak asystent w Android Studio.
+Modele słabo znają HP PPL i często wymyślają komendy albo mylą składnię z Pascalem lub BASIC-iem. Z tymi narzędziami agent pisze program, sprawdza składnię, uruchamia go, porównuje wynik z oczekiwanym, patrzy na zrzut ekranu, poprawia błędy i dopiero wtedy pokazuje wynik. Działa to podobnie jak asystent w Android Studio.
 
 W przykładach poniżej `PPL` oznacza pełną ścieżkę do `ppl.exe`, np. `C:\\Users\\dominik\\AppData\\Local\\hp-ppl\\ppl.exe` (tam kopiuje go instalator Notepad++) albo `tools\build\ppl.exe`.
 

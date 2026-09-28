@@ -14,6 +14,7 @@ int runFormat(const std::vector<std::string> &args);
 int runHelp(const std::vector<std::string> &args);
 int runSearch(const std::vector<std::string> &args);
 int runGuide(const std::vector<std::string> &args);
+int runRun(const std::vector<std::string> &args);
 void printUsage();
 
 } // namespace ppl::cli

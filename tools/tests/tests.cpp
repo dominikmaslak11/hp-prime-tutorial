@@ -428,4 +428,4 @@ TEST(tutorial_corpus_has_no_errors)
     CHECK(programs > 80);
 }
 
-int main() { return testing::runAll(); }
+

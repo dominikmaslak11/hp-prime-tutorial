@@ -52,6 +52,10 @@ Okna dialogowe (`MSGBOX`, `INPUT`) wyświetlają się normalnie i trzeba je obs�
 
 Przykład z instrukcji: MYPROGRAM z pętlą `FOR N FROM 1 TO 3 DO MSGBOX(N); END;`. Wykonuj (Step) i obserwuj, jak zmienia się N.
 
+**Na komputerze.** Ten sam debuger działa w oficjalnym emulatorze *HP Prime Virtual Calculator*, bo emulator ma to samo oprogramowanie co kalkulator. Program wklejasz tam przez Connectivity Kit albo edytor emulatora.
+
+**Szybkie sprawdzenie bez kalkulatora.** Narzędzia z katalogu [`tools/`](../tools/README.md#uruchamianie-programów-na-komputerze-symulator) mają symulator PPL. W VS Code uruchamia go klawisz F5, a w konsoli polecenie `ppl run PROGRAM.hpppl "SUMDIV(12)"`. Pokazuje wynik, wyjście `PRINT` i zrzut ekranu, a przy błędzie wykonania wskazuje linię. Symulator nie działa krok po kroku, bo do tego służy debuger powyżej. Nie jest też firmware HP, więc ostateczny wynik sprawdź na kalkulatorze.
+
 ## 22.4. Debugowanie przez PRINT
 
 Najprostsza i często najszybsza metoda to wypisywanie wartości w kluczowych miejscach:

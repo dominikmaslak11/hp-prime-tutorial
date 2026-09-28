@@ -89,7 +89,7 @@ async function run() {
 
   await test('polecenia zarejestrowane', async () => {
     const cmds = await vscode.commands.getCommands(true);
-    for (const c of ['hpppl.check', 'hpppl.copyForCalculator', 'hpppl.setupAi', 'hpppl.commandReference']) assert.ok(cmds.includes(c), c);
+    for (const c of ['hpppl.run', 'hpppl.check', 'hpppl.copyForCalculator', 'hpppl.setupAi', 'hpppl.commandReference']) assert.ok(cmds.includes(c), c);
   });
 
   await test('kopiowanie do schowka', async () => {

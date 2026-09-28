@@ -538,7 +538,7 @@ std::string languageGuide(const CommandDatabase &db)
     std::string g = R"GUIDE(# HP PPL — przewodnik dla asystenta AI
 
 HP PPL (HP Prime Programming Language) to język kalkulatora graficznego HP Prime, podobny do Pascala.
-Kod sprawdzaj narzędziem `ppl_validate` przed pokazaniem go użytkownikowi. Nie wymyślaj komend: jeśli nie masz pewności, użyj `ppl_search_commands` / `ppl_command_help`.
+Kod sprawdzaj narzędziem `ppl_validate` przed pokazaniem go użytkownikowi, a działanie narzędziem `ppl_run` (symulator: wynik, błędy wykonania, zrzut ekranu; dane dla INPUT i klawisze podajesz z góry). Nie wymyślaj komend: jeśli nie masz pewności, użyj `ppl_search_commands` / `ppl_command_help`.
 
 ## Struktura programu
 ```ppl

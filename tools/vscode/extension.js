@@ -184,6 +184,94 @@ async function newProgram() {
   ed.selection = new vscode.Selection(4, 2, 4, 2);
 }
 
+// ------------------------------------------------------------------ simulator
+
+const lastRun = new Map(); // uri → { call, inputs, keys }
+
+function exportedFunctions(text) {
+  const out = [];
+  const re = /^\s*EXPORT\s+([A-Za-z_À-ɏͰ-Ͽ][\wÀ-ɏͰ-Ͽ]*)\s*\(([^)]*)\)\s*(?:$|\/\/)/gim;
+  let m;
+  while ((m = re.exec(text))) out.push({ name: m[1], params: m[2].split(',').map((x) => x.trim()).filter(Boolean) });
+  return out;
+}
+
+async function runProgram() {
+  const ed = activeDocument();
+  if (!ed) return;
+  const doc = ed.document;
+  if (doc.isUntitled || doc.isDirty) {
+    const saved = await doc.save();
+    if (!saved || doc.isUntitled) {
+      vscode.window.showWarningMessage('Zapisz program do pliku .hpppl, aby go uruchomić.');
+      return;
+    }
+  }
+  const errors = vscode.languages.getDiagnostics(doc.uri).filter((d) => d.severity === vscode.DiagnosticSeverity.Error);
+  if (errors.length) {
+    const go = await vscode.window.showWarningMessage(`Program ma ${errors.length} błąd(ów) składni. Uruchomić mimo to?`, 'Uruchom', 'Anuluj');
+    if (go !== 'Uruchom') return;
+  }
+  const prev = lastRun.get(doc.uri.toString()) || {};
+  const text = doc.getText();
+  const fns = exportedFunctions(text);
+  const suggestion = prev.call || (fns.length ? `${fns[0].name}(${fns[0].params.join(', ')})` : '');
+  const call = await vscode.window.showInputBox({
+    title: 'HP PPL: uruchom w symulatorze',
+    prompt: 'Wywołanie funkcji, np. SUMDIV(12). Funkcje z EXPORT: ' + (fns.map((f) => `${f.name}(${f.params.join(',')})`).join(', ') || 'brak'),
+    value: suggestion,
+  });
+  if (call === undefined) return;
+  let inputs = prev.inputs || '';
+  if (/\b(INPUT|CHOOSE)\s*\(/i.test(text)) {
+    const v = await vscode.window.showInputBox({
+      title: 'Dane dla INPUT / CHOOSE',
+      prompt: 'Kolejne odpowiedzi oddzielone średnikiem, np. 2.5;1;π/4 (numer opcji dla CHOOSE, cancel = Anuluj)',
+      value: inputs,
+    });
+    if (v === undefined) return;
+    inputs = v;
+  }
+  let keys = prev.keys || '';
+  if (/\b(GETKEY|ISKEYDOWN|FREEZE|WAIT)\b/i.test(text)) {
+    const v = await vscode.window.showInputBox({
+      title: 'Klawisze dla GETKEY / WAIT / FREEZE',
+      prompt: 'Kody klawiszy po przecinku, np. 8,8,12,4 (▶=8, ▼=12, Enter=30, Esc=4). Puste = brak naciśnięć.',
+      value: keys,
+    });
+    if (v === undefined) return;
+    keys = v;
+  }
+  lastRun.set(doc.uri.toString(), { call, inputs, keys });
+  const png = path.join(ctx.globalStorageUri.fsPath, 'ekran.png');
+  fs.mkdirSync(path.dirname(png), { recursive: true });
+  try { fs.unlinkSync(png); } catch { /* no previous screenshot */ }
+  const args = ['run', doc.uri.fsPath];
+  if (call.trim()) args.push(call.trim());
+  if (inputs.trim()) args.push('--input', inputs);
+  if (keys.trim()) args.push('--keys', keys.replace(/\s/g, ''));
+  args.push('--screen', png, '--scale', '2', '--max-steps', String(vscode.workspace.getConfiguration('hpppl').get('run.maxSteps') || 5000000));
+  output.clear();
+  output.show(true);
+  output.appendLine(`▶ ${path.basename(doc.uri.fsPath)}: ${call || '(domyślna funkcja)'}`);
+  execFile(serverPath(), args, { encoding: 'utf8', maxBuffer: 16 * 1024 * 1024 }, async (err, stdout, stderr) => {
+    output.append(stdout);
+    if (stderr) output.append(stderr);
+    const m = /\(([^,()]+), linia (\d+)\)/.exec(stderr || '');
+    if (m) {
+      const line = Math.min(Math.max(0, parseInt(m[2], 10) - 1), doc.lineCount - 1);
+      const editor = await vscode.window.showTextDocument(doc, { preserveFocus: false });
+      editor.selection = new vscode.Selection(line, 0, line, doc.lineAt(line).text.length);
+      editor.revealRange(editor.selection, vscode.TextEditorRevealType.InCenter);
+      vscode.window.showErrorMessage('HP PPL: ' + stderr.trim().split('\n').pop());
+    }
+    if (fs.existsSync(png)) {
+      await vscode.commands.executeCommand('vscode.open', vscode.Uri.file(png), { viewColumn: vscode.ViewColumn.Beside, preview: true, preserveFocus: true });
+    }
+    output.appendLine('— To symulator: wynik sprawdź też na kalkulatorze. Pracę krok po kroku daje wbudowany debugger HP Prime (katalog programów › Debug).');
+  });
+}
+
 // ------------------------------------------------------------------ AI
 
 async function languageGuide() {
@@ -236,6 +324,7 @@ async function setupAi() {
     'Pliki `*.hpppl` to programy w języku HP PPL dla kalkulatora HP Prime.\n' +
     '- Po każdej zmianie programu sprawdź go narzędziem MCP `ppl_check_file` (albo `ppl_validate`) i popraw wszystkie błędy.\n' +
     `- Bez MCP możesz uruchomić: \`"${exe}" check PLIK.hpppl\`.\n` +
+    '- Działanie sprawdzaj narzędziem MCP `ppl_run` (symulator: wynik, błędy wykonania, zrzut ekranu; dane dla INPUT i klawisze podaj z góry).\n' +
     '- Nie wymyślaj komend — sprawdzaj je narzędziem `ppl_command_help` / `ppl_search_commands`.\n' +
     '- Odpowiadaj po polsku.\n\n' + guide;
   const report = [];
@@ -300,6 +389,7 @@ async function activate(context) {
   context.subscriptions.push(output);
 
   const reg = (id, fn) => context.subscriptions.push(vscode.commands.registerCommand(id, fn));
+  reg('hpppl.run', runProgram);
   reg('hpppl.check', checkCommand);
   reg('hpppl.format', () => vscode.commands.executeCommand('editor.action.formatDocument'));
   reg('hpppl.toAscii', () => convert('ascii'));

@@ -97,6 +97,10 @@ void printUsage()
         "                               formatuje program (bez --write wypisuje wynik)\n"
         "  ppl help KOMENDA             opis komendy PPL\n"
         "  ppl search TEKST             wyszukiwanie komend\n"
+        "  ppl run PLIK [WYWOŁANIE]     uruchamia program w symulatorze\n"
+        "      --input a;b;c            odpowiedzi dla INPUT/CHOOSE    --keys 8,8,4   klawisze dla GETKEY\n"
+        "      --answers ok,cancel      odpowiedzi MSGBOX z OK/Cancel  --screen p.png zrzut ekranu\n"
+        "      --max-steps N  --seed N  --json\n"
         "  ppl guide                    przewodnik po PPL (Markdown) dla asystentów AI\n"
         "  ppl lsp                      serwer Language Server Protocol (stdio)\n"
         "  ppl mcp                      serwer Model Context Protocol dla agentów AI (stdio)\n"
@@ -238,6 +242,84 @@ int runGuide(const std::vector<std::string> &)
 {
     out(Services::languageGuide());
     return 0;
+}
+
+} // namespace ppl::cli
+
+// ---------------------------------------------------------------- ppl run
+#include "runner.h"
+
+namespace ppl::cli {
+
+namespace {
+std::vector<std::string> splitList(const std::string &s, char sep)
+{
+    std::vector<std::string> out;
+    std::string cur;
+    for (char c : s) {
+        if (c == sep) {
+            out.push_back(cur);
+            cur.clear();
+        } else {
+            cur.push_back(c);
+        }
+    }
+    out.push_back(cur);
+    return out;
+}
+} // namespace
+
+int runRun(const std::vector<std::string> &args)
+{
+    runner::Options opt;
+    bool json = false;
+    std::string screen;
+    for (size_t i = 0; i < args.size(); ++i) {
+        const std::string &a = args[i];
+        auto val = [&]() -> std::string {
+            if (i + 1 >= args.size()) {
+                err("ppl run: brak wartości dla " + a + "\n");
+                std::exit(2);
+            }
+            return args[++i];
+        };
+        if (a == "--input") { for (auto &v : splitList(val(), ';')) opt.inputs.push_back(v); }
+        else if (a == "--answers") { for (auto &v : splitList(val(), ',')) opt.answers.push_back(v); }
+        else if (a == "--keys") { for (auto &v : splitList(val(), ',')) if (!v.empty()) opt.keys.push_back(std::atoi(v.c_str())); }
+        else if (a == "--screen") screen = val();
+        else if (a == "--scale") opt.screenshotScale = std::atoi(val().c_str());
+        else if (a == "--max-steps") opt.maxSteps = std::strtoull(val().c_str(), nullptr, 10);
+        else if (a == "--seed") opt.seed = std::strtoull(val().c_str(), nullptr, 10);
+        else if (a == "--lib") opt.libraries.push_back(val());
+        else if (a == "--no-libs") opt.siblingLibraries = false;
+        else if (a == "--json") json = true;
+        else if (opt.file.empty()) opt.file = a;
+        else if (opt.call.empty()) opt.call = a;
+        else { err("ppl run: nieznany argument " + a + "\n"); return 2; }
+    }
+    if (opt.file.empty()) {
+        err("Użycie: ppl run PLIK [\"WYWOŁANIE(argumenty)\"] [--input a;b] [--keys 30,4] [--answers ok,cancel]\n"
+            "                    [--screen ekran.png] [--scale 2] [--max-steps N] [--seed N] [--json]\n");
+        return 2;
+    }
+    opt.screenshot = !screen.empty() || json;
+    runner::Result r = runner::run(opt);
+    if (!screen.empty() && !r.png.empty())
+        writeTextFile(screen, r.png);
+    if (json) {
+        out(runner::toJson(r, false).dump() + "\n");
+    } else {
+        for (const auto &l : r.output)
+            out(l + "\n");
+        if (r.ok && !r.killed)
+            out("=> " + r.result + "\n");
+        if (!r.error.empty())
+            err("Błąd wykonania" + (r.errorLine ? " (" + r.errorProgram + ", linia " + std::to_string(r.errorLine) + ")" : std::string())
+                + ": " + r.error + "\n");
+        if (!screen.empty())
+            out(r.png.empty() ? "(ekran nie był używany — nie zapisano " + screen + ")\n" : "Zapisano ekran: " + screen + "\n");
+    }
+    return r.ok ? 0 : 1;
 }
 
 } // namespace ppl::cli

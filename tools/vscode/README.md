@@ -16,6 +16,7 @@ Rozszerzenie do programowania kalkulatora **HP Prime** w języku **HP PPL**, z o
 - **Opis po najechaniu myszą** na komendę, z przykładem i odnośnikiem do rozdziału kursu.
 - **Konspekt** pliku (funkcje, zmienne) i **przejście do definicji** (F12).
 - **Formatowanie** (Shift+Alt+F): wcięcia bloków i wielkie litery słów kluczowych.
+- **Uruchamianie w symulatorze** (F5 albo ▶ na pasku edytora): pyta o wywołanie (np. `SUMDIV(12)`) i dane dla INPUT/klawiszy, pokazuje wynik i wyjście PRINT, otwiera zrzut ekranu, a przy błędzie wykonania zaznacza linię. Krok po kroku debuguje się wbudowanym debuggerem kalkulatora albo emulatora HP.
 - Polecenia (Ctrl+Shift+P → „HP PPL”):
   - *Kopiuj program do schowka* (Ctrl+Alt+C), do wklejenia w HP Connectivity Kit,
   - *Opis komendy…* (Ctrl+F1): wyszukiwarka wszystkich komend,
@@ -33,9 +34,10 @@ Rozszerzenie rejestruje w VS Code **serwer MCP „HP Prime PPL”**. Agenci AI w
 | `ppl_format` | formatuje kod |
 | `ppl_command_help` | opis komendy (po polsku) |
 | `ppl_search_commands` | wyszukiwanie komend |
+| `ppl_run` | uruchamia program w symulatorze: wynik, błędy wykonania i zrzut ekranu |
 | `ppl_language_guide` | przewodnik po języku |
 
-Dzięki temu agent sam sprawdza wygenerowany program i poprawia błędy, zanim pokaże Ci wynik.
+Dzięki temu agent sam sprawdza i uruchamia wygenerowany program i poprawia błędy, zanim pokaże Ci wynik.
 
 Polecenie **HP PPL: Skonfiguruj asystentów AI dla tego projektu** zapisuje w otwartym folderze instrukcje i konfigurację MCP dla:
 - **GitHub Copilot**: `.github/copilot-instructions.md`,

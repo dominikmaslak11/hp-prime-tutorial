@@ -5,6 +5,7 @@ project(PPLTools VERSION 1.0.0 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
+add_compile_definitions(_USE_MATH_DEFINES)
 
 option(PPL_STATIC_RUNTIME "Link the C++ runtime statically (single ppl.exe without DLLs)" ON)
 option(PPL_BUILD_TESTS "Build unit tests" ON)
@@ -37,6 +38,13 @@ add_library(pplcore STATIC
     core/analyzer.h core/analyzer.cpp
     core/formatter.h core/formatter.cpp
     core/services.h core/services.cpp
+    core/value.h core/value.cpp
+    core/ast.h core/parser.cpp
+    core/arith.h core/arith.cpp
+    core/host.h
+    core/graphics.h core/graphics.cpp
+    core/interpreter.h core/interpreter.cpp
+    core/builtins.h core/builtins_core.cpp core/builtins_io.cpp core/builtins_apps.cpp
     ${CMAKE_CURRENT_BINARY_DIR}/generated/commanddata.cpp
 )
 target_include_directories(pplcore PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/core)
@@ -48,6 +56,7 @@ add_executable(ppl
     ppl/lsp.h ppl/lsp.cpp
     ppl/mcp.h ppl/mcp.cpp
     ppl/generators.h ppl/generators.cpp
+    ppl/runner.h ppl/runner.cpp
 )
 target_link_libraries(ppl PRIVATE pplcore)
 target_compile_definitions(ppl PRIVATE PPL_VERSION="${PROJECT_VERSION}")
@@ -56,7 +65,7 @@ install(TARGETS ppl RUNTIME DESTINATION bin)
 
 if(PPL_BUILD_TESTS)
     enable_testing()
-    add_executable(ppltests tests/tests.cpp tests/testing.h)
+    add_executable(ppltests tests/tests.cpp tests/tests_interp.cpp tests/testing.h)
     target_link_libraries(ppltests PRIVATE pplcore)
     target_compile_definitions(ppltests PRIVATE PPL_REPO_ROOT="${CMAKE_CURRENT_SOURCE_DIR}/..")
     add_test(NAME ppltests COMMAND ppltests)

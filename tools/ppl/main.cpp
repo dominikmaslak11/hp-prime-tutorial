@@ -29,6 +29,7 @@ int main(int argc, char **argv)
     if (cmd == "help") return ppl::cli::runHelp(rest);
     if (cmd == "search") return ppl::cli::runSearch(rest);
     if (cmd == "guide") return ppl::cli::runGuide(rest);
+    if (cmd == "run") return ppl::cli::runRun(rest);
     if (cmd == "lsp") return ppl::lsp::run();
     if (cmd == "mcp") return ppl::mcp::run();
     if (cmd == "gen") return ppl::gen::run(rest);

@@ -81,6 +81,8 @@ bool Lexer::isIdentifierStart(char32_t c, char32_t next)
         return true;
     if (c == 0x2192 && isLetter(next))
         return true; // →HMS
+    if (c == U'%' && isLetter(next))
+        return true; // %CHANGE, %TOTAL
     return false;
 }
 
@@ -313,6 +315,7 @@ std::vector<Token> Lexer::tokenize(const std::u32string &s, std::vector<Diagnost
 
         // Identifiers and keywords
         if (isIdentifierStart(c, at(i + 1))) {
+            ++i; // first character (may be % or →, which are not continuation characters)
             while (i < n && isIdentifierChar(s[i]))
                 ++i;
             // qualified names: Function.Xmin, CAS.idivis

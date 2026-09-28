@@ -110,11 +110,14 @@ Symboliczny CAS (`diff`, `solve` symbolicznie…), pełne widoki aplikacji HP (w
 
 ## Etapy v2
 
-8. [ ] Parser AST + wartości + interpreter + wbudowane komendy (bez grafiki) + `ppl run` + testy „złotych wyników” z kursu (SQIN, MOPMT, SUMDIV, ULAM, SUBEXAM, CALCDEMO, TERMVEL…)
-9. [ ] Wejście/wyjście (host), skryptowane dane w CLI, silnik graficzny + czcionka + zapis PNG; testy obrazu
-10. [ ] Serwer DAP + debugger w VS Code (pułapki, kroki, zmienne, konsola, dialogi MSGBOX/INPUT/CHOOSE)
-11. [ ] Panel ekranu kalkulatora w VS Code (grafika na żywo, klawiatura → GETKEY/ISKEYDOWN, mysz → MOUSE)
-12. [ ] Narzędzie MCP `ppl_run` (tekst + zrzut ekranu), dokumentacja, testy integracyjne, commit i push
+8. [x] Parser AST + wartości + interpreter + wbudowane komendy (bez grafiki) + `ppl run` + testy „złotych wyników” z kursu (SQIN, MOPMT, SUMDIV, ULAM, SUBEXAM, CALCDEMO, TERMVEL…)
+9. [x] Wejście/wyjście (host), skryptowane dane w CLI, silnik graficzny + czcionka + zapis PNG; testy obrazu
+10. [—] ~~Serwer DAP + debugger w VS Code (pułapki, kroki, zmienne, konsola, dialogi MSGBOX/INPUT/CHOOSE)~~ — **porzucone**, zob. niżej
+11. [—] ~~Panel ekranu kalkulatora w VS Code (grafika na żywo, klawiatura → GETKEY/ISKEYDOWN, mysz → MOUSE)~~ — **porzucone**, zob. niżej
+12. [x] Narzędzie MCP `ppl_run` (tekst + zrzut ekranu), polecenie VS Code „Uruchom program (symulator)” (F5), dokumentacja, testy, commit i push
+
+### Decyzja z 28.09.2026: bez własnego debuggera w VS Code
+HP Prime ma **wbudowany debugger krok po kroku** (katalog programów › Debug: Step, Skip, Vars, Cont, Exit; UG wyd. 3, s. 607). Działa on także w oficjalnym emulatorze **HP Prime Virtual Calculator** na PC. Etapy 10–11 dawałyby tylko wygodę, bez nowej możliwości, więc je porzucono. Interpreter zostaje, bo robi to, czego kalkulator i emulator nie umieją: automatyczne uruchamianie programów przez testy i agentów AI (`ppl run`, MCP `ppl_run`). W VS Code jest proste polecenie „Uruchom program (symulator)”.
 
 ## Później
 - eksport/import binarnych plików `.hpprgm` (Connectivity Kit),
