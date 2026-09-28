@@ -11,7 +11,7 @@ W tym rozdziale:
 
 ---
 
-## 8.1. Funkcja eksportowana a prywatna (*UG s. 569–571, 588*)
+## 8.1. Funkcja eksportowana a prywatna (*UG s. 613–615, 632*)
 
 | | Z `EXPORT` | Bez `EXPORT` |
 |---|---|---|
@@ -38,7 +38,7 @@ BEGIN
 END;
 ```
 
-**Dlaczego deklaracja?** Kompilator czyta plik od góry do dołu. Gdy w `MAIN` natrafi na `SUB1`, musi już wiedzieć, że to funkcja. Deklaracja `SUB1();` na początku pliku to informacja, że funkcja zostanie zdefiniowana niżej (*UG s. 570*). Zamiast deklaracji możesz umieścić definicję podprogramu **nad** funkcją, która go wywołuje.
+**Dlaczego deklaracja?** Kompilator czyta plik od góry do dołu. Gdy w `MAIN` natrafi na `SUB1`, musi już wiedzieć, że to funkcja. Deklaracja `SUB1();` na początku pliku to informacja, że funkcja zostanie zdefiniowana niżej (*UG s. 614*). Zamiast deklaracji możesz umieścić definicję podprogramu **nad** funkcją, która go wywołuje.
 
 > W deklaracji zapowiadającej nie trzeba podawać parametrów: `SUB1();` wystarczy, nawet jeśli `SUB1` ma dwa parametry.
 
@@ -76,7 +76,7 @@ END;
 | `SUBEXAM(-5,-6)` | 30.648061288 |
 | `SUBEXAM(2,-3)` | 21810.6046664 |
 
-## 8.3. Seria programów z instrukcji: ROLLDIE i ROLLMANY (*UG s. 569–571*)
+## 8.3. Seria programów z instrukcji: ROLLDIE i ROLLMANY (*UG s. 613–615*)
 
 ### Krok 1: osobny program ROLLDIE
 

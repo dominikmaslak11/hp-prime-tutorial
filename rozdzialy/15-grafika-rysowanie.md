@@ -2,7 +2,7 @@
 
 [← Poprzedni](14-grafika-podstawy.md) · [Spis treści](../README.md) · [Następny →](16-grafika-zaawansowana.md)
 
-Źródła: *ES #8*, *UG s. 593–601*. W składni `[G]` oznacza opcjonalny GROB (domyślnie `G0`). Każda komenda ma wersję kartezjańską (bez `_P`) o tej samej składni.
+Źródła: *ES #8*, *UG s. 637–645*. W składni `[G]` oznacza opcjonalny GROB (domyślnie `G0`). Każda komenda ma wersję kartezjańską (bez `_P`) o tej samej składni.
 
 ---
 
@@ -14,7 +14,7 @@ PIXOFF_P([G], x, y);             // ustaw piksel na biały
 GETPIX_P([G], x, y);             // odczytaj kolor piksela
 ```
 
-Według instrukcji kolor w `PIXON` może mieć postać `aaRRGGBB`, gdzie `aa` to kanał alfa od 0 (kolor nieprzezroczysty) do 255 (w pełni przezroczysty) (*UG s. 597*).
+Według instrukcji kolor w `PIXON` może mieć postać `aaRRGGBB`, gdzie `aa` to kanał alfa od 0 (kolor nieprzezroczysty) do 255 (w pełni przezroczysty) (*UG s. 642*).
 
 Przykład: wykres funkcji piksel po pikselu.
 
@@ -41,7 +41,7 @@ END;
 
 `GETPIX_P` pozwala wykrywać kolizje w grach: „czy w miejscu, w które się ruszam, jest ściana (czarny piksel)?”.
 
-## 15.2. Linie: LINE_P (*ES #8, UG s. 595*)
+## 15.2. Linie: LINE_P (*ES #8, UG s. 640*)
 
 ```
 LINE_P([G], x1, y1, x2, y2 [, kolor]);
@@ -67,7 +67,7 @@ END;
 
 Zaawansowana forma `LINE_P` rysuje wiele linii naraz z opcjonalną transformacją 3D. Omawia ją [rozdział 16](16-grafika-zaawansowana.md).
 
-## 15.3. Prostokąty: RECT_P (*UG s. 597*)
+## 15.3. Prostokąty: RECT_P (*UG s. 642*)
 
 ```
 RECT_P([G, x1, y1, x2, y2, kolor_krawędzi, kolor_wypełnienia]);
@@ -75,7 +75,7 @@ RECT_P([G, x1, y1, x2, y2, kolor_krawędzi, kolor_wypełnienia]);
 
 - `x1,y1` domyślnie oznacza lewy górny róg, a `x2,y2` prawy dolny róg GROB-a.
 - Jeśli nie podasz koloru wypełnienia, będzie taki sam jak kolor krawędzi.
-- **Ważna reguła (*UG s. 597*):** przy wielu argumentach opcjonalnych podane wartości trafiają do parametrów **od lewej**. Dlatego:
+- **Ważna reguła (*UG s. 642*):** przy wielu argumentach opcjonalnych podane wartości trafiają do parametrów **od lewej**. Dlatego:
 
 ```
 RECT_P(40,90,#000000h);                     // x1=40, y1=90, kolor krawędzi = czarny
@@ -96,7 +96,7 @@ END;
 
 Aby narysować **samą ramkę** bez wypełnienia, narysuj cztery linie albo dwa prostokąty: większy w kolorze ramki, a w środku mniejszy w kolorze tła.
 
-## 15.4. Wypełnione wielokąty: FILLPOLY_P (*ES #8, UG s. 594*)
+## 15.4. Wypełnione wielokąty: FILLPOLY_P (*ES #8, UG s. 639*)
 
 ```
 FILLPOLY_P([G], {(x1,y1), (x2,y2), ..., (xn,yn)}, kolor [, alfa]);
@@ -141,7 +141,7 @@ BEGIN
 END;
 ```
 
-## 15.5. Łuki, okręgi i elipsy: ARC_P (*ES #8, UG s. 593*)
+## 15.5. Łuki, okręgi i elipsy: ARC_P (*ES #8, UG s. 637*)
 
 **Promień jest zawsze w pikselach**, także w kartezjańskiej wersji `ARC` (*ES #8*).
 
@@ -176,7 +176,7 @@ Przykład z instrukcji: czerwony półokrąg we współrzędnych kartezjańskich
 ARC(0,0,60,0,π,RGB(255,0,0));   // środek (0,0), promień 60 px, od 0 do π (radiany)
 ```
 
-## 15.6. Trójkąty: TRIANGLE_P (*UG s. 600*)
+## 15.6. Trójkąty: TRIANGLE_P (*UG s. 645*)
 
 ```
 TRIANGLE_P([G], x1, y1, x2, y2, x3, y3, kolor [, alfa]);
@@ -197,7 +197,7 @@ END;
 
 Trójkąty to podstawa grafiki 3D na Prime (zaawansowane formy opisuje [rozdział 16](16-grafika-zaawansowana.md)).
 
-## 15.7. Odwracanie kolorów: INVERT_P (*UG s. 595*)
+## 15.7. Odwracanie kolorów: INVERT_P (*UG s. 640*)
 
 ```
 INVERT_P([G, x1, y1, x2, y2]);

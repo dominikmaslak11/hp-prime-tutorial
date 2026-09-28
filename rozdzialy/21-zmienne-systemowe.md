@@ -2,11 +2,11 @@
 
 [← Poprzedni](20-klawiatura-uzytkownika.md) · [Spis treści](../README.md) · [Następny →](22-debugowanie.md)
 
-Źródła: *UG s. 613–638* i rozdział 23 „Variables” (*UG s. 469–489*).
+Źródła: *UG s. 658–695* i rozdział 23 „Variables” (*UG s. 510–533*).
 
 ---
 
-## 21.1. Menu Vars (*UG rozdz. 23*)
+## 21.1. Menu Vars (*UG rozdz. 24*)
 
 Klawisz [Vars] otwiera cztery kategorie zmiennych:
 
@@ -19,7 +19,7 @@ Klawisz [Vars] otwiera cztery kategorie zmiennych:
 
 W programie wygodnie jest wstawiać nazwy zmiennych z [Vars], bo unikasz literówek. W przełączniku u dołu menu możesz wybrać, czy wstawić **nazwę** zmiennej, czy jej **wartość**.
 
-## 21.2. Zmienne ustawień Home (*UG s. 633–636*)
+## 21.2. Zmienne ustawień Home (*UG s. 691–694*)
 
 | Zmienna | Znaczenie | Wartości |
 |---|---|---|
@@ -58,7 +58,7 @@ END;
 
 Pomysł: przedłuż czas autowyłączenia na czas długich obliczeń (`TOff := 1800000;`, czyli 30 min), a na koniec przywróć starą wartość.
 
-## 21.3. HVars i DelHVars — zmienne użytkownika Home (*UG s. 635–636*)
+## 21.3. HVars i DelHVars — zmienne użytkownika Home (*UG s. 693–694*)
 
 | Zapis | Działanie |
 |---|---|
@@ -82,7 +82,7 @@ BEGIN
 END;
 ```
 
-## 21.4. Notes — notatki z poziomu programu (*UG s. 636*)
+## 21.4. Notes — notatki z poziomu programu (*UG s. 694*)
 
 | Zapis | Działanie |
 |---|---|
@@ -107,7 +107,7 @@ END;
 
 Notatki opisuje rozdział 27 instrukcji. Edytor notatek obsługuje formatowanie (pogrubienie, kursywa, rozmiary, kolory, listy wypunktowane) i wstawianie wyrażeń matematycznych. Notatka aplikacji (`ANote`) to specjalna notatka pokazywana w widoku Info.
 
-## 21.5. Programs — programy jako dane (*UG s. 636*)
+## 21.5. Programs — programy jako dane (*UG s. 694*)
 
 | Zapis | Działanie |
 |---|---|
@@ -135,7 +135,7 @@ Inne zastosowania: kopia zapasowa programów w notatce (`Notes("backup") := Prog
 
 > **Ostrożnie:** `Programs("nazwa") := ""` usuwa program bez pytania.
 
-## 21.6. Stałe fizyczne i jednostki (*UG rozdz. 24*)
+## 21.6. Stałe fizyczne i jednostki (*UG rozdz. 25*)
 
 Menu Units zawiera jednostki i stałe fizyczne, np. prędkość światła, stałą Plancka i ładunek elementarny. W programie możesz użyć stałej z jednostką i przeliczać ją funkcjami `CONVERT` i `USIMPLIFY`. Możesz też pozbyć się jednostki przez podzielenie wyniku przez jednostkę bazową:
 

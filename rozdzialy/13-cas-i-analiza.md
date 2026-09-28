@@ -34,7 +34,7 @@ Menu CAS ([Toolbox] (CAS)) domyślnie pokazuje nazwy opisowe. Po odznaczeniu *Me
 
 Przykłady z instrukcji: `proot([2,3,-2])` daje pierwiastki wielomianu 2x²+3x−2, a `int(5*x^2-6,x,1,3)` pole pod wykresem.
 
-## 13.2. Wywoływanie funkcji CAS z programu (*UG s. 611*)
+## 13.2. Wywoływanie funkcji CAS z programu (*UG s. 655*)
 
 ```
 CAS.funkcja(argumenty)
@@ -110,7 +110,7 @@ END;
 
 ## 13.4. Rozwiązywanie równań numerycznie
 
-### Funkcje aplikacji Function (*UG s. 385–387*)
+### Funkcje aplikacji Function (*UG s. 419–428*)
 
 Działają na funkcjach `F0`–`F9` aplikacji Function:
 
@@ -130,7 +130,7 @@ BEGIN
 END;
 ```
 
-### SOLVE z aplikacji Solve (*UG s. 387*)
+### SOLVE z aplikacji Solve (*UG s. 428*)
 
 ```
 SOLVE(En, zmienna, start)

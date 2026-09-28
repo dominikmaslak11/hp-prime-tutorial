@@ -2,7 +2,7 @@
 
 [← Poprzedni](10-listy.md) · [Spis treści](../README.md) · [Następny →](12-liczby-calkowite.md)
 
-Opis w instrukcji: rozdział 26 (*UG s. 516–543*) oraz komendy macierzowe PPL (*UG s. 601–603*).
+Opis w instrukcji: rozdział 26 (*UG s. 560–587*) oraz komendy macierzowe PPL (*UG s. 645–647*).
 
 ---
 
@@ -15,7 +15,7 @@ Opis w instrukcji: rozdział 26 (*UG s. 516–543*) oraz komendy macierzowe PPL 
 - Ręczna edycja: **katalog macierzy** (otwierany skrótem Matrix na klawiaturze albo z programu przez `STARTVIEW(-5)`) i **edytor macierzy**. Z programu otwiera go `EDITMAT`.
 - Szablon macierzy jest też pod klawiszem [Template].
 
-## 11.2. Odwołania (*UG rozdz. 26*)
+## 11.2. Odwołania (*UG rozdz. 27*)
 
 ```
 M1 := [[1,2,3],[4,5,6]];
@@ -56,7 +56,7 @@ END;
 
 Inne sposoby: `RREF` na macierzy rozszerzonej, `LSQ(A,b)` (metoda najmniejszych kwadratów), funkcje aplikacji Linear Solver (`LinSolve`, `Solve2x2`, `Solve3x3`).
 
-## 11.4. Komendy programowe (Cmds › Matrix) (*UG s. 601–603*)
+## 11.4. Komendy programowe (Cmds › Matrix) (*UG s. 645–647*)
 
 Te komendy modyfikują macierz **zapisaną w zmiennej** (`M0`–`M9` albo lokalnej):
 
@@ -71,7 +71,7 @@ Te komendy modyfikują macierz **zapisaną w zmiennej** (`M0`–`M9` albo lokaln
 | `REDIM(nazwa, {w,k})` | zmienia wymiary; zachowuje dane, uzupełnia zerami |
 | `REPLACE(nazwa, {w,k}, obiekt)` | wstawia podmacierz od pozycji `{w,k}` |
 | `SCALE(nazwa, wartość, wiersz)` | mnoży wiersz przez wartość |
-| `SCALEADD(nazwa, wartość, w1, w2)` | operacja wierszowa: w1·wartość dodane do w2 (opis w instrukcji: *UG s. 602*) |
+| `SCALEADD(nazwa, wartość, w1, w2)` | operacja wierszowa: w1·wartość dodane do w2 (opis w instrukcji: *UG s. 647*) |
 | `SUB(nazwa, początek, koniec)` | wycina fragment listy, macierzy lub grafiki |
 | `EDITMAT(nazwa [, tytuł] [, tylko_odczyt])` | edytor macierzy |
 
@@ -95,7 +95,7 @@ BEGIN
 END;
 ```
 
-## 11.5. Funkcje macierzowe (Math › Matrix) (*UG s. 528–540*)
+## 11.5. Funkcje macierzowe (Math › Matrix) (*UG s. 572–584*)
 
 | Kategoria | Funkcje |
 |---|---|

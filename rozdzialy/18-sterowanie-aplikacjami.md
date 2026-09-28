@@ -2,7 +2,7 @@
 
 [← Poprzedni](17-klawiatura-dotyk-czas.md) · [Spis treści](../README.md) · [Następny →](19-wlasne-aplikacje.md)
 
-Program może włączać aplikacje HP, definiować w nich funkcje, ustawiać okno wykresu, uruchamiać obliczenia i odczytywać wyniki. W ten sposób programy korzystają z całej mocy kalkulatora. Źródła: *ES #5*, *UG s. 603–604, 613–638*, *UG rozdz. 6–22*.
+Program może włączać aplikacje HP, definiować w nich funkcje, ustawiać okno wykresu, uruchamiać obliczenia i odczytywać wyniki. W ten sposób programy korzystają z całej mocy kalkulatora. Źródła: *ES #5*, *UG s. 647–648, 658–695*, *UG rozdz. 6–22*.
 
 ---
 
@@ -44,7 +44,7 @@ F1(COLOR)                      // odczyt koloru
 
 Dotyczy `F#`, `R#`, `X#/Y#`, `U#`, `V#`, `E#`. Dla `FZ#` kolorem jest lista dwóch kolorów.
 
-## 18.2. STARTAPP (*UG s. 603, ES #5*)
+## 18.2. STARTAPP (*UG s. 647, ES #5*)
 
 ```
 STARTAPP("nazwa aplikacji");
@@ -52,9 +52,9 @@ STARTAPP("nazwa aplikacji");
 
 Uruchamia aplikację. Wykonuje przy tym jej funkcję `START` (jeśli ją ma) i otwiera domyślny widok. Nazwy aplikacji HP:
 
-`"Function"`, `"Advanced Graphing"`, `"Graph 3D"`, `"Geometry"`, `"Spreadsheet"`, `"Statistics 1Var"`, `"Statistics 2Var"`, `"Inference"`, `"Solve"`, `"Linear Solver"`, `"Parametric"`, `"Polar"`, `"Sequence"`, `"Finance"`, `"Triangle Solver"`, `"Linear Explorer"`, `"Quadratic Explorer"`, `"Trig Explorer"`, a także Twoje własne aplikacje.
+`"Function"`, `"Advanced Graphing"`, `"Graph 3D"`, `"Geometry"`, `"Spreadsheet"`, `"Statistics 1Var"`, `"Statistics 2Var"`, `"Inference"`, `"Solve"`, `"Linear Solver"`, `"Parametric"`, `"Polar"`, `"Sequence"`, `"Finance"`, `"Triangle Solver"`, `"Explorer"` (wyd. 3; w starszym firmware osobno `"Linear Explorer"`, `"Quadratic Explorer"`, `"Trig Explorer"`), a także Twoje własne aplikacje.
 
-## 18.3. CHECK, UNCHECK, ISCHECK (*ES #5, UG rozdz. 22*)
+## 18.3. CHECK, UNCHECK, ISCHECK (*ES #5, UG rozdz. 23*)
 
 ```
 CHECK(n);            // zaznacz równanie nr n (0..9) w bieżącej aplikacji
@@ -66,7 +66,7 @@ Solve.UNCHECK(0);
 
 Zaznaczenie decyduje o tym, czy funkcja jest rysowana w Plot view i analizowana w Num view. To funkcje **konkretnej aplikacji**. Jeśli ta aplikacja nie jest bieżąca, poprzedź je nazwą aplikacji i kropką (*ES #5*).
 
-## 18.4. STARTVIEW (*UG s. 603–604, ES #5*)
+## 18.4. STARTVIEW (*UG s. 647–648, ES #5*)
 
 ```
 STARTVIEW(n [, przerysuj]);
@@ -94,7 +94,7 @@ STARTVIEW(n [, przerysuj]);
 
 `przerysuj` różne od 0 wymusza natychmiastowe przerysowanie ekranu.
 
-## 18.5. Zmienne widoku Plot (*UG s. 615–620*)
+## 18.5. Zmienne widoku Plot (*UG s. 659–670*)
 
 | Zmienna | Znaczenie | Aplikacje |
 |---|---|---|
@@ -119,7 +119,7 @@ STARTVIEW(n [, przerysuj]);
 
 Zmienne widoku Numeric: `NumStart`, `NumStep`, `NumType`, `NumZoom`, `NumIndep` (tabela własna) oraz ich warianty X/Y dla aplikacji z dwiema zmiennymi.
 
-## 18.6. Zmienne ustawień Symbolic Setup (*UG s. 637*)
+## 18.6. Zmienne ustawień Symbolic Setup (*UG s. 695*)
 
 Nadpisują ustawienia Home tylko w danej aplikacji:
 
@@ -130,7 +130,7 @@ Nadpisują ustawienia Home tylko w danej aplikacji:
 | `AFormat` | 0 systemowy, 1 Standard, 2 Fixed, 3 Scientific, 4 Engineering |
 | `ADigits` | liczba cyfr |
 
-## 18.7. Zmienne wyników (*UG s. 638, rozdz. 23*)
+## 18.7. Zmienne wyników (*UG s. 695, rozdz. 23*)
 
 Funkcje aplikacji zapisują wyniki w zmiennych, które program może odczytać:
 
@@ -144,7 +144,7 @@ Funkcje aplikacji zapisują wyniki w zmiennych, które program może odczytać:
 | Triangle Solver | `SideA`, `SideB`, `SideC`, `AngleA`, `AngleB`, `AngleC`, `TriType` |
 | Linear Solver | `LSystem` |
 
-## 18.8. Funkcje aplikacji (*UG rozdz. 22: App menu*)
+## 18.8. Funkcje aplikacji (*UG rozdz. 23: App menu*)
 
 | Aplikacja | Funkcje |
 |---|---|
@@ -154,11 +154,11 @@ Funkcje aplikacji zapisują wyniki w zmiennych, które program może odczytać:
 | Statistics 1Var | `Do1VStats(Hn)`, `SetSample(Hn,Dn)`, `SetFreq(Hn,Dn lub wartość)` |
 | Statistics 2Var | `PredX`, `PredY`, `Resid`, `Do2VStats(Sn)`, `SetDepend(Sn,Cn)`, `SetIndep(Sn,Cn)` |
 | Inference | `DoInference`, `HypZ1mean`, `HypZ2mean`, `HypZ1prop`, `HypZ2prop`, `HypT1mean`, `HypT2mean`, `ConfZ1mean`, …, `Chi2GOF`, `Chi2TwoWay`, `LinRegrTTest`, … |
-| Finance | `CalcFV`, `CalcIPYR`, `CalcNbPmt`, `CalcPMT`, `CalcPV`, `DoFinance` |
+| Finance | TVM: `TvmPMT`, `TvmPV`, `TvmFV`, `TvmIPYR`, `TvmNbPmt` (starsze `CalcPMT`â¦ z tymi samymi argumentami `(NbPmt, IPYR, PV, FV, [PPYR], [CPYR], [BEG])`), `DoFinance(zmienna)`; wyd. 3 dodaje `IntConv*`, `DateDays`, `CashFlow*`, `Depreciate`, `BrkEv*`, `Change*`, `Percent*`, `BondPrice`, `BondYield`, `BlackScholes` (zob. [rozdz. 23](23-mapa-instrukcji.md#rozdz-20--finance-app-s-334365-mocno-rozbudowany-w-wyd-3)) |
 | Linear Solver | `Solve2x2`, `Solve3x3`, `LinSolve` |
 | Triangle Solver | `AAS`, `ASA`, `SAS`, `SSA`, `SSS`, `DoSolve` |
-| Linear Explorer | `SolveForSlope`, `SolveForYIntercept` |
-| Quadratic Explorer | `SOLVE`, `DELTA` |
+| Explorer (wyd. 3) | `LinearSlope`, `LinearYIntercept`, `QuadSolve`, `QuadDelta` |
+| Linear/Quadratic Explorer (starszy firmware) | `SolveForSlope`, `SolveForYIntercept`, `SOLVE`, `DELTA` |
 | wszystkie | `CHECK`, `UNCHECK`, `ISCHECK` |
 
 Szczegółową składnię każdej funkcji znajdziesz w pomocy kalkulatora: podświetl funkcję w menu i naciśnij [Help].

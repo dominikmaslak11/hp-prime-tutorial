@@ -2,11 +2,11 @@
 
 [← Poprzedni](19-wlasne-aplikacje.md) · [Spis treści](../README.md) · [Następny →](21-zmienne-systemowe.md)
 
-Każdemu klawiszowi, także w kombinacji z [Shift] i [ALPHA], możesz przypisać własne działanie (*UG s. 571–576*). Taki zestaw przypisań to **klawiatura użytkownika**.
+Każdemu klawiszowi, także w kombinacji z [Shift] i [ALPHA], możesz przypisać własne działanie (*UG s. 615–620*). Taki zestaw przypisań to **klawiatura użytkownika**.
 
 ---
 
-## 20.1. Tryby użytkownika (*UG s. 571*)
+## 20.1. Tryby użytkownika (*UG s. 615*)
 
 | Tryb | Jak włączyć | Oznaczenie | Działanie |
 |---|---|---|---|
@@ -24,13 +24,13 @@ BEGIN
 END;
 ```
 
-- `KEY` to prefiks oznaczający funkcję klawisza (*UG s. 589*).
+- `KEY` to prefiks oznaczający funkcję klawisza (*UG s. 634*).
 - `K_Sin` to wewnętrzna nazwa klawisza. **Wielkość liter ma znaczenie.**
 - Zwrócony **tekst** zostaje wstawiony w miejscu kursora, tak jakby użytkownik go wpisał.
 
 Po włączeniu trybu użytkownika naciśnięcie [SIN] wpisze `ALOG(`.
 
-Zwracany tekst może być dowolny (*UG s. 572*): nazwa funkcji systemowej lub Twojej, nazwa zmiennej, całe wyrażenie. W instrukcji jedna z kombinacji z [Shift] i [ALPHA], która normalnie wpisuje małą literę „t”, zostaje przypisana do wpisywania nachylenia F1 w punkcie 3. Nazwę klawisza najlepiej wygenerować opcją *Create user key* (sekcja 20.3):
+Zwracany tekst może być dowolny (*UG s. 616*): nazwa funkcji systemowej lub Twojej, nazwa zmiennej, całe wyrażenie. W instrukcji jedna z kombinacji z [Shift] i [ALPHA], która normalnie wpisuje małą literę „t”, zostaje przypisana do wpisywania nachylenia F1 w punkcie 3. Nazwę klawisza najlepiej wygenerować opcją *Create user key* (sekcja 20.3):
 
 ```
 KEY KSA_4()    // nazwa przykładowa: wstaw tu nazwę wygenerowaną przez "Create user key"
@@ -51,11 +51,11 @@ BEGIN
 END;
 ```
 
-## 20.3. Najszybszy sposób: Create user key (*UG s. 572*)
+## 20.3. Najszybszy sposób: Create user key (*UG s. 616*)
 
 W edytorze programów naciśnij **[Shift][Menu]** › **Create user key**, a potem klawisz lub kombinację klawiszy do przypisania. Kalkulator wstawi szablon z poprawną nazwą klawisza. Nie musisz jej znać na pamięć.
 
-## 20.4. Nazwy klawiszy (*UG s. 573–576*)
+## 20.4. Nazwy klawiszy (*UG s. 617–620*)
 
 Nazwa ma postać **przedrostek + nazwa klawisza**:
 

@@ -2,13 +2,13 @@
 
 [← Poprzedni](13-cas-i-analiza.md) · [Spis treści](../README.md) · [Następny →](15-grafika-rysowanie.md)
 
-Źródła: *ES #7*, *UG s. 592–600*. Komendy graficzne są w **(Cmds) › Drawing**: 6. Pixels dla wersji pikselowych, 7. Cartesian dla kartezjańskich.
+Źródła: *ES #7*, *UG s. 637–645*. Komendy graficzne są w **(Cmds) › Drawing**: 6. Pixels dla wersji pikselowych, 7. Cartesian dla kartezjańskich.
 
 ---
 
 ## 14.1. Zmienne graficzne G0–G9 (GROB)
 
-- HP Prime ma 10 zmiennych graficznych (**GROB**, *graphic object*): `G0`–`G9` (*UG s. 592*).
+- HP Prime ma 10 zmiennych graficznych (**GROB**, *graphic object*): `G0`–`G9` (*UG s. 637*).
 - **`G0` to zawsze bieżący ekran.** Rysowanie w `G0` jest od razu widoczne.
 - `G1`–`G9` to bufory w pamięci, niewidoczne, dopóki nie skopiujesz ich na ekran. Przydają się do animacji ([rozdział 16](16-grafika-zaawansowana.md)). Są czyszczone po wyłączeniu kalkulatora.
 - Prawie każda komenda graficzna przyjmuje GROB jako **pierwszy, opcjonalny** argument. Domyślnie jest to `G0`.
@@ -28,8 +28,8 @@ Każda komenda ma dwie wersje:
 | zastosowanie | wykresy matematyczne | interfejsy, gry, tekst |
 
 - Pasek menu dotykowego zajmuje dolne piksele (y ≈ 220–239). Jeśli wyświetlasz menu, rysuj powyżej (*ES #7*).
-- Niektóre parametry zawsze są w pikselach, nawet w wersji kartezjańskiej. Na przykład promień w `ARC` (*ES #7, UG s. 593*).
-- Konwersja między układami: `C→PX(x,y)` zamienia współrzędne kartezjańskie na piksele, a `PX→C(x,y)` odwrotnie. Obie komendy przyjmują też listę `{x,y}`. W tekście instrukcji (*UG s. 592–593*) strzałka w nazwie zgubiła się podczas składu, stąd zapis *CPX* i *PXC*. Wstawiaj je z menu (Cmds) › Drawing.
+- Niektóre parametry zawsze są w pikselach, nawet w wersji kartezjańskiej. Na przykład promień w `ARC` (*ES #7, UG s. 637*).
+- Konwersja między układami: `C→PX(x,y)` zamienia współrzędne kartezjańskie na piksele, a `PX→C(x,y)` odwrotnie. Obie komendy przyjmują też listę `{x,y}`. W tekście instrukcji (*UG s. 637–637*) strzałka w nazwie zgubiła się podczas składu, stąd zapis *CPX* i *PXC*. Wstawiaj je z menu (Cmds) › Drawing.
 
 W kursie używam głównie **współrzędnych pikselowych**, bo nie zależą od ustawień aplikacji.
 
@@ -49,7 +49,7 @@ Po zakończeniu programu system przerysowuje ekran bieżącej aplikacji, więc T
 
 | Komenda | Działanie |
 |---|---|
-| `FREEZE;` | Zatrzymuje ekran do naciśnięcia klawisza lub dotknięcia; nie przerysowuje go po zakończeniu programu (*UG s. 593*). W tutorialu Shore'a: [Enter] uruchamia program ponownie, [Esc] lub dotknięcie wychodzi. |
+| `FREEZE;` | Zatrzymuje ekran do naciśnięcia klawisza lub dotknięcia; nie przerysowuje go po zakończeniu programu (*UG s. 637*). W tutorialu Shore'a: [Enter] uruchamia program ponownie, [Esc] lub dotknięcie wychodzi. |
 | `WAIT(n);` | Pauza n sekund. |
 | `WAIT(0);` / `WAIT;` | Według tutorialu Shore'a (fw 13441) czeka na naciśnięcie klawisza. Według instrukcji z 2016 r. czeka minutę. |
 | `WAIT(-1);` | W nowszym firmware czeka na klawisz lub dotyk i zwraca informację o zdarzeniu. |
@@ -58,7 +58,7 @@ Zalecany wzorzec: kończ program pętlą oczekiwania na klawisz ([rozdział 17](
 
 ## 14.5. Kolory
 
-### RGB (*UG s. 593, ES #5*)
+### RGB (*UG s. 637, ES #5*)
 
 ```
 RGB(czerwony, zielony, niebieski [, alfa])     // składowe 0..255
@@ -139,7 +139,7 @@ Rozmiary czcionki:
 | 6 | | 20 pt |
 | 7 | | 22 pt |
 
-`TEXTOUT_P` **zwraca współrzędną x końca tekstu** (*UG s. 599*). Dzięki temu można wypisywać kolejne fragmenty jeden za drugim:
+`TEXTOUT_P` **zwraca współrzędną x końca tekstu** (*UG s. 643*). Dzięki temu można wypisywać kolejne fragmenty jeden za drugim:
 
 ```
 LOCAL x := TEXTOUT_P("Wynik: ", 10, 50, 3);

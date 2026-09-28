@@ -5,11 +5,11 @@
 Wszystkie konstrukcje z tego rozdziału znajdziesz w edytorze pod **(Tmplt) › Branch**:
 1. IF THEN, 2. IF THEN ELSE, 3. CASE, 4. IFERR, 5. IFERR ELSE.
 
-W HP PPL warunek jest **prawdziwy**, gdy ma wartość różną od zera, i **fałszywy**, gdy jest równy 0 (*UG s. 583*).
+W HP PPL warunek jest **prawdziwy**, gdy ma wartość różną od zera, i **fałszywy**, gdy jest równy 0 (*UG s. 627*).
 
 ---
 
-## 5.1. IF THEN (*UG s. 583*)
+## 5.1. IF THEN (*UG s. 627*)
 
 ```
 IF warunek THEN
@@ -19,7 +19,7 @@ END;
 
 Polecenia wykonają się tylko wtedy, gdy warunek jest prawdziwy.
 
-## 5.2. IF THEN ELSE (*UG s. 583, ES #2*)
+## 5.2. IF THEN ELSE (*UG s. 627, ES #2*)
 
 ```
 IF warunek THEN
@@ -29,7 +29,7 @@ ELSE
 END;
 ```
 
-Przykład: QROOTS z [rozdziału 4](04-wyjscie.md#43-print-i-terminal-ug-s-610-es-2).
+Przykład: QROOTS z [rozdziału 4](04-wyjscie.md#43-print-i-terminal-ug-s-654-es-2).
 
 ### Zagnieżdżanie i „else if”
 
@@ -56,7 +56,7 @@ END;
 
 Przy wielu warunkach czytelniej jest użyć `CASE` (sekcja 5.4).
 
-### IF na listach (*UG s. 584*)
+### IF na listach (*UG s. 628*)
 
 Jeśli warunek jest listą, `IF` działa na każdym elemencie osobno. Obie gałęzie muszą wtedy zwrócić pojedynczy obiekt albo listy tej samej długości co lista warunków. Dla każdego elementu wybierana jest wartość z gałęzi THEN albo ELSE. To zaawansowana możliwość, w praktyce rzadko używana.
 
@@ -84,7 +84,7 @@ END;
 
 Inny przykład: `A := when(FP(A/2)==0, A, A+1);` zamienia nieparzyste A na najbliższą większą liczbę parzystą.
 
-## 5.4. CASE — wybór spośród wielu przypadków (*UG s. 584, ES #4*)
+## 5.4. CASE — wybór spośród wielu przypadków (*UG s. 628, ES #4*)
 
 ```
 CASE
@@ -97,7 +97,7 @@ END;
 
 - Warunki są sprawdzane po kolei. Wykonuje się **tylko pierwsza** gałąź z prawdziwym warunkiem, po czym `CASE` się kończy.
 - `DEFAULT` jest opcjonalne i wykonuje się, gdy żaden warunek nie jest prawdziwy.
-- Maksymalnie **127 gałęzi** (*UG s. 584*).
+- Maksymalnie **127 gałęzi** (*UG s. 628*).
 - Każde `IF … THEN …` wewnątrz `CASE` kończy się własnym `END;`, a cały `CASE` jeszcze jednym `END;`.
 
 Przykład z instrukcji:
@@ -146,7 +146,7 @@ END;
 
 Wyniki dla R = 2,5, r = 1,5, θ = π/4 (lub 45°): koło 19.6349540849, pierścień 12.5663706144, wycinek 2.45436926062.
 
-## 5.5. IFERR — przechwytywanie błędów (*UG s. 584*)
+## 5.5. IFERR — przechwytywanie błędów (*UG s. 628*)
 
 ```
 IFERR
@@ -165,7 +165,7 @@ END;
 ```
 
 - Jeśli w bloku `IFERR` wystąpi błąd (dzielenie przez zero, zły argument, zły typ), program **nie zatrzyma się z komunikatem**, tylko przejdzie do gałęzi `THEN`.
-- Według instrukcji numer błędu trafia do zmiennej `Ans` i można go użyć w gałęzi `THEN` (*UG s. 584*). Nowsze firmware udostępniają też tekst błędu. Sprawdź to na swoim egzemplarzu w debugerze.
+- Według instrukcji numer błędu trafia do zmiennej `Ans` i można go użyć w gałęzi `THEN` (*UG s. 628*). Nowsze firmware udostępniają też tekst błędu. Sprawdź to na swoim egzemplarzu w debugerze.
 
 Przykład: bezpieczne dzielenie.
 

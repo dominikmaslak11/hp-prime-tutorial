@@ -2,7 +2,7 @@
 
 [← Poprzedni](09-lancuchy.md) · [Spis treści](../README.md) · [Następny →](11-macierze.md)
 
-Lista to uporządkowany zbiór dowolnych obiektów w nawiasach klamrowych: `{1, 2.5, "tekst", {3,4}, [1,2]}`. Listy są w PPL podstawową strukturą danych. Służą jako tablice, stosy, rekordy i tablice wyników. Opis w instrukcji: rozdział 25 (*UG s. 501–515*).
+Lista to uporządkowany zbiór dowolnych obiektów w nawiasach klamrowych: `{1, 2.5, "tekst", {3,4}, [1,2]}`. Listy są w PPL podstawową strukturą danych. Służą jako tablice, stosy, rekordy i tablice wyników. Opis w instrukcji: rozdział 25 (*UG s. 545–559*).
 
 ---
 
@@ -17,7 +17,7 @@ lst := {1,2,3};
 - Zmienne systemowe `L0`–`L9` przechowują wyłącznie listy.
 - Listy możesz edytować ręcznie w **katalogu list** (otwierany skrótem List na klawiaturze albo z programu przez `STARTVIEW(-6)`) i w **edytorze list**. Z programu otwiera go `EDITLIST(L1)`.
 
-## 10.2. Odwołania do elementów (*UG s. 508*)
+## 10.2. Odwołania do elementów (*UG s. 552*)
 
 ```
 L6 := {3,4,5,6};
@@ -42,7 +42,7 @@ lst := CONCAT(lst, {x});         // uniwersalnie
 lst(SIZE(lst)+1) := x;           // zapis na pozycji o 1 dalej niż koniec wydłuża listę
 ```
 
-## 10.3. Arytmetyka na listach (*UG s. 509*)
+## 10.3. Arytmetyka na listach (*UG s. 553*)
 
 Operatory działają **element po elemencie**:
 
@@ -55,7 +55,7 @@ SIN({0, π/2})        // {0, 1} w radianach
 
 Wiele obliczeń można więc zrobić **bez pętli**, co jest i krótsze, i szybsze.
 
-## 10.4. Funkcje listowe (*UG s. 509–512*)
+## 10.4. Funkcje listowe (*UG s. 553–556*)
 
 Są w [Toolbox] (Math) › 6 List. Domyślnie menu pokazuje nazwy opisowe („Concatenate”). Nazwy komend (`CONCAT`) zobaczysz po odznaczeniu opcji *Menu Display* na 2. stronie ustawień Home.
 
@@ -89,7 +89,7 @@ MAKELIST(2*X-1,X,1,5,1)     // {1,3,5,7,9}
 MAKELIST(RANDINT(1,6),X,1,20,1)   // 20 rzutów kostką
 ```
 
-## 10.5. EXECON (*UG s. 611–612*)
+## 10.5. EXECON (*UG s. 655–656*)
 
 `EXECON` tworzy nową listę, stosując wyrażenie z symbolami `&` do elementów jednej lub kilku list:
 
@@ -102,7 +102,7 @@ MAKELIST(RANDINT(1,6),X,1,20,1)   // 20 rzutów kostką
 
 Przy jednej liście liczba po `&` to przesunięcie 1–9. Przy wielu listach pierwsza cyfra oznacza numer listy, a druga pozycję.
 
-## 10.6. Statystyka z list (*UG s. 512–515*)
+## 10.6. Statystyka z list (*UG s. 556–559*)
 
 Średnią, medianę, minimum i maksimum najprościej policzysz przez aplikację Statistics 1Var:
 

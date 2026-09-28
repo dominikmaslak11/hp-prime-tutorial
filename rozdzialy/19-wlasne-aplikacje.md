@@ -2,17 +2,17 @@
 
 [← Poprzedni](18-sterowanie-aplikacjami.md) · [Spis treści](../README.md) · [Następny →](20-klawiatura-uzytkownika.md)
 
-Aplikacja HP Prime to zestaw widoków, programu, notatki i danych (*UG s. 576*). Możesz utworzyć własną aplikację na bazie aplikacji HP i przeprogramować jej zachowanie. Źródło: *UG s. 576–582, 614–615*, *UG rozdz. 6 „Creating an app”*.
+Aplikacja HP Prime to zestaw widoków, programu, notatki i danych (*UG s. 620*). Możesz utworzyć własną aplikację na bazie aplikacji HP i przeprogramować jej zachowanie. Źródło: *UG s. 620–626, 658–659*, *UG rozdz. 6 „Creating an app”*.
 
 ---
 
 ## 19.1. Program aplikacji
 
-- Każda aplikacja ma **jeden** związany z nią program. Gdy aplikacja jest aktywna, jej program jest **pierwszą pozycją** w katalogu programów (*UG s. 577*).
+- Każda aplikacja ma **jeden** związany z nią program. Gdy aplikacja jest aktywna, jej program jest **pierwszą pozycją** w katalogu programów (*UG s. 621*).
 - Nowa aplikacja **dziedziczy** wszystkie cechy aplikacji bazowej: widoki, zmienne i funkcje.
 - Program aplikacji wysyła się razem z aplikacją.
 
-## 19.2. Funkcje o specjalnych nazwach (*UG s. 576*)
+## 19.2. Funkcje o specjalnych nazwach (*UG s. 620*)
 
 Jeśli program aplikacji zawiera funkcję o jednej z tych nazw, zostanie ona wywołana **zamiast** standardowej akcji klawisza:
 
@@ -28,7 +28,7 @@ Jeśli program aplikacji zawiera funkcję o jednej z tych nazw, zostanie ona wyw
 | `START` | przy uruchomieniu aplikacji z biblioteki lub przez `STARTAPP` |
 | `RESET` | przy resecie aplikacji |
 
-## 19.3. VIEW — własne pozycje menu View (*UG s. 577, 589, 604*)
+## 19.3. VIEW — własne pozycje menu View (*UG s. 621, 634, 648*)
 
 ```
 VIEW "Tekst w menu", NazwaFunkcji()
@@ -37,9 +37,9 @@ BEGIN
 END;
 ```
 
-Linia `VIEW` przed definicją funkcji dodaje pozycję do menu [View] aplikacji. Jeśli program ma choć jedną taką pozycję, standardowa lista widoków zostaje **zastąpiona** Twoją. Funkcje wywoływane z menu View **nie przyjmują parametrów**. Dane przekazuje się przez zmienne eksportowane (*UG s. 581*).
+Linia `VIEW` przed definicją funkcji dodaje pozycję do menu [View] aplikacji. Jeśli program ma choć jedną taką pozycję, standardowa lista widoków zostaje **zastąpiona** Twoją. Funkcje wywoływane z menu View **nie przyjmują parametrów**. Dane przekazuje się przez zmienne eksportowane (*UG s. 626*).
 
-## 19.4. Procedura tworzenia aplikacji (*UG s. 577*)
+## 19.4. Procedura tworzenia aplikacji (*UG s. 621*)
 
 1. Wybierz aplikację HP, którą chcesz dostosować.
 2. W bibliotece aplikacji ([Apps]) zaznacz ją, naciśnij **(Save)** i nadaj nową nazwę.
@@ -47,12 +47,12 @@ Linia `VIEW` przed definicją funkcji dodaje pozycję do menu [View] aplikacji. 
 4. Otwórz katalog programów, wybierz program nowej aplikacji i naciśnij (Edit).
 5. Napisz funkcje, stosując nazwy specjalne z sekcji 19.2.
 6. Dodaj `VIEW`, żeby zmienić menu View.
-7. Nowe zmienne globalne **eksportuj z osobnego programu użytkownika**, wywoływanego z funkcji `START` aplikacji. Dzięki temu nie stracą wartości (*UG s. 577*).
+7. Nowe zmienne globalne **eksportuj z osobnego programu użytkownika**, wywoływanego z funkcji `START` aplikacji. Dzięki temu nie stracą wartości (*UG s. 621*).
 8. Przetestuj i uruchom w debugerze.
 
-Aplikacje można łączyć: program jednej aplikacji może uruchamiać drugą (`STARTAPP`) i z niej wracać (*UG s. 577*).
+Aplikacje można łączyć: program jednej aplikacji może uruchamiać drugą (`STARTAPP`) i z niej wracać (*UG s. 621*).
 
-## 19.5. Przykład z instrukcji: DiceSimulation (*UG s. 577–582*)
+## 19.5. Przykład z instrukcji: DiceSimulation (*UG s. 621–626*)
 
 Aplikacja na bazie **Statistics 1Var** symuluje rzuty dwiema kostkami o zadanej liczbie ścian i pokazuje histogram sum.
 
@@ -171,7 +171,7 @@ END;
 - Przedefiniowane `Plot` i `Symb` zmieniają zachowanie klawiszy.
 - Funkcje Statistics 1Var (`SetSample`, `SetFreq`, `H1Type`) sterują wykresem.
 
-## 19.6. Zmienne dostępu do aplikacji (*UG s. 614–615*)
+## 19.6. Zmienne dostępu do aplikacji (*UG s. 658–659*)
 
 | Zmienna | Działanie |
 |---|---|
@@ -192,7 +192,7 @@ AVars("Rekord") := 1234;
 IF wynik > Rekord THEN Rekord := wynik; END;
 ```
 
-Plik `icon.png` dołączony do aplikacji staje się jej ikoną w bibliotece aplikacji (*UG s. 614*).
+Plik `icon.png` dołączony do aplikacji staje się jej ikoną w bibliotece aplikacji (*UG s. 658*).
 
 ## 19.7. Szablon własnej aplikacji
 

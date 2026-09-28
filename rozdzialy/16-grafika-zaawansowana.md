@@ -2,11 +2,11 @@
 
 [← Poprzedni](15-grafika-rysowanie.md) · [Spis treści](../README.md) · [Następny →](17-klawiatura-dotyk-czas.md)
 
-Źródła: *UG s. 592–601*.
+Źródła: *UG s. 637–645*.
 
 ---
 
-## 16.1. Tworzenie bufora: DIMGROB_P (*UG s. 594*)
+## 16.1. Tworzenie bufora: DIMGROB_P (*UG s. 639*)
 
 ```
 DIMGROB_P(G, szerokość, wysokość [, kolor]);
@@ -21,7 +21,7 @@ DIMGROB_P(G1, 320, 240, #FFFFFFh);     // bufor wielkości ekranu, biały
 DIMGROB_P(G2, 16, 16, #FF0000h);       // czerwony kwadrat 16x16 (np. sprite)
 ```
 
-## 16.2. Kopiowanie obrazów: BLIT_P (*UG s. 594*)
+## 16.2. Kopiowanie obrazów: BLIT_P (*UG s. 639*)
 
 ```
 BLIT_P([cel, dx1, dy1, dx2, dy2], źródło [, sx1, sy1, sx2, sy2, kolor_pomijany, alfa]);
@@ -32,7 +32,7 @@ BLIT_P([cel, dx1, dy1, dx2, dy2], źródło [, sx1, sy1, sx2, sy2, kolor_pomijan
 - Jeśli nie podasz `dx2,dy2`, obszar docelowy ma rozmiar źródła, czyli nie ma skalowania. Jeśli je podasz, obraz zostanie **przeskalowany** do tego prostokąta.
 - `kolor_pomijany`: piksele w tym kolorze nie są kopiowane. Tak robi się sprite'y z przezroczystym tłem.
 - `alfa` od 0 (przezroczysty) do 255 (nieprzezroczysty) to przezroczystość całego źródła.
-- Jeśli używasz jednocześnie `kolor_pomijany` i `alfa`, podaj też współrzędne źródła. Kalkulator odróżni wtedy argumenty (*UG s. 594*).
+- Jeśli używasz jednocześnie `kolor_pomijany` i `alfa`, podaj też współrzędne źródła. Kalkulator odróżni wtedy argumenty (*UG s. 639*).
 - Nie używaj tego samego GROB-a jako źródła i celu, gdy obszary na siebie nachodzą.
 
 ```
@@ -42,7 +42,7 @@ BLIT_P(G0, 0, 0, 320, 240, G2);      // G2 rozciągnięty na cały ekran
 BLIT_P(G0, x, y, G2, 0, 0, 16, 16, #FFFFFFh);   // sprite bez białego tła
 ```
 
-## 16.3. Wycinanie fragmentu: SUBGROB_P (*UG s. 598*)
+## 16.3. Wycinanie fragmentu: SUBGROB_P (*UG s. 643*)
 
 ```
 SUBGROB_P(źródło [, x1, y1, x2, y2], cel);
@@ -89,7 +89,7 @@ Schemat każdej animacji:
 
 Tempo animacji można uzależnić od czasu (`TICKS`, [rozdział 17](17-klawiatura-dotyk-czas.md)), a nie od `WAIT`. Wtedy prędkość gry nie zależy od tego, jak długo trwa rysowanie klatki.
 
-## 16.5. Menu dotykowe: DRAWMENU (*UG s. 593*)
+## 16.5. Menu dotykowe: DRAWMENU (*UG s. 637*)
 
 ```
 DRAWMENU("etykieta1", "etykieta2", ..., "etykieta6");
@@ -100,7 +100,7 @@ Rysuje na dole ekranu pasek sześciu przycisków w stylu systemowym. Puste tekst
 
 `DRAWMENU` tylko **rysuje** przyciski. Dotknięcia trzeba obsłużyć samodzielnie komendą `MOUSE` ([rozdział 17](17-klawiatura-dotyk-czas.md)). Każdy przycisk ma szerokość około 53 pikseli (320/6), a pasek zajmuje y ≈ 220–239. Numer dotkniętego przycisku to `IP(x/53.33)+1`.
 
-## 16.6. Grafika 3D: zaawansowane LINE_P i TRIANGLE_P (*UG s. 595–601*)
+## 16.6. Grafika 3D: zaawansowane LINE_P i TRIANGLE_P (*UG s. 640–645*)
 
 Zaawansowane formy komend rysują **wiele** linii lub trójkątów w jednym wywołaniu, z obrotem, przesunięciem i rzutem perspektywicznym:
 
@@ -154,7 +154,7 @@ END;
 
 ## 16.7. Grafika w plikach aplikacji
 
-Aplikacja może mieć dołączone pliki (`AFiles`, [rozdział 19](19-wlasne-aplikacje.md)), np. obrazy PNG. Po wczytaniu obrazu do GROB-a możesz rysować go przez `BLIT_P`. Plik `icon.png` dołączony do aplikacji staje się jej ikoną w bibliotece aplikacji (*UG s. 614*).
+Aplikacja może mieć dołączone pliki (`AFiles`, [rozdział 19](19-wlasne-aplikacje.md)), np. obrazy PNG. Po wczytaniu obrazu do GROB-a możesz rysować go przez `BLIT_P`. Plik `icon.png` dołączony do aplikacji staje się jej ikoną w bibliotece aplikacji (*UG s. 658*).
 
 ---
 

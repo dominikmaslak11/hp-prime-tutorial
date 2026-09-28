@@ -2,7 +2,7 @@
 
 [← Poprzedni](11-macierze.md) · [Spis treści](../README.md) · [Następny →](13-cas-i-analiza.md)
 
-Opis w instrukcji: rozdział 29 „Basic integer arithmetic” (*UG s. 639–644*) oraz komendy **Cmds › Integer** (*UG s. 604–606*).
+Opis w instrukcji: rozdział 29 „Basic integer arithmetic” (*UG s. 696–701*) oraz komendy **Cmds › Integer** (*UG s. 648–651*).
 
 ---
 
@@ -18,7 +18,7 @@ Liczbę całkowitą w arytmetyce binarnej poprzedza znak `#`, a system oznacza p
 | `h` | szesnastkowy | `#E4h` | 228 |
 | brak | system domyślny | `#1101` | zależy od ustawień |
 
-Zasady (*UG s. 639–641*):
+Zasady (*UG s. 696–698*):
 - **Wynik dzielenia jest obcinany do części całkowitej**: `#100b/#11b` = `#1b`.
 - **Rozmiar słowa** (*wordsize*) wynosi 1–64 bity, domyślnie 32. Starsze bity, które się nie mieszczą, są odrzucane.
 - **System wyniku przy mieszanych systemach** to system **pierwszego** argumentu: `#4h*#71o` → `#E4h`, a `#71o*#4h` → `#344o`.
@@ -57,7 +57,7 @@ Przykłady z instrukcji:
 
 Operacje bitowe działają także na zwykłych liczbach całkowitych, bez `#`.
 
-## 12.4. Zmienne ustawień (*UG s. 635*)
+## 12.4. Zmienne ustawień (*UG s. 693*)
 
 | Zmienna | Wartości |
 |---|---|
@@ -108,7 +108,7 @@ b := BITAND(kolor, 255);
 
 ### Edytor liczby całkowitej
 
-W Home zaznacz wynik z `#` i otwórz edytor liczb całkowitych skrótem **Base** (dokładna kombinacja klawiszy jest pokazana na ilustracji w *UG s. 642*). Pokazuje wartość w systemach hex i dec oraz bit po bicie. Pozwala przesuwać bity, zmieniać rozmiar słowa, liczyć uzupełnienie do dwóch (Neg) i przełączać system (*UG s. 642–643*).
+W Home zaznacz wynik z `#` i otwórz edytor liczb całkowitych skrótem **Base** (dokładna kombinacja klawiszy jest pokazana na ilustracji w *UG s. 699*). Pokazuje wartość w systemach hex i dec oraz bit po bicie. Pozwala przesuwać bity, zmieniać rozmiar słowa, liczyć uzupełnienie do dwóch (Neg) i przełączać system (*UG s. 699–700*).
 
 ---
 

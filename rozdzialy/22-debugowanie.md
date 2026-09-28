@@ -12,9 +12,9 @@
 | **wykonania** | w trakcie działania: zły typ, indeks poza listą, niezdefiniowana zmienna | komunikat błędu, debuger, `IFERR` |
 | **logiczny** | program działa, ale wynik jest zły | testy na znanych danych, debuger, `PRINT` |
 
-Programu z błędem składniowym **nie da się uruchomić** (*UG s. 563*).
+Programu z błędem składniowym **nie da się uruchomić** (*UG s. 607*).
 
-## 22.2. Check (*ES #1, UG s. 556*)
+## 22.2. Check (*ES #1, UG s. 600*)
 
 - Naciskaj (Check) często, najlepiej po każdych kilku liniach.
 - Check sprawdza wyłącznie składnię. Nie sprawdza, czy argumenty komend są poprawne (*ES #1*).
@@ -31,7 +31,7 @@ Najczęstsze błędy składniowe:
 | błąd przy nazwie zmiennej | nazwa zarezerwowana (`M1` jako liczba, `L1` jako liczba) |
 | nieoczekiwany znak | cudzysłów typograficzny `„ ”` zamiast `" "` (częste przy kopiowaniu z internetu do Connectivity Kit) |
 
-## 22.3. Debuger (*UG s. 563–564*)
+## 22.3. Debuger (*UG s. 607–608*)
 
 Uruchomienie: w katalogu programów zaznacz program i naciśnij **(Debug)**. Jeśli plik ma kilka funkcji z `EXPORT`, wybierz jedną z listy.
 
@@ -48,7 +48,7 @@ Na ekranie debugera widać:
 | (Exit) | zamyka debuger |
 | (Cont) | kontynuuje bez debugowania |
 
-Okna dialogowe (`MSGBOX`, `INPUT`) wyświetlają się normalnie i trzeba je obsłużyć. `KILL` w debugerze przerywa pracę krok po kroku (*UG s. 583*).
+Okna dialogowe (`MSGBOX`, `INPUT`) wyświetlają się normalnie i trzeba je obsłużyć. `KILL` w debugerze przerywa pracę krok po kroku (*UG s. 627*).
 
 Przykład z instrukcji: MYPROGRAM z pętlą `FOR N FROM 1 TO 3 DO MSGBOX(N); END;`. Wykonuj (Step) i obserwuj, jak zmienia się N.
 
@@ -73,7 +73,7 @@ END;
 
 ## 22.5. Obsługa błędów w czasie działania — IFERR
 
-Pełny opis jest w [rozdziale 5.5](05-warunki.md#55-iferr--przechwytywanie-błędów-ug-s-584). Stosuj `IFERR` tam, gdzie błąd może wynikać z danych, na które nie masz wpływu: wpisów użytkownika, `EXPR` na tekście, funkcji numerycznych bez rozwiązania.
+Pełny opis jest w [rozdziale 5.5](05-warunki.md#55-iferr--przechwytywanie-błędów-ug-s-628). Stosuj `IFERR` tam, gdzie błąd może wynikać z danych, na które nie masz wpływu: wpisów użytkownika, `EXPR` na tekście, funkcji numerycznych bez rozwiązania.
 
 ```
 EXPORT OBLICZ_WZOR()
@@ -103,7 +103,7 @@ END;
 
 W `INPUT` walidację robi się w pętli `REPEAT … UNTIL poprawne;` (wzorzec GETSIDES z [rozdziału 6](06-petle.md)) albo przez ograniczenie typu `[0]` w definicji pola.
 
-## 22.7. #pragma (*UG s. 558*)
+## 22.7. #pragma (*UG s. 602*)
 
 ```
 #pragma mode( separator(.,;) integer(h32) )
@@ -125,7 +125,7 @@ W `INPUT` walidację robi się w pętli `REPEAT … UNTIL poprawne;` (wzorzec GE
 ## 22.9. Styl i dobre praktyki
 
 1. **Wcięcia**: 2 spacje na każdy poziom zagnieżdżenia.
-2. **Nazwy**: opisowe; zmienne lokalne małymi literami (*UG s. 611*), funkcje eksportowane WIELKIMI.
+2. **Nazwy**: opisowe; zmienne lokalne małymi literami (*UG s. 655*), funkcje eksportowane WIELKIMI.
 3. **Komentarz na początku pliku**: co robi program, parametry, przykład użycia.
 4. **Nie zmieniaj ustawień użytkownika na stałe.** Zapamiętaj je (`HAngle`, `HComplex`) i przywróć.
 5. **Nie nadpisuj zmiennych użytkownika** (`L1`, `A`, `M1`) bez potrzeby. Zwracaj wyniki przez `RETURN`.
@@ -134,7 +134,7 @@ W `INPUT` walidację robi się w pętli `REPEAT … UNTIL poprawne;` (wzorzec GE
 8. **Testuj przypadki brzegowe**: 0, liczby ujemne, pusta lista, bardzo duże wartości.
 9. **Kopia zapasowa** przed większymi zmianami: (More) › Save w katalogu programów tworzy kopię programu.
 
-## 22.10. Komunikaty błędów (*UG s. 647–648*)
+## 22.10. Komunikaty błędów (*UG s. 704–705*)
 
 | Komunikat | Znaczenie |
 |---|---|
@@ -154,7 +154,7 @@ W `INPUT` walidację robi się w pętli `REPEAT … UNTIL poprawne;` (wzorzec GE
 | LN(0) | logarytm z zera |
 | Inconsistent units | niezgodne jednostki (np. dodawanie długości do masy) |
 
-## 22.11. Gdy kalkulator się zawiesi (*UG s. 647*)
+## 22.11. Gdy kalkulator się zawiesi (*UG s. 704*)
 
 - Najpierw spróbuj przerwać program klawiszem **[On]**.
 - Jeśli kalkulator nie reaguje, zrób **reset**: odwróć kalkulator i włóż spinacz do otworu *Reset* nad pokrywą baterii. Kalkulator uruchomi się ponownie w widoku Home. Reset **nie usuwa** zapisanych danych (zmiennych, aplikacji, programów).

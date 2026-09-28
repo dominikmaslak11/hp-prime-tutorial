@@ -25,7 +25,7 @@ W tym rozdziale:
 | liczba z jednostką | `5_m`, `9.81_(m/s^2)` | 9 |
 | obiekt CAS | wyrażenie symboliczne | 14.x (część ułamkowa to typ CAS) |
 
-Źródło tabeli kodów: *UG s. 613*.
+Źródło tabeli kodów: *UG s. 658*.
 
 `TYPE` przydaje się do sprawdzania, co przekazał użytkownik:
 
@@ -47,7 +47,7 @@ Kalkulator liczy z dokładnością do 12 cyfr znaczących. Zapis wykładniczy wp
 
 ### Liczby zespolone
 
-Jednostkę urojoną `i` wpiszesz z klawiatury (opis nad klawiszem, dostępny przez [Shift]) albo z palety znaków. Aby funkcja rzeczywista mogła zwrócić wynik zespolony (np. `√(-4)`), ustaw `HComplex:=1` (*ES #2, UG s. 634*). Funkcje dla liczb zespolonych: `RE`, `IM`, `ABS` (moduł), `ARG`, `CONJ`.
+Jednostkę urojoną `i` wpiszesz z klawiatury (opis nad klawiszem, dostępny przez [Shift]) albo z palety znaków. Aby funkcja rzeczywista mogła zwrócić wynik zespolony (np. `√(-4)`), ustaw `HComplex:=1` (*ES #2, UG s. 692*). Funkcje dla liczb zespolonych: `RE`, `IM`, `ABS` (moduł), `ARG`, `CONJ`.
 
 ### Liczby całkowite z `#`
 
@@ -66,7 +66,7 @@ Liczby mogą mieć jednostki (menu Units, opisane w rozdziale 24 instrukcji):
 CONVERT(1_mi, 1_km)   // 1.609344_km
 ```
 
-Do jednostek służą funkcje `CONVERT`, `MKSA`, `UFACTOR` i `USIMPLIFY` (*UG rozdz. 24*). W programach jednostki przydają się rzadko. Zwykle lepiej liczyć na zwykłych liczbach w ustalonym układzie jednostek.
+Do jednostek służą funkcje `CONVERT`, `MKSA`, `UFACTOR` i `USIMPLIFY` (*UG rozdz. 25*). W programach jednostki przydają się rzadko. Zwykle lepiej liczyć na zwykłych liczbach w ustalonym układzie jednostek.
 
 ## 3.2. Operatory arytmetyczne
 
@@ -144,7 +144,7 @@ Pułapka: `-2^2` daje `-4`, bo potęga ma wyższy priorytet niż minus. Jeśli c
 
 ## 3.6. Najważniejsze funkcje matematyczne w programach
 
-Wszystkie są w [Toolbox] (Math) (*UG rozdz. 22*):
+Wszystkie są w [Toolbox] (Math) (*UG rozdz. 23*):
 
 | Funkcja | Działanie | Przykład |
 |---|---|---|

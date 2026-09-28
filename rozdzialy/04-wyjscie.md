@@ -12,16 +12,16 @@ Program może przekazać wyniki na trzy podstawowe sposoby. Czwarty, grafika (`T
 
 ---
 
-## 4.1. RETURN (*UG s. 583, ES #1*)
+## 4.1. RETURN (*UG s. 627, ES #1*)
 
 ```
 RETURN wyrażenie;
 ```
 
-- Zwraca wartość wyrażenia i **natychmiast kończy** funkcję. Polecenia między `RETURN` a `END` nie zostaną wykonane (*UG s. 569*).
+- Zwraca wartość wyrażenia i **natychmiast kończy** funkcję. Polecenia między `RETURN` a `END` nie zostaną wykonane (*UG s. 613*).
 - Może zwrócić dowolny typ: liczbę, listę, macierz, tekst.
 - Aby zwrócić kilka wartości naraz, zwróć listę: `RETURN {x1, x2};`.
-- Jeśli funkcja nie ma `RETURN`, program uruchomiony z Home zwraca wynik ostatniego wykonanego polecenia (*UG s. 569*).
+- Jeśli funkcja nie ma `RETURN`, program uruchomiony z Home zwraca wynik ostatniego wykonanego polecenia (*UG s. 613*).
 
 ```
 EXPORT SQM1(X)
@@ -42,7 +42,7 @@ BEGIN
 END;
 ```
 
-## 4.2. MSGBOX (*UG s. 609, ES #2*)
+## 4.2. MSGBOX (*UG s. 653, ES #2*)
 
 ```
 MSGBOX(wyrażenie_lub_tekst [, ok_cancel]);
@@ -76,7 +76,7 @@ BEGIN
 END;
 ```
 
-Przykład z instrukcji (*UG s. 609*):
+Przykład z instrukcji (*UG s. 653*):
 
 ```
 EXPORT AREACALC()
@@ -87,7 +87,7 @@ BEGIN
 END;
 ```
 
-## 4.3. PRINT i terminal (*UG s. 610, ES #2*)
+## 4.3. PRINT i terminal (*UG s. 654, ES #2*)
 
 ```
 PRINT(wyrażenie_lub_tekst);   // dopisuje linię w terminalu
@@ -97,7 +97,7 @@ PRINT();                      // czyści terminal
 - Terminal to tekstowy ekran wyników programu. Pojawia się, gdy program coś do niego wypisze.
 - Każde `PRINT` dopisuje nową linię.
 - **Dobry zwyczaj:** na początku programu, który używa `PRINT`, wywołaj `PRINT();`, żeby usunąć wyniki poprzednich programów (*ES #2*).
-- W terminalu po zakończeniu programu klawisze strzałek przewijają tekst, [Del] czyści terminal, a inny klawisz zamyka terminal (*UG s. 610*).
+- W terminalu po zakończeniu programu klawisze strzałek przewijają tekst, [Del] czyści terminal, a inny klawisz zamyka terminal (*UG s. 654*).
 - Terminal można otworzyć w dowolnym momencie: przytrzymaj [On] i naciśnij [÷].
 
 Program QROOTS (*ES #2*) rozwiązuje równanie kwadratowe i obsługuje pierwiastki zespolone:

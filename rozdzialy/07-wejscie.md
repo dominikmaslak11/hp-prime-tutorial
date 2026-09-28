@@ -11,7 +11,7 @@ Komendy z tego rozdziału są w **(Cmds) › I/O**.
 
 ---
 
-## 7.1. INPUT — jedna zmienna (*UG s. 608, ES #3*)
+## 7.1. INPUT — jedna zmienna (*UG s. 653, ES #3*)
 
 ```
 INPUT(zmienna [, "tytuł"] [, "etykieta"] [, "pomoc"] [, wartość_reset] [, wartość_początkowa]);
@@ -27,7 +27,7 @@ INPUT(zmienna [, "tytuł"] [, "etykieta"] [, "pomoc"] [, wartość_reset] [, war
 | `wartość_początkowa` | wartość widoczna w polu na starcie |
 
 - Wszystkie argumenty poza zmienną są opcjonalne, ale **kolejność musi zostać zachowana**. Jeśli chcesz podać późniejszy argument, a pominąć wcześniejszy, wstaw pusty tekst `""` albo pustą listę `{}` (*ES #3*).
-- **Wartość zwracana:** 1, gdy użytkownik naciśnie OK, i 0 przy Cancel (*UG s. 608*). Po Cancel zmienna **nie jest aktualizowana**.
+- **Wartość zwracana:** 1, gdy użytkownik naciśnie OK, i 0 przy Cancel (*UG s. 653*). Po Cancel zmienna **nie jest aktualizowana**.
 
 > Tutorial Shore'a podaje, że Cancel zapisuje 0 w zmiennej. W instrukcji HP stoi, że zmienna nie zmienia wartości, a zwracane jest 0. Zawsze sprawdzaj wartość zwracaną przez `INPUT`. Wtedy program działa poprawnie w obu przypadkach.
 
@@ -44,7 +44,7 @@ BEGIN
 END;
 ```
 
-## 7.2. INPUT — wiele zmiennych (*UG s. 608, ES #3–4*)
+## 7.2. INPUT — wiele zmiennych (*UG s. 653, ES #3–4*)
 
 ```
 INPUT({z1, z2, ...}, "tytuł", {"etyk1", "etyk2", ...}, {"pomoc1", ...},
@@ -86,7 +86,7 @@ INPUT({A,B,C,D,E,F},
 
 > W programie CONIC (*ES #5*) jedna pusta lista stoi na pozycji etykiet, a dwie listy zer na pozycjach pomocy i reset. Komentarz autora sugeruje jednak, że chodziło o pustą pomoc oraz wartości reset i początkowe. Wersja powyżej robi dokładnie to.
 
-## 7.3. INPUT — pole wyboru (lista rozwijana) (*ES #3, UG s. 608*)
+## 7.3. INPUT — pole wyboru (lista rozwijana) (*ES #3, UG s. 653*)
 
 ```
 INPUT({{zmienna, {"opcja1","opcja2",...}}}, "tytuł", "etykieta", ...);
@@ -109,14 +109,14 @@ BEGIN
 END;
 ```
 
-## 7.4. INPUT — pole wyboru tak/nie (checkbox) i przyciski radiowe (*ES #3, UG s. 608*)
+## 7.4. INPUT — pole wyboru tak/nie (checkbox) i przyciski radiowe (*ES #3, UG s. 653*)
 
 ```
 INPUT({{zmienna, 1}}, ...)     // checkbox: zmienna = 0 lub 1
 INPUT({{z1, n}, {z2, n}, ...}) // n>1: n kolejnych pól tworzy grupę radiową
 ```
 
-Jeśli liczba jest większa od 1, to pole i kolejne n-1 pól tworzą grupę **radiową**: zaznaczone może być tylko jedno z nich (*UG s. 608*).
+Jeśli liczba jest większa od 1, to pole i kolejne n-1 pól tworzą grupę **radiową**: zaznaczone może być tylko jedno z nich (*UG s. 653*).
 
 Program DOESTAX2 (*ES #3*) liczy zakupy trzech towarów z zaznaczeniem, które są opodatkowane:
 
@@ -141,7 +141,7 @@ END;
 
 Przykład: 59,99 (opodatkowany), 9,99 (opodatkowany), 10,00 (bez podatku), stawka 9% → **86,28**.
 
-## 7.5. INPUT — ograniczenie typu i pozycja pól (*UG s. 608*)
+## 7.5. INPUT — ograniczenie typu i pozycja pól (*UG s. 653*)
 
 Każdy element listy zmiennych może być listą z dodatkowymi informacjami:
 
@@ -173,7 +173,7 @@ BEGIN
 END;
 ```
 
-## 7.6. CHOOSE — okno wyboru (*UG s. 606, ES #4*)
+## 7.6. CHOOSE — okno wyboru (*UG s. 651, ES #4*)
 
 ```
 CHOOSE(zmienna, "tytuł", "opcja1", "opcja2", ..., "opcjaN");  // do 14 opcji
@@ -183,7 +183,7 @@ CHOOSE(zmienna, "tytuł", {"opcja1", "opcja2", ...});          // dowolnie wiele
 - Zmienna dostaje numer wybranej pozycji (1, 2, …) albo **0**, gdy użytkownik anuluje.
 - Funkcja zwraca wartość różną od zera przy wyborze i 0 przy anulowaniu.
 
-Przykład z instrukcji (*UG s. 606*):
+Przykład z instrukcji (*UG s. 651*):
 
 ```
 CHOOSE(N,"PickHero","Euler","Gauss","Newton");
@@ -217,7 +217,7 @@ END;
 
 (`POLE_KOLA` to program z sekcji 7.1. Musi być zapisany i eksportowany.)
 
-## 7.7. EDITLIST i EDITMAT (*UG s. 607*)
+## 7.7. EDITLIST i EDITMAT (*UG s. 652*)
 
 ```
 EDITLIST(L1);                    // otwiera edytor listy, program czeka na (OK)
@@ -229,7 +229,7 @@ EDITMAT(M1, "Podgląd", 1);       // tylko do odczytu
 
 Oba edytory pozwalają wygodnie wpisać wiele danych naraz, np. wyniki pomiarów. `EDITMAT` zwraca macierz, więc działa też z macierzą lokalną: `m := EDITMAT(m);`.
 
-## 7.8. KILL (*UG s. 583, ES #3*)
+## 7.8. KILL (*UG s. 627, ES #3*)
 
 ```
 KILL;

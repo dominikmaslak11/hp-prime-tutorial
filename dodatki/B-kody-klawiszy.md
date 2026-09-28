@@ -2,7 +2,7 @@
 
 [← Spis treści](../README.md)
 
-## Kody GETKEY / ISKEYDOWN (*UG s. 607, ES #3*)
+## Kody GETKEY / ISKEYDOWN (*UG s. 652, ES #3*)
 
 Kody są numerowane od lewego górnego klawisza (0) do prawego dolnego (50). Brak klawisza w buforze to **-1**.
 

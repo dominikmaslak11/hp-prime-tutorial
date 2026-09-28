@@ -12,7 +12,7 @@ Pętle znajdziesz w edytorze pod **(Tmplt) › Loop**: FOR, FOR STEP, FOR DOWN, 
 
 ---
 
-## 6.1. FOR (*UG s. 584, ES #2*)
+## 6.1. FOR (*UG s. 628, ES #2*)
 
 ```
 FOR zmienna FROM start TO koniec DO
@@ -58,7 +58,7 @@ Nowe elementy w tym programie:
 - `CAS.idivis(n)`: funkcja CAS wywołana z programu. Funkcje CAS poprzedza się prefiksem `CAS.` (*ES #2*).
 - `DIM`: dla ciągu lub wektora zwraca listę `{długość}`, dla tekstu liczbę znaków, dla macierzy `{wiersze, kolumny}`. Długość **listy** podaje `SIZE`.
 
-Program MAXFACTORS (*UG s. 585*) szuka liczby z przedziału 2…N o największej liczbie dzielników:
+Program MAXFACTORS (*UG s. 629*) szuka liczby z przedziału 2…N o największej liczbie dzielników:
 
 ```
 EXPORT MAXFACTORS(N)
@@ -78,7 +78,7 @@ END;
 
 Uruchom `MAXFACTORS(100)`.
 
-## 6.2. FOR ze STEP (*UG s. 585, ES #2*)
+## 6.2. FOR ze STEP (*UG s. 629, ES #2*)
 
 ```
 FOR zmienna FROM start TO koniec STEP krok DO
@@ -103,7 +103,7 @@ END;
 
 `PRINTEVENS(3,10)` wypisze: 4, 6, 8, 10.
 
-Krok nie musi być liczbą całkowitą. Program DRAWPATTERN (*UG s. 586*) przechodzi po wszystkich pikselach ekranu we współrzędnych kartezjańskich:
+Krok nie musi być liczbą całkowitą. Program DRAWPATTERN (*UG s. 630*) przechodzi po wszystkich pikselach ekranu we współrzędnych kartezjańskich:
 
 ```
 EXPORT DRAWPATTERN()
@@ -125,7 +125,7 @@ END;
 
 To także przykład **pętli zagnieżdżonych**: wewnętrzna pętla wykonuje się w całości przy każdym obiegu zewnętrznej.
 
-## 6.3. FOR DOWNTO (*UG s. 586*)
+## 6.3. FOR DOWNTO (*UG s. 630*)
 
 Pętla liczy w dół:
 
@@ -152,7 +152,7 @@ BEGIN
 END;
 ```
 
-## 6.4. WHILE (*UG s. 587, ES #3*)
+## 6.4. WHILE (*UG s. 631, ES #3*)
 
 ```
 WHILE warunek DO
@@ -160,7 +160,7 @@ WHILE warunek DO
 END;
 ```
 
-Program ISPERFECT (*UG s. 587*) sprawdza, czy n jest liczbą doskonałą, czyli równą sumie swoich dzielników właściwych (np. 6 = 1+2+3):
+Program ISPERFECT (*UG s. 631*) sprawdza, czy n jest liczbą doskonałą, czyli równą sumie swoich dzielników właściwych (np. 6 = 1+2+3):
 
 ```
 EXPORT ISPERFECT(n)
@@ -213,7 +213,7 @@ END;
 
 `KILL` natychmiast przerywa cały program (*ES #3*). Szczegóły w [rozdziale 7](07-wejscie.md).
 
-## 6.5. REPEAT … UNTIL (*UG s. 587, ES #3*)
+## 6.5. REPEAT … UNTIL (*UG s. 631, ES #3*)
 
 ```
 REPEAT
@@ -244,7 +244,7 @@ END;
 - `ULAM(5)`: komunikat „NO. OF STEPS=6”, lista `{5,16,8,4,2,1}`.
 - `ULAM(22)`: komunikat „NO. OF STEPS=16”.
 
-Typowe zastosowanie `REPEAT`: **walidacja danych**. Pytaj, dopóki użytkownik nie poda poprawnej wartości (*UG s. 587*):
+Typowe zastosowanie `REPEAT`: **walidacja danych**. Pytaj, dopóki użytkownik nie poda poprawnej wartości (*UG s. 631*):
 
 ```
 EXPORT SIDES;
@@ -256,7 +256,7 @@ BEGIN
 END;
 ```
 
-## 6.6. BREAK i CONTINUE (*UG s. 588*)
+## 6.6. BREAK i CONTINUE (*UG s. 632*)
 
 - `BREAK` przerywa bieżącą pętlę. Program kontynuuje od pierwszego polecenia po niej.
 - `BREAK(n)` przerywa **n poziomów** zagnieżdżonych pętli.
@@ -293,7 +293,7 @@ END;
 
 **Awaryjne przerwanie** działającego programu: klawisz **[On]**. Jeśli to nie działa, przytrzymaj [On]. Pamiętaj o tym przy testowaniu pętli.
 
-Program PISERIES (*UG s. 599*) działa, dopóki użytkownik go nie przerwie. Liczy kolejne przybliżenia π z szeregu Leibniza:
+Program PISERIES (*UG s. 643*) działa, dopóki użytkownik go nie przerwie. Liczy kolejne przybliżenia π z szeregu Leibniza:
 
 ```
 EXPORT PISERIES()

@@ -2,7 +2,7 @@
 
 [← Spis treści](../README.md)
 
-## STARTVIEW(n) (*UG s. 603–604*)
+## STARTVIEW(n) (*UG s. 647–648*)
 
 | n | Widok | | n | Widok |
 |---|---|---|---|---|
@@ -16,7 +16,7 @@
 | 7 | menu View | | -8 | katalog notatek |
 | 8+ | widoki specjalne z menu View (kolejno) | | | |
 
-## TYPE(obiekt) (*UG s. 613*)
+## TYPE(obiekt) (*UG s. 658*)
 
 | Kod | Typ |
 |---|---|
@@ -31,7 +31,7 @@
 | 9 | liczba z jednostką |
 | 14.x | obiekt CAS (x = typ CAS) |
 
-## Tryby STRING (*UG s. 590*)
+## Tryby STRING (*UG s. 635*)
 
 | Kod | Format | Kod | Format |
 |---|---|---|---|
@@ -46,13 +46,13 @@
 |---|---|---|---|---|---|---|---|---|
 | Rozmiar | z ustawień | 10 | 12 | 14 | 16 | 18 | 20 | 22 |
 
-## MOUSE — typ dotyku (*UG s. 609*)
+## MOUSE — typ dotyku (*UG s. 653*)
 
 | 0 | 1 | 2 | 3 | 4 | 5 |
 |---|---|---|---|---|---|
 | nowy | zakończony | przeciąganie | rozciąganie | obrót | długie przytrzymanie |
 
-## Ustawienia Home (*UG s. 633–636*)
+## Ustawienia Home (*UG s. 691–694*)
 
 | Zmienna | 0 | 1 | 2 | 3 |
 |---|---|---|---|---|
@@ -65,7 +65,7 @@
 
 `Language`: 1 EN, 2 ZH, 3 FR, 4 DE, 5 ES, 6 NL, 7 PT. `HDigits`: liczba cyfr. `Bits`: 1–64. `TOff`: ms do autowyłączenia.
 
-## Ustawienia aplikacji (Symbolic Setup) (*UG s. 637*)
+## Ustawienia aplikacji (Symbolic Setup) (*UG s. 695*)
 
 | Zmienna | 0 | 1 | 2 | 3 | 4 |
 |---|---|---|---|---|---|
@@ -73,7 +73,7 @@
 | `AComplex` | systemowy | wł. | wył. | | |
 | `AFormat` | systemowy | Standard | Fixed | Scientific | Engineering |
 
-## Przełączniki Plot (*UG s. 615–620*)
+## Przełączniki Plot (*UG s. 659–670*)
 
 | Zmienna | Wartości |
 |---|---|

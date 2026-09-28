@@ -2,7 +2,7 @@
 
 [← Poprzedni](08-funkcje.md) · [Spis treści](../README.md) · [Następny →](10-listy.md)
 
-Komendy tekstowe są w **(Cmds) › Strings** (*UG s. 589–592*).
+Komendy tekstowe są w **(Cmds) › Strings** (*UG s. 634–637*).
 
 ---
 
@@ -10,7 +10,7 @@ Komendy tekstowe są w **(Cmds) › Strings** (*UG s. 589–592*).
 
 - Tekst zapisuje się w cudzysłowach: `"HP Prime"`.
 - Cudzysłów wewnątrz tekstu zapisuje się podwójnie: `"Mówi ""hej"""`.
-- `\n` to nowa linia, a `\\` to jeden ukośnik wsteczny (*UG s. 589*).
+- `\n` to nowa linia, a `\\` to jeden ukośnik wsteczny (*UG s. 634*).
 - Znaki numeruje się **od 1**: pierwszy znak ma indeks 1.
 - Pojedynczy znak odczytasz jak element listy: `s(1)` zwraca **kod** znaku. Zob. też `MID`.
 
@@ -42,14 +42,14 @@ EXPR("2+3")              // 5, oblicza wyrażenie zapisane w tekście
 | `STRINGFROMID(n)` | wbudowany napis systemowy o numerze n | `STRINGFROMID(56)` → `"Complex"` |
 | `STRING(wyr, ...)` | wynik jako tekst z formatowaniem | zob. 9.4 |
 
-Szczegóły zachowania na krańcach (*UG s. 591–592*):
+Szczegóły zachowania na krańcach (*UG s. 635–637*):
 - `LEFT(s,n)`: gdy n ≥ DIM(s) lub n < 0, zwraca cały tekst. Opis przypadku n = 0 jest w instrukcji niejasny, więc go unikaj.
 - `RIGHT(s,n)`: gdy n ≤ 0, zwraca tekst pusty; gdy n > DIM(s), zwraca cały tekst.
 - `ROTATE`: gdy |n| > DIM(s), zwraca tekst bez zmian.
 
 > Instrukcja podaje też przykład `REPLACE("12345","3","99")` → `"12995"`. Poprawnym i pewnym zapisem pozycji startowej jest liczba, jak w przykładzie z tabeli.
 
-## 9.4. STRING — formatowanie liczb (*UG s. 590–591*)
+## 9.4. STRING — formatowanie liczb (*UG s. 635–635*)
 
 ```
 STRING(wyrażenie, [tryb], [precyzja], [separator], [limit_rozmiaru])

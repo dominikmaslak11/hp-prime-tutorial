@@ -2,11 +2,11 @@
 
 [← Poprzedni](16-grafika-zaawansowana.md) · [Spis treści](../README.md) · [Następny →](18-sterowanie-aplikacjami.md)
 
-Źródła: *ES #3*, *UG s. 607–612*.
+Źródła: *ES #3*, *UG s. 652–656*.
 
 ---
 
-## 17.1. GETKEY (*UG s. 607, ES #3*)
+## 17.1. GETKEY (*UG s. 652, ES #3*)
 
 ```
 k := GETKEY;
@@ -79,7 +79,7 @@ END;
 
 W nowszym firmware to samo robi `WAIT(-1)`. Zwraca kod klawisza albo listę z informacją o dotyku.
 
-## 17.2. ISKEYDOWN (*UG s. 609*)
+## 17.2. ISKEYDOWN (*UG s. 653*)
 
 ```
 ISKEYDOWN(kod)   // 1, jeśli klawisz jest TERAZ wciśnięty; 0 w przeciwnym razie
@@ -109,7 +109,7 @@ BEGIN
 END;
 ```
 
-## 17.3. MOUSE — ekran dotykowy (*UG s. 609*)
+## 17.3. MOUSE — ekran dotykowy (*UG s. 653*)
 
 ```
 m := MOUSE;          // dwie listy, po jednej na każdy możliwy punkt dotyku
@@ -199,8 +199,8 @@ END;
 
 | Element | Działanie |
 |---|---|
-| `TICKS` | wewnętrzny zegar w **milisekundach** (*UG s. 612*) |
-| `TEVAL(wyr)` | czas obliczenia wyrażenia w sekundach (*UG s. 613*) |
+| `TICKS` | wewnętrzny zegar w **milisekundach** (*UG s. 656*) |
+| `TEVAL(wyr)` | czas obliczenia wyrażenia w sekundach (*UG s. 658*) |
 | `WAIT(n)` | pauza n sekund (może być ułamek, np. 0.05) |
 | `Date` | data jako RRRR.MMDD, np. 2026.0928 |
 | `Time` | bieżąca godzina w formacie sześćdziesiątkowym |

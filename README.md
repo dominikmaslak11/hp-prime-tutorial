@@ -10,12 +10,12 @@ Kurs powstał na podstawie dwóch dokumentów:
 
 | Źródło | Co zawiera |
 |---|---|
-| **HP Prime Graphing Calculator — User Guide**, wyd. 2 (09.2016), nr 813269-002 (plik `c05332710.pdf`) | Oficjalna instrukcja HP, 31 rozdziałów. Rozdział 28 „Programming in HP PPL” to pełny opis języka i komend. |
+| **HP Prime Graphing Calculator — User Guide**, **wyd. 3 (12.2017)**, nr 813269-003 (plik `HP_Prime_User_Guide_3rd_Edition_2017.pdf`, źródło: [hpcalc.org](https://www.hpcalc.org/details/7445)) | Najnowsze pełne wydanie oficjalnej instrukcji HP, 32 rozdziały. Rozdział 29 „Programming in HP PPL” to pełny opis języka i komend. Kurs powstał na wyd. 2 (09.2016, plik `c05332710.pdf`). Wszystkie odwołania *UG s. N* wskazują już strony wyd. 3. |
 | **HP Prime Programming Tutorial**, Edward Shore, rev. 2 (2018, firmware 13441) (plik `hpprime-prog-tutorial.pdf`) | 9 lekcji z przykładowymi programami (LOCAL, RETURN, pętle, INPUT, CHOOSE, CASE, aplikacje, grafika, analiza). |
 
 Wszystkie przykłady z obu źródeł zostały przepisane, skomentowane po polsku
 i uzupełnione o własne programy, ćwiczenia i projekty. Przy każdym temacie
-podaję numer strony instrukcji HP (np. *UG s. 583*), żeby łatwo było sprawdzić
+podaję numer strony instrukcji HP (np. *UG s. 627*), żeby łatwo było sprawdzić
 oryginał.
 
 ---
@@ -85,7 +85,7 @@ Wszystkie programy z tego kursu są automatycznie sprawdzane tym walidatorem.
 | **[Klawisz]** | fizyczny klawisz kalkulatora | [Shift] [1] (Program) |
 | **(Przycisk)** | przycisk menu dotykowego na dole ekranu | (New), (Check), (Tmplt) |
 | `KOD` | kod programu lub komenda | `RETURN X^2;` |
-| *UG s. N* | strona w instrukcji HP (User Guide) | *UG s. 583* |
+| *UG s. N* | strona w instrukcji HP (User Guide) | *UG s. 627* |
 | *ES #N* | lekcja w tutorialu Edwarda Shore'a | *ES #3* |
 | `[arg]` w składni | argument opcjonalny | `PIXON([G], x, y [,kolor])` |
 
@@ -107,7 +107,7 @@ kalkulatorze, jak i w programie *HP Connectivity Kit* na PC:
 3. Po wpisaniu programu zawsze naciśnij **(Check)** w edytorze.
 4. Na końcu każdego rozdziału są zadania „Sprawdź się”. Pełne rozwiązania znajdziesz w [rozdziale 25](rozdzialy/25-cwiczenia.md).
 
-> **Wersja oprogramowania.** Instrukcja HP opisuje firmware z 2016 r., tutorial Shore'a firmware 13441 (2018). Nowsze wersje (np. 14181, 14596, 14730) dodają kilka funkcji, np. `WAIT(-1)` czy więcej rozmiarów czcionki w `TEXTOUT`. W takich miejscach piszę wprost, co pochodzi z instrukcji, a co z nowszego firmware.
+> **Wersja oprogramowania.** Instrukcja HP (wyd. 3) opisuje firmware z przełomu 2017/2018, tutorial Shore'a firmware 13441 (2018). Nowsze wersje (np. 14181, 14596, 14730) dodają kilka funkcji, np. `WAIT(-1)` czy więcej rozmiarów czcionki w `TEXTOUT`. W takich miejscach piszę wprost, co pochodzi z instrukcji, a co z nowszego firmware.
 
 ## Źródła i prawa
 

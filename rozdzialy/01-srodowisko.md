@@ -15,7 +15,7 @@ HP Prime ma dwa języki:
 - **HP PPL** (*HP Prime Programming Language*) — główny język kalkulatora, podobny do Pascala: bloki `BEGIN … END`, pętle `FOR … DO … END`, średniki na końcu poleceń. Ten kurs dotyczy PPL.
 - **Python** (od firmware 2020+, w aplikacji *Python*) — osobne środowisko, nie jest opisane w żadnym z dwóch źródeł.
 
-Program PPL to tekst: ciąg poleceń wykonywanych automatycznie (*UG s. 552*). Polecenia oddziela się średnikiem `;`. Argumenty komend podaje się w nawiasach, rozdzielone przecinkami:
+Program PPL to tekst: ciąg poleceń wykonywanych automatycznie (*UG s. 596*). Polecenia oddziela się średnikiem `;`. Argumenty komend podaje się w nawiasach, rozdzielone przecinkami:
 
 ```
 PIXON(xposition, yposition);
@@ -64,9 +64,9 @@ Stos w trybie RPN przed wywołaniem `TEST(4)`:
 
 ## 1.3. Katalog programów (Program Catalog)
 
-Otwierasz go przez **[Shift] [1]** (*UG s. 553*). Widać w nim listę programów. Na górze listy jest zawsze pozycja o nazwie aktywnej aplikacji, np. *Function*. To **program aplikacji**, omówiony w [rozdziale 19](19-wlasne-aplikacje.md).
+Otwierasz go przez **[Shift] [1]** (*UG s. 597*). Widać w nim listę programów. Na górze listy jest zawsze pozycja o nazwie aktywnej aplikacji, np. *Function*. To **program aplikacji**, omówiony w [rozdziale 19](19-wlasne-aplikacje.md).
 
-Przyciski katalogu (*UG s. 554*):
+Przyciski katalogu (*UG s. 598*):
 
 | Przycisk | Działanie |
 |---|---|
@@ -97,7 +97,7 @@ BEGIN
 END;
 ```
 
-### Zasady nazywania programów (*UG s. 555, ES #1*)
+### Zasady nazywania programów (*UG s. 599, ES #1*)
 
 - dozwolone są tylko litery (także greckie), cyfry i podkreślnik `_`,
 - nazwa musi zaczynać się od litery,
@@ -115,7 +115,7 @@ END;
 
 ## 1.5. Edytor programów
 
-Przyciski i klawisze edytora (*UG s. 556–558*):
+Przyciski i klawisze edytora (*UG s. 600–602*):
 
 | Przycisk / klawisz | Działanie |
 |---|---|
@@ -164,12 +164,12 @@ Naciśnij **(Check)**. Pamiętaj, że Check sprawdza tylko **składnię**. Nie s
 
 1. **W Home:** wpisz `SQIN(5)` i [Enter]. Wynik: `0.04`.
 2. **Z menu User:** [Toolbox] (User), rozwiń `SQIN >`, wybierz `SQIN`, uzupełnij argument i naciśnij [Enter].
-3. **Z katalogu programów:** zaznacz program i naciśnij (Run). Jeśli program ma parametry, kalkulator wyświetli formularz do ich wpisania (*UG s. 562*).
+3. **Z katalogu programów:** zaznacz program i naciśnij (Run). Jeśli program ma parametry, kalkulator wyświetli formularz do ich wpisania (*UG s. 606*).
 4. **W trybie RPN:** `5` [Enter], potem `SQIN(1)`.
 
 Wyniki kontrolne: `SQIN(5)` = `0.04`, `SQIN(36)` = `7.71604938272E-4`.
 
-> **Uruchamianie z katalogu a funkcja START.** Po naciśnięciu (Run) system najpierw szuka w pliku funkcji `START()` bez parametrów (*UG s. 561*). Jeśli plik ma kilka funkcji z `EXPORT`, zobaczysz listę do wyboru.
+> **Uruchamianie z katalogu a funkcja START.** Po naciśnięciu (Run) system najpierw szuka w pliku funkcji `START()` bez parametrów (*UG s. 605*). Jeśli plik ma kilka funkcji z `EXPORT`, zobaczysz listę do wyboru.
 
 ## 1.7. Drugi program: MOPMT — rata kredytu (*ES #1*)
 
@@ -190,7 +190,7 @@ Przykłady:
 - `MOPMT(4000, 9.5, 30)` → `"Payment =150.317437565"`
 - `MOPMT(370000, 3.5, 360)` → `"Payment =1661.46534383"`
 
-## 1.8. Program z wieloma funkcjami (*UG s. 562*)
+## 1.8. Program z wieloma funkcjami (*UG s. 606*)
 
 Jeden plik programu może zawierać kilka funkcji z `EXPORT`. W menu (User) plik pojawi się wtedy jako „folder” z kilkoma pozycjami. To dobry sposób na zebranie własnych narzędzi w jednym miejscu.
 
@@ -210,7 +210,7 @@ END;
 
 W [Toolbox] (User) pojawi się `MYFOLDER >` z pozycjami `FUNCTION1` i `FUNCTION2`.
 
-## 1.9. Edycja, kopiowanie, usuwanie, udostępnianie (*UG s. 565–567*)
+## 1.9. Edycja, kopiowanie, usuwanie, udostępnianie (*UG s. 609–611*)
 
 - **Edycja:** w katalogu zaznacz program i naciśnij (Edit) albo [Enter].
 - **Kopiowanie fragmentu:** w edytorze naciśnij [Shift][View] (Copy). Pojawią się przyciski (Begin), (End), (All), (Cut), (Copy). Zaznacz fragment, skopiuj go, przejdź do innego programu i wklej przez [Shift][Menu] (Paste).

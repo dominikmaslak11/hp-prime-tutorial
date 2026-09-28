@@ -13,7 +13,7 @@ W tym rozdziale:
 
 ## 2.1. Budowa pliku programu
 
-Plik programu może zawierać dowolnie wiele **funkcji** (podprogramów) (*UG s. 552*). Każda funkcja ma:
+Plik programu może zawierać dowolnie wiele **funkcji** (podprogramów) (*UG s. 596*). Każda funkcja ma:
 1. **nagłówek**: nazwę i w nawiasach listę parametrów rozdzielonych przecinkami,
 2. **ciało**: polecenia zamknięte w bloku `BEGIN … END;`.
 
@@ -48,13 +48,13 @@ Szczegóły funkcji opisuje [rozdział 8](08-funkcje.md). Tutaj skupiamy się na
 ## 2.2. Średniki, wielkość liter, białe znaki
 
 - **Każde polecenie kończy się średnikiem** `;` (*ES #1*). Kończą się nim także zamknięcia struktur: `END;`, `UNTIL warunek;`.
-- **Wielkość liter ma znaczenie** w nazwach zmiennych: `MaxTemp` i `maxTemp` to dwie różne zmienne (*UG s. 567*). Nazwy komend wbudowanych kalkulator zwykle akceptuje w różnej pisowni, ale bezpieczniej pisać je wielkimi literami (`RETURN`, `FOR`). Wyjątek to kilka funkcji pisanych małymi literami, np. `when`, `irem`, `idivis`.
+- **Wielkość liter ma znaczenie** w nazwach zmiennych: `MaxTemp` i `maxTemp` to dwie różne zmienne (*UG s. 611*). Nazwy komend wbudowanych kalkulator zwykle akceptuje w różnej pisowni, ale bezpieczniej pisać je wielkimi literami (`RETURN`, `FOR`). Wyjątek to kilka funkcji pisanych małymi literami, np. `when`, `irem`, `idivis`.
 - Wcięcia i puste linie nie mają znaczenia dla działania programu, ale bardzo poprawiają czytelność.
 - W jednej linii może być kilka poleceń: `A:=1; B:=2;`.
 
 ## 2.3. Komentarze
 
-Komentarz zaczyna się od `//` i trwa do końca linii (*UG s. 553*):
+Komentarz zaczyna się od `//` i trwa do końca linii (*UG s. 597*):
 
 ```
 EXPORT MYPROGRAM()
@@ -77,7 +77,7 @@ M1(2,1) := 0;    // przypisanie do elementu macierzy
 
 W HP PPL `=` **nie służy do przypisania**. W warunkach do porównania używaj `==`.
 
-## 2.5. Cztery rodzaje zmiennych (*UG s. 613*)
+## 2.5. Cztery rodzaje zmiennych (*UG s. 658*)
 
 HP Prime ma cztery rodzaje zmiennych. Wszystkie znajdziesz w menu [Vars].
 
@@ -93,7 +93,7 @@ Są zawsze dostępne, mają stały typ i nie można ich usunąć:
 | `M0`–`M9` | macierz / wektor | |
 | `G0`–`G9` | grafika (GROB) | `G0` to zawsze bieżący ekran. |
 
-Zmienne Home mają tę samą wartość w Home i we wszystkich aplikacjach. Nie wolno ich używać jako nazw programów ani zapisywać w nich innego typu danych (*UG s. 567*).
+Zmienne Home mają tę samą wartość w Home i we wszystkich aplikacjach. Nie wolno ich używać jako nazw programów ani zapisywać w nich innego typu danych (*UG s. 611*).
 
 ### (2) Zmienne aplikacji (App) — ustawienia i wyniki aplikacji
 
@@ -109,14 +109,14 @@ Tworzysz je:
 - w Home przez przypisanie, np. `promien:=5` (kalkulator zapyta, czy utworzyć zmienną),
 - w programie przez `LOCAL` (lokalne) albo `EXPORT` (globalne).
 
-Nie mają typu: ta sama zmienna może raz przechowywać liczbę, a potem listę. Instrukcja odradza jednak takie mieszanie typów jako złą praktykę (*UG s. 567*).
+Nie mają typu: ta sama zmienna może raz przechowywać liczbę, a potem listę. Instrukcja odradza jednak takie mieszanie typów jako złą praktykę (*UG s. 611*).
 
-Zasady nazw (*UG s. 567*):
+Zasady nazw (*UG s. 611*):
 - litery i cyfry, pierwszy znak musi być literą,
 - rozróżniana jest wielkość liter,
 - nazwy powinny być **opisowe**: `RADIUS` zamiast `VGFTRFG`.
 
-## 2.6. `LOCAL` — zmienne lokalne (*UG s. 588, ES #1*)
+## 2.6. `LOCAL` — zmienne lokalne (*UG s. 632, ES #1*)
 
 ```
 LOCAL a, b, c;              // deklaracja; wartość początkowa = 0
@@ -142,9 +142,9 @@ END;
 
 Wpisz w Home `A:=7`, potem `TESTLOC()` (wynik: 100), a potem `A`. Wynik to 7: systemowe `A` nie zmieniło się.
 
-> **Dobra praktyka.** Wszystkie zmienne robocze deklaruj jako `LOCAL`. Program nie zmieni wtedy danych użytkownika, np. jego list `L1` czy zmiennej `A`. Instrukcja HP zaleca też pisanie zmiennych lokalnych **małymi literami** (*UG s. 611*), żeby łatwo odróżnić je od systemowych `A`–`Z`.
+> **Dobra praktyka.** Wszystkie zmienne robocze deklaruj jako `LOCAL`. Program nie zmieni wtedy danych użytkownika, np. jego list `L1` czy zmiennej `A`. Instrukcja HP zaleca też pisanie zmiennych lokalnych **małymi literami** (*UG s. 655*), żeby łatwo odróżnić je od systemowych `A`–`Z`.
 
-## 2.7. `EXPORT` — zmienne globalne użytkownika (*UG s. 568, 588*)
+## 2.7. `EXPORT` — zmienne globalne użytkownika (*UG s. 612, 632*)
 
 Jeśli wartość ma być dostępna po zakończeniu programu, wyeksportuj zmienną. Deklaracja `EXPORT` stoi **poza funkcją**, nad nagłówkiem:
 
@@ -165,7 +165,7 @@ EXPORT ROLLS, SIDES;
 EXPORT a:=1, b:=2;
 ```
 
-- Jeśli dwa programy eksportują zmienną o tej samej nazwie, aktywna jest ta wyeksportowana **ostatnio** (*UG s. 568*).
+- Jeśli dwa programy eksportują zmienną o tej samej nazwie, aktywna jest ta wyeksportowana **ostatnio** (*UG s. 612*).
 - Zmienne eksportowane zachowują wartość między uruchomieniami programu. Wartość może się wyzerować przy ponownej kompilacji programu (np. po edycji).
 
 ## 2.8. Zmienne wspólne dla pliku (bez EXPORT)
@@ -191,7 +191,7 @@ END;
 
 Kolejność zasięgów przy szukaniu nazwy: najpierw **lokalne** (LOCAL i parametry), potem **zmienne pliku**, potem **zmienne globalne** (eksportowane, Home, aplikacji).
 
-## 2.9. Kwalifikowanie nazw (*UG s. 568*)
+## 2.9. Kwalifikowanie nazw (*UG s. 612*)
 
 Wiele aplikacji ma zmienne o tej samej nazwie. Żeby wskazać konkretną, poprzedź nazwę zmiennej nazwą aplikacji lub programu i kropką:
 

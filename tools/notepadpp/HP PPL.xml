@@ -29,6 +29,7 @@
                 <Param name="x" />
             </Overload>
         </KeyWord>
+        <KeyWord name="Accrued" />
         <KeyWord name="AComplex" />
         <KeyWord name="ACOS" func="yes">
             <Overload retVal="" descr="Arcus cosinus.">
@@ -98,7 +99,7 @@
             </Overload>
         </KeyWord>
         <KeyWord name="AREA" func="yes">
-            <Overload retVal="" descr="Pole ze znakiem pod krzywą lub między krzywymi (Function).">
+            <Overload retVal="" descr="Pole ze znakiem pod krzywą lub między krzywymi (Function). (Opis w instrukcji wyd. 2; w wyd. 3 pominięty w menu App, funkcja nadal istnieje.)">
                 <Param name="Fn" />
                 <Param name="[Fm]" />
                 <Param name="a" />
@@ -181,6 +182,16 @@
                 <Param name="…" />
             </Overload>
         </KeyWord>
+        <KeyWord name="BlackScholes" func="yes">
+            <Overload retVal="" descr="Ceny opcji kupna i sprzedaży (model Blacka–Scholesa).">
+                <Param name="cena_akcji" />
+                <Param name="cena_wykonania" />
+                <Param name="czas_do_wygaśnięcia" />
+                <Param name="stopa_wolna_od_ryzyka" />
+                <Param name="zmienność" />
+                <Param name="dywidenda" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="BLIT" func="yes">
             <Overload retVal="" descr="Kopiuje (i skaluje) fragment grafiki (kartezjańskie).">
                 <Param name="[cel]" />
@@ -213,7 +224,78 @@
                 <Param name="[alfa]" />
             </Overload>
         </KeyWord>
+        <KeyWord name="Bond360" />
+        <KeyWord name="BondPrice" func="yes">
+            <Overload retVal="" descr="Cena obligacji za 100 jednostek nominału.">
+                <Param name="data_rozliczenia" />
+                <Param name="data_zapadalności" />
+                <Param name="kupon_procent" />
+                <Param name="wartość_wykupu" />
+                <Param name="rentowność" />
+                <Param name="półroczny" />
+                <Param name="kalendarz360" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="BondYield" func="yes">
+            <Overload retVal="" descr="Rentowność obligacji w procentach.">
+                <Param name="data_rozliczenia" />
+                <Param name="data_zapadalności" />
+                <Param name="kupon_procent" />
+                <Param name="wartość_wykupu" />
+                <Param name="cena" />
+                <Param name="półroczny" />
+                <Param name="kalendarz360" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="BoxAxes" />
+        <KeyWord name="BoxDots" />
+        <KeyWord name="BoxFrame" />
+        <KeyWord name="BoxLines" />
+        <KeyWord name="BoxScale" />
+        <KeyWord name="BoxSides" />
         <KeyWord name="BREAK" />
+        <KeyWord name="BrkEvCost" func="yes">
+            <Overload retVal="" descr="Koszt jednostkowy.">
+                <Param name="koszt_stały" />
+                <Param name="ilość" />
+                <Param name="cena" />
+                <Param name="zysk" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="BrkEvFixed" func="yes">
+            <Overload retVal="" descr="Koszt stały (analiza progu rentowności).">
+                <Param name="ilość" />
+                <Param name="koszt" />
+                <Param name="cena" />
+                <Param name="zysk" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="BrkEvPrice" func="yes">
+            <Overload retVal="" descr="Cena jednostkowa.">
+                <Param name="koszt_stały" />
+                <Param name="ilość" />
+                <Param name="koszt" />
+                <Param name="zysk" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="BrkEvProfit" func="yes">
+            <Overload retVal="" descr="Zysk.">
+                <Param name="koszt_stały" />
+                <Param name="ilość" />
+                <Param name="koszt" />
+                <Param name="cena" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="BrkEvQuant" func="yes">
+            <Overload retVal="" descr="Liczba sprzedanych sztuk.">
+                <Param name="koszt_stały" />
+                <Param name="koszt" />
+                <Param name="cena" />
+                <Param name="zysk" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="BSCallPrice" />
+        <KeyWord name="BSPutPrice" />
         <KeyWord name="B→R" func="yes">
             <Overload retVal="" descr="Liczba z # na liczbę rzeczywistą.">
                 <Param name="#n" />
@@ -231,25 +313,61 @@
         <KeyWord name="C8" />
         <KeyWord name="C9" />
         <KeyWord name="CalcFV" func="yes">
-            <Overload retVal="" descr="Oblicza wartość przyszłą (Finance).">
+            <Overload retVal="" descr="Wartość przyszła (TVM).">
+                <Param name="NbPmt" />
+                <Param name="IPYR" />
+                <Param name="PV" />
+                <Param name="PMTV" />
+                <Param name="[PPYR]" />
+                <Param name="[CPYR]" />
+                <Param name="[BEG]" />
             </Overload>
         </KeyWord>
         <KeyWord name="CalcIPYR" func="yes">
-            <Overload retVal="" descr="Oblicza oprocentowanie (Finance).">
+            <Overload retVal="" descr="Oprocentowanie roczne (TVM).">
+                <Param name="NbPmt" />
+                <Param name="PV" />
+                <Param name="PMTV" />
+                <Param name="FV" />
+                <Param name="[PPYR]" />
+                <Param name="[CPYR]" />
+                <Param name="[BEG]" />
             </Overload>
         </KeyWord>
         <KeyWord name="CalcNbPmt" func="yes">
-            <Overload retVal="" descr="Oblicza liczbę rat (Finance).">
+            <Overload retVal="" descr="Liczba rat (TVM).">
+                <Param name="IPYR" />
+                <Param name="PV" />
+                <Param name="PMTV" />
+                <Param name="FV" />
+                <Param name="[PPYR]" />
+                <Param name="[CPYR]" />
+                <Param name="[BEG]" />
             </Overload>
         </KeyWord>
         <KeyWord name="CalcPMT" func="yes">
-            <Overload retVal="" descr="Oblicza ratę (Finance, na podstawie NbPmt, IPYR, PV, FV…).">
+            <Overload retVal="" descr="Rata (TVM).">
+                <Param name="NbPmt" />
+                <Param name="IPYR" />
+                <Param name="PV" />
+                <Param name="FV" />
+                <Param name="[PPYR]" />
+                <Param name="[CPYR]" />
+                <Param name="[BEG]" />
             </Overload>
         </KeyWord>
         <KeyWord name="CalcPV" func="yes">
-            <Overload retVal="" descr="Oblicza wartość bieżącą (Finance).">
+            <Overload retVal="" descr="Wartość bieżąca (TVM).">
+                <Param name="NbPmt" />
+                <Param name="IPYR" />
+                <Param name="PMTV" />
+                <Param name="FV" />
+                <Param name="[PPYR]" />
+                <Param name="[CPYR]" />
+                <Param name="[BEG]" />
             </Overload>
         </KeyWord>
+        <KeyWord name="CallPrice" />
         <KeyWord name="CAS" func="yes">
             <Overload retVal="" descr="Wywołanie funkcji lub zmiennej CAS z programu PPL.">
                 <Param name="argumenty" />
@@ -334,9 +452,93 @@
             </Overload>
         </KeyWord>
         <KeyWord name="CASE" />
+        <KeyWord name="CashFlowFMRR" func="yes">
+            <Overload retVal="" descr="Stopa zwrotu FMRR.">
+                <Param name="przepływy" />
+                <Param name="stopa_inwestycji" />
+                <Param name="stopa_bezpieczna" />
+                <Param name="[przepływy_na_rok]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CashFlowIRR" func="yes">
+            <Overload retVal="" descr="Wewnętrzna stopa zwrotu (IRR).">
+                <Param name="przepływy" />
+                <Param name="[przepływy_na_rok]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CashFlowMIRR" func="yes">
+            <Overload retVal="" descr="Zmodyfikowana wewnętrzna stopa zwrotu (MIRR).">
+                <Param name="przepływy" />
+                <Param name="stopa_inwestycji" />
+                <Param name="stopa_bezpieczna" />
+                <Param name="[przepływy_na_rok]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CashFlowNFV" func="yes">
+            <Overload retVal="" descr="Wartość przyszła netto (NFV).">
+                <Param name="przepływy" />
+                <Param name="stopa" />
+                <Param name="[przepływy_na_rok]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CashFlowNPV" func="yes">
+            <Overload retVal="" descr="Wartość bieżąca netto (NPV).">
+                <Param name="przepływy" />
+                <Param name="stopa" />
+                <Param name="[przepływy_na_rok]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CashFlowNUS" func="yes">
+            <Overload retVal="" descr="Równomierny szereg netto (NUS).">
+                <Param name="przepływy" />
+                <Param name="stopa" />
+                <Param name="[przepływy_na_rok]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CashFlowPB" func="yes">
+            <Overload retVal="" descr="Zdyskontowany okres zwrotu (stopa 0 = bez dyskontowania).">
+                <Param name="przepływy" />
+                <Param name="[stopa]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CashFlowTotal" func="yes">
+            <Overload retVal="" descr="Suma przepływów.">
+                <Param name="przepływy" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="CEILING" func="yes">
             <Overload retVal="" descr="Najmniejsza liczba całkowita ≥ x.">
                 <Param name="x" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CFData" />
+        <KeyWord name="Change" />
+        <KeyWord name="ChangeCost" func="yes">
+            <Overload retVal="" descr="Koszt z ceny i narzutu (opcja 0) lub marży (opcja 1).">
+                <Param name="cena" />
+                <Param name="procent" />
+                <Param name="opcja" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ChangeNew" func="yes">
+            <Overload retVal="" descr="Nowa wartość przy zmianie procentowej.">
+                <Param name="stara" />
+                <Param name="procent" />
+                <Param name="opcja" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ChangeOld" func="yes">
+            <Overload retVal="" descr="Stara wartość przy zmianie procentowej.">
+                <Param name="nowa" />
+                <Param name="procent" />
+                <Param name="opcja" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ChangePrice" func="yes">
+            <Overload retVal="" descr="Cena sprzedaży z kosztu i narzutu (opcja 0) lub marży (opcja 1).">
+                <Param name="koszt" />
+                <Param name="procent" />
+                <Param name="opcja" />
             </Overload>
         </KeyWord>
         <KeyWord name="CHAR" func="yes">
@@ -397,11 +599,14 @@
                 <Param name="x" />
             </Overload>
         </KeyWord>
+        <KeyWord name="Cost" />
+        <KeyWord name="CostAsset" />
         <KeyWord name="COT" func="yes">
             <Overload retVal="" descr="Cotangens.">
                 <Param name="x" />
             </Overload>
         </KeyWord>
+        <KeyWord name="CpnPer" />
         <KeyWord name="CPYR" />
         <KeyWord name="CritScore" />
         <KeyWord name="CritVal1" />
@@ -436,6 +641,16 @@
         <KeyWord name="D8" />
         <KeyWord name="D9" />
         <KeyWord name="Date" />
+        <KeyWord name="DateDays" func="yes">
+            <Overload retVal="" descr="Liczba dni między datami w formacie RRRR.MMDD.">
+                <Param name="data1" />
+                <Param name="data2" />
+                <Param name="[kalendarz_360]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="DateDiff" />
+        <KeyWord name="DateOne" />
+        <KeyWord name="DateTwo" />
         <KeyWord name="DEFAULT" />
         <KeyWord name="DelAFiles" func="yes">
             <Overload retVal="" descr="Usuwa plik aplikacji.">
@@ -462,6 +677,16 @@
             <Overload retVal="" descr="Usuwa wiersz.">
                 <Param name="macierz" />
                 <Param name="nr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Depreciate" func="yes">
+            <Overload retVal="" descr="Harmonogram amortyzacji.">
+                <Param name="metoda" />
+                <Param name="koszt" />
+                <Param name="wartość_końcowa" />
+                <Param name="okres" />
+                <Param name="[pierwszy]" />
+                <Param name="[współczynnik]" />
             </Overload>
         </KeyWord>
         <KeyWord name="DET" func="yes">
@@ -497,6 +722,7 @@
                 <Param name="[kolor]" />
             </Overload>
         </KeyWord>
+        <KeyWord name="Dividend" />
         <KeyWord name="DO" />
         <KeyWord name="Do1VStats" func="yes">
             <Overload retVal="" descr="Oblicza statystyki analizy Hn (Statistics 1Var) i zapisuje je w zmiennych wyników (MeanX, MedVal…).">
@@ -509,7 +735,8 @@
             </Overload>
         </KeyWord>
         <KeyWord name="DoFinance" func="yes">
-            <Overload retVal="" descr="Oblicza aplikację Finance.">
+            <Overload retVal="" descr="Oblicza wskazaną zmienną TVM tak, jak przycisk w widoku Numeric aplikacji Finance, np. DoFinance(FV).">
+                <Param name="zmienna_TVM" />
             </Overload>
         </KeyWord>
         <KeyWord name="DoInference" func="yes">
@@ -560,6 +787,7 @@
                 <Param name="[tylko_odczyt]" />
             </Overload>
         </KeyWord>
+        <KeyWord name="EffInt" />
         <KeyWord name="EIGENVAL" func="yes">
             <Overload retVal="" descr="Wartości własne.">
                 <Param name="macierz" />
@@ -604,7 +832,7 @@
             </Overload>
         </KeyWord>
         <KeyWord name="EXTREMUM" func="yes">
-            <Overload retVal="" descr="Ekstremum funkcji Fn (Function).">
+            <Overload retVal="" descr="Ekstremum funkcji Fn (Function). (Opis w instrukcji wyd. 2; w wyd. 3 pominięty w menu App, funkcja nadal istnieje.)">
                 <Param name="Fn" />
                 <Param name="start" />
             </Overload>
@@ -620,6 +848,7 @@
         <KeyWord name="F7" />
         <KeyWord name="F8" />
         <KeyWord name="F9" />
+        <KeyWord name="FactorDepr" />
         <KeyWord name="FILLPOLY" func="yes">
             <Overload retVal="" descr="Wypełniony wielokąt (kartezjańskie).">
                 <Param name="[G]" />
@@ -636,6 +865,9 @@
                 <Param name="[alfa]" />
             </Overload>
         </KeyWord>
+        <KeyWord name="FirstAsset" />
+        <KeyWord name="FirstDateAsset" />
+        <KeyWord name="FixedCost" />
         <KeyWord name="FLOOR" func="yes">
             <Overload retVal="" descr="Największa liczba całkowita ≤ x.">
                 <Param name="x" />
@@ -761,6 +993,13 @@
                 <Param name="z" />
             </Overload>
         </KeyWord>
+        <KeyWord name="ImageDisplay" />
+        <KeyWord name="ImageName" />
+        <KeyWord name="ImageOpacity" />
+        <KeyWord name="ImageXmax" />
+        <KeyWord name="ImageXmin" />
+        <KeyWord name="ImageYmax" />
+        <KeyWord name="ImageYmin" />
         <KeyWord name="INPUT" func="yes">
             <Overload retVal="" descr="Formularz do wprowadzania danych. Zwraca 1 po OK i 0 po Cancel. Zmienna może być listą, a element listy {zm,1} to checkbox, {zm,{opcje}} lista wyboru, {zm,[typy],{poz}} pole z typem i pozycją.">
                 <Param name="zmienne" />
@@ -777,6 +1016,25 @@
                 <Param name="szukany" />
             </Overload>
         </KeyWord>
+        <KeyWord name="IntConvCPYR" func="yes">
+            <Overload retVal="" descr="Liczba okresów kapitalizacji w roku.">
+                <Param name="nominalna" />
+                <Param name="efektywna" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="IntConvEff" func="yes">
+            <Overload retVal="" descr="Efektywna stopa procentowa.">
+                <Param name="nominalna" />
+                <Param name="kapitalizacje_w_roku" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="IntConvNom" func="yes">
+            <Overload retVal="" descr="Nominalna stopa procentowa.">
+                <Param name="efektywna" />
+                <Param name="kapitalizacje_w_roku" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="IntCPYR" />
         <KeyWord name="Inter" />
         <KeyWord name="INTERSECT" func="yes">
             <Overload retVal="" descr="Elementy wspólne.">
@@ -802,6 +1060,7 @@
                 <Param name="[y2]" />
             </Overload>
         </KeyWord>
+        <KeyWord name="InvestInt" />
         <KeyWord name="IP" func="yes">
             <Overload retVal="" descr="Część całkowita.">
                 <Param name="x" />
@@ -826,7 +1085,7 @@
             </Overload>
         </KeyWord>
         <KeyWord name="ISECT" func="yes">
-            <Overload retVal="" descr="Punkt przecięcia dwóch funkcji (Function).">
+            <Overload retVal="" descr="Punkt przecięcia dwóch funkcji (Function). (Opis w instrukcji wyd. 2; w wyd. 3 pominięty w menu App, funkcja nadal istnieje.)">
                 <Param name="Fn" />
                 <Param name="Fm" />
                 <Param name="start" />
@@ -848,6 +1107,7 @@
         <KeyWord name="J" />
         <KeyWord name="K" />
         <KeyWord name="KEY" />
+        <KeyWord name="KeyAxes" />
         <KeyWord name="KILL" />
         <KeyWord name="L" />
         <KeyWord name="L0" />
@@ -868,6 +1128,7 @@
                 <Param name="n" />
             </Overload>
         </KeyWord>
+        <KeyWord name="LifeAsset" />
         <KeyWord name="LINE" func="yes">
             <Overload retVal="" descr="Linia we współrzędnych kartezjańskich. Forma zaawansowana: wiele linii i 3D.">
                 <Param name="[G]" />
@@ -876,6 +1137,21 @@
                 <Param name="x2" />
                 <Param name="y2" />
                 <Param name="[kolor]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="LinearSlope" func="yes">
+            <Overload retVal="" descr="Nachylenie prostej przez dwa punkty (wyd. 3; wcześniej SolveForSlope).">
+                <Param name="x1" />
+                <Param name="y1" />
+                <Param name="x2" />
+                <Param name="y2" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="LinearYIntercept" func="yes">
+            <Overload retVal="" descr="Wyraz wolny prostej o nachyleniu m przez punkt (x, y) (wyd. 3; wcześniej SolveForYIntercept).">
+                <Param name="x" />
+                <Param name="y" />
+                <Param name="m" />
             </Overload>
         </KeyWord>
         <KeyWord name="LINE_P" func="yes">
@@ -937,6 +1213,7 @@
         <KeyWord name="M7" />
         <KeyWord name="M8" />
         <KeyWord name="M9" />
+        <KeyWord name="Macaulay" />
         <KeyWord name="MAKELIST" func="yes">
             <Overload retVal="" descr="Tworzy listę z wyrażenia.">
                 <Param name="wyrażenie" />
@@ -958,6 +1235,8 @@
                 <Param name="x" />
             </Overload>
         </KeyWord>
+        <KeyWord name="Markup" />
+        <KeyWord name="MatDate" />
         <KeyWord name="MAX" func="yes">
             <Overload retVal="" descr="Największa wartość; działa też na liście.">
                 <Param name="a" />
@@ -993,6 +1272,7 @@
             </Overload>
         </KeyWord>
         <KeyWord name="MOD" />
+        <KeyWord name="Modified" />
         <KeyWord name="MOUSE" func="yes">
             <Overload retVal="" descr="Stan ekranu dotykowego: dwie listy {x, y, x0, y0, typ}. Typ: 0 nowy, 1 zakończony, 2 przeciąganie, 3 rozciąganie, 4 obrót, 5 długie przytrzymanie.">
                 <Param name="[indeks]" />
@@ -1007,8 +1287,10 @@
         <KeyWord name="N" />
         <KeyWord name="NbItem" />
         <KeyWord name="NbPmt" />
+        <KeyWord name="NewValue" />
         <KeyWord name="Nmax" />
         <KeyWord name="Nmin" />
+        <KeyWord name="NomInt" />
         <KeyWord name="NOT" />
         <KeyWord name="Notes" func="yes">
             <Overload retVal="" descr="Notatki. Notes(&quot;nazwa&quot;) := &quot;tekst&quot; tworzy lub nadpisuje notatkę, pusty tekst ją usuwa.">
@@ -1027,8 +1309,33 @@
         <KeyWord name="NumYZoom" />
         <KeyWord name="NumZoom" />
         <KeyWord name="O" />
+        <KeyWord name="OldValue" />
         <KeyWord name="OR" />
         <KeyWord name="P" />
+        <KeyWord name="PercentChange" func="yes">
+            <Overload retVal="" descr="Zmiana procentowa.">
+                <Param name="stara" />
+                <Param name="nowa" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="PercentMargin" func="yes">
+            <Overload retVal="" descr="Marża w procentach.">
+                <Param name="koszt" />
+                <Param name="cena" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="PercentMarkup" func="yes">
+            <Overload retVal="" descr="Narzut w procentach.">
+                <Param name="koszt" />
+                <Param name="cena" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="PercentTotal" func="yes">
+            <Overload retVal="" descr="Udział procentowy w całości.">
+                <Param name="stara" />
+                <Param name="nowa" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="PERM" func="yes">
             <Overload retVal="" descr="Liczba permutacji (wariacji bez powtórzeń).">
                 <Param name="n" />
@@ -1074,6 +1381,10 @@
                 <Param name="element" />
             </Overload>
         </KeyWord>
+        <KeyWord name="PoseTurn" />
+        <KeyWord name="PoseXaxis" />
+        <KeyWord name="PoseYaxis" />
+        <KeyWord name="PoseZaxis" />
         <KeyWord name="PPYR" />
         <KeyWord name="PredX" func="yes">
             <Overload retVal="" descr="Przewidywane x z dopasowania (Statistics 2Var).">
@@ -1087,12 +1398,15 @@
                 <Param name="[Sn]" />
             </Overload>
         </KeyWord>
+        <KeyWord name="Price" />
+        <KeyWord name="PriceBond" />
         <KeyWord name="PRINT" func="yes">
             <Overload retVal="" descr="Wypisuje linię w terminalu. PRINT() bez argumentu czyści terminal.">
                 <Param name="[wyrażenie]" />
             </Overload>
         </KeyWord>
         <KeyWord name="Prob" />
+        <KeyWord name="Profit" />
         <KeyWord name="Programs" func="yes">
             <Overload retVal="" descr="Kod źródłowy programów jako tekst. Programs(&quot;nazwa&quot;) := &quot;kod&quot; tworzy program, pusty tekst go usuwa.">
                 <Param name="[n_lub_&quot;nazwa&quot;]" />
@@ -1113,6 +1427,21 @@
                 <Param name="macierz" />
             </Overload>
         </KeyWord>
+        <KeyWord name="QuadDelta" func="yes">
+            <Overload retVal="" descr="Wyróżnik b²−4ac (wyd. 3).">
+                <Param name="a" />
+                <Param name="b" />
+                <Param name="c" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="QuadSolve" func="yes">
+            <Overload retVal="" descr="Rzeczywiste pierwiastki równania ax²+bx+c=0 (wyd. 3).">
+                <Param name="a" />
+                <Param name="b" />
+                <Param name="c" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Quantity" />
         <KeyWord name="R" />
         <KeyWord name="R0" />
         <KeyWord name="R1" />
@@ -1223,6 +1552,7 @@
                 <Param name="n" />
             </Overload>
         </KeyWord>
+        <KeyWord name="RiskFree" />
         <KeyWord name="Root" />
         <KeyWord name="ROTATE" func="yes">
             <Overload retVal="" descr="Przesunięcie cykliczne: n&gt;0 w lewo, n&lt;0 w prawo.">
@@ -1262,6 +1592,9 @@
         <KeyWord name="S5" />
         <KeyWord name="S5Fit" />
         <KeyWord name="S5mark" />
+        <KeyWord name="SafeInt" />
+        <KeyWord name="SalePrice" />
+        <KeyWord name="SalvageAsset" />
         <KeyWord name="SAS" func="yes">
             <Overload retVal="" descr="Trójkąt z dwóch boków i kąta między nimi.">
                 <Param name="a" />
@@ -1291,6 +1624,7 @@
                 <Param name="x" />
             </Overload>
         </KeyWord>
+        <KeyWord name="SemiAnnual" />
         <KeyWord name="SeqPlot" />
         <KeyWord name="serrInter" />
         <KeyWord name="serrLine" />
@@ -1309,6 +1643,7 @@
                 <Param name="[bity]" />
             </Overload>
         </KeyWord>
+        <KeyWord name="SetDate" />
         <KeyWord name="SetDepend" func="yes">
             <Overload retVal="" descr="Ustawia kolumnę zmiennej zależnej (Statistics 2Var).">
                 <Param name="Sn" />
@@ -1353,12 +1688,7 @@
                 <Param name="obiekt" />
             </Overload>
         </KeyWord>
-        <KeyWord name="SLOPE" func="yes">
-            <Overload retVal="" descr="Nachylenie funkcji w punkcie (Function).">
-                <Param name="Fn" />
-                <Param name="x" />
-            </Overload>
-        </KeyWord>
+        <KeyWord name="Slope" />
         <KeyWord name="SOLVE" func="yes">
             <Overload retVal="" descr="Rozwiązanie równania numerycznie (Solve). Przykład z instrukcji: SOLVE(X^2-X-2,X,3) = 2.">
                 <Param name="En" />
@@ -1425,6 +1755,8 @@
             </Overload>
         </KeyWord>
         <KeyWord name="STEP" />
+        <KeyWord name="StockPrice" />
+        <KeyWord name="StrikePrice" />
         <KeyWord name="STRING" func="yes">
             <Overload retVal="" descr="Wynik jako tekst. Tryb: 1 Standard, 2 Fixed, 3 Sci, 4 Eng, 5 Floating, 6 Rounded (+7 ułamek, +14 ułamek mieszany).">
                 <Param name="wyrażenie" />
@@ -1466,6 +1798,7 @@
                 <Param name="cel" />
             </Overload>
         </KeyWord>
+        <KeyWord name="Surface" />
         <KeyWord name="SVD" func="yes">
             <Overload retVal="" descr="Rozkład według wartości osobliwych.">
                 <Param name="macierz" />
@@ -1532,10 +1865,12 @@
         <KeyWord name="THEN" />
         <KeyWord name="TICKS" />
         <KeyWord name="Time" />
+        <KeyWord name="TimeMarket" />
         <KeyWord name="Tmax" />
         <KeyWord name="Tmin" />
         <KeyWord name="TO" />
         <KeyWord name="TOff" />
+        <KeyWord name="Total" />
         <KeyWord name="TRACE" func="yes">
             <Overload retVal="" descr="Ślad macierzy.">
                 <Param name="macierz" />
@@ -1584,6 +1919,61 @@
             </Overload>
         </KeyWord>
         <KeyWord name="Tstep" />
+        <KeyWord name="TvmFV" func="yes">
+            <Overload retVal="" descr="Wartość przyszła (Finance, wyd. 3).">
+                <Param name="NbPmt" />
+                <Param name="IPYR" />
+                <Param name="PV" />
+                <Param name="PMTV" />
+                <Param name="[PPYR]" />
+                <Param name="[CPYR]" />
+                <Param name="[BEG]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="TvmIPYR" func="yes">
+            <Overload retVal="" descr="Oprocentowanie roczne (Finance, wyd. 3).">
+                <Param name="NbPmt" />
+                <Param name="PV" />
+                <Param name="PMTV" />
+                <Param name="FV" />
+                <Param name="[PPYR]" />
+                <Param name="[CPYR]" />
+                <Param name="[BEG]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="TvmNbPmt" func="yes">
+            <Overload retVal="" descr="Liczba rat (Finance, wyd. 3).">
+                <Param name="IPYR" />
+                <Param name="PV" />
+                <Param name="PMTV" />
+                <Param name="FV" />
+                <Param name="[PPYR]" />
+                <Param name="[CPYR]" />
+                <Param name="[BEG]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="TvmPMT" func="yes">
+            <Overload retVal="" descr="Rata kredytu lub inwestycji (Finance, wyd. 3).">
+                <Param name="NbPmt" />
+                <Param name="IPYR" />
+                <Param name="PV" />
+                <Param name="FV" />
+                <Param name="[PPYR]" />
+                <Param name="[CPYR]" />
+                <Param name="[BEG]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="TvmPV" func="yes">
+            <Overload retVal="" descr="Wartość bieżąca (Finance, wyd. 3).">
+                <Param name="NbPmt" />
+                <Param name="IPYR" />
+                <Param name="PMTV" />
+                <Param name="FV" />
+                <Param name="[PPYR]" />
+                <Param name="[CPYR]" />
+                <Param name="[BEG]" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="TYPE" func="yes">
             <Overload retVal="" descr="Typ: 0 rzeczywista, 1 całkowita #, 2 tekst, 3 zespolona, 4 macierz, 5 błąd, 6 lista, 8 funkcja, 9 jednostka, 14.x CAS.">
                 <Param name="obiekt" />
@@ -1633,7 +2023,9 @@
         <KeyWord name="V7" />
         <KeyWord name="V8" />
         <KeyWord name="V9" />
+        <KeyWord name="VariableCost" />
         <KeyWord name="VIEW" />
+        <KeyWord name="Volatility" />
         <KeyWord name="W" />
         <KeyWord name="WAIT" func="yes">
             <Overload retVal="" descr="Pauza n sekund. WAIT(0)/WAIT: według fw 13441 czeka na klawisz, według instrukcji 2016 czeka minutę. WAIT(-1) (nowsze fw) czeka na klawisz lub dotyk.">
@@ -1680,6 +2072,7 @@
         <KeyWord name="Y7" />
         <KeyWord name="Y8" />
         <KeyWord name="Y9" />
+        <KeyWord name="YieldBond" />
         <KeyWord name="Ymax" />
         <KeyWord name="Ymin" />
         <KeyWord name="Ytick" />
@@ -1696,6 +2089,10 @@
         <KeyWord name="Z7" />
         <KeyWord name="Z8" />
         <KeyWord name="Z9" />
+        <KeyWord name="Zmax" />
+        <KeyWord name="Zmin" />
+        <KeyWord name="Ztick" />
+        <KeyWord name="Zzoom" />
         <KeyWord name="ΔLIST" func="yes">
             <Overload retVal="" descr="Różnice kolejnych elementów.">
                 <Param name="lista" />
