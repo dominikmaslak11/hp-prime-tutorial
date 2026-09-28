@@ -1,0 +1,29 @@
+EXPORT QREKORD := 0;              // najlepszy wynik (pamiętany między uruchomieniami)
+
+EXPORT QUIZ()
+BEGIN
+  LOCAL i, a, b, odp, dobre := 0, n := 10, t0, czas, pkt;
+  MSGBOX("Quiz: "+n+" pytań. Liczy się poprawność i czas.");
+  t0 := TICKS;
+  FOR i FROM 1 TO n DO
+    a := RANDINT(2,9);
+    b := RANDINT(2,9);
+    odp := 0;
+    IF NOT INPUT(odp, "Pytanie "+i+"/"+n, a+" × "+b+" =", "Wpisz wynik") THEN
+      BREAK;                                   // Cancel kończy quiz
+    END;
+    IF odp == a*b THEN
+      dobre := dobre+1;
+    ELSE
+      MSGBOX("Źle! "+a+"×"+b+" = "+(a*b));
+    END;
+  END;
+  czas := (TICKS-t0)/1000;
+  pkt  := ROUND(dobre*100 - czas, 0);          // punkty: 100 za odpowiedź, minus sekundy
+  IF pkt > QREKORD THEN
+    QREKORD := pkt;
+    MSGBOX("NOWY REKORD! "+pkt+" pkt");
+  END;
+  MSGBOX("Dobrze: "+dobre+"/"+n+"\nCzas: "+STRING(czas,2,1)+" s\nPunkty: "+pkt+"\nRekord: "+QREKORD);
+  RETURN pkt;
+END;

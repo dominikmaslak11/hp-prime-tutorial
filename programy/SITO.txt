@@ -1,0 +1,45 @@
+KOMORKA();
+
+EXPORT SITO()
+BEGIN
+  LOCAL n := 400, p, k, t0, lp := {}, jest;
+  jest := MAKELIST(1, X, 1, n, 1);   // 1 = kandydat na liczbę pierwszą
+  jest(1) := 0;                      // 1 nie jest pierwsza
+
+  RECT(#FFFFFFh);
+  FOR k FROM 1 TO n DO KOMORKA(k, #D0E8FFh); END;   // wszystkie jasnoniebieskie
+  t0 := TICKS;
+
+  FOR p FROM 2 TO IP(√n) DO
+    IF jest(p) THEN
+      KOMORKA(p, #00C060h);                        // p jest pierwsza
+      FOR k FROM p*p TO n STEP p DO                // wykreśl wielokrotności
+        IF jest(k) THEN
+          jest(k) := 0;
+          KOMORKA(k, #A0A0A0h);
+        END;
+      END;
+    END;
+  END;
+
+  FOR k FROM 2 TO n DO                             // pokoloruj pozostałe pierwsze
+    IF jest(k) THEN
+      KOMORKA(k, #00C060h);
+      lp := CONCAT(lp, {k});
+    END;
+  END;
+  TEXTOUT_P("Pierwszych: "+SIZE(lp)+"   czas: "+(TICKS-t0)+" ms", 4, 224, 2);
+  FREEZE;
+  RETURN lp;
+END;
+
+// rysuje komórkę liczby k (1..400) w siatce 20x20; komórka 11x11 px
+KOMORKA(k, kolor)
+BEGIN
+  LOCAL w, c, x, y;
+  w := IP((k-1)/20);           // wiersz 0..19
+  c := (k-1) MOD 20;           // kolumna 0..19
+  x := 50 + c*11;
+  y := 1 + w*11;
+  RECT_P(x, y, x+9, y+9, kolor, kolor);
+END;

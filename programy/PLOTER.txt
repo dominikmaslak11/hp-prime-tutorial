@@ -1,0 +1,79 @@
+RYSUJ();
+CZEKAJKLAWISZ();
+
+EXPORT PLOTER()
+BEGIN
+  LOCAL fs := "SIN(X)*X", xmin := -10, xmax := 10, ymin := -8, ymax := 8;
+  LOCAL k, dx, dy, sx, sy, stary := HAngle;
+  HAngle := 0;                                  // radiany
+  IF NOT INPUT({{fs,[2]}}, "Ploter", {"f(X)="}, {"np. SIN(X)*X"}) THEN
+    HAngle := stary;
+    RETURN "anulowano";
+  END;
+
+  REPEAT
+    RYSUJ(fs, xmin, xmax, ymin, ymax);
+    k := CZEKAJKLAWISZ();
+    dx := (xmax-xmin)/5;  dy := (ymax-ymin)/5;
+    sx := (xmax-xmin)/4;  sy := (ymax-ymin)/4;
+    CASE
+      IF k==7  THEN xmin := xmin-dx; xmax := xmax-dx; END;     // ◀
+      IF k==8  THEN xmin := xmin+dx; xmax := xmax+dx; END;     // ▶
+      IF k==2  THEN ymin := ymin+dy; ymax := ymax+dy; END;     // ▲
+      IF k==12 THEN ymin := ymin-dy; ymax := ymax-dy; END;     // ▼
+      IF k==50 THEN                                            // + przybliż
+        xmin := xmin+sx; xmax := xmax-sx; ymin := ymin+sy; ymax := ymax-sy;
+      END;
+      IF k==45 THEN                                            // − oddal
+        xmin := xmin-2*sx; xmax := xmax+2*sx; ymin := ymin-2*sy; ymax := ymax+2*sy;
+      END;
+      IF k==30 THEN                                            // Enter: nowa funkcja
+        INPUT({{fs,[2]}}, "Ploter", {"f(X)="});
+      END;
+    END;
+  UNTIL k==4;                                                  // Esc
+
+  HAngle := stary;
+  RETURN fs;
+END;
+
+RYSUJ(fs, xmin, xmax, ymin, ymax)
+BEGIN
+  LOCAL px, py, y, ok, pokX, pokY, prevOK := 0, prevPY := 0;
+  RECT();
+  // osie (jeśli są w oknie)
+  pokX := ROUND((0-xmin)/(xmax-xmin)*319, 0);
+  pokY := ROUND((ymax-0)/(ymax-ymin)*219, 0);
+  IF pokY>=0 AND pokY<=219 THEN LINE_P(0,pokY,319,pokY,#A0A0A0h); END;
+  IF pokX>=0 AND pokX<=319 THEN LINE_P(pokX,0,pokX,219,#A0A0A0h); END;
+
+  FOR px FROM 0 TO 319 DO
+    X := xmin + px*(xmax-xmin)/319;            // globalne X używane przez EXPR
+    IFERR
+      y := EXPR(fs);
+      ok := (TYPE(y)==0);                      // tylko wynik rzeczywisty
+    THEN
+      ok := 0;
+    END;
+    IF ok THEN
+      py := ROUND((ymax-y)/(ymax-ymin)*219, 0);
+      ok := (py > -1000 AND py < 1200);        // odrzuć asymptoty
+    END;
+    IF ok AND prevOK THEN
+      LINE_P(px-1, prevPY, px, py, #0060D0h);
+    END;
+    prevOK := ok;
+    IF ok THEN prevPY := py; END;
+  END;
+
+  RECT_P(0,220,319,239,#F0F0F0h,#F0F0F0h);
+  TEXTOUT_P("f="+fs, 2, 223, 1);
+  TEXTOUT_P("x:["+ROUND(xmin,2)+","+ROUND(xmax,2)+"] y:["+ROUND(ymin,2)+","+ROUND(ymax,2)+"]", 120, 223, 1);
+END;
+
+CZEKAJKLAWISZ()
+BEGIN
+  LOCAL k;
+  REPEAT k := GETKEY; UNTIL k <> -1;
+  RETURN k;
+END;

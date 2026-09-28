@@ -1,0 +1,63 @@
+EXPORT SNAKE()
+BEGIN
+  LOCAL sx := {10,9,8}, sy := {7,7,7};      // segmenty węża; element 1 = głowa
+  LOCAL dx := 1, dy := 0, cdx, cdy;         // kierunek ruchu
+  LOCAL fx, fy, nx, ny, k, i, kol, n;
+  LOCAL pkt := 0, gra := 1, t, tempo := 150;
+
+  DIMGROB_P(G1, 320, 240);
+  fx := RANDINT(0,31); fy := RANDINT(0,21);
+
+  WHILE gra DO
+    t := TICKS;
+
+    // --- wejście: odczytaj wszystkie klawisze z bufora ---
+    cdx := dx; cdy := dy;                   // kierunek z początku tego kroku
+    REPEAT
+      k := GETKEY;
+      IF k==7  AND cdx==0 THEN dx := -1; dy := 0;  END;   // ◀
+      IF k==8  AND cdx==0 THEN dx := 1;  dy := 0;  END;   // ▶
+      IF k==2  AND cdy==0 THEN dx := 0;  dy := -1; END;   // ▲
+      IF k==12 AND cdy==0 THEN dx := 0;  dy := 1;  END;   // ▼
+      IF k==4 THEN gra := 0; END;                         // Esc
+    UNTIL k == -1;
+    IF NOT gra THEN BREAK; END;
+
+    // --- ruch i kolizje ---
+    nx := sx(1)+dx;  ny := sy(1)+dy;
+    IF nx<0 OR nx>31 OR ny<0 OR ny>21 THEN BREAK; END;    // ściana
+    kol := 0;
+    FOR i FROM 1 TO SIZE(sx) DO
+      IF sx(i)==nx AND sy(i)==ny THEN kol := 1; BREAK; END;
+    END;
+    IF kol THEN BREAK; END;                               // własny ogon
+
+    sx := CONCAT({nx}, sx);                               // nowa głowa
+    sy := CONCAT({ny}, sy);
+    IF nx==fx AND ny==fy THEN
+      pkt := pkt+1;                                       // zjadł: ogon zostaje (wąż rośnie)
+      fx := RANDINT(0,31); fy := RANDINT(0,21);
+      tempo := MAX(60, tempo-5);                          // coraz szybciej
+    ELSE
+      n := SIZE(sx);
+      sx := sx({1, n-1});                                 // usuń ostatni segment
+      sy := sy({1, n-1});
+    END;
+
+    // --- rysowanie klatki ---
+    RECT_P(G1, 0, 0, 319, 239, #101010h, #101010h);
+    RECT_P(G1, fx*10, fy*10, fx*10+9, fy*10+9, #FF3030h, #FF3030h);
+    FOR i FROM 1 TO SIZE(sx) DO
+      RECT_P(G1, sx(i)*10, sy(i)*10, sx(i)*10+9, sy(i)*10+9, #008000h, #30E030h);
+    END;
+    LINE_P(G1, 0, 220, 319, 220, #808080h);
+    TEXTOUT_P("Punkty: "+pkt+"    Esc = koniec", G1, 4, 224, 2, #FFFFFFh);
+    BLIT_P(G0, G1);
+
+    // --- stałe tempo niezależne od czasu rysowania ---
+    WHILE TICKS - t < tempo DO END;
+  END;
+
+  MSGBOX("Koniec gry! Punkty: "+pkt);
+  RETURN pkt;
+END;
