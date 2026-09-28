@@ -69,6 +69,18 @@ std::string join(const std::vector<std::string> &v, const char *sep = " ")
     return s;
 }
 
+// Names only known from HP's list: color those written in capitals (NORMALD_CDF), but not the
+// lower-case CAS/geometry names (point, radius, angle…) that often collide with user variables.
+bool colorCommand(const CommandInfo &c)
+{
+    return !c.fromHpList || std::none_of(c.name.begin(), c.name.end(), [](char ch) { return ch >= 'a' && ch <= 'z'; });
+}
+
+bool colorVariable(const VariableGroup &g, const std::string &n)
+{
+    return !g.fromHpList || n.empty() || !(n[0] >= 'a' && n[0] <= 'z');
+}
+
 } // namespace
 
 std::string textMateGrammar()
@@ -76,6 +88,8 @@ std::string textMateGrammar()
     const auto &db = CommandDatabase::instance();
     std::vector<std::string> control, declaration, logical, commands, casFns, appFns, variables, constants;
     for (const auto &c : db.commands()) {
+        if (!colorCommand(c))
+            continue;
         if (c.kind == "keyword") {
             if (c.name == "AND" || c.name == "OR" || c.name == "XOR" || c.name == "NOT" || c.name == "MOD")
                 logical.push_back(c.name);
@@ -93,7 +107,8 @@ std::string textMateGrammar()
     }
     for (const auto &g : db.variableGroups())
         for (const auto &n : g.names)
-            (g.group == "Stałe" ? constants : variables).push_back(n);
+            if (colorVariable(g, n))
+                (g.group == "Stałe" ? constants : variables).push_back(n);
 
     auto match = [](const std::string &name, const std::string &re) {
         return Json::object({{"name", name}, {"match", re}});
@@ -169,6 +184,8 @@ std::string notepadUdl()
     const auto &db = CommandDatabase::instance();
     std::vector<std::string> kw1, kw2, kw3, kw4, kw5, kw6;
     for (const auto &c : db.commands()) {
+        if (!colorCommand(c))
+            continue;
         if (c.kind == "keyword") {
             if (c.name == "AND" || c.name == "OR" || c.name == "XOR" || c.name == "NOT" || c.name == "MOD")
                 continue; // operators2
@@ -183,7 +200,8 @@ std::string notepadUdl()
     }
     for (const auto &g : db.variableGroups())
         for (const auto &n : g.names)
-            (g.group == "Stałe" ? kw6 : kw4).push_back(n);
+            if (colorVariable(g, n))
+                (g.group == "Stałe" ? kw6 : kw4).push_back(n);
     kw3.push_back("CAS");
 
     std::string x;

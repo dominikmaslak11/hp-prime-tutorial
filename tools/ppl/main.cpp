@@ -30,6 +30,9 @@ int main(int argc, char **argv)
     if (cmd == "search") return ppl::cli::runSearch(rest);
     if (cmd == "guide") return ppl::cli::runGuide(rest);
     if (cmd == "run") return ppl::cli::runRun(rest);
+    if (cmd == "build") return ppl::cli::runBuild(rest);
+    if (cmd == "extract") return ppl::cli::runExtract(rest);
+    if (cmd == "verify") return ppl::cli::runVerify(rest);
     if (cmd == "lsp") return ppl::lsp::run();
     if (cmd == "mcp") return ppl::mcp::run();
     if (cmd == "gen") return ppl::gen::run(rest);

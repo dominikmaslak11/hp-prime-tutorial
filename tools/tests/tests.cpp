@@ -429,3 +429,36 @@ TEST(tutorial_corpus_has_no_errors)
 }
 
 
+
+// ------------------------------------------------------------------ .hpprgm container
+
+#include "hpprgm.h"
+
+TEST(hpprgm_template_roundtrip_is_byte_exact)
+{
+    const std::string &t = hpprgm::defaultTemplate();
+    CHECK(t.size() == 1818);
+    std::string src, err, rebuilt;
+    CHECK_MSG(hpprgm::readSource(t, src, &err), err);
+    CHECK(src.rfind("// Code template", 0) == 0 || !src.empty());
+    CHECK(hpprgm::writeSource(t, src, rebuilt, &err));
+    CHECK(rebuilt == t);
+}
+
+TEST(hpprgm_build_and_read_back)
+{
+    std::string src = "EXPORT ŻÓŁW(x)\nBEGIN\n  RETURN \"π≠3 ▶ θ\"+x;\nEND;";
+    std::string out, back, err;
+    CHECK_MSG(hpprgm::writeSource(hpprgm::defaultTemplate(), src, out, &err), err);
+    CHECK_MSG(hpprgm::readSource(out, back, &err), err);
+    CHECK(back == src);
+    hpprgm::SourceLocation loc;
+    CHECK(hpprgm::locateSource(out, loc, &err) && loc.start == hpprgm::HeaderEnd && !hpprgm::hasCompiledBlock(loc));
+    // file size grows by exactly the UTF-16 size difference
+    std::string t0;
+    hpprgm::readSource(hpprgm::defaultTemplate(), t0, &err);
+    CHECK(out.size() == hpprgm::defaultTemplate().size() + 2 * (toU32(src).size() - toU32(t0).size()));
+    CHECK(hpprgm::normalizeSource("a\r\nb\r\n") == "a\nb");
+    std::string junk = "not a program";
+    CHECK(!hpprgm::readSource(junk, back, &err));
+}

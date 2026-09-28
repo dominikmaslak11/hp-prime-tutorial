@@ -92,6 +92,7 @@ public:
     Graphics &graphics() { return m_graphics; }
     Host &host() { return m_host; }
     const CommandDatabase &db() const { return m_db; }
+    Value *systemVariable(const std::u32string &name) { return findSystem(name); }
     uint64_t steps() const { return m_steps; }
     void setMaxSteps(uint64_t n) { m_maxSteps = n; }
     void setSeed(uint64_t seed) { m_rng.seed(seed); }
@@ -108,6 +109,8 @@ public:
     // ---- API used by built-in commands
     Value eval(const Expr &e);
     Value evalText(const std::u32string &expressionText);
+    // EXPR("…"): a statement sequence executed in the current context; returns the last value.
+    Value execText(const std::u32string &text);
     void assign(const Expr &target, const Value &v);
     Value *findVariable(const std::u32string &name);
     Value getVariable(const std::u32string &name);

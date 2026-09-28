@@ -19,6 +19,8 @@ Rozszerzenie do programowania kalkulatora **HP Prime** w języku **HP PPL**, z o
 - **Uruchamianie w symulatorze** (F5 albo ▶ na pasku edytora): pyta o wywołanie (np. `SUMDIV(12)`) i dane dla INPUT/klawiszy, pokazuje wynik i wyjście PRINT, otwiera zrzut ekranu, a przy błędzie wykonania zaznacza linię. Krok po kroku debuguje się wbudowanym debuggerem kalkulatora albo emulatora HP.
 - Polecenia (Ctrl+Shift+P → „HP PPL”):
   - *Kopiuj program do schowka* (Ctrl+Alt+C), do wklejenia w HP Connectivity Kit,
+  - *Zbuduj plik programu (.hpprgm)*: plik do przeciągnięcia na kalkulator w Connectivity Kit (nazwa pliku = nazwa programu),
+  - *Otwórz plik programu (.hpprgm)…*: wyciąga kod z pliku programu, np. zapisanego przez Connectivity Kit,
   - *Opis komendy…* (Ctrl+F1): wyszukiwarka wszystkich komend,
   - *Zamień operatory* ASCII ↔ symbole kalkulatora,
   - *Nowy program*, *Przewodnik po języku PPL*.
@@ -35,6 +37,7 @@ Rozszerzenie rejestruje w VS Code **serwer MCP „HP Prime PPL”**. Agenci AI w
 | `ppl_command_help` | opis komendy (po polsku) |
 | `ppl_search_commands` | wyszukiwanie komend |
 | `ppl_run` | uruchamia program w symulatorze: wynik, błędy wykonania i zrzut ekranu |
+| `ppl_build` | zapisuje program jako plik `.hpprgm` |
 | `ppl_language_guide` | przewodnik po języku |
 
 Dzięki temu agent sam sprawdza i uruchamia wygenerowany program i poprawia błędy, zanim pokaże Ci wynik.

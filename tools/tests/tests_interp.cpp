@@ -224,7 +224,7 @@ TEST(interp_builtin_examples_from_manual)
     EXPECT_RESULT(eval("ROTATE(\"12345\",2)"), "\"34512\"");
     EXPECT_RESULT(eval("ROTATE(\"12345\",-1)"), "\"51234\"");
     EXPECT_RESULT(eval("REPLACE(\"123456\",2,\"GRM\")"), "\"1GRM56\"");
-    EXPECT_RESULT(eval("ASC(\"AB\")"), "[65,66]");
+    EXPECT_RESULT(eval("ASC(\"AB\")"), "{65,66}");
     EXPECT_RESULT(eval("CHAR([82,77,72])"), "\"RMH\"");
     EXPECT_RESULT(eval("DIM(\"12345\")"), "5");
     EXPECT_RESULT(eval("BITAND(20,13)"), "4");

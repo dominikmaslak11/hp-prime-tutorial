@@ -9,6 +9,7 @@
 namespace ppl {
 
 extern const char kCommandsJson[];
+extern const char kHpNamesTsv[];
 
 const CommandDatabase &CommandDatabase::instance()
 {
@@ -17,6 +18,7 @@ const CommandDatabase &CommandDatabase::instance()
         std::string err;
         if (!d.load(kCommandsJson, &err))
             std::fprintf(stderr, "ppl: embedded commands.json is invalid: %s\n", err.c_str());
+        d.addHpNames(kHpNamesTsv);
         return d;
     }();
     return db;
@@ -50,10 +52,6 @@ bool CommandDatabase::load(std::string_view json, std::string *error)
             info.maxArgs = c["max"].asInt(-1);
         m_commands.push_back(std::move(info));
     }
-    for (size_t k = 0; k < m_commands.size(); ++k) {
-        m_exact.emplace(m_commands[k].name32, k);
-        m_upper.emplace(asciiUpper(m_commands[k].name32), k);
-    }
 
     for (const Json &g : root["variables"].elements()) {
         VariableGroup group;
@@ -64,17 +62,90 @@ bool CommandDatabase::load(std::string_view json, std::string *error)
             group.names.push_back(n.asString());
         m_groups.push_back(std::move(group));
     }
-    for (size_t k = 0; k < m_groups.size(); ++k)
-        for (const auto &n : m_groups[k].names)
-            m_variables.emplace(toU32(n), k);
-
     m_apps.clear();
     for (const Json &a : root["apps"].elements())
         m_apps.push_back(a.asString());
     m_keys.clear();
     for (const Json &k : root["keyNames"].elements())
         m_keys.push_back(k.asString());
+    index();
     return true;
+}
+
+void CommandDatabase::index()
+{
+    m_exact.clear();
+    m_upper.clear();
+    m_variables.clear();
+    for (size_t k = 0; k < m_commands.size(); ++k) {
+        m_exact.emplace(m_commands[k].name32, k);
+        m_upper.emplace(asciiUpper(m_commands[k].name32), k);
+    }
+    for (size_t k = 0; k < m_groups.size(); ++k)
+        for (const auto &n : m_groups[k].names)
+            m_variables.emplace(toU32(n), k);
+}
+
+void CommandDatabase::addHpNames(std::string_view tsv)
+{
+    std::map<std::string, size_t> varGroups;
+    size_t pos = 0;
+    while (pos < tsv.size()) {
+        size_t eol = tsv.find('\n', pos);
+        if (eol == std::string_view::npos)
+            eol = tsv.size();
+        std::string line(tsv.substr(pos, eol - pos));
+        pos = eol + 1;
+        if (!line.empty() && line.back() == '\r')
+            line.pop_back();
+        if (line.empty() || line[0] == '#')
+            continue;
+        std::vector<std::string> col;
+        size_t b = 0;
+        for (;;) {
+            size_t t = line.find('\t', b);
+            col.push_back(line.substr(b, t == std::string::npos ? std::string::npos : t - b));
+            if (t == std::string::npos)
+                break;
+            b = t + 1;
+        }
+        col.resize(6);
+        const std::string &name = col[0], &kind = col[1], &group = col[2], &menu = col[3], &syntax = col[4];
+        if (name.empty() || kind == "unknown")
+            continue;
+        std::u32string n32 = toU32(name);
+        if (m_exact.count(n32) || m_variables.count(n32))
+            continue;
+        if (kind == "variable" || kind == "app variable") {
+            std::string g = "Zmienne HP (" + (group.empty() ? std::string("inne") : group) + ")";
+            auto it = varGroups.find(g);
+            if (it == varGroups.end()) {
+                VariableGroup vg;
+                vg.group = g;
+                vg.description = "Zmienna z listy nazw HP; tutorial jej nie opisuje (szczegóły: Pomoc kalkulatora).";
+                vg.fromHpList = true;
+                m_groups.push_back(std::move(vg));
+                it = varGroups.emplace(g, m_groups.size() - 1).first;
+            }
+            m_groups[it->second].names.push_back(name);
+            m_variables.emplace(n32, it->second);
+            continue;
+        }
+        CommandInfo info;
+        info.name = name;
+        info.name32 = n32;
+        info.kind = kind == "cas" ? "cas" : kind == "app function" ? "appfunc"
+                    : (kind == "keyword" || kind == "statement" || kind == "operator") ? "keyword"
+                                                                                         : "command";
+        info.category = group;
+        info.syntax = syntax.empty() ? name : syntax;
+        info.description = "Z listy nazw HP; tutorial tego polecenia nie opisuje"
+                           + (menu.empty() ? std::string(".") : " (menu: " + menu + ").");
+        info.fromHpList = true;
+        m_commands.push_back(std::move(info));
+        m_exact.emplace(n32, m_commands.size() - 1);
+        m_upper.emplace(asciiUpper(n32), m_commands.size() - 1);
+    }
 }
 
 const CommandInfo *CommandDatabase::findCommand(std::u32string_view name) const

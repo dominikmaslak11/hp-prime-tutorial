@@ -6,6 +6,7 @@ const vscode = require('vscode');
 const path = require('path');
 const fs = require('fs');
 const { execFile } = require('child_process');
+const os = require('os');
 const { LanguageClient, TransportKind } = require('vscode-languageclient/node');
 
 /** @type {LanguageClient | undefined} */
@@ -272,6 +273,70 @@ async function runProgram() {
   });
 }
 
+// ------------------------------------------------------------------ .hpprgm
+
+// Where HP Connectivity Kit keeps its content (exists once the Kit has been installed).
+function connectivityKitDir() {
+  const docs = path.join(os.homedir(), 'Documents', 'HP Connectivity Kit');
+  return fs.existsSync(docs) ? docs : os.homedir();
+}
+
+async function buildProgramFile() {
+  const ed = activeDocument();
+  if (!ed) return;
+  const doc = ed.document;
+  if (doc.isUntitled || doc.isDirty) {
+    const saved = await doc.save();
+    if (!saved || doc.isUntitled) {
+      vscode.window.showWarningMessage('Zapisz program do pliku .hpppl, aby zbudować plik .hpprgm.');
+      return;
+    }
+  }
+  const src = doc.uri.fsPath;
+  const target = await vscode.window.showSaveDialog({
+    title: 'Zapisz program HP Prime (.hpprgm) — nazwa pliku to nazwa programu na kalkulatorze',
+    defaultUri: vscode.Uri.file(src.replace(/\.[^.\\/]+$/, '') + '.hpprgm'),
+    filters: { 'Program HP Prime': ['hpprgm'] },
+  });
+  if (!target) return;
+  execFile(serverPath(), ['build', src, '-o', target.fsPath], { encoding: 'utf8' }, async (err, stdout, stderr) => {
+    output.clear();
+    output.append(stdout || '');
+    output.append(stderr || '');
+    if (err) {
+      output.show(true);
+      vscode.window.showErrorMessage('HP PPL: nie zbudowano pliku .hpprgm — szczegóły w panelu Output.');
+      return;
+    }
+    const pick = await vscode.window.showInformationMessage(
+      `Zbudowano ${path.basename(target.fsPath)}. Przeciągnij plik na kalkulator w HP Connectivity Kit.`,
+      'Pokaż w folderze');
+    if (pick) vscode.commands.executeCommand('revealFileInOS', target);
+  });
+}
+
+async function openProgramFile(uri) {
+  if (!(uri instanceof vscode.Uri)) {
+    const picked = await vscode.window.showOpenDialog({
+      title: 'Otwórz program HP Prime (.hpprgm)',
+      defaultUri: vscode.Uri.file(connectivityKitDir()),
+      filters: { 'Program HP Prime': ['hpprgm', 'hpprgmx'] },
+      canSelectMany: false,
+    });
+    if (!picked || !picked.length) return;
+    uri = picked[0];
+  }
+  try {
+    const src = await runPpl(['extract', uri.fsPath]);
+    if (!src.trim()) throw new Error('w pliku ' + path.basename(uri.fsPath) + ' nie znaleziono kodu źródłowego.');
+    const doc = await vscode.workspace.openTextDocument({ language: 'hpppl', content: src });
+    await vscode.window.showTextDocument(doc);
+    vscode.window.setStatusBarMessage(`HP PPL: kod z ${path.basename(uri.fsPath)} — zapisz go jako .hpppl`, 5000);
+  } catch (e) {
+    vscode.window.showErrorMessage('HP PPL: ' + (e.message || e));
+  }
+}
+
 // ------------------------------------------------------------------ AI
 
 async function languageGuide() {
@@ -395,6 +460,8 @@ async function activate(context) {
   reg('hpppl.toAscii', () => convert('ascii'));
   reg('hpppl.toSymbols', () => convert('symbols'));
   reg('hpppl.copyForCalculator', copyForCalculator);
+  reg('hpppl.buildProgramFile', buildProgramFile);
+  reg('hpppl.openProgramFile', openProgramFile);
   reg('hpppl.commandReference', commandReference);
   reg('hpppl.newProgram', newProgram);
   reg('hpppl.setupAi', setupAi);

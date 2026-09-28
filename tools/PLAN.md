@@ -119,7 +119,17 @@ Symboliczny CAS (`diff`, `solve` symbolicznie…), pełne widoki aplikacji HP (w
 ### Decyzja z 28.09.2026: bez własnego debuggera w VS Code
 HP Prime ma **wbudowany debugger krok po kroku** (katalog programów › Debug: Step, Skip, Vars, Cont, Exit; UG wyd. 3, s. 607). Działa on także w oficjalnym emulatorze **HP Prime Virtual Calculator** na PC. Etapy 10–11 dawałyby tylko wygodę, bez nowej możliwości, więc je porzucono. Interpreter zostaje, bo robi to, czego kalkulator i emulator nie umieją: automatyczne uruchamianie programów przez testy i agentów AI (`ppl run`, MCP `ppl_run`). W VS Code jest proste polecenie „Uruchom program (symulator)”.
 
+## Etapy v3 (28.09.2026): pliki `.hpprgm` i zgodność z emulatorem HP
+
+Źródło wiedzy: projekt hp-prime-kit (Jordi Rigau, MIT; zob. `THIRD_PARTY.md`): opis formatu `.hpprgm`, szablon z Connectivity Kit, lista ~1170 nazw z pomocy HP, ~1250 odpowiedzi zmierzonych na HP Prime Virtual Calculator 2.4.
+
+13. [x] `ppl build` / `ppl extract` / `ppl verify`: pliki bajt w bajt identyczne z `hpprime write` z hp-prime-kit
+14. [x] Test zgodności symulatora i walidatora z odpowiedziami emulatora (`conformance-report.txt`, próg regresji w teście)
+15. [x] Baza nazw HP w walidatorze (koniec fałszywych „nieznana nazwa”), nowe reguły: `;` po `END` funkcji, ≤ 8 zmiennych w `LOCAL`, zakaz `F()(2)`
+16. [x] Poprawki symulatora wg emulatora (m.in. `NTHROOT`, `STRING("a")`, `LEFT/RIGHT(s,0)`, `L(0)`, `ASC`, `RGB`, listy w `MIN/MAX/ROUND/LOG`, statystyka z nazwami kwalifikowanymi)
+17. [x] VS Code: „Zbuduj plik programu (.hpprgm)”, „Otwórz plik programu (.hpprgm)…”; MCP `ppl_build`
+18. [ ] Test na prawdziwym kalkulatorze: przeciągnięcie zbudowanego pliku w Connectivity Kit (do zrobienia przez użytkownika)
+
 ## Później
-- eksport/import binarnych plików `.hpprgm` (Connectivity Kit),
 - własne IDE w Qt korzystające z tego samego rdzenia,
 - dokładna arytmetyka dziesiętna (BCD) zamiast zaokrąglania double do 12 cyfr.

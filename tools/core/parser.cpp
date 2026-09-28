@@ -651,6 +651,12 @@ private:
             adv();
             return binary(at, at.text, base, unary());
         }
+        // infix n NTHROOT x (binds tighter than * and unary minus, left to right)
+        while (cur().kind == TokenKind::Identifier && asciiUpper(cur().text) == U"NTHROOT") {
+            const Token at = cur();
+            adv();
+            base = binary(at, U"NTHROOT", base, postfix());
+        }
         return base;
     }
 

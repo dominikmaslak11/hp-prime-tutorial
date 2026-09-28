@@ -27,7 +27,18 @@ endif()
 set(PPL_COMMANDS_FILE ${CMAKE_CURRENT_SOURCE_DIR}/data/commands.json)
 set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS ${PPL_COMMANDS_FILE})
 file(READ ${PPL_COMMANDS_FILE} PPL_COMMANDS_JSON)
+# Every PPL name from HP's help (from hp-prime-kit, MIT) fills the gaps in commands.json.
+set(PPL_NAMES_FILE ${CMAKE_CURRENT_SOURCE_DIR}/data/hp-names.tsv)
+set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS ${PPL_NAMES_FILE})
+file(READ ${PPL_NAMES_FILE} PPL_NAMES_TSV)
 configure_file(core/commanddata.cpp.in ${CMAKE_CURRENT_BINARY_DIR}/generated/commanddata.cpp @ONLY)
+
+# Embed the .hpprgm code template (from hp-prime-kit, MIT) as a byte array.
+set(PPL_TEMPLATE_FILE ${CMAKE_CURRENT_SOURCE_DIR}/data/code.hpprgm)
+set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS ${PPL_TEMPLATE_FILE})
+file(READ ${PPL_TEMPLATE_FILE} PPL_TEMPLATE_HEX HEX)
+string(REGEX REPLACE "([0-9a-f][0-9a-f])" "0x\\1," PPL_TEMPLATE_BYTES "${PPL_TEMPLATE_HEX}")
+configure_file(core/templatedata.cpp.in ${CMAKE_CURRENT_BINARY_DIR}/generated/templatedata.cpp @ONLY)
 
 add_library(pplcore STATIC
     core/utf8.h core/utf8.cpp
@@ -45,7 +56,9 @@ add_library(pplcore STATIC
     core/graphics.h core/graphics.cpp
     core/interpreter.h core/interpreter.cpp
     core/builtins.h core/builtins_core.cpp core/builtins_io.cpp core/builtins_apps.cpp
+    core/hpprgm.h core/hpprgm.cpp
     ${CMAKE_CURRENT_BINARY_DIR}/generated/commanddata.cpp
+    ${CMAKE_CURRENT_BINARY_DIR}/generated/templatedata.cpp
 )
 target_include_directories(pplcore PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/core)
 
@@ -65,7 +78,7 @@ install(TARGETS ppl RUNTIME DESTINATION bin)
 
 if(PPL_BUILD_TESTS)
     enable_testing()
-    add_executable(ppltests tests/tests.cpp tests/tests_interp.cpp tests/testing.h)
+    add_executable(ppltests tests/tests.cpp tests/tests_interp.cpp tests/tests_conformance.cpp tests/testing.h)
     target_link_libraries(ppltests PRIVATE pplcore)
     target_compile_definitions(ppltests PRIVATE PPL_REPO_ROOT="${CMAKE_CURRENT_SOURCE_DIR}/..")
     add_test(NAME ppltests COMMAND ppltests)

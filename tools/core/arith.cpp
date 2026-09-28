@@ -301,6 +301,8 @@ Value arith(const std::u32string &op, const Value &a, const Value &b, Interprete
     if (b.type == Value::Type::Symbolic)
         return arith(op, a, in.evalText(b.str), in);
 
+    if (op == U"NTHROOT") // n NTHROOT x = x^(1/n); odd roots of negatives stay real
+        return arith(U"^", b, arith(U"/", Value::real(1), a, in), in);
     if (op == U"+" && (a.isString() || b.isString()))
         return Value::string(in.format(a, false) + in.format(b, false));
 

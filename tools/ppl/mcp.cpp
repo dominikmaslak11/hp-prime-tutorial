@@ -20,7 +20,7 @@ using rpc::Framing;
 const char *kInstructions =
     "Narzędzia dla języka HP PPL (kalkulator HP Prime). Zanim pokażesz użytkownikowi program PPL, sprawdź go "
     "narzędziem ppl_validate i popraw wszystkie błędy. Nie wymyślaj komend: gdy nie masz pewności, użyj "
-    "ppl_search_commands albo ppl_command_help. Narzędziem ppl_run uruchomisz program w symulatorze i sprawdzisz wynik. Zasady języka opisuje ppl_language_guide.";
+    "ppl_search_commands albo ppl_command_help. Narzędziem ppl_run uruchomisz program w symulatorze i sprawdzisz wynik, a ppl_build zapisze go jako plik .hpprgm dla Connectivity Kit. Zasady języka opisuje ppl_language_guide.";
 
 Json schema(std::initializer_list<std::pair<std::string, Json>> props, std::initializer_list<const char *> required)
 {
@@ -98,6 +98,17 @@ Json toolList()
              {"inputSchema", Json::object({{"type", "object"}, {"properties", props}, {"required", Json::array()}})}}));
     }
     tools.push(Json::object(
+        {{"name", "ppl_build"},
+         {"title", "Zbuduj plik .hpprgm"},
+         {"description", "Zapisuje program HP PPL jako plik programu HP Prime (.hpprgm), który użytkownik przeciąga na "
+                         "kalkulator w HP Connectivity Kit. Nazwa pliku staje się nazwą programu na kalkulatorze. "
+                         "Program z błędami składni nie zostanie zbudowany."},
+         {"inputSchema", schema({{"code", prop("string", "Kod programu PPL (albo podaj path)")},
+                                 {"path", prop("string", "Ścieżka do pliku z programem (zamiast code)")},
+                                 {"output", prop("string", "Ścieżka pliku wynikowego, np. C:/prog/SITO.hpprgm. "
+                                                           "Domyślnie obok pliku path.")}},
+                                {})}}));
+    tools.push(Json::object(
         {{"name", "ppl_language_guide"},
          {"title", "Przewodnik po PPL"},
          {"description", "Zwięzły przewodnik po języku HP PPL: struktura programu, składnia, typowe pułapki, lista komend."},
@@ -151,6 +162,29 @@ Json callTool(const std::string &name, const Json &args)
         if (!cli::readSourceFile(args["path"].asString(), src, &err))
             return textResult("Nie można odczytać pliku: " + args["path"].asString() + " (" + err + ")", true);
         return textResult(validationReport(src));
+    }
+    if (name == "ppl_build") {
+        std::string src, err, output = args["output"].asString();
+        const std::string &path = args["path"].asString();
+        if (args["code"].isString()) {
+            src = args["code"].asString();
+        } else if (!path.empty()) {
+            if (!cli::readSourceFile(path, src, &err))
+                return textResult("Nie można odczytać pliku: " + path + " (" + err + ")", true);
+            if (output.empty()) {
+                size_t dot = path.find_last_of('.'), sep = path.find_last_of("/\\");
+                output = (dot != std::string::npos && (sep == std::string::npos || dot > sep) ? path.substr(0, dot) : path) + ".hpprgm";
+            }
+        } else {
+            return textResult("Podaj 'code' albo 'path'.", true);
+        }
+        if (output.empty())
+            return textResult("Podaj 'output' — ścieżkę pliku .hpprgm (jego nazwa to nazwa programu).", true);
+        cli::BuildOptions opt;
+        opt.sourceName = path.empty() ? "program" : path;
+        std::string log;
+        int rc = cli::buildProgram(src, output, opt, log);
+        return textResult(log, rc != 0);
     }
     if (name == "ppl_format") {
         FormatOptions opt;

@@ -44,6 +44,8 @@ ppl help TEXTOUT_P                 opis komendy
 ppl search klawisz                 wyszukiwanie komend
 ppl guide                          przewodnik po PPL (Markdown)
 ppl run PROGRAM.hpppl "SUMDIV(12)" uruchamia program w symulatorze
+ppl build PROGRAM.hpppl            buduje PROGRAM.hpprgm dla Connectivity Kit
+ppl extract PROGRAM.hpprgm         wypisuje kod źródłowy z pliku programu
 ```
 
 Format błędów to `plik:linia:kolumna: error: komunikat [kod]`. Rozumie go większość edytorów i systemów CI.
@@ -69,6 +71,25 @@ ppl run PROG.hpppl "F(3)" --json                          wynik w JSON (dla skry
 
 Testy (`tools/tests`) uruchamiają w symulatorze programy z kursu i porównują wyniki z wartościami podanymi w kursie, w tutorialu Shore'a i w instrukcji HP. Są to m.in. SQIN, MOPMT, SUMDIV, ULAM, QROOTS, SUBEXAM, TERMVEL, AREAC, CALCDEMO, a także rysunki (DRAWHOUSE, DRAWPENT, DRAWARCS) i gra SNAKE.
 
+**Test zgodności z emulatorem HP.** Projekt [hp-prime-kit](https://github.com/JordiRigau/hp-prime-kit) (licencja MIT) zmierzył na *HP Prime Virtual Calculator 2.4* odpowiedzi na ok. 1250 wywołań z dokumentacji. Test `conformance_with_virtual_calculator` porównuje z nimi symulator i walidator, a rozbieżności zapisuje w `build/conformance-report.txt`. Obecnie: 695 odpowiedzi zgodnych, 284 dotyczą funkcji nieobsługiwanych w symulatorze (CAS, geometria…), pozostałe to głównie ustawienia emulatora z chwili pomiaru (bieżąca aplikacja, zdefiniowane F1, okno wykresu). Walidator zgadza się z emulatorem w 30 z 31 przypadków „kompiluje się / nie kompiluje się”.
+
+---
+
+## Pliki programów `.hpprgm` (Connectivity Kit)
+
+HP Connectivity Kit przechowuje programy w plikach `.hpprgm`. W środku jest kod źródłowy (UTF-16) i, gdy program był już na kalkulatorze, skompilowana wersja. Kalkulator odtwarza ją sam ze źródła, więc do przesłania programu wystarczy plik z samym kodem.
+
+```
+ppl build SITO.hpppl                       tworzy SITO.hpprgm (najpierw sprawdza błędy)
+ppl build prog.hpppl -o GRA.hpprgm         nazwa pliku = nazwa programu na kalkulatorze
+ppl extract SITO.hpprgm -o SITO.hpppl      wyciąga kod z pliku programu (także z kalkulatora)
+ppl verify *.hpprgm                        sprawdza, czy pliki da się odczytać i przebudować
+```
+
+Gotowy plik przeciągnij na kalkulator (albo emulator) w oknie Connectivity Kit. W VS Code służą do tego polecenia **HP PPL: Zbuduj plik programu (.hpprgm)** i **Otwórz plik programu (.hpprgm)…**, a agent AI ma narzędzie MCP `ppl_build`.
+
+Format pliku nie jest publicznie opisany przez HP. Implementacja opiera się na analizie z projektu hp-prime-kit i daje pliki identyczne bajt w bajt z jego narzędziem `hpprime write`, którego wyniki autorzy sprawdzili na prawdziwym kalkulatorze. Mimo to pierwszy zbudowany plik sprawdź u siebie: przeciągnij go na kalkulator i uruchom program.
+
 ---
 
 ## Asystenci AI (Claude, ChatGPT, Gemini, DeepSeek)
@@ -83,6 +104,7 @@ Testy (`tools/tests`) uruchamiają w symulatorze programy z kursu i porównują 
 | `ppl_command_help` | opis komendy po polsku |
 | `ppl_search_commands` | wyszukiwanie komend |
 | `ppl_run` | **uruchamia program w symulatorze**: wynik, wyjście PRINT/MSGBOX, błędy wykonania z numerem linii, **zrzut ekranu** (obraz PNG, który model widzi) |
+| `ppl_build` | zapisuje program jako plik `.hpprgm` dla Connectivity Kit |
 | `ppl_language_guide` | przewodnik po języku (zasady i lista komend) |
 
 Modele słabo znają HP PPL i często wymyślają komendy albo mylą składnię z Pascalem lub BASIC-iem. Z tymi narzędziami agent pisze program, sprawdza składnię, uruchamia go, porównuje wynik z oczekiwanym, patrzy na zrzut ekranu, poprawia błędy i dopiero wtedy pokazuje wynik. Działa to podobnie jak asystent w Android Studio.
@@ -138,7 +160,9 @@ args = ["mcp"]
 | Kod | Przykład |
 |---|---|
 | `missing-end` | `IF x>0 THEN …` bez `END` (komunikat podaje linię otwarcia bloku) |
-| `missing-semicolon` | brak `;` między poleceniami |
+| `missing-semicolon` | brak `;` między poleceniami albo po `END` kończącym funkcję |
+| `too-many-locals` | więcej niż 8 zmiennych w jednym `LOCAL` (kalkulator tego nie skompiluje) |
+| `call-index` | `F()(2)`: indeksowanie wyniku wywołania; zapisz wynik w zmiennej |
 | `expected-keyword` | `FOR i FROM 1 TO 3` bez `DO` |
 | `unclosed-paren`, `unclosed-brace` | niezamknięte nawiasy |
 | `unterminated-string`, `typographic-quote` | niezamknięty tekst, cudzysłów „ ” skopiowany z Worda |
@@ -151,7 +175,7 @@ args = ["mcp"]
 | `reserved-name` | funkcja o nazwie zmiennej systemowej (`Q1`, `F`, `M1`) |
 | `break-outside-loop` | `BREAK` poza pętlą |
 | `export-inside-function` | `EXPORT` w środku funkcji (zwykle brakuje `END` wyżej) |
-| `unknown-name` | nazwa, której nie zna ani program, ani kalkulator (ostrzeżenie) |
+| `unknown-name` | nazwa, której nie zna ani program, ani kalkulator (ostrzeżenie); walidator zna ~1170 nazw z pomocy HP |
 | `unused-local` | zadeklarowana, ale nieużywana zmienna (ostrzeżenie) |
 | `unknown-key` | zła nazwa klawisza w `KEY` |
 | `implicit-multiplication` | `2X` zamiast `2*X` (ostrzeżenie) |

@@ -32,7 +32,7 @@ Kolumna „Menu” pokazuje, gdzie znaleźć komendę w edytorze programów. Śc
 
 | Komenda | Działanie |
 |---|---|
-| `ASC(s)` | wektor kodów znaków |
+| `ASC(s)` | lista kodów znaków `{65,66}` |
 | `LOWER(s)`, `UPPER(s)` | małe / wielkie litery |
 | `CHAR(k)` | znak lub znaki o podanych kodach |
 | `DIM(s)` | długość tekstu (dla macierzy i ciągów wymiary) |

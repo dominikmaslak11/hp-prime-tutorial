@@ -72,8 +72,16 @@ std::pair<double, double> pointOf(const Value &v)
 void registerGraphicsPair(BuiltinTable &t, const std::u32string &name, int minA, int maxA,
                           std::function<Value(CallArgs &, bool cartesian)> f)
 {
-    t[name] = Builtin{minA, maxA, false, [f](CallArgs &a) { return f(a, true); }};
-    t[name + U"_P"] = Builtin{minA, maxA, false, [f](CallArgs &a) { return f(a, false); }};
+    // drawing commands answer 1 on the calculator (measured on the emulator)
+    bool answersOne = name != U"GETPIX" && name != U"GROBW" && name != U"GROBH";
+    auto wrap = [f, answersOne](bool cart) {
+        return [f, answersOne, cart](CallArgs &a) {
+            Value v = f(a, cart);
+            return answersOne && v.isReal() && v.re == 0 ? Value::real(1) : v;
+        };
+    };
+    t[name] = Builtin{minA, maxA, false, wrap(true)};
+    t[name + U"_P"] = Builtin{minA, maxA, false, wrap(false)};
 }
 
 } // namespace
@@ -246,7 +254,7 @@ void registerIoBuiltins(Interpreter &, BuiltinTable &t)
     t[U"FREEZE"] = {0, 0, false, [](CallArgs &a) {
                         a.in.host().screenChanged();
                         a.in.host().waitForEvent(0);
-                        return Value::real(0);
+                        return Value::real(1);
                     }};
     t[U"TICKS"] = {0, 0, false, [](CallArgs &a) { return Value::real(std::floor(a.in.host().ticks())); }};
     t[U"TEVAL"] = {1, 1, true, [](CallArgs &a) {
@@ -258,7 +266,10 @@ void registerIoBuiltins(Interpreter &, BuiltinTable &t)
     // ------------------------------------------------------------------ graphics
     t[U"RGB"] = {3, 4, false, [](CallArgs &a) {
                      int r = std::clamp(a.integer(0), 0, 255), g = std::clamp(a.integer(1), 0, 255), b = std::clamp(a.integer(2), 0, 255);
-                     return Value::real(static_cast<double>((r << 16) | (g << 8) | b));
+                     int64_t c = (static_cast<int64_t>(r) << 16) | (g << 8) | b;
+                     if (a.size() > 3) // alpha 0..255, stored in bits 24..31
+                         c |= static_cast<int64_t>(std::clamp(a.integer(3), 0, 255)) << 24;
+                     return Value::integer(c, 'h');
                  }};
     registerGraphicsPair(t, U"RECT", 0, 7, [](CallArgs &a, bool cart) {
         GArgs g(a, cart);
@@ -541,7 +552,7 @@ void registerIoBuiltins(Interpreter &, BuiltinTable &t)
                               int w = g.textWidth(lab, 1);
                               g.text(0, x1 + std::max(0, (x2 - x1 - w) / 2), 226, lab, 1, 0x000000, x2 - x1, 0, false);
                           }
-                          return Value::real(0);
+                          return Value::real(1);
                       }};
 }
 

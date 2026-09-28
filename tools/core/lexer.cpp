@@ -72,7 +72,7 @@ bool Lexer::isKeyword(const std::u32string &upper)
 
 bool Lexer::isIdentifierChar(char32_t c)
 {
-    return isLetter(c) || isDigit(c) || c == U'_' || c == 0x2192 /* → */;
+    return isLetter(c) || isDigit(c) || c == U'_' || c == 0x2192 /* → */ || (c >= 0x2080 && c <= 0x2089) /* ₀–₉ */;
 }
 
 bool Lexer::isIdentifierStart(char32_t c, char32_t next)

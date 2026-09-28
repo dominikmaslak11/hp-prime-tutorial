@@ -3,6 +3,8 @@
 <NotepadPlus>
     <AutoComplete language="HP PPL">
         <Environment ignoreCase="yes" startFunc="(" stopFunc=")" paramSeparator="," terminal=";" additionalWordChar="_.→" />
+        <KeyWord name="!" />
+        <KeyWord name="%" />
         <KeyWord name="%CHANGE" func="yes">
             <Overload retVal="" descr="Zmiana procentowa z x na y.">
                 <Param name="x" />
@@ -15,6 +17,25 @@
                 <Param name="y" />
             </Overload>
         </KeyWord>
+        <KeyWord name="(" />
+        <KeyWord name="*" />
+        <KeyWord name="+" />
+        <KeyWord name="-" />
+        <KeyWord name="." />
+        <KeyWord name=".*" />
+        <KeyWord name=".+" />
+        <KeyWord name=".-" />
+        <KeyWord name="./" />
+        <KeyWord name=".^" />
+        <KeyWord name="/" />
+        <KeyWord name=":=" />
+        <KeyWord name="&lt;" />
+        <KeyWord name="&lt;=" />
+        <KeyWord name="&lt;&gt;" />
+        <KeyWord name="=" />
+        <KeyWord name="==" />
+        <KeyWord name="&gt;" />
+        <KeyWord name="&gt;=" />
         <KeyWord name="A" />
         <KeyWord name="AAngle" />
         <KeyWord name="AAS" func="yes">
@@ -29,11 +50,31 @@
                 <Param name="x" />
             </Overload>
         </KeyWord>
+        <KeyWord name="abscissa" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Cartesian).">
+                <Param name="Point" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="Accrued" />
         <KeyWord name="AComplex" />
         <KeyWord name="ACOS" func="yes">
             <Overload retVal="" descr="Arcus cosinus.">
                 <Param name="x" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ACOSH" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Hyperbolic).">
+                <Param name="value" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ACOT" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Trigonometry).">
+                <Param name="value" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ACSC" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Trigonometry).">
+                <Param name="value" />
             </Overload>
         </KeyWord>
         <KeyWord name="ADDCOL" func="yes">
@@ -51,6 +92,11 @@
             </Overload>
         </KeyWord>
         <KeyWord name="ADigits" />
+        <KeyWord name="affix" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Cartesian).">
+                <Param name="Point" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="AFiles" func="yes">
             <Overload retVal="" descr="Pliki aplikacji: lista, odczyt i zapis (AFiles(&quot;nazwa&quot;) := obiekt).">
                 <Param name="[&quot;nazwa&quot;]" />
@@ -69,12 +115,46 @@
                 <Param name="x" />
             </Overload>
         </KeyWord>
+        <KeyWord name="ALPHA" />
+        <KeyWord name="AltHyp" />
+        <KeyWord name="altitude" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Line).">
+                <Param name="Point1" />
+                <Param name="Point2" />
+                <Param name="Point3" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="AMORT" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Spreadsheet).">
+                <Param name="Range" />
+                <Param name="n" />
+                <Param name="i" />
+                <Param name="pv" />
+                <Param name="pmt[, ppyr=12, cpyr=ppyr, Grouping=ppyr, Beg=false, Fix=current]" />
+                <Param name="" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="AND" />
+        <KeyWord name="angle" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Measure).">
+                <Param name="Vertex" />
+                <Param name="Point2" />
+                <Param name="Point3" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="AngleA" />
         <KeyWord name="AngleB" />
         <KeyWord name="AngleC" />
         <KeyWord name="ANote" />
+        <KeyWord name="AnovaOneWay" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Inference).">
+                <Param name="{list1}" />
+                <Param name="{list2}" />
+                <Param name="[{list3}] ... [{List14}]" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="Ans" />
+        <KeyWord name="Apps" />
         <KeyWord name="AProgram" />
         <KeyWord name="ARC" func="yes">
             <Overload retVal="" descr="Okrąg lub łuk (środek kartezjański, promień w pikselach). r może być {rx,ry}, kolor {krawędź,wnętrze}.">
@@ -85,6 +165,13 @@
                 <Param name="[a1]" />
                 <Param name="[a2]" />
                 <Param name="[kolor]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="arcLen" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Measure).">
+                <Param name="Expr" />
+                <Param name="Real1" />
+                <Param name="Real2" />
             </Overload>
         </KeyWord>
         <KeyWord name="ARC_P" func="yes">
@@ -98,12 +185,9 @@
                 <Param name="[kolor]" />
             </Overload>
         </KeyWord>
-        <KeyWord name="AREA" func="yes">
-            <Overload retVal="" descr="Pole ze znakiem pod krzywą lub między krzywymi (Function). (Opis w instrukcji wyd. 2; w wyd. 3 pominięty w menu App, funkcja nadal istnieje.)">
-                <Param name="Fn" />
-                <Param name="[Fm]" />
-                <Param name="a" />
-                <Param name="b" />
+        <KeyWord name="area" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Measure).">
+                <Param name="Circle" />
             </Overload>
         </KeyWord>
         <KeyWord name="ARG" func="yes">
@@ -119,8 +203,13 @@
             </Overload>
         </KeyWord>
         <KeyWord name="ASC" func="yes">
-            <Overload retVal="" descr="Wektor kodów znaków.">
+            <Overload retVal="" descr="Lista kodów znaków (emulator 2.4: lista, nie wektor).">
                 <Param name="tekst" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ASEC" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Trigonometry).">
+                <Param name="value" />
             </Overload>
         </KeyWord>
         <KeyWord name="ASIN" func="yes">
@@ -128,9 +217,19 @@
                 <Param name="x" />
             </Overload>
         </KeyWord>
+        <KeyWord name="ASINH" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Hyperbolic).">
+                <Param name="value" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="ATAN" func="yes">
             <Overload retVal="" descr="Arcus tangens.">
                 <Param name="x" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ATANH" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Hyperbolic).">
+                <Param name="value" />
             </Overload>
         </KeyWord>
         <KeyWord name="AVars" func="yes">
@@ -138,11 +237,51 @@
                 <Param name="[n_lub_&quot;nazwa&quot;]" />
             </Overload>
         </KeyWord>
+        <KeyWord name="AVERAGE" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Spreadsheet).">
+                <Param name="[Input]" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="Axes" />
         <KeyWord name="B" />
         <KeyWord name="Base" />
         <KeyWord name="BEG" />
         <KeyWord name="BEGIN" />
+        <KeyWord name="Beta" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Special).">
+                <Param name="x" />
+                <Param name="y" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="BINOMIAL" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Probabiity Density).">
+                <Param name="n" />
+                <Param name="p" />
+                <Param name="k" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="BINOMIAL_CDF" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Probabiity Cumulative).">
+                <Param name="n" />
+                <Param name="p" />
+                <Param name="k" />
+                <Param name="[k2]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="BINOMIAL_ICDF" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Probabiity Inverse).">
+                <Param name="n" />
+                <Param name="p" />
+                <Param name="q" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="bisector" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Line).">
+                <Param name="Point1" />
+                <Param name="Point2" />
+                <Param name="Point3" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="BITAND" func="yes">
             <Overload retVal="" descr="Iloczyn bitowy.">
                 <Param name="a" />
@@ -294,7 +433,9 @@
                 <Param name="zysk" />
             </Overload>
         </KeyWord>
+        <KeyWord name="BSCall" />
         <KeyWord name="BSCallPrice" />
+        <KeyWord name="BSPut" />
         <KeyWord name="BSPutPrice" />
         <KeyWord name="B→R" func="yes">
             <Overload retVal="" descr="Liczba z # na liczbę rzeczywistą.">
@@ -373,15 +514,812 @@
                 <Param name="argumenty" />
             </Overload>
         </KeyWord>
+        <KeyWord name="CAS.a2q" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Matrix" />
+                <Param name="[Var1, Var2….]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.abcuv" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Poly_A" />
+                <Param name="Poly_B" />
+                <Param name="Poly_C" />
+                <Param name="[Var]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.about" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Var" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.acos2asin" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Rewrite Cosine).">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.acos2atan" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Rewrite Cosine).">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.additionally" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.adjoint_matrix" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="matrix" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.algvar" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.alog10" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.angleat" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="point1" />
+                <Param name="point2" />
+                <Param name="point3" />
+                <Param name="point4" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.angleatraw" />
+        <KeyWord name="CAS.append" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="(List, Element)" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.apply" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Var→f(Var)" />
+                <Param name="Vector" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="CAS.approx" func="yes">
             <Overload retVal="" descr="Przybliżenie numeryczne.">
                 <Param name="wyrażenie" />
             </Overload>
         </KeyWord>
+        <KeyWord name="CAS.arc" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Pnt" />
+                <Param name="Pnt" />
+                <Param name="Real" />
+                <Param name="[Var(C)]" />
+                <Param name="[Var(r)]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.areaat" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Polygon" />
+                <Param name="Point" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.areaatraw" />
+        <KeyWord name="CAS.asin2acos" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Rewrite Sine).">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.asin2atan" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Rewrite Sine).">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.assume" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.atan2acos" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Rewrite Tangent).">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.atan2asin" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Rewrite Tangent).">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.atrig2ln" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Rewrite Trig).">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.barycenter" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="[Point1, Weight1]" />
+                <Param name="[Point2, Weight2]" />
+                <Param name="…" />
+                <Param name="[Pointn, Weightn]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.basis" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Lst(vector1,..,vectorn)" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.bernoulli" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="n" />
+                <Param name="[variable]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.betad" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="α" />
+                <Param name="β" />
+                <Param name="x" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.betad_cdf" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="a" />
+                <Param name="b" />
+                <Param name="x" />
+                <Param name="[x2]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.betad_icdf" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="a" />
+                <Param name="b" />
+                <Param name="p" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.blockmatrix" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="m" />
+                <Param name="n" />
+                <Param name="{matrix_blocks}" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.blue" />
+        <KeyWord name="CAS.bounded_function" />
+        <KeyWord name="CAS.breakpoint" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Intg" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.c1oc2" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="cycle1" />
+                <Param name="cycle2" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.c1op2" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="cycle" />
+                <Param name="permutation" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.canonical_form" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Trinomial" />
+                <Param name="[Var]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.cat" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Obj1" />
+                <Param name="Obj2" />
+                <Param name="..." />
+                <Param name="Objn" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.cauchy" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="[x0]" />
+                <Param name="[a]" />
+                <Param name="x" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.cauchy_cdf" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="x0" />
+                <Param name="a" />
+                <Param name="x" />
+                <Param name="[x2]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.cauchy_icdf" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="x0" />
+                <Param name="a" />
+                <Param name="p" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.cFactor" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.changebase" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="A" />
+                <Param name="P" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.charpoly" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Matrix" />
+                <Param name="[Var]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.chinrem" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Matrix_2xn" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.chisquaret" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Data" />
+                <Param name="[distribution_law]" />
+                <Param name="[distribution_paramaters]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.chrem" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Polynomial Algebra).">
+                <Param name="List1" />
+                <Param name="List2" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.coeff" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Polynomial).">
+                <Param name="Expr" />
+                <Param name="[Var]" />
+                <Param name="[Integer]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.col" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Matrix" />
+                <Param name="Integer" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.colDim" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Matrix" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.collect" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Algebra).">
+                <Param name="Poly" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.colNorm" />
+        <KeyWord name="CAS.colspace" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="matrix" />
+                <Param name="[variable]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.comDenom" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+                <Param name="[Var]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.common_perpendicular" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Line(D1)" />
+                <Param name="Line(D2)" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.companion" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Poly" />
+                <Param name="Var" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.compare" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Obj1" />
+                <Param name="Obj2" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.complexroot" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Poly" />
+                <Param name="Real" />
+                <Param name="[Complx1, Complx2]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.contains" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="List" />
+                <Param name="Element" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.content" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Polynomial Algebra).">
+                <Param name="Poly" />
+                <Param name="[Var]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.convexhull" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Point1" />
+                <Param name="Point2" />
+                <Param name="..." />
+                <Param name="PointN" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.correlation" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="List" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.cos2sintan" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Rewrite Cosine).">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.count" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Var→Func on" />
+                <Param name="List" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.count_eq" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="item" />
+                <Param name="list" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.count_inf" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="item" />
+                <Param name="list" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.count_sup" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="item" />
+                <Param name="list" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.covariance" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="List" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.covariance_correlation" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="List" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.cpartfrac" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="RatFrac" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.crationalroot" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Poly" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.cSolve" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Solve).">
+                <Param name="Expr" />
+                <Param name="[Var]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.cumSum" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="List" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.curl" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Calculus Differential).">
+                <Param name="[Expr1, Expr2, ... ExprN]" />
+                <Param name="[Var1, Var2, ... VarN]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.curve" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.cyan" />
+        <KeyWord name="CAS.cycle2perm" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="cycle" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.cycleinv" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="cycle" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.cycles2permu" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="list" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.cyclotomic" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Polynomial Special).">
+                <Param name="Integer" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.cZeros" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Solve).">
+                <Param name="Expr" />
+                <Param name="[Var]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.degree" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Polynomial Algebra).">
+                <Param name="Poly" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.delcols" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Matrix" />
+                <Param name="Integer" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.delrows" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Matrix" />
+                <Param name="Integer" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.deltalist" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="List" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.denom" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Algebra Extract).">
+                <Param name="a/b" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.desolve" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Solve).">
+                <Param name="Eq" />
+                <Param name="[TimeVar]" />
+                <Param name="Var" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.dfc" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="real" />
+                <Param name="[integer]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.dfc2c" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="continued_fraction" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.dfc2f" />
         <KeyWord name="CAS.diff" func="yes">
             <Overload retVal="" descr="Pochodna symboliczna (CAS).">
                 <Param name="wyrażenie" />
                 <Param name="zmienna" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.distance2" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Point1" />
+                <Param name="Point2" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.distanceat" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Point1" />
+                <Param name="Point2" />
+                <Param name="Point3" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.distanceatraw" />
+        <KeyWord name="CAS.divergence" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Calculus Differential).">
+                <Param name="[Expr1, Expr2, ... ExprN]" />
+                <Param name="[Var1, Var2, ... VarN]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.divis" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Polynomial).">
+                <Param name="Poly" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.division_point" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="PointA" />
+                <Param name="PointB" />
+                <Param name="Realk" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.divpc" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Calculus Limits).">
+                <Param name="Poly1" />
+                <Param name="Poly2" />
+                <Param name="Integer" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.domain" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="function" />
+                <Param name="[variable]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.egcd" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="(PolyA, PolyB, [Var])" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.eigenvals" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Matrix" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.eigenvects" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Matrix" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.eigVc" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Matrix" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.eigVl" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Matrix" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.equilateral_triangle" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Point1" />
+                <Param name="Point2" />
+                <Param name="[Var]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.error" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="String" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.euler" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Integer Prime).">
+                <Param name="Integer" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.eval" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.evalb" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="expression" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.evalc" />
+        <KeyWord name="CAS.evalf" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+                <Param name="[Integer]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.even" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Integer" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.exact" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.exbisector" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Point1" />
+                <Param name="Point2" />
+                <Param name="Point3" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.exp2pow" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Rewrite Exp &amp; Ln).">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.exp2trig" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Rewrite Exp &amp; Ln).">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.expand" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Algebra).">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.expexpand" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Rewrite Exp &amp; Ln).">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.exponential" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="k" />
+                <Param name="x" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.exponential_cdf" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="k" />
+                <Param name="x" />
+                <Param name="[x2]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.exponential_icdf" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="k" />
+                <Param name="p" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.exponential_regression" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Matrix" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.extract_measure" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Var" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.ezgcd" />
+        <KeyWord name="CAS.f2nd" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Frac" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.factor" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Algebra).">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.factorial" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Integer" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.factors" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Polynomial).">
+                <Param name="Poly" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.factor_xn" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Polynomial Algebra).">
+                <Param name="Poly" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.fcoeff" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Polynomial Create).">
+                <Param name="[Root1, Order1, Root2, Order2, ..., Rootn, Ordern]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.fft" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Calculus Transform).">
+                <Param name="Vector" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.fMax" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+                <Param name="[Var]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.fMin" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+                <Param name="[Var]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.format" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="real" />
+                <Param name="format" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.fourier_an" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+                <Param name="Var" />
+                <Param name="T" />
+                <Param name="n" />
+                <Param name="a" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.fourier_bn" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+                <Param name="Var" />
+                <Param name="T" />
+                <Param name="n" />
+                <Param name="a" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.fourier_cn" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+                <Param name="Var" />
+                <Param name="T" />
+                <Param name="n" />
+                <Param name="a" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.fPart" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Real" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.fracmod" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+                <Param name="Integer" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.froot" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="RatPoly" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.fsolve" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Solve).">
+                <Param name="Expr" />
+                <Param name="Var" />
+                <Param name="[Guess or Interval]" />
+                <Param name="[Method]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.function_diff" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="FunctionName" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.gammad" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="a" />
+                <Param name="t" />
+                <Param name="x" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.gammad_cdf" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="a" />
+                <Param name="t" />
+                <Param name="x" />
+                <Param name="[x2]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.gammad_icdf" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="a" />
+                <Param name="t" />
+                <Param name="p" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.gauss" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+                <Param name="Vector" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.gbasis" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Polynomial Special).">
+                <Param name="[Poly1, Poly2,...]" />
+                <Param name="[Var1, Var2, ...]" />
             </Overload>
         </KeyWord>
         <KeyWord name="CAS.gcd" func="yes">
@@ -390,9 +1328,168 @@
                 <Param name="b" />
             </Overload>
         </KeyWord>
+        <KeyWord name="CAS.grad" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Calculus Differential).">
+                <Param name="Expr" />
+                <Param name="ListVars" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.gramschmidt" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Vector" />
+                <Param name="Function" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.greduce" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Polynomial Special).">
+                <Param name="Poly1" />
+                <Param name="[Poly2, Poly3,...]" />
+                <Param name="[Var1, Var2, ...]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.green" />
+        <KeyWord name="CAS.groupermu" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="permutation1" />
+                <Param name="permutation2" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.hadamard" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Matrix" />
+                <Param name="[Matrix]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.halftan" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Rewrite Tangent).">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.halftan_hyp2exp" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.halt" />
+        <KeyWord name="CAS.hamdist" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Intgr1" />
+                <Param name="Intgr2" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.harmonic_conjugate" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Point1" />
+                <Param name="Point2" />
+                <Param name="Point3" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.harmonic_division" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="point1" />
+                <Param name="point2" />
+                <Param name="point3" />
+                <Param name="var" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.has" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+                <Param name="Var" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.head" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Vector" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.hermite" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Polynomial Special).">
+                <Param name="Integer" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.hessian" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Calculus Differential).">
+                <Param name="Expr" />
+                <Param name="ListVar" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.hexagon" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Point1" />
+                <Param name="Point2" />
+                <Param name="[Var1, Var2, Var3, Var4]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.horner" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Polynomial" />
+                <Param name="Real" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.hyp2exp" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.iabcuv" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Intg(a)" />
+                <Param name="Intg(b)" />
+                <Param name="Intg(c)" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.ibasis" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Matrix1" />
+                <Param name="Matrix2" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.ibpdv" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Calculus Integral).">
+                <Param name="f(Var)" />
+                <Param name="v(Var)" />
+                <Param name="[Var]" />
+                <Param name="[Real1]" />
+                <Param name="[Real2]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.ibpu" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Calculus Integral).">
+                <Param name="f(Var)" />
+                <Param name="u(Var)" />
+                <Param name="[Var]" />
+                <Param name="[Real1]" />
+                <Param name="[Real2]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.ichinrem" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Integer Division).">
+                <Param name="[a,p]" />
+                <Param name="[b,q]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.icontent" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Poly" />
+                <Param name="[Var]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.id" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.identity" />
         <KeyWord name="CAS.idivis" func="yes">
             <Overload retVal="" descr="Dzielniki liczby całkowitej.">
                 <Param name="n" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.iegcd" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Integer1" />
+                <Param name="Integer2" />
             </Overload>
         </KeyWord>
         <KeyWord name="CAS.ifactor" func="yes">
@@ -405,6 +1502,38 @@
                 <Param name="n" />
             </Overload>
         </KeyWord>
+        <KeyWord name="CAS.ifft" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Calculus Transform).">
+                <Param name="Vect" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.igcd" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Integer).">
+                <Param name="Intgr1" />
+                <Param name="Intgr2" />
+                <Param name="... Intgrn" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.ilaplace" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Calculus Transform).">
+                <Param name="Expr" />
+                <Param name="[Var]" />
+                <Param name="[IlapVar]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.image" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Matrix" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.implicit_diff" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="expression" />
+                <Param name="var1" />
+                <Param name="var2" />
+                <Param name="[Order]" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="CAS.int" func="yes">
             <Overload retVal="" descr="Całka symboliczna lub oznaczona (CAS).">
                 <Param name="wyrażenie" />
@@ -413,9 +1542,177 @@
                 <Param name="[b]" />
             </Overload>
         </KeyWord>
+        <KeyWord name="CAS.interval2center" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Interval" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.inv" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.invlaplace" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+                <Param name="[Var]" />
+                <Param name="[IlapVar]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.invztrans" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+                <Param name="[Var]" />
+                <Param name="[InvZtransVar]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.iPart" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Real" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.iquorem" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Integer1" />
+                <Param name="Integer2" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.isobarycenter" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Point1" />
+                <Param name="Point2" />
+                <Param name="…" />
+                <Param name="Pointn" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.isosceles_triangle" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Point1" />
+                <Param name="Point2" />
+                <Param name="Angle" />
+                <Param name="[Var]" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="CAS.isprime" func="yes">
             <Overload retVal="" descr="1, jeśli liczba jest pierwsza.">
                 <Param name="n" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.is_coplanar" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Point1" />
+                <Param name="Point2" />
+                <Param name="Point3" />
+                <Param name="Point4" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.is_cycle" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="list" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.is_harmonic" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Point1" />
+                <Param name="Point2" />
+                <Param name="Point3" />
+                <Param name="Point4" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.is_harmonic_circle_bundle" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Circle1" />
+                <Param name="Circle2" />
+                <Param name="..." />
+                <Param name="Circlen" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.is_harmonic_line_bundle" />
+        <KeyWord name="CAS.is_parallel" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Line1" />
+                <Param name="Line2" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.is_permu" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="list" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.is_rectangle" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Point1" />
+                <Param name="Point2" />
+                <Param name="Point3" />
+                <Param name="Point4" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.is_rhombus" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Point1" />
+                <Param name="Point2" />
+                <Param name="Point3" />
+                <Param name="Point4" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.is_square" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Point1" />
+                <Param name="Point2" />
+                <Param name="Point3" />
+                <Param name="Point4" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.ithprime" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Integer Prime).">
+                <Param name="Integer" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.jacobi_symbol" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Integer1" />
+                <Param name="Integer2" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.ker" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Mtrx(M)" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.kolmogorovd" />
+        <KeyWord name="CAS.kolmogorovt" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="list1" />
+                <Param name="list2" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.lagrange" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Polynomial Special).">
+                <Param name="[X1, X2,... Xn]" />
+                <Param name="[Y1, Y2, ... Yn]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.laguerre" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Polynomial Special).">
+                <Param name="Integer" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.laplace" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Calculus Transform).">
+                <Param name="Expr" />
+                <Param name="[Var]" />
+                <Param name="[LapVar]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.laplacian" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+                <Param name="Vector" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.latex" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
             </Overload>
         </KeyWord>
         <KeyWord name="CAS.lcm" func="yes">
@@ -424,10 +1721,128 @@
                 <Param name="b" />
             </Overload>
         </KeyWord>
+        <KeyWord name="CAS.lcoeff" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Poly" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.left" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Algebra Extract).">
+                <Param name="Expr1=Expr2" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.legendre" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Polynomial Special).">
+                <Param name="Integer" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.legendre_symbol" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Integer1" />
+                <Param name="[Integer2]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.length" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="List" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.lgcd" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="List" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.limit" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Calculus).">
+                <Param name="Expr" />
+                <Param name="Var" />
+                <Param name="Val" />
+                <Param name="[Dir]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.lin" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.linear_interpolate" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Matrix" />
+                <Param name="Xmin" />
+                <Param name="Xmax" />
+                <Param name="Xstep" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.linear_regression" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Matrix" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.linsolve" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Solve).">
+                <Param name="[LinEq1, LinEq2,…LinEqn]" />
+                <Param name="[Var1,Var2,…Varn]" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="CAS.list2mat" func="yes">
             <Overload retVal="" descr="Lista na macierz.">
                 <Param name="lista" />
                 <Param name="kolumny" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.lll_reduce" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Polynomial Special).">
+                <Param name="Matrix" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.lname" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="'Expr'" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.lncollect" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Rewrite).">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.lnexpand" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.log10" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.logarithmic_regression" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Matrix" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.logb" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="a" />
+                <Param name="b" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.logistic_regression" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Lst(L)" />
+                <Param name="Real(x0)" />
+                <Param name="Real(y0)" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.lvar" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.magenta" />
+        <KeyWord name="CAS.map" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Matrix" />
+                <Param name="Var→Func on" />
             </Overload>
         </KeyWord>
         <KeyWord name="CAS.mat2list" func="yes">
@@ -435,9 +1850,372 @@
                 <Param name="macierz" />
             </Overload>
         </KeyWord>
+        <KeyWord name="CAS.matpow" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Matrix" />
+                <Param name="Int(n)" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.mean" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="List1" />
+                <Param name="[List2]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.median" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="List1" />
+                <Param name="[List2]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.member" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Element" />
+                <Param name="List" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.modgcd" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Poly1" />
+                <Param name="Poly2" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.mRow" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+                <Param name="Matrix" />
+                <Param name="Integer" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.multinomial" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Integern" />
+                <Param name="VectorP" />
+                <Param name="VectorK" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.mult_conjugate" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.mult_c_conjugate" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.nDeriv" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+                <Param name="Var" />
+                <Param name="Real" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.negbinomial" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="n" />
+                <Param name="k" />
+                <Param name="x" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.negbinomial_cdf" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="n" />
+                <Param name="k" />
+                <Param name="x" />
+                <Param name="[x2]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.negbinomial_icdf" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="n" />
+                <Param name="k" />
+                <Param name="p" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.newton" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+                <Param name="Var" />
+                <Param name="[Guess]" />
+                <Param name="[Integer]" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="CAS.nextprime" func="yes">
             <Overload retVal="" descr="Najmniejsza liczba pierwsza większa od n.">
                 <Param name="n" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.nop" />
+        <KeyWord name="CAS.normal" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.normald_cdf" />
+        <KeyWord name="CAS.normald_icdf" />
+        <KeyWord name="CAS.normalize" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Vector" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.nSolve" />
+        <KeyWord name="CAS.num" />
+        <KeyWord name="CAS.numer" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Algebra Extract).">
+                <Param name="a/b" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.odd" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Integer" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.odesolve" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Solve).">
+                <Param name="Expr" />
+                <Param name="VectVar" />
+                <Param name="VectInit" />
+                <Param name="FinalVal" />
+                <Param name="[tstep=Val, curve]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.open_polygon" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="point1" />
+                <Param name="point2" />
+                <Param name="…" />
+                <Param name="point1" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.order_size" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.orthocenter" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Triangle" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.orthogonal" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Point" />
+                <Param name="Line" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.p1oc2" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="permutation" />
+                <Param name="cycle" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.p1op2" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="permutation1" />
+                <Param name="permutation2" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.pa2b2" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Integer" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.pade" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+                <Param name="Var" />
+                <Param name="Integern" />
+                <Param name="Integerp" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.part" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+                <Param name="Integer" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.partfrac" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Algebra).">
+                <Param name="RatFrac" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.pcoeff" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Polynomial Create).">
+                <Param name="Vector" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.perimeterat" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="polygon" />
+                <Param name="point" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.perimeteratraw" />
+        <KeyWord name="CAS.perminv" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="permutation" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.permu2cycles" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="permutation" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.permu2mat" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="permutation" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.permuorder" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="permutation" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.plotcontour" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Plot).">
+                <Param name="Expr" />
+                <Param name="[LstVar]" />
+                <Param name="[LstVal]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.plotinequation" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+                <Param name="[x=xrange,y=yrange]" />
+                <Param name="[xstep]" />
+                <Param name="[ystep]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.pmin" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Polynomial Create).">
+                <Param name="Matrix" />
+                <Param name="[Var]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.point2d" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="point1" />
+                <Param name="point2" />
+                <Param name="…" />
+                <Param name="pointn" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.polar" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Circle" />
+                <Param name="Point" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.polar_point" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Radius" />
+                <Param name="Angle" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.pole" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Circle" />
+                <Param name="Line" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.poly2symb" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Polynomial Create).">
+                <Param name="Vector" />
+                <Param name="[Var]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.polyEval" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Vector" />
+                <Param name="Real" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.polygonplot" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Mtrx" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.polygonscatterplot" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Matrix" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.polynomial_regression" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="List1" />
+                <Param name="List2" />
+                <Param name="Integer" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.potential" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Vector1" />
+                <Param name="Vector2" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.pow2exp" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Rewrite Exp &amp; Ln).">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.powerpc" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Circle" />
+                <Param name="Point" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.power_regression" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="List1" />
+                <Param name="List2" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.powexpand" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Rewrite).">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.powmod" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Integer Division).">
+                <Param name="a" />
+                <Param name="n" />
+                <Param name="p" />
+                <Param name="[Expr, Var]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.prepend" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="List" />
+                <Param name="Element" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.preval" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Calculus Integral).">
+                <Param name="F(var)" />
+                <Param name="Real(a)" />
+                <Param name="Real(b)" />
+                <Param name="[Var]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.prevprime" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Integer Prime).">
+                <Param name="Integer" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.primpart" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Poly" />
+                <Param name="[Var]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.product" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+                <Param name="[Var]" />
+                <Param name="[Min]" />
+                <Param name="[Max]" />
+                <Param name="[Step]" />
             </Overload>
         </KeyWord>
         <KeyWord name="CAS.proot" func="yes">
@@ -445,10 +2223,670 @@
                 <Param name="współczynniki" />
             </Overload>
         </KeyWord>
+        <KeyWord name="CAS.propfrac" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Fraction" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.ptayl" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Poly" />
+                <Param name="Value" />
+                <Param name="[Var]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.purge" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Var" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.q2a" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="QuadExpr" />
+                <Param name="Vector" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.quantile" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="List" />
+                <Param name="Value" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.quartile1" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="List" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.quartile3" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="List" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.quartiles" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="List" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.quo" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Polynomial Algebra).">
+                <Param name="List1" />
+                <Param name="List2" />
+                <Param name="[Var]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.quorem" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Poly1" />
+                <Param name="Poly2" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.quote" />
+        <KeyWord name="CAS.radical_axis" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Circle1" />
+                <Param name="Circle2" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.randbinomial" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="n" />
+                <Param name="p" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.randchisquare" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="n" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.randexp" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Real" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.randfisher" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="n" />
+                <Param name="d" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.randgeometric" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="p" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.randnorm" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="mu" />
+                <Param name="sigma" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.randperm" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Integer" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.randpoisson" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="k" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.randPoly" />
+        <KeyWord name="CAS.randstudent" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="n" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.randvector" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Integern" />
+                <Param name="Integerm" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.ranm" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Integern" />
+                <Param name="[Integerm]" />
+                <Param name="[Interval or Distribution]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.ratnormal" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.rectangular_coordinates" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Vector" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.red" />
+        <KeyWord name="CAS.reduced_conic" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+                <Param name="[Vector]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.ref" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Matrix" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.regroup" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.rem" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Polynomial Algebra).">
+                <Param name="Poly1" />
+                <Param name="Poly2" />
+                <Param name="[Var]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.remove" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Value" />
+                <Param name="List" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.reorder" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+                <Param name="Vector" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.restart" />
+        <KeyWord name="CAS.resultant" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Poly1" />
+                <Param name="Poly2" />
+                <Param name="Var" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.revlist" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="List" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.right" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Algebra Extract).">
+                <Param name="Expr1=Expr2" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.romberg" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+                <Param name="Var" />
+                <Param name="Val1" />
+                <Param name="Val2" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.row" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Matrix" />
+                <Param name="Integer" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.rowAdd" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Matrix" />
+                <Param name="Integer1" />
+                <Param name="Integer2" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.rowDim" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Matrix" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.rowNorm" />
+        <KeyWord name="CAS.rowspace" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="matrix" />
+                <Param name="[variable]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.rowSwap" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Matrix" />
+                <Param name="Integer1" />
+                <Param name="Integer2" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.rref" />
+        <KeyWord name="CAS.rsolve" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+                <Param name="Var" />
+                <Param name="Condition" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.select" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Test" />
+                <Param name="List" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.seq" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+                <Param name="Var=Interval" />
+                <Param name="[Step]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.seqsolve" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+                <Param name="Vector" />
+                <Param name="Condition" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.series" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Calculus).">
+                <Param name="Expr" />
+                <Param name="Var=Val" />
+                <Param name="[Order]" />
+                <Param name="[Dir]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.shift" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="List" />
+                <Param name="Integer" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.shift_phase" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.signature" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Vector" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.simplex_reduce" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Matrix_A" />
+                <Param name="Vector_B" />
+                <Param name="Vector_C" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.simplify" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Algebra).">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.simult" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Matrix1" />
+                <Param name="Matrix2" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.sin2costan" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Rewrite Sine).">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.sincos" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.slopeat" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Segment" />
+                <Param name="Point" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.slopeatraw" />
         <KeyWord name="CAS.solve" func="yes">
             <Overload retVal="" descr="Rozwiązanie symboliczne (CAS).">
                 <Param name="równanie" />
                 <Param name="zmienna" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.sort" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="List" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.spline" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="ListX" />
+                <Param name="ListY" />
+                <Param name="Var" />
+                <Param name="Integer" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.sqrfree" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.sqrt" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.stddev" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="List1" />
+                <Param name="[List2]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.stddevp" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="List1" />
+                <Param name="[List2]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.sto" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Obj" />
+                <Param name="Var" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.sturm" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Poly" />
+                <Param name="[Var, Complexa, Complexb]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.sturmab" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Polynomial Algebra).">
+                <Param name="Poly" />
+                <Param name="[Var,Interval)" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.sturmseq" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Poly" />
+                <Param name="[Var]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.subMat" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Matrix" />
+                <Param name="Int1" />
+                <Param name="Int2" />
+                <Param name="Int3" />
+                <Param name="Int4" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.subst" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Algebra).">
+                <Param name="Expr" />
+                <Param name="Var=value" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.sum" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Calculus).">
+                <Param name="Expr" />
+                <Param name="Var" />
+                <Param name="Real1" />
+                <Param name="Real2" />
+                <Param name="[Step]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.sum_riemann" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Calculus Limits).">
+                <Param name="Expr(Xpr)" />
+                <Param name="Lst(var1,var2)" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.surd" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+                <Param name="Integer" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.sylvester" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Poly" />
+                <Param name="Poly" />
+                <Param name="Var" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.symb2poly" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Polynomial Create).">
+                <Param name="Expr" />
+                <Param name="[Var]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.table" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="SeqEqual(index=value)" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.tabvar" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="function" />
+                <Param name="[variable, minimum, maximum]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.tail" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Vector" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.tan2cossin2" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.tan2sincos" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.tan2sincos2" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.taylor" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Calculus Limits).">
+                <Param name="Expr" />
+                <Param name="[Var=Value]" />
+                <Param name="[Order]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.tchebyshev1" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Polynomial Special).">
+                <Param name="Integer" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.tchebyshev2" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Polynomial Special).">
+                <Param name="Integer" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.tcoeff" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Poly" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.tcollect" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Rewrite Trig).">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.texpand" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Rewrite).">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.tlin" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Rewrite Trig).">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.trace" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="point" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.transpose" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Matrix" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.trig2exp" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Rewrite Trig).">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.trigcos" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Rewrite Trig).">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.trigexpand" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Rewrite Trig).">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.trigsin" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Rewrite Trig).">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.trigtan" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Rewrite Trig).">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.trunc" />
+        <KeyWord name="CAS.truncate" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Poly" />
+                <Param name="Integer" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.tsimplify" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.type" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Object" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.unapply" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+                <Param name="Var" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.uniform" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="a" />
+                <Param name="b" />
+                <Param name="x" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.uniform_cdf" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="a" />
+                <Param name="b" />
+                <Param name="x" />
+                <Param name="[x2]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.uniform_icdf" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="a" />
+                <Param name="b" />
+                <Param name="p" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.vandermonde" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="vector" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.variance" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="List1" />
+                <Param name="[List2]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.vector" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Point1" />
+                <Param name="[Point2]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.vertices" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Polygon" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.vertices_abca" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Polygon" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.vpotential" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Vector1" />
+                <Param name="Vector2" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.weibull" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="k" />
+                <Param name="n" />
+                <Param name="[t]" />
+                <Param name="x" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.weibull_cdf" />
+        <KeyWord name="CAS.weibull_icdf" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="k" />
+                <Param name="n" />
+                <Param name="[t]" />
+                <Param name="x" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.white" />
+        <KeyWord name="CAS.wilcoxonp" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Integer1" />
+                <Param name="[Integer2]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.wilcoxons" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="List1" />
+                <Param name="Median" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.wilcoxont" />
+        <KeyWord name="CAS.x²" />
+        <KeyWord name="CAS.yellow" />
+        <KeyWord name="CAS.zeros" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox CAS Solve).">
+                <Param name="Expr" />
+                <Param name="[Var]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.zip" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="‘Function’" />
+                <Param name="List1" />
+                <Param name="List2" />
+                <Param name="Default" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.ztrans" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+                <Param name="[Var]" />
+                <Param name="[ZtransVar]" />
             </Overload>
         </KeyWord>
         <KeyWord name="CASE" />
@@ -511,7 +2949,17 @@
                 <Param name="x" />
             </Overload>
         </KeyWord>
+        <KeyWord name="CellHasData" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Spreadsheet).">
+            </Overload>
+        </KeyWord>
+        <KeyWord name="center" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Point).">
+                <Param name="Circle" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="CFData" />
+        <KeyWord name="CFPYR" />
         <KeyWord name="Change" />
         <KeyWord name="ChangeCost" func="yes">
             <Overload retVal="" descr="Koszt z ceny i narzutu (opcja 0) lub marży (opcja 1).">
@@ -551,6 +2999,42 @@
                 <Param name="n" />
             </Overload>
         </KeyWord>
+        <KeyWord name="Chi2GOF" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Inference).">
+                <Param name="List1" />
+                <Param name="List2" />
+                <Param name="Value" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Chi2TwoWay" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Inference).">
+                <Param name="Matrix" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CHISQUARE" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Probabiity Density).">
+                <Param name="d" />
+                <Param name="x" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CHISQUARE_CDF" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Probabiity Cumulative).">
+                <Param name="d" />
+                <Param name="x" />
+                <Param name="[x2]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CHISQUARE_ICDF" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Probabiity Inverse).">
+                <Param name="d" />
+                <Param name="p" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="cholesky" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Matrix Advanced).">
+                <Param name="matrix" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="CHOOSE" func="yes">
             <Overload retVal="" descr="Okno wyboru. Zmienna dostaje numer opcji (1, 2, …) albo 0 po anulowaniu. Opcje można podać jako listę.">
                 <Param name="zmienna" />
@@ -560,8 +3044,45 @@
                 <Param name="…" />
             </Overload>
         </KeyWord>
+        <KeyWord name="CHOOSEDATE" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Program Cmds I/O).">
+                <Param name="var" />
+                <Param name="[&quot;title&quot;]" />
+                <Param name="[min_date]" />
+                <Param name="[max_date]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Ci" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Special).">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="circle" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Curve).">
+                <Param name="Point1" />
+                <Param name="Point2" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="circumcircle" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Curve).">
+                <Param name="Point1" />
+                <Param name="Point2" />
+                <Param name="Point3" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ClearCell" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Spreadsheet).">
+            </Overload>
+        </KeyWord>
         <KeyWord name="CoefDet" />
+        <KeyWord name="Col" />
+        <KeyWord name="COLNORM" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Matrix Basic).">
+                <Param name="matrix" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="COLOR" />
+        <KeyWord name="ColWidth" />
         <KeyWord name="COMB" func="yes">
             <Overload retVal="" descr="Liczba kombinacji.">
                 <Param name="n" />
@@ -572,6 +3093,56 @@
             <Overload retVal="" descr="Łączy listy (także teksty i wektory).">
                 <Param name="lista1" />
                 <Param name="lista2" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="COND" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Matrix Basic).">
+                <Param name="matrix" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Conf" />
+        <KeyWord name="ConfT1mean" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Spreadsheet / Toolbox App Inference).">
+                <Param name="input_list" />
+                <Param name="[&quot;configuration&quot;]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ConfT2mean" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Spreadsheet / Toolbox App Inference).">
+                <Param name="input_list" />
+                <Param name="[&quot;configuration&quot;]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ConfZ1mean" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Spreadsheet / Toolbox App Inference).">
+                <Param name="input_list" />
+                <Param name="[&quot;configuration&quot;]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ConfZ1prop" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Spreadsheet / Toolbox App Inference).">
+                <Param name="input_list" />
+                <Param name="[&quot;configuration&quot;]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ConfZ2mean" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Spreadsheet / Toolbox App Inference).">
+                <Param name="input_list" />
+                <Param name="[&quot;configuration&quot;]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ConfZ2prop" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Spreadsheet / Toolbox App Inference).">
+                <Param name="SuccCount1" />
+                <Param name="SuccCount2" />
+                <Param name="SampSize1" />
+                <Param name="SampSize2" />
+                <Param name="ConfLevel" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="conic" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Curve).">
+                <Param name="Expr" />
             </Overload>
         </KeyWord>
         <KeyWord name="CONJ" func="yes">
@@ -588,7 +3159,18 @@
                 <Param name="jednostka_docelowa" />
             </Overload>
         </KeyWord>
-        <KeyWord name="Corr" />
+        <KeyWord name="coordinates" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Cartesian).">
+                <Param name="Point" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CopyVar" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Var1" />
+                <Param name="Var2" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="corr" />
         <KeyWord name="COS" func="yes">
             <Overload retVal="" descr="Cosinus (tryb kątów: HAngle).">
                 <Param name="x" />
@@ -640,7 +3222,15 @@
         <KeyWord name="D7" />
         <KeyWord name="D8" />
         <KeyWord name="D9" />
+        <KeyWord name="DataType" />
         <KeyWord name="Date" />
+        <KeyWord name="Date360" />
+        <KeyWord name="DATEADD" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Program Cmds More).">
+                <Param name="Date" />
+                <Param name="NbDays" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="DateDays" func="yes">
             <Overload retVal="" descr="Liczba dni między datami w formacie RRRR.MMDD.">
                 <Param name="data1" />
@@ -651,6 +3241,22 @@
         <KeyWord name="DateDiff" />
         <KeyWord name="DateOne" />
         <KeyWord name="DateTwo" />
+        <KeyWord name="DAYOFWEEK" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Program Cmds More).">
+                <Param name="Date" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="DDAYS" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Program Cmds More).">
+                <Param name="Date1" />
+                <Param name="Date2" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="DEBUG" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="ProgramName(arguments)" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="DEFAULT" />
         <KeyWord name="DelAFiles" func="yes">
             <Overload retVal="" descr="Usuwa plik aplikacji.">
@@ -673,6 +3279,7 @@
                 <Param name="n_lub_&quot;nazwa&quot;" />
             </Overload>
         </KeyWord>
+        <KeyWord name="DelInstruction" />
         <KeyWord name="DELROW" func="yes">
             <Overload retVal="" descr="Usuwa wiersz.">
                 <Param name="macierz" />
@@ -695,6 +3302,12 @@
             </Overload>
         </KeyWord>
         <KeyWord name="DF" />
+        <KeyWord name="DFerr" />
+        <KeyWord name="diag" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Matrix Advanced).">
+                <Param name="list" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="DIFFERENCE" func="yes">
             <Overload retVal="" descr="Elementy, które nie są wspólne.">
                 <Param name="lista1" />
@@ -720,6 +3333,18 @@
                 <Param name="w" />
                 <Param name="h" />
                 <Param name="[kolor]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Dirac" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Real" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="DiscPayback" />
+        <KeyWord name="distance" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Measure).">
+                <Param name="Point1" />
+                <Param name="Point2" />
             </Overload>
         </KeyWord>
         <KeyWord name="Dividend" />
@@ -764,7 +3389,14 @@
                 <Param name="&quot;e6&quot;" />
             </Overload>
         </KeyWord>
-        <KeyWord name="E" />
+        <KeyWord name="DrawSlp" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="a" />
+                <Param name="b" />
+                <Param name="m" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="e" />
         <KeyWord name="E0" />
         <KeyWord name="E1" />
         <KeyWord name="E2" />
@@ -787,7 +3419,13 @@
                 <Param name="[tylko_odczyt]" />
             </Overload>
         </KeyWord>
+        <KeyWord name="EEX" />
         <KeyWord name="EffInt" />
+        <KeyWord name="Ei" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Special).">
+                <Param name="x" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="EIGENVAL" func="yes">
             <Overload retVal="" descr="Wartości własne.">
                 <Param name="macierz" />
@@ -798,12 +3436,54 @@
                 <Param name="macierz" />
             </Overload>
         </KeyWord>
+        <KeyWord name="element" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Point).">
+                <Param name="Object" />
+                <Param name="Real" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ellipse" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Curve).">
+                <Param name="Point1" />
+                <Param name="Point2" />
+                <Param name="Point3" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="ELSE" />
         <KeyWord name="END" />
         <KeyWord name="Entry" />
+        <KeyWord name="EQ" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math List).">
+                <Param name="object_1" />
+                <Param name="object2" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="equation" />
+        <KeyWord name="erf" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Special).">
+                <Param name="x" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="erfc" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Special).">
+                <Param name="x" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="EVAL" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Program Cmds More).">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="EVALLIST" func="yes">
             <Overload retVal="" descr="Oblicza każdy element listy.">
                 <Param name="lista" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="excircle" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Curve).">
+                <Param name="Point1" />
+                <Param name="Point2" />
+                <Param name="Point3" />
             </Overload>
         </KeyWord>
         <KeyWord name="EXECON" func="yes">
@@ -865,12 +3545,44 @@
                 <Param name="[alfa]" />
             </Overload>
         </KeyWord>
+        <KeyWord name="FinType" />
         <KeyWord name="FirstAsset" />
         <KeyWord name="FirstDateAsset" />
+        <KeyWord name="FISHER" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Probabiity Density).">
+                <Param name="n" />
+                <Param name="d" />
+                <Param name="x" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="FISHER_CDF" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Probabiity Cumulative).">
+                <Param name="n" />
+                <Param name="d" />
+                <Param name="x" />
+                <Param name="[x2]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="FISHER_ICDF" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Probabiity Inverse).">
+                <Param name="n" />
+                <Param name="d" />
+                <Param name="p" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="FixedCost" />
         <KeyWord name="FLOOR" func="yes">
             <Overload retVal="" descr="Największa liczba całkowita ≤ x.">
                 <Param name="x" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="FMRR" />
+        <KeyWord name="FNROOT" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Arithmetic).">
+                <Param name="Expr" />
+                <Param name="Var" />
+                <Param name="[guess]" />
+                <Param name="[guess2]" />
             </Overload>
         </KeyWord>
         <KeyWord name="FOR" />
@@ -882,6 +3594,7 @@
         <KeyWord name="FREEZE" />
         <KeyWord name="FROM" />
         <KeyWord name="FV" />
+        <KeyWord name="Fval" />
         <KeyWord name="FZ0" />
         <KeyWord name="FZ1" />
         <KeyWord name="FZ2" />
@@ -903,6 +3616,25 @@
         <KeyWord name="G7" />
         <KeyWord name="G8" />
         <KeyWord name="G9" />
+        <KeyWord name="Gamma" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Special).">
+                <Param name="Real" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="GEOMETRIC" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Probabiity Density).">
+                <Param name="p" />
+                <Param name="x" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="geometric_cdf" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Probabiity Cumulative).">
+                <Param name="p" />
+                <Param name="x" />
+                <Param name="[x2]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="geometric_icdf" />
         <KeyWord name="GETBASE" func="yes">
             <Overload retVal="" descr="System liczby: 0 domyślny, 1 bin, 2 okt, 3 hex.">
                 <Param name="#n" />
@@ -926,6 +3658,12 @@
                 <Param name="[G]" />
                 <Param name="x" />
                 <Param name="y" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="GF" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Integerp" />
+                <Param name="Integern" />
             </Overload>
         </KeyWord>
         <KeyWord name="GridDots" />
@@ -962,10 +3700,27 @@
         <KeyWord name="H4Type" />
         <KeyWord name="H5" />
         <KeyWord name="H5Type" />
+        <KeyWord name="half_line" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Line).">
+                <Param name="Point1" />
+                <Param name="Point2" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="HAngle" />
         <KeyWord name="HComplex" />
         <KeyWord name="HDigits" />
+        <KeyWord name="Heaviside" />
+        <KeyWord name="hessenberg" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Matrix Advanced).">
+                <Param name="Matrix_A" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="HFormat" />
+        <KeyWord name="hilbert" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Matrix Create).">
+                <Param name="n" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="Hmax" />
         <KeyWord name="Hmin" />
         <KeyWord name="HMS→" func="yes">
@@ -973,6 +3728,14 @@
                 <Param name="wartość" />
             </Overload>
         </KeyWord>
+        <KeyWord name="homothety" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Transform).">
+                <Param name="Point" />
+                <Param name="Realk" />
+                <Param name="Object" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="HSeparator" />
         <KeyWord name="HVars" func="yes">
             <Overload retVal="" descr="Zmienne użytkownika Home. HVars(&quot;nazwa&quot;) := wartość tworzy zmienną.">
                 <Param name="[n_lub_&quot;nazwa&quot;]" />
@@ -980,7 +3743,51 @@
             </Overload>
         </KeyWord>
         <KeyWord name="Hwidth" />
-        <KeyWord name="i" />
+        <KeyWord name="hyperbola" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Curve).">
+                <Param name="Point1" />
+                <Param name="Point2" />
+                <Param name="Point3" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="HypT1mean" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Spreadsheet / Toolbox App Inference).">
+                <Param name="input_list" />
+                <Param name="[&quot;configuration&quot;]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="HypT2mean" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Spreadsheet / Toolbox App Inference).">
+                <Param name="input_list" />
+                <Param name="[&quot;configuration&quot;]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="HypZ1mean" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Spreadsheet / Toolbox App Inference).">
+                <Param name="input_list" />
+                <Param name="[&quot;configuration&quot;]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="HypZ1prop" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Spreadsheet / Toolbox App Inference).">
+                <Param name="input_list" />
+                <Param name="[&quot;configuration&quot;]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="HypZ2mean" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Spreadsheet / Toolbox App Inference).">
+                <Param name="input_list" />
+                <Param name="[&quot;configuration&quot;]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="HypZ2prop" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Spreadsheet / Toolbox App Inference).">
+                <Param name="Input_List" />
+                <Param name="[&quot;configuration&quot;]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="I" />
+        <KeyWord name="ICON" />
         <KeyWord name="IDENMAT" func="yes">
             <Overload retVal="" descr="Macierz jednostkowa n×n.">
                 <Param name="n" />
@@ -988,6 +3795,18 @@
         </KeyWord>
         <KeyWord name="IF" />
         <KeyWord name="IFERR" />
+        <KeyWord name="IFTE" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+                <Param name="TrueClause" />
+                <Param name="FalseClause" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ihermite" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Matrix Advanced).">
+                <Param name="Matrix_A" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="IM" func="yes">
             <Overload retVal="" descr="Część urojona.">
                 <Param name="z" />
@@ -1000,6 +3819,14 @@
         <KeyWord name="ImageXmin" />
         <KeyWord name="ImageYmax" />
         <KeyWord name="ImageYmin" />
+        <KeyWord name="incircle" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Curve).">
+                <Param name="Point1" />
+                <Param name="Point2" />
+                <Param name="Point3" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="InfType" />
         <KeyWord name="INPUT" func="yes">
             <Overload retVal="" descr="Formularz do wprowadzania danych. Zwraca 1 po OK i 0 po Cancel. Zmienna może być listą, a element listy {zm,1} to checkbox, {zm,{opcje}} lista wyboru, {zm,[typy],{poz}} pole z typem i pozycją.">
                 <Param name="zmienne" />
@@ -1010,12 +3837,20 @@
                 <Param name="[początkowe]" />
             </Overload>
         </KeyWord>
+        <KeyWord name="INSERT" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math List).">
+                <Param name="object1" />
+                <Param name="index" />
+                <Param name="object2" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="INSTRING" func="yes">
             <Overload retVal="" descr="Pozycja pierwszego wystąpienia, 0 gdy brak.">
                 <Param name="tekst" />
                 <Param name="szukany" />
             </Overload>
         </KeyWord>
+        <KeyWord name="Instruction" />
         <KeyWord name="IntConvCPYR" func="yes">
             <Overload retVal="" descr="Liczba okresów kapitalizacji w roku.">
                 <Param name="nominalna" />
@@ -1040,6 +3875,14 @@
             <Overload retVal="" descr="Elementy wspólne.">
                 <Param name="lista1" />
                 <Param name="lista2" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="INVERSE" />
+        <KeyWord name="inversion" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Transform).">
+                <Param name="Point1" />
+                <Param name="Realk" />
+                <Param name="Point2" />
             </Overload>
         </KeyWord>
         <KeyWord name="INVERT" func="yes">
@@ -1079,21 +3922,92 @@
                 <Param name="b" />
             </Overload>
         </KeyWord>
+        <KeyWord name="IRR" />
         <KeyWord name="ISCHECK" func="yes">
             <Overload retVal="" descr="1, jeśli równanie nr n jest zaznaczone.">
                 <Param name="n" />
             </Overload>
         </KeyWord>
-        <KeyWord name="ISECT" func="yes">
-            <Overload retVal="" descr="Punkt przecięcia dwóch funkcji (Function). (Opis w instrukcji wyd. 2; w wyd. 3 pominięty w menu App, funkcja nadal istnieje.)">
-                <Param name="Fn" />
-                <Param name="Fm" />
-                <Param name="start" />
-            </Overload>
-        </KeyWord>
+        <KeyWord name="Isect" />
         <KeyWord name="ISKEYDOWN" func="yes">
             <Overload retVal="" descr="1, jeśli klawisz o danym kodzie jest w tej chwili wciśnięty.">
                 <Param name="kod" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ismith" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Matrix Advanced).">
+                <Param name="Matrix_A" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="isopolygon" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Polygon).">
+                <Param name="Point1" />
+                <Param name="Point2" />
+                <Param name="Realn" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="is_collinear" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Tests).">
+                <Param name="Point1" />
+                <Param name="Point2" />
+                <Param name="..." />
+                <Param name="Pointn" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="is_concyclic" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Tests).">
+                <Param name="Point1" />
+                <Param name="Point2" />
+                <Param name="Point3" />
+                <Param name="Point4" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="is_conjugate" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Tests).">
+                <Param name="Circle" />
+                <Param name="Point1" />
+                <Param name="Point2" />
+                <Param name="[Point3]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="is_element" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Tests).">
+                <Param name="Point" />
+                <Param name="Object" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="is_equilateral" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Tests).">
+                <Param name="Point1" />
+                <Param name="Point2" />
+                <Param name="Point3" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="is_isosceles" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Tests).">
+                <Param name="Point1" />
+                <Param name="Point2" />
+                <Param name="Point3" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="is_orthogonal" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Tests).">
+                <Param name="Line1" />
+                <Param name="Line2" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="is_parallelogram" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Tests).">
+                <Param name="Point1" />
+                <Param name="Point2" />
+                <Param name="Point3" />
+                <Param name="Point4" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="is_perpendicular" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Tests).">
+                <Param name="Line1" />
+                <Param name="Line2" />
             </Overload>
         </KeyWord>
         <KeyWord name="ITERATE" func="yes">
@@ -1105,6 +4019,17 @@
             </Overload>
         </KeyWord>
         <KeyWord name="J" />
+        <KeyWord name="jordan" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Matrix Advanced).">
+                <Param name="Matrix" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="JordanBlock" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Matrix Create).">
+                <Param name="Expr" />
+                <Param name="n" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="K" />
         <KeyWord name="KEY" />
         <KeyWord name="KeyAxes" />
@@ -1112,7 +4037,17 @@
         <KeyWord name="L" />
         <KeyWord name="L0" />
         <KeyWord name="L1" />
+        <KeyWord name="l1norm" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Matrix Vector).">
+                <Param name="Vector" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="L2" />
+        <KeyWord name="l2norm" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Matrix Vector).">
+                <Param name="Vector" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="L3" />
         <KeyWord name="L4" />
         <KeyWord name="L5" />
@@ -1154,6 +4089,23 @@
                 <Param name="m" />
             </Overload>
         </KeyWord>
+        <KeyWord name="LineHorz" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Exp" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="LineTan" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="f(x)" />
+                <Param name="[Var]" />
+                <Param name="Value" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="LineVert" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="LINE_P" func="yes">
             <Overload retVal="" descr="Linia we współrzędnych pikselowych. Forma zaawansowana: LINE_P([G], punkty, linie, macierz_obrotu | {…}, [zstring]).">
                 <Param name="[G]" />
@@ -1164,11 +4116,49 @@
                 <Param name="[kolor]" />
             </Overload>
         </KeyWord>
+        <KeyWord name="LinRegrTConfInt" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Inference).">
+                <Param name="List1" />
+                <Param name="List2" />
+                <Param name="C-value" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="LinRegrTConfSlope" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Inference).">
+                <Param name="List1" />
+                <Param name="List2" />
+                <Param name="C-value" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="LinRegrTMeanResp" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Inference).">
+                <Param name="List1" />
+                <Param name="List2" />
+                <Param name="X_value" />
+                <Param name="C-value" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="LinRegrTPredInt" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Inference).">
+                <Param name="List1" />
+                <Param name="List2" />
+                <Param name="X-value" />
+                <Param name="C-value" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="LinRegrTTest" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Inference).">
+                <Param name="List1" />
+                <Param name="List2" />
+                <Param name="AltHyp" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="LinSolve" func="yes">
             <Overload retVal="" descr="Rozwiązuje układ z macierzy rozszerzonej (Linear Solver).">
                 <Param name="macierz" />
             </Overload>
         </KeyWord>
+        <KeyWord name="ListToMat" />
         <KeyWord name="LN" func="yes">
             <Overload retVal="" descr="Logarytm naturalny.">
                 <Param name="x" />
@@ -1180,6 +4170,13 @@
             </Overload>
         </KeyWord>
         <KeyWord name="LOCAL" />
+        <KeyWord name="locus" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Curve).">
+                <Param name="Point" />
+                <Param name="Element" />
+                <Param name="[tstep=Value]" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="LOG" func="yes">
             <Overload retVal="" descr="Logarytm dziesiętny.">
                 <Param name="x" />
@@ -1190,6 +4187,12 @@
                 <Param name="tekst" />
             </Overload>
         </KeyWord>
+        <KeyWord name="LQ" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Matrix Faktorize).">
+                <Param name="matrix" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="LSolution" />
         <KeyWord name="LSQ" func="yes">
             <Overload retVal="" descr="Rozwiązanie metodą najmniejszych kwadratów.">
                 <Param name="A" />
@@ -1235,6 +4238,7 @@
                 <Param name="x" />
             </Overload>
         </KeyWord>
+        <KeyWord name="Margin" />
         <KeyWord name="Markup" />
         <KeyWord name="MatDate" />
         <KeyWord name="MAX" func="yes">
@@ -1244,17 +4248,37 @@
                 <Param name="…" />
             </Overload>
         </KeyWord>
+        <KeyWord name="maxnorm" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Matrix Vector).">
+                <Param name="Vector" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="MAXREAL" />
         <KeyWord name="MaxVal" />
         <KeyWord name="MeanX" />
         <KeyWord name="MeanY" />
+        <KeyWord name="Mean₁" />
+        <KeyWord name="Mean₂" />
+        <KeyWord name="median_line" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Line).">
+                <Param name="Point1" />
+                <Param name="Point2" />
+                <Param name="Point3" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="MedVal" />
+        <KeyWord name="MEMORY" />
         <KeyWord name="Method" />
         <KeyWord name="MID" func="yes">
             <Overload retVal="" descr="n znaków od pozycji; bez n do końca tekstu.">
                 <Param name="tekst" />
                 <Param name="pozycja" />
                 <Param name="[n]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="midpoint" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Point).">
+                <Param name="Segment" />
             </Overload>
         </KeyWord>
         <KeyWord name="MIN" func="yes">
@@ -1266,6 +4290,13 @@
         </KeyWord>
         <KeyWord name="MINREAL" />
         <KeyWord name="MinVal" />
+        <KeyWord name="MIRR" />
+        <KeyWord name="mkisom" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Matrix Create).">
+                <Param name="Vect" />
+                <Param name="(Sign(1) or -1)" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="MKSA" func="yes">
             <Overload retVal="" descr="Zamienia na jednostki podstawowe SI.">
                 <Param name="wartość" />
@@ -1278,6 +4309,8 @@
                 <Param name="[indeks]" />
             </Overload>
         </KeyWord>
+        <KeyWord name="MS" />
+        <KeyWord name="MSerr" />
         <KeyWord name="MSGBOX" func="yes">
             <Overload retVal="" descr="Okno komunikatu. Zwraca 1 po OK i 0 po Cancel.">
                 <Param name="wyrażenie" />
@@ -1287,16 +4320,36 @@
         <KeyWord name="N" />
         <KeyWord name="NbItem" />
         <KeyWord name="NbPmt" />
+        <KeyWord name="NEG" />
         <KeyWord name="NewValue" />
+        <KeyWord name="NFV" />
         <KeyWord name="Nmax" />
         <KeyWord name="Nmin" />
         <KeyWord name="NomInt" />
+        <KeyWord name="NORMALD" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Probabiity Density).">
+                <Param name="[μ, σ,] x" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="NORMALD_CDF" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Probabiity Cumulative).">
+                <Param name="[μ, σ,] x" />
+                <Param name="[x2]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="NORMALD_ICDF" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Probabiity Inverse).">
+                <Param name="[μ, σ,] p" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="NOT" />
         <KeyWord name="Notes" func="yes">
             <Overload retVal="" descr="Notatki. Notes(&quot;nazwa&quot;) := &quot;tekst&quot; tworzy lub nadpisuje notatkę, pusty tekst ją usuwa.">
                 <Param name="[n_lub_&quot;nazwa&quot;]" />
             </Overload>
         </KeyWord>
+        <KeyWord name="NPV" />
+        <KeyWord name="NTHROOT" />
         <KeyWord name="NumIndep" />
         <KeyWord name="NumStart" />
         <KeyWord name="NumStep" />
@@ -1308,10 +4361,45 @@
         <KeyWord name="NumYStep" />
         <KeyWord name="NumYZoom" />
         <KeyWord name="NumZoom" />
+        <KeyWord name="NUS" />
+        <KeyWord name="n₁" />
+        <KeyWord name="n₂" />
         <KeyWord name="O" />
+        <KeyWord name="ObsList" />
+        <KeyWord name="ObsMat" />
         <KeyWord name="OldValue" />
         <KeyWord name="OR" />
+        <KeyWord name="ordinate" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Cartesian).">
+                <Param name="Point" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="P" />
+        <KeyWord name="parabola" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Curve).">
+                <Param name="Point" />
+                <Param name="Line" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="parallel" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Line).">
+                <Param name="Point" />
+                <Param name="Line" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="parallelogram" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Polygon).">
+                <Param name="Point1" />
+                <Param name="Point2" />
+                <Param name="Point3" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="parameq" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Cartesian).">
+                <Param name="Obj" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Payback" />
         <KeyWord name="PercentChange" func="yes">
             <Overload retVal="" descr="Zmiana procentowa.">
                 <Param name="stara" />
@@ -1336,13 +4424,44 @@
                 <Param name="nowa" />
             </Overload>
         </KeyWord>
+        <KeyWord name="perimeter" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Measure).">
+                <Param name="Polygon" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="PERM" func="yes">
             <Overload retVal="" descr="Liczba permutacji (wariacji bez powtórzeń).">
                 <Param name="n" />
                 <Param name="k" />
             </Overload>
         </KeyWord>
+        <KeyWord name="perpendicular" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Line).">
+                <Param name="Point" />
+                <Param name="Line" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="perpen_bisector" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Line).">
+                <Param name="Segment" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="PI" />
+        <KeyWord name="PIECEWISE" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="test1" />
+                <Param name="case1" />
+                <Param name="...[, test8]" />
+                <Param name="case8" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="pivot" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Matrix Basic).">
+                <Param name="matrix" />
+                <Param name="n" />
+                <Param name="m" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="PIXOFF" func="yes">
             <Overload retVal="" descr="Ustawia piksel na biały (kartezjańskie).">
                 <Param name="[G]" />
@@ -1374,7 +4493,115 @@
             </Overload>
         </KeyWord>
         <KeyWord name="PixSize" />
+        <KeyWord name="plotfield" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Plot / Toolbox CAS Plot).">
+                <Param name="Expr" />
+                <Param name="VectorVar" />
+                <Param name="[xstep=Val, ystep=Val, Option]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="plotfunc" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Plot / Toolbox CAS Plot).">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="plotimplicit" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Plot / Toolbox CAS Plot).">
+                <Param name="Expr" />
+                <Param name="[XIntrvl, YIntrvl]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="plotlist" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Plot).">
+                <Param name="Matrix" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="PlotMethod" />
+        <KeyWord name="plotode" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Plot / Toolbox CAS Plot).">
+                <Param name="Expr" />
+                <Param name="[Var1, Var2, ...]" />
+                <Param name="[Val1, Val2. ...]" />
+                <Param name="[tstep=Value]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="plotparam" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Plot / Toolbox CAS Plot).">
+                <Param name="f(Var)+i*g(Var)" />
+                <Param name="Var= Interval" />
+                <Param name="[tstep=Value]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="plotpolar" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Plot / Toolbox CAS Plot).">
+                <Param name="Expr" />
+                <Param name="Var=Interval" />
+                <Param name="[Step]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="plotseq" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Plot / Toolbox CAS Plot).">
+                <Param name="f(Var)" />
+                <Param name="Var={Start, Xmin, Xmax}" />
+                <Param name="Integern" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="PMT" />
+        <KeyWord name="point" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Point).">
+                <Param name="Real1" />
+                <Param name="Real2" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="POISSON" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Probabiity Density).">
+                <Param name="μ" />
+                <Param name="k" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="POISSON_CDF" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Probabiity Cumulative).">
+                <Param name="μ" />
+                <Param name="k" />
+                <Param name="[k2]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="POISSON_ICDF" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Probabiity Inverse).">
+                <Param name="μ" />
+                <Param name="p" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="polar_coordinates" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Cartesian).">
+                <Param name="Point" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="POLYCOEF" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Vector" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="POLYEVAL" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Vector" />
+                <Param name="Value" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="polygon" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Polygon).">
+                <Param name="Point1" />
+                <Param name="Point2" />
+                <Param name="…" />
+                <Param name="Pointn" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="POLYROOT" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Poly" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Pooled" />
         <KeyWord name="POS" func="yes">
             <Overload retVal="" descr="Pozycja pierwszego wystąpienia, 0 gdy brak.">
                 <Param name="lista" />
@@ -1406,10 +4633,23 @@
             </Overload>
         </KeyWord>
         <KeyWord name="Prob" />
+        <KeyWord name="ProbList" />
         <KeyWord name="Profit" />
         <KeyWord name="Programs" func="yes">
             <Overload retVal="" descr="Kod źródłowy programów jako tekst. Programs(&quot;nazwa&quot;) := &quot;kod&quot; tworzy program, pusty tekst go usuwa.">
                 <Param name="[n_lub_&quot;nazwa&quot;]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="projection" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Transform).">
+                <Param name="Curve" />
+                <Param name="Point" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Psi" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Special).">
+                <Param name="Real(a)" />
+                <Param name="Intg(n)" />
             </Overload>
         </KeyWord>
         <KeyWord name="PV" />
@@ -1422,6 +4662,12 @@
         <KeyWord name="Q" />
         <KeyWord name="Q1" />
         <KeyWord name="Q3" />
+        <KeyWord name="QPI" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="expr" />
+                <Param name="[digits]" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="QR" func="yes">
             <Overload retVal="" descr="Rozkład QR.">
                 <Param name="macierz" />
@@ -1434,6 +4680,14 @@
                 <Param name="c" />
             </Overload>
         </KeyWord>
+        <KeyWord name="quadrilateral" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Polygon).">
+                <Param name="Point1" />
+                <Param name="Point2" />
+                <Param name="Point3" />
+                <Param name="Point4" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="QuadSolve" func="yes">
             <Overload retVal="" descr="Rzeczywiste pierwiastki równania ax²+bx+c=0 (wyd. 3).">
                 <Param name="a" />
@@ -1442,6 +4696,13 @@
             </Overload>
         </KeyWord>
         <KeyWord name="Quantity" />
+        <KeyWord name="QUOTE" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="expression" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Q₁" />
+        <KeyWord name="Q₃" />
         <KeyWord name="R" />
         <KeyWord name="R0" />
         <KeyWord name="R1" />
@@ -1453,6 +4714,11 @@
         <KeyWord name="R7" />
         <KeyWord name="R8" />
         <KeyWord name="R9" />
+        <KeyWord name="radius" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Measure).">
+                <Param name="Circle" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="RANDINT" func="yes">
             <Overload retVal="" descr="Losowa liczba całkowita z [a,b] (lub z [0,b]); z n: lista n liczb.">
                 <Param name="[n]" />
@@ -1466,6 +4732,12 @@
                 <Param name="[m]" />
                 <Param name="[dolna]" />
                 <Param name="[górna]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="RANDNORM" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Probabiity Random).">
+                <Param name="[μ]" />
+                <Param name="[σ]" />
             </Overload>
         </KeyWord>
         <KeyWord name="RANDOM" func="yes">
@@ -1490,6 +4762,12 @@
             </Overload>
         </KeyWord>
         <KeyWord name="Recenter" />
+        <KeyWord name="reciprocation" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Transform).">
+                <Param name="Circle" />
+                <Param name="[Obj1, Obj2,...Objn]" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="RECT" func="yes">
             <Overload retVal="" descr="Prostokąt we współrzędnych kartezjańskich. RECT() czyści ekran na biało, RECT(kolor) wypełnia ekran kolorem.">
                 <Param name="[G]" />
@@ -1501,6 +4779,7 @@
                 <Param name="[wypełnienie]" />
             </Overload>
         </KeyWord>
+        <KeyWord name="rectangle" />
         <KeyWord name="RECT_P" func="yes">
             <Overload retVal="" descr="Prostokąt we współrzędnych pikselowych. Argumenty opcjonalne wypełniane są od lewej.">
                 <Param name="[G]" />
@@ -1518,6 +4797,19 @@
                 <Param name="{w, k}" />
             </Overload>
         </KeyWord>
+        <KeyWord name="reflection" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Transform).">
+                <Param name="Line" />
+                <Param name="Object" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="REGRS" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Spreadsheet).">
+                <Param name="Input_range" />
+                <Param name="[model]" />
+                <Param name="[&quot;configuration&quot;]" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="REPEAT" />
         <KeyWord name="REPLACE" func="yes">
             <Overload retVal="" descr="Nadpisuje fragment tekstu, listy, macierzy lub grafiki od pozycji start.">
@@ -1529,6 +4821,13 @@
         <KeyWord name="Resid" func="yes">
             <Overload retVal="" descr="Reszty dopasowania.">
                 <Param name="[Sn]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="residue" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Statistics 2Var).">
+                <Param name="Expr" />
+                <Param name="Var" />
+                <Param name="Value" />
             </Overload>
         </KeyWord>
         <KeyWord name="Result" />
@@ -1546,24 +4845,51 @@
                 <Param name="[alfa]" />
             </Overload>
         </KeyWord>
+        <KeyWord name="rhombus" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Polygon).">
+                <Param name="Point1" />
+                <Param name="Point2" />
+                <Param name="Angle" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="RIGHT" func="yes">
             <Overload retVal="" descr="Ostatnie n znaków.">
                 <Param name="tekst" />
                 <Param name="n" />
             </Overload>
         </KeyWord>
+        <KeyWord name="right_triangle" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Polygon).">
+                <Param name="Point1" />
+                <Param name="Point2" />
+                <Param name="Realk" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="RiskFree" />
-        <KeyWord name="Root" />
+        <KeyWord name="ROOT" func="yes">
+            <Overload retVal="" descr="Miejsce zerowe funkcji Fn najbliższe punktu start (Function). (Opis w instrukcji wyd. 2; w wyd. 3 pominięty w menu App, funkcja nadal istnieje.)">
+                <Param name="Fn" />
+                <Param name="start" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="ROTATE" func="yes">
             <Overload retVal="" descr="Przesunięcie cykliczne: n&gt;0 w lewo, n&lt;0 w prawo.">
                 <Param name="tekst" />
                 <Param name="n" />
             </Overload>
         </KeyWord>
+        <KeyWord name="rotation" />
         <KeyWord name="ROUND" func="yes">
             <Overload retVal="" descr="Zaokrąglenie do n miejsc po przecinku.">
                 <Param name="x" />
                 <Param name="n" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Row" />
+        <KeyWord name="RowHeight" />
+        <KeyWord name="ROWNORM" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Matrix Basic).">
+                <Param name="matrix" />
             </Overload>
         </KeyWord>
         <KeyWord name="RREF" func="yes">
@@ -1617,6 +4943,11 @@
                 <Param name="w2" />
             </Overload>
         </KeyWord>
+        <KeyWord name="SCHUR" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Matrix Faktorize).">
+                <Param name="matrix" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="sCov" />
         <KeyWord name="ScrollText" />
         <KeyWord name="SEC" func="yes">
@@ -1624,8 +4955,15 @@
                 <Param name="x" />
             </Overload>
         </KeyWord>
+        <KeyWord name="segment" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Line).">
+                <Param name="Point1" />
+                <Param name="Point2" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="SemiAnnual" />
         <KeyWord name="SeqPlot" />
+        <KeyWord name="SERIAL" />
         <KeyWord name="serrInter" />
         <KeyWord name="serrLine" />
         <KeyWord name="serrSlope" />
@@ -1668,14 +5006,39 @@
                 <Param name="Dn" />
             </Overload>
         </KeyWord>
+        <KeyWord name="Si" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Special).">
+                <Param name="Expr" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="SideA" />
         <KeyWord name="SideB" />
         <KeyWord name="SideC" />
+        <KeyWord name="SIGN" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Arithmetic Complex).">
+                <Param name="value" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="Signed" />
         <KeyWord name="SignedArea" />
+        <KeyWord name="similarity" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Transform).">
+                <Param name="Point" />
+                <Param name="Realk" />
+                <Param name="Angle" />
+                <Param name="Object" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="SIN" func="yes">
             <Overload retVal="" descr="Sinus (tryb kątów: HAngle).">
                 <Param name="x" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="single_inter" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Point).">
+                <Param name="Curve1" />
+                <Param name="Curve2" />
+                <Param name="[Point]" />
             </Overload>
         </KeyWord>
         <KeyWord name="SINH" func="yes">
@@ -1706,6 +5069,7 @@
                 <Param name="f" />
             </Overload>
         </KeyWord>
+        <KeyWord name="Solve2×2" />
         <KeyWord name="Solve3x3" func="yes">
             <Overload retVal="" descr="Układ 3×3 (Linear Solver).">
                 <Param name="a" />
@@ -1722,11 +5086,29 @@
                 <Param name="l" />
             </Overload>
         </KeyWord>
+        <KeyWord name="Solve3×3" />
         <KeyWord name="SORT" func="yes">
             <Overload retVal="" descr="Sortuje rosnąco.">
                 <Param name="lista" />
             </Overload>
         </KeyWord>
+        <KeyWord name="SPECNORM" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Matrix Basic).">
+                <Param name="matrix" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="SPECRAD" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Matrix Basic).">
+                <Param name="matrix" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="square" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Polygon).">
+                <Param name="Point1" />
+                <Param name="Point2" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="SS" />
         <KeyWord name="SSA" func="yes">
             <Overload retVal="" descr="Trójkąt z dwóch boków i kąta nieprzyległego.">
                 <Param name="bok" />
@@ -1734,6 +5116,7 @@
                 <Param name="kąt" />
             </Overload>
         </KeyWord>
+        <KeyWord name="SSerr" />
         <KeyWord name="SSS" func="yes">
             <Overload retVal="" descr="Trójkąt z trzech boków (Triangle Solver).">
                 <Param name="a" />
@@ -1754,11 +5137,25 @@
                 <Param name="[przerysuj]" />
             </Overload>
         </KeyWord>
+        <KeyWord name="STAT1" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Spreadsheet).">
+                <Param name="Input_Range" />
+                <Param name="[Mode]" />
+                <Param name="[&quot;Configuration&quot;]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="STAT2" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Spreadsheet).">
+                <Param name="Input_Range" />
+                <Param name="[Mode]" />
+                <Param name="[&quot;Configuration&quot;]" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="STEP" />
         <KeyWord name="StockPrice" />
         <KeyWord name="StrikePrice" />
         <KeyWord name="STRING" func="yes">
-            <Overload retVal="" descr="Wynik jako tekst. Tryb: 1 Standard, 2 Fixed, 3 Sci, 4 Eng, 5 Floating, 6 Rounded (+7 ułamek, +14 ułamek mieszany).">
+            <Overload retVal="" descr="Wynik jako tekst (tekst dostaje cudzysłowy: STRING(&quot;ab&quot;) ma 4 znaki). Tryb: 1 Standard, 2 Fixed, 3 Sci, 4 Eng, 5 Floating, 6 Rounded (+7 ułamek, +14 ułamek mieszany).">
                 <Param name="wyrażenie" />
                 <Param name="[tryb]" />
                 <Param name="[precyzja]" />
@@ -1769,6 +5166,25 @@
         <KeyWord name="STRINGFROMID" func="yes">
             <Overload retVal="" descr="Wbudowany napis systemowy o numerze n.">
                 <Param name="n" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="STUDENT" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Probabiity Density).">
+                <Param name="d" />
+                <Param name="x" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="STUDENT_CDF" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Probabiity Cumulative).">
+                <Param name="d" />
+                <Param name="x" />
+                <Param name="[x2]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="STUDENT_ICDF" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Probabiity Inverse).">
+                <Param name="d" />
+                <Param name="p" />
             </Overload>
         </KeyWord>
         <KeyWord name="SUB" func="yes">
@@ -1798,10 +5214,26 @@
                 <Param name="cel" />
             </Overload>
         </KeyWord>
+        <KeyWord name="SUM" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Spreadsheet).">
+                <Param name="[Input]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="SUPPRESS" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="object" />
+                <Param name="index" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="Surface" />
         <KeyWord name="SVD" func="yes">
             <Overload retVal="" descr="Rozkład według wartości osobliwych.">
                 <Param name="macierz" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="SVL" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Matrix Faktorize).">
+                <Param name="matrix" />
             </Overload>
         </KeyWord>
         <KeyWord name="SWAPCOL" func="yes">
@@ -1820,10 +5252,18 @@
         </KeyWord>
         <KeyWord name="sX" />
         <KeyWord name="sY" />
+        <KeyWord name="s₁" />
+        <KeyWord name="s₂" />
         <KeyWord name="T" />
         <KeyWord name="TAN" func="yes">
             <Overload retVal="" descr="Tangens (tryb kątów: HAngle).">
                 <Param name="x" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="tangent" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Line).">
+                <Param name="Curve" />
+                <Param name="Point" />
             </Overload>
         </KeyWord>
         <KeyWord name="TANH" func="yes">
@@ -1862,6 +5302,7 @@
                 <Param name="[tło]" />
             </Overload>
         </KeyWord>
+        <KeyWord name="Theme" />
         <KeyWord name="THEN" />
         <KeyWord name="TICKS" />
         <KeyWord name="Time" />
@@ -1871,9 +5312,16 @@
         <KeyWord name="TO" />
         <KeyWord name="TOff" />
         <KeyWord name="Total" />
+        <KeyWord name="TotalCF" />
         <KeyWord name="TRACE" func="yes">
             <Overload retVal="" descr="Ślad macierzy.">
                 <Param name="macierz" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="translation" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox App Geometry Transform).">
+                <Param name="Vector" />
+                <Param name="Object" />
             </Overload>
         </KeyWord>
         <KeyWord name="TRIANGLE" func="yes">
@@ -2001,7 +5449,9 @@
                 <Param name="n" />
             </Overload>
         </KeyWord>
+        <KeyWord name="UNION" />
         <KeyWord name="UNTIL" />
+        <KeyWord name="UPART" />
         <KeyWord name="UPPER" func="yes">
             <Overload retVal="" descr="Zamienia na wielkie litery.">
                 <Param name="tekst" />
@@ -2012,6 +5462,33 @@
                 <Param name="wartość" />
             </Overload>
         </KeyWord>
+        <KeyWord name="UTPC" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Degrees" />
+                <Param name="Value" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="UTPF" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Numerator" />
+                <Param name="Denominator" />
+                <Param name="Value" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="UTPN" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Mean" />
+                <Param name="Variance" />
+                <Param name="Value" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="UTPT" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="Degrees" />
+                <Param name="Value" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="UVAL" />
         <KeyWord name="V" />
         <KeyWord name="V0" />
         <KeyWord name="V1" />
@@ -2023,7 +5500,18 @@
         <KeyWord name="V7" />
         <KeyWord name="V8" />
         <KeyWord name="V9" />
+        <KeyWord name="valuation" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje (menu: Toolbox Math Matrix Create).">
+                <Param name="Poly" />
+                <Param name="[Var]" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="VariableCost" />
+        <KeyWord name="VERSION" func="yes">
+            <Overload retVal="" descr="Z listy nazw HP; tutorial tego polecenia nie opisuje.">
+                <Param name="[n]" />
+            </Overload>
+        </KeyWord>
         <KeyWord name="VIEW" />
         <KeyWord name="Volatility" />
         <KeyWord name="W" />
@@ -2051,6 +5539,7 @@
         <KeyWord name="X7" />
         <KeyWord name="X8" />
         <KeyWord name="X9" />
+        <KeyWord name="Xlist" />
         <KeyWord name="Xmax" />
         <KeyWord name="Xmin" />
         <KeyWord name="XOR" />
@@ -2060,7 +5549,10 @@
             </Overload>
         </KeyWord>
         <KeyWord name="Xtick" />
+        <KeyWord name="Xval" />
         <KeyWord name="Xzoom" />
+        <KeyWord name="x₁" />
+        <KeyWord name="x₂" />
         <KeyWord name="Y" />
         <KeyWord name="Y0" />
         <KeyWord name="Y1" />
@@ -2073,6 +5565,7 @@
         <KeyWord name="Y8" />
         <KeyWord name="Y9" />
         <KeyWord name="YieldBond" />
+        <KeyWord name="Ylist" />
         <KeyWord name="Ymax" />
         <KeyWord name="Ymin" />
         <KeyWord name="Ytick" />
@@ -2089,10 +5582,19 @@
         <KeyWord name="Z7" />
         <KeyWord name="Z8" />
         <KeyWord name="Z9" />
+        <KeyWord name="Zeta" />
         <KeyWord name="Zmax" />
         <KeyWord name="Zmin" />
+        <KeyWord name="zoomauto" />
+        <KeyWord name="zoombox" />
+        <KeyWord name="zoomdecimal" />
+        <KeyWord name="zoomdundo" />
+        <KeyWord name="zoomin" />
+        <KeyWord name="zoominteger" />
+        <KeyWord name="zoomout" />
         <KeyWord name="Ztick" />
         <KeyWord name="Zzoom" />
+        <KeyWord name="^" />
         <KeyWord name="ΔLIST" func="yes">
             <Overload retVal="" descr="Różnice kolejnych elementów.">
                 <Param name="lista" />
@@ -2133,10 +5635,14 @@
         <KeyWord name="θmax" />
         <KeyWord name="θmin" />
         <KeyWord name="θstep" />
+        <KeyWord name="μ₀" />
         <KeyWord name="π" />
+        <KeyWord name="π₀" />
         <KeyWord name="σCov" />
         <KeyWord name="σX" />
         <KeyWord name="σY" />
+        <KeyWord name="σ₁" />
+        <KeyWord name="σ₂" />
         <KeyWord name="→HMS" func="yes">
             <Overload retVal="" descr="Liczba dziesiętna na zapis sześćdziesiątkowy (°′″).">
                 <Param name="wartość" />

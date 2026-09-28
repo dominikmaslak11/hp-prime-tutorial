@@ -348,8 +348,8 @@ std::u32string formatValue(const Value &v, const FormatSettings &fs, bool quoteS
             return v.str;
         std::u32string s = U"\"";
         for (char32_t c : v.str) {
-            if (c == U'"')
-                s += U"\"\"";
+            if (c == U'"') // the calculator shows an embedded quote as \"
+                s += U"\\\"";
             else
                 s += c;
         }

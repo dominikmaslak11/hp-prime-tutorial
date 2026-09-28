@@ -241,6 +241,11 @@ private:
 
     void checkReservedFunctionName(const Token &tok)
     {
+        if (const VariableGroup *g = db.findVariable(tok.text); g && g->fromHpList) {
+            warning(tok, "Nazwa " + u8(tok.text) + " to zmienna aplikacji HP. Lepiej wybierz inną nazwę funkcji.",
+                    "reserved-name");
+            return;
+        }
         if (db.isSystemVariable(tok.text)) {
             error(tok, "Nazwa " + u8(tok.text) + " jest zarezerwowana (zmienna systemowa). Wybierz inną nazwę funkcji.",
                   "reserved-name");
@@ -502,7 +507,8 @@ private:
             if (punct(U';'))
                 adv();
             else
-                diagAfter(Severity::Warning, endTok, "Brak średnika po END kończącym funkcję.", "missing-semicolon");
+                diagAfter(Severity::Error, endTok, "Brak średnika po END kończącym funkcję — kalkulator nie skompiluje programu.",
+                          "missing-semicolon");
         } else {
             r.functions[fi].endOffset = cur().offset;
             r.functions[fi].endLine = cur().line;
@@ -628,12 +634,16 @@ private:
 
     void parseLocalList(bool fileLevel)
     {
+        int count = 0;
         while (true) {
             if (!isIdent()) {
                 error(cur(), "Oczekiwano nazwy zmiennej po LOCAL, a jest " + describe(cur()) + ".", "expected-name");
                 return;
             }
             const Token nameTok = cur();
+            if (++count == 9 && !fileLevel)
+                error(nameTok, "Jedno polecenie LOCAL może zadeklarować najwyżej 8 zmiennych. Podziel je na dwa polecenia LOCAL.",
+                      "too-many-locals");
             adv();
             if (op(U":=")) {
                 adv();
@@ -967,7 +977,8 @@ private:
     {
         Expr e = parseUnary();
         while (true) {
-            if (op(U"*") || op(U"/") || op(U"×") || op(U"÷") || op(U".*") || op(U"./") || kw(U"MOD")) {
+            if (op(U"*") || op(U"/") || op(U"×") || op(U"÷") || op(U".*") || op(U"./") || kw(U"MOD")
+                || (cur().kind == TokenKind::Identifier && cur().upper == U"NTHROOT")) {
                 std::u32string o = cur().upper;
                 adv();
                 parseUnary();
@@ -1032,6 +1043,11 @@ private:
         }
         while (true) {
             if (punct(U'(')) {
+                if (e.kind == Expr::Call && e.tokenIndex >= 0 && !findLocal(t[e.tokenIndex].text)
+                    && !fileVarIndex.count(t[e.tokenIndex].text) && !db.findVariable(t[e.tokenIndex].text))
+                    error(cur(), "Nie można indeksować wyniku wywołania funkcji. Zapisz wynik w zmiennej: t := "
+                                     + u8(t[e.tokenIndex].text) + "(…); t(2).",
+                          "call-index");
                 parseArgs();
                 if (e.kind != Expr::Call)
                     e.kind = Expr::Other;

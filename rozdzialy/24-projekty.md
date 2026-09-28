@@ -17,7 +17,8 @@ EXPORT QREKORD := 0;              // najlepszy wynik (pamiętany między uruchom
 
 EXPORT QUIZ()
 BEGIN
-  LOCAL i, a, b, odp, dobre := 0, n := 10, t0, czas, pkt;
+  LOCAL i, a, b, odp, dobre := 0, n := 10;
+  LOCAL t0, czas, pkt;              // jedno LOCAL mieści najwyżej 8 zmiennych
   MSGBOX("Quiz: "+n+" pytań. Liczy się poprawność i czas.");
   t0 := TICKS;
   FOR i FROM 1 TO n DO

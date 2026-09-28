@@ -101,7 +101,13 @@ void printUsage()
         "      --input a;b;c            odpowiedzi dla INPUT/CHOOSE    --keys 8,8,4   klawisze dla GETKEY\n"
         "      --answers ok,cancel      odpowiedzi MSGBOX z OK/Cancel  --screen p.png zrzut ekranu\n"
         "      --max-steps N  --seed N  --json\n"
-        "  ppl guide                    przewodnik po PPL (Markdown) dla asystentów AI\n"
+        "  ppl build PLIK.hpppl [-o PLIK.hpprgm]\n"
+        "                               buduje plik programu dla Connectivity Kit / kalkulatora\n"
+        "      --no-check               nie sprawdzaj błędów   --template T.hpprgm   własny szablon\n"
+        "  ppl extract PLIK.hpprgm [-o PLIK.hpppl]\n"
+        "                               wyciąga kod źródłowy z pliku programu\n"
+        "  ppl verify PLIK.hpprgm...    sprawdza, czy plik programu da się odczytać i przebudować\n"
+        "  ppl guide                   przewodnik po PPL (Markdown) dla asystentów AI\n"
         "  ppl lsp                      serwer Language Server Protocol (stdio)\n"
         "  ppl mcp                      serwer Model Context Protocol dla agentów AI (stdio)\n"
         "  ppl gen tmgrammar PLIK.json  gramatyka TextMate dla VS Code\n"
@@ -320,6 +326,176 @@ int runRun(const std::vector<std::string> &args)
             out(r.png.empty() ? "(ekran nie był używany — nie zapisano " + screen + ")\n" : "Zapisano ekran: " + screen + "\n");
     }
     return r.ok ? 0 : 1;
+}
+
+} // namespace ppl::cli
+
+// ---------------------------------------------------------------- ppl build / extract / verify
+#include "hpprgm.h"
+
+#include <filesystem>
+
+namespace ppl::cli {
+
+namespace {
+
+std::filesystem::path u8path(const std::string &s) { return std::filesystem::path(reinterpret_cast<const char8_t *>(s.c_str())); }
+
+std::string pathString(const std::filesystem::path &p)
+{
+    auto s = p.u8string();
+    return std::string(s.begin(), s.end());
+}
+
+bool readBinary(const std::string &path, std::string &bytes)
+{
+    std::ifstream f(u8path(path), std::ios::binary);
+    if (!f)
+        return false;
+    bytes.assign(std::istreambuf_iterator<char>(f), std::istreambuf_iterator<char>());
+    return true;
+}
+
+bool validProgramName(const std::string &name)
+{
+    if (name.empty() || !((name[0] >= 'A' && name[0] <= 'Z') || (name[0] >= 'a' && name[0] <= 'z')))
+        return false;
+    for (char c : name)
+        if (!((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || (c >= '0' && c <= '9') || c == '_'))
+            return false;
+    return true;
+}
+
+} // namespace
+
+int runBuild(const std::vector<std::string> &args)
+{
+    std::string file, output, templatePath;
+    bool force = false, noCheck = false;
+    for (size_t i = 0; i < args.size(); ++i) {
+        if ((args[i] == "-o" || args[i] == "--output") && i + 1 < args.size()) output = args[++i];
+        else if (args[i] == "--template" && i + 1 < args.size()) templatePath = args[++i];
+        else if (args[i] == "--force") force = true;
+        else if (args[i] == "--no-check") noCheck = true;
+        else file = args[i];
+    }
+    if (file.empty()) {
+        err("Użycie: ppl build PROGRAM.hpppl [-o PROGRAM.hpprgm] [--template SZABLON.hpprgm] [--no-check] [--force]\n");
+        return 2;
+    }
+    std::string src, e;
+    if (!readSourceFile(file, src, &e)) {
+        err(file + ": " + e + "\n");
+        return 2;
+    }
+    if (output.empty()) {
+        std::filesystem::path in = u8path(file);
+        output = pathString(in.parent_path() / u8path(pathString(in.stem()) + ".hpprgm"));
+    }
+    BuildOptions opt;
+    opt.check = !noCheck;
+    opt.force = force;
+    opt.templatePath = templatePath;
+    opt.sourceName = file;
+    std::string log;
+    int rc = buildProgram(src, output, opt, log);
+    (rc == 0 ? out : err)(log);
+    return rc;
+}
+
+int buildProgram(const std::string &src, const std::string &output, const BuildOptions &opt, std::string &log)
+{
+    std::string e;
+    if (opt.check) {
+        AnalysisResult r = Analyzer().analyze(src);
+        if (r.errorCount() > 0) {
+            for (const auto &d : r.diagnostics)
+                if (d.severity == Severity::Error)
+                    log += opt.sourceName + ":" + std::to_string(d.line) + ":" + std::to_string(d.column) + ": error: " + d.message + "\n";
+            log += "Program ma błędy — nie zbudowano pliku (--no-check pomija sprawdzanie).\n";
+            return 1;
+        }
+    }
+    std::string progName = pathString(u8path(output).stem());
+    if (!validProgramName(progName))
+        log += "Uwaga: nazwa pliku \"" + progName + "\" nie jest poprawną nazwą programu HP Prime (litery, cyfry, _, pierwsza litera). "
+               "Kalkulator nazwie program po pliku.\n";
+    std::string templ = hpprgm::defaultTemplate();
+    if (!opt.templatePath.empty() && !readBinary(opt.templatePath, templ)) {
+        log += opt.templatePath + ": nie można odczytać szablonu\n";
+        return 2;
+    }
+    std::string outBytes;
+    if (!hpprgm::writeSource(templ, hpprgm::normalizeSource(src), outBytes, &e, opt.force)) {
+        log += "Nie można zbudować pliku: " + e + "\n";
+        return 1;
+    }
+    std::string back;
+    if (!hpprgm::readSource(outBytes, back, &e) || back != hpprgm::normalizeSource(src)) {
+        log += "Kontrola odczytu nie powiodła się — plik NIE został zapisany.\n";
+        return 1;
+    }
+    if (!writeTextFile(output, outBytes)) {
+        log += output + ": nie można zapisać\n";
+        return 2;
+    }
+    log += "Zbudowano " + output + " (" + std::to_string(outBytes.size()) + " B, program \"" + progName + "\").\n"
+           "Wyślij go na kalkulator: przeciągnij plik na kalkulator w HP Connectivity Kit.\n";
+    return 0;
+}
+
+int runExtract(const std::vector<std::string> &args)
+{
+    std::string file, output;
+    for (size_t i = 0; i < args.size(); ++i) {
+        if ((args[i] == "-o" || args[i] == "--output") && i + 1 < args.size()) output = args[++i];
+        else file = args[i];
+    }
+    if (file.empty()) {
+        err("Użycie: ppl extract PROGRAM.hpprgm [-o PROGRAM.hpppl]   (bez -o wypisuje źródło)\n");
+        return 2;
+    }
+    std::string bytes, src, e;
+    if (!readBinary(file, bytes)) {
+        err(file + ": nie można odczytać\n");
+        return 2;
+    }
+    if (!hpprgm::readSource(bytes, src, &e)) {
+        err(file + ": " + e + "\n");
+        return 1;
+    }
+    if (output.empty()) {
+        out(src);
+        if (!src.empty() && src.back() != '\n')
+            out("\n");
+        return 0;
+    }
+    if (!writeTextFile(output, src + "\n")) {
+        err(output + ": nie można zapisać\n");
+        return 2;
+    }
+    out("Zapisano źródło " + output + " (" + std::to_string(src.size()) + " B).\n");
+    return 0;
+}
+
+int runVerify(const std::vector<std::string> &args)
+{
+    int bad = 0;
+    for (const auto &file : args) {
+        std::string bytes, src, e, rebuilt;
+        hpprgm::SourceLocation loc;
+        if (!readBinary(file, bytes) || !hpprgm::locateSource(bytes, loc, &e) || !hpprgm::readSource(bytes, src, &e)) {
+            out(file + ": BŁĄD " + e + "\n");
+            ++bad;
+            continue;
+        }
+        bool ok = hpprgm::writeSource(bytes, src, rebuilt, &e, true) && rebuilt == bytes;
+        out(file + ": " + (ok ? "OK" : "RÓŻNI SIĘ") + " (" + std::to_string(bytes.size()) + " B, źródło od bajtu "
+            + std::to_string(loc.start) + (hpprgm::hasCompiledBlock(loc) ? ", z blokiem skompilowanym" : "") + ")\n");
+        if (!ok)
+            ++bad;
+    }
+    return bad ? 1 : 0;
 }
 
 } // namespace ppl::cli

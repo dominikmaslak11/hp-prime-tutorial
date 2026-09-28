@@ -35,6 +35,8 @@ Odwołania zagnieżdżone i podlisty (przykład z instrukcji). Niech `L1 := {5, 
 | `L1(3,2)` | 2 | 2. element podlisty |
 | `L1({2,4})` | `{"abcde",{1,2,3,4,5},11}` | podlista od elementu 2 do 4 |
 
+Indeks `0` przy odczycie daje **ostatni** element: `{10,20,30}(0)` → 30 (zmierzone na emulatorze 2.4 przez projekt hp-prime-kit). Instrukcja tego nie opisuje, więc w programach lepiej pisz jawnie `lst(SIZE(lst))`.
+
 ### Dopisywanie elementu na końcu
 
 ```

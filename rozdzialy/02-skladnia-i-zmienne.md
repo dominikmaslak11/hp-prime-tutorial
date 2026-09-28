@@ -47,7 +47,7 @@ Szczegóły funkcji opisuje [rozdział 8](08-funkcje.md). Tutaj skupiamy się na
 
 ## 2.2. Średniki, wielkość liter, białe znaki
 
-- **Każde polecenie kończy się średnikiem** `;` (*ES #1*). Kończą się nim także zamknięcia struktur: `END;`, `UNTIL warunek;`.
+- **Każde polecenie kończy się średnikiem** `;` (*ES #1*). Kończą się nim także zamknięcia struktur: `END;`, `UNTIL warunek;`. Dotyczy to też `END;` zamykającego funkcję: bez tego średnika kalkulator nie skompiluje programu.
 - **Wielkość liter ma znaczenie** w nazwach zmiennych: `MaxTemp` i `maxTemp` to dwie różne zmienne (*UG s. 611*). Nazwy komend wbudowanych kalkulator zwykle akceptuje w różnej pisowni, ale bezpieczniej pisać je wielkimi literami (`RETURN`, `FOR`). Wyjątek to kilka funkcji pisanych małymi literami, np. `when`, `irem`, `idivis`.
 - Wcięcia i puste linie nie mają znaczenia dla działania programu, ale bardzo poprawiają czytelność.
 - W jednej linii może być kilka poleceń: `A:=1; B:=2;`.
@@ -128,6 +128,7 @@ LOCAL s := 0, lst := {}, m; // można mieszać
 - Domyślna wartość po deklaracji to **0** (*ES #1*).
 - Zmienna lokalna może przechowywać dowolny typ danych.
 - **Parametry funkcji są automatycznie lokalne.**
+- Jedno polecenie `LOCAL` deklaruje **najwyżej 8 zmiennych** (składnia w pomocy HP: `LOCAL Var1[:=Val1, …, Var8:=Val8]`). Program z dziewięcioma nazwami w jednym `LOCAL` się nie skompiluje; potrzebujesz więcej, to dopisz drugie `LOCAL`. (Sprawdzone na emulatorze 2.4 przez projekt hp-prime-kit.)
 - Zmienna lokalna **przesłania** zmienną globalną o tej samej nazwie. `LOCAL A;` w programie nie zmieni systemowej zmiennej `A`.
 
 Przykład działania przesłaniania:

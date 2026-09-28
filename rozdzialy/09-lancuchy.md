@@ -35,12 +35,12 @@ EXPR("2+3")              // 5, oblicza wyrażenie zapisane w tekście
 | `MID(s,poz[,n])` | n znaków od pozycji poz (bez n: do końca) | `MID("MOMOGUMBO",3,5)` → `"MOGUM"`; `MID("PUDGE",4)` → `"GE"` |
 | `INSTRING(s1,s2)` | pozycja pierwszego wystąpienia s2 w s1, 0 gdy brak | `INSTRING("banana","na")` → 3; `INSTRING("ab","abc")` → 0 |
 | `UPPER(s)` / `LOWER(s)` | wielkie / małe litery | `UPPER("abc")` → `"ABC"` |
-| `ASC(s)` | wektor kodów znaków | `ASC("AB")` → `[65,66]` |
+| `ASC(s)` | lista kodów znaków | `ASC("AB")` → `{65,66}` |
 | `CHAR(k)` / `CHAR(wektor)` | znak(i) o danym kodzie | `CHAR(65)` → `"A"`; `CHAR([82,77,72])` → `"RMH"` |
 | `ROTATE(s,n)` | przesunięcie cykliczne (n>0 w lewo, n<0 w prawo) | `ROTATE("12345",2)` → `"34512"`; `ROTATE("12345",-1)` → `"51234"` |
 | `REPLACE(s,start,s2)` | nadpisuje fragment od pozycji start | `REPLACE("123456",2,"GRM")` → `"1GRM56"` |
 | `STRINGFROMID(n)` | wbudowany napis systemowy o numerze n | `STRINGFROMID(56)` → `"Complex"` |
-| `STRING(wyr, ...)` | wynik jako tekst z formatowaniem | zob. 9.4 |
+| `STRING(wyr, ...)` | wynik jako tekst z formatowaniem | zob. 9.4; uwaga: `STRING("abc")` dodaje cudzysłowy i daje 5 znaków `"abc"` |
 
 Szczegóły zachowania na krańcach (*UG s. 635–637*):
 - `LEFT(s,n)`: gdy n ≥ DIM(s) lub n < 0, zwraca cały tekst. Opis przypadku n = 0 jest w instrukcji niejasny, więc go unikaj.
@@ -128,7 +128,7 @@ BEGIN
   LOCAL i, c, w := "";
   s := UPPER(s);
   FOR i FROM 1 TO DIM(s) DO
-    c := ASC(MID(s,i,1));        // wektor jednoelementowy
+    c := ASC(MID(s,i,1));        // lista jednoelementowa
     c := c(1);
     IF c>=65 AND c<=90 THEN      // A..Z
       c := 65 + ((c-65+k) MOD 26);

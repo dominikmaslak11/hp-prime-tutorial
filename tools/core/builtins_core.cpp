@@ -79,6 +79,18 @@ void trig(BuiltinTable &t, const char32_t *name, double (*f)(double), bool inver
                    }};
 }
 
+// f applied to pairs from two lists of equal length: ROUND({…},{…}), LOG({…},{…}), MAX({…},{…})
+Value zipLists(CallArgs &a, const std::function<Value(const Value &, const Value &)> &f)
+{
+    const ValueList &x = a[0].items(), &y = a[1].items();
+    if (x.size() != y.size())
+        throw RuntimeError(u8(a.name) + ": listy różnej długości.");
+    ValueList out;
+    for (size_t i = 0; i < x.size(); ++i)
+        out.push_back(f(x[i], y[i]));
+    return Value::makeList(out);
+}
+
 double roundTo(double x, int n)
 {
     if (n >= 0) {
@@ -271,6 +283,10 @@ void registerCoreBuiltins(Interpreter &, BuiltinTable &t)
                  }};
     auto logFn = [](const char32_t *name, double base) {
         return Builtin{1, 2, false, [base, name](CallArgs &a) {
+                           if (a.size() > 1 && a[0].isList() && a[1].isList())
+                               return zipLists(a, [](const Value &x, const Value &b) {
+                                   return Value::real(std::log(x.toReal()) / std::log(b.toReal()));
+                               });
                            double b = a.size() > 1 ? a.num(1) : base;
                            Interpreter &in = a.in;
                            return mapValue(a[0], [&](const Value &x) -> Value {
@@ -289,6 +305,10 @@ void registerCoreBuiltins(Interpreter &, BuiltinTable &t)
     t[U"LN"] = logFn(U"LN", M_E);
     t[U"LOG"] = logFn(U"LOG", 10);
     t[U"ROUND"] = {1, 2, false, [](CallArgs &a) {
+                       if (a.size() > 1 && a[0].isList() && a[1].isList())
+                           return zipLists(a, [](const Value &x, const Value &n) {
+                               return Value::real(roundTo(x.toReal("ROUND"), n.toInt()));
+                           });
                        int n = a.size() > 1 ? a.integer(1) : 0;
                        return mapValue(a[0], [n](const Value &x) { return Value::real(roundTo(x.toReal("ROUND"), n)); });
                    }};
@@ -298,6 +318,10 @@ void registerCoreBuiltins(Interpreter &, BuiltinTable &t)
                       }};
     auto minmax = [](bool isMax) {
         return Builtin{1, -1, false, [isMax](CallArgs &a) {
+                           if (a.size() == 2 && a[0].isList() && a[1].isList()) // element by element
+                               return zipLists(a, [isMax](const Value &x, const Value &y) {
+                                   return (isMax ? x.toReal() >= y.toReal() : x.toReal() <= y.toReal()) ? x : y;
+                               });
                            ValueList all;
                            for (const auto &v : a.values) {
                                auto e = elements(v);
@@ -417,7 +441,9 @@ void registerCoreBuiltins(Interpreter &, BuiltinTable &t)
     t[U"EXPR"] = {1, 1, false, [](CallArgs &a) {
                       if (a[0].type != Value::Type::String && a[0].type != Value::Type::Symbolic)
                           return a[0];
-                      return a.in.evalText(a[0].str);
+                      if (a[0].str.find_first_not_of(U" ") == std::u32string::npos)
+                          throw RuntimeError("EXPR: pusty tekst.");
+                      return a.in.execText(a[0].str);
                   }};
     t[U"EVAL"] = t[U"EXPR"];
     t[U"APPROX"] = {1, 1, false, [](CallArgs &a) { return a[0]; }};
@@ -504,16 +530,18 @@ void registerCoreBuiltins(Interpreter &, BuiltinTable &t)
     t[U"LEFT"] = {2, 2, false, [](CallArgs &a) {
                       std::u32string s = strArg(a, 0);
                       int n = a.integer(1);
-                      if (n < 0 || n >= static_cast<int>(s.size()))
+                      if (n < 0)
+                          throw RuntimeError("LEFT: liczba znaków nie może być ujemna.");
+                      if (n == 0 || n >= static_cast<int>(s.size())) // LEFT(s,0) = s on the calculator
                           return Value::string(s);
                       return Value::string(s.substr(0, n));
                   }};
     t[U"RIGHT"] = {2, 2, false, [](CallArgs &a) {
                        std::u32string s = strArg(a, 0);
                        int n = a.integer(1);
-                       if (n <= 0)
-                           return Value::string(U"");
-                       if (n >= static_cast<int>(s.size()))
+                       if (n < 0)
+                           throw RuntimeError("RIGHT: liczba znaków nie może być ujemna.");
+                       if (n == 0 || n >= static_cast<int>(s.size())) // RIGHT(s,0) = s
                            return Value::string(s);
                        return Value::string(s.substr(s.size() - n));
                    }};
@@ -521,7 +549,7 @@ void registerCoreBuiltins(Interpreter &, BuiltinTable &t)
                      std::u32string s = strArg(a, 0);
                      int p = a.integer(1);
                      if (p < 1)
-                         p = 1;
+                         throw RuntimeError("MID: pozycja zaczyna się od 1.");
                      if (p > static_cast<int>(s.size()))
                          return Value::string(U"");
                      if (a.size() > 2)
@@ -556,7 +584,7 @@ void registerCoreBuiltins(Interpreter &, BuiltinTable &t)
                      ValueList codes;
                      for (char32_t c : strArg(a, 0))
                          codes.push_back(Value::real(static_cast<double>(c)));
-                     return Value::vector(codes);
+                     return Value::makeList(codes);
                  }};
     t[U"CHAR"] = {1, 1, false, [](CallArgs &a) {
                       std::u32string s;
@@ -581,8 +609,8 @@ void registerCoreBuiltins(Interpreter &, BuiltinTable &t)
                           }};
     t[U"STRING"] = {1, 5, false, [](CallArgs &a) {
                         const Value &v = a[0];
-                        if (v.isString())
-                            return Value::string(v.str);
+                        if (v.isString()) // STRING("abc") is "\"abc\"" (5 characters) on the calculator
+                            return Value::string(U"\"" + v.str + U"\"");
                         if (a.size() == 1 || !v.isReal())
                             return Value::string(a.in.format(v, true));
                         int mode = a.integer(1);
@@ -650,7 +678,17 @@ void registerCoreBuiltins(Interpreter &, BuiltinTable &t)
                       }};
     t[U"SORT"] = {1, 2, false, [](CallArgs &a) {
                       ValueList l = listArg(a, 0);
-                      std::stable_sort(l.begin(), l.end(), [](const Value &x, const Value &y) {
+                      // SORT(list, n): by the n-th element of sublists, or from the n-th character of strings
+                      int k = a.size() > 1 ? a.integer(1) : 1;
+                      auto key = [k](const Value &v) {
+                          if (k > 1 && v.isList() && static_cast<int>(v.items().size()) >= k)
+                              return v.items()[k - 1];
+                          if (k > 1 && v.isString())
+                              return Value::string(static_cast<int>(v.str.size()) >= k ? v.str.substr(k - 1) : U"");
+                          return v;
+                      };
+                      std::stable_sort(l.begin(), l.end(), [&key](const Value &xv, const Value &yv) {
+                          Value x = key(xv), y = key(yv);
                           if (x.isString() && y.isString())
                               return x.str < y.str;
                           return x.toReal("SORT") < y.toReal("SORT");
@@ -934,6 +972,8 @@ void registerCoreBuiltins(Interpreter &, BuiltinTable &t)
     };
     t[U"ADDROW"] = inPlace(3, 3, [needMat](CallArgs &a, Value &m) {
         Matrix &x = needMat(m, "ADDROW");
+        if (!a[1].isMatrix() || !a[1].mat->isVector)
+            throw RuntimeError("ADDROW: drugi argument musi być wektorem, np. [5,6] (nie listą ani macierzą).");
         auto row = elements(a[1]);
         int at = a.integer(2);
         if (static_cast<int>(row.size()) != x.cols && x.rows > 0)
@@ -948,6 +988,8 @@ void registerCoreBuiltins(Interpreter &, BuiltinTable &t)
     });
     t[U"ADDCOL"] = inPlace(3, 3, [needMat](CallArgs &a, Value &m) {
         Matrix &x = needMat(m, "ADDCOL");
+        if (!a[1].isMatrix() || !a[1].mat->isVector)
+            throw RuntimeError("ADDCOL: drugi argument musi być wektorem, np. [5,6] (nie listą ani macierzą).");
         auto col = elements(a[1]);
         int at = std::clamp(a.integer(2), 1, x.cols + 1);
         if (static_cast<int>(col.size()) != x.rows)

@@ -35,6 +35,8 @@ Najczęstsze błędy składniowe:
 
 Uruchomienie: w katalogu programów zaznacz program i naciśnij **(Debug)**. Jeśli plik ma kilka funkcji z `EXPORT`, wybierz jedną z listy.
 
+Debuger można też uruchomić poleceniem z katalogu (Catlg): `DEBUG(NAZWA(argumenty))`, np. `DEBUG(SUMDIV(12))`. Składnię podaje pomoc kalkulatora; w instrukcji to polecenie nie ma osobnego opisu.
+
 Na ekranie debugera widać:
 - u góry nazwę programu lub funkcji,
 - pod nią **bieżącą linię**,
@@ -67,13 +69,15 @@ PRINT("i="+i+" suma="+s);
 Po zakończeniu testów usuń te linie albo zamień je na komentarze `//`. Możesz też użyć przełącznika:
 
 ```
-dbg := 1;                         // zmienna pliku: 1 = debug włączony
+LOCAL dbg := 1;                   // zmienna pliku: 1 = śledzenie włączone
 
-DEBUG(t)                          // wywołuj: DEBUG("i="+i);
+SLAD(t)                           // wywołuj: SLAD("i="+i);
 BEGIN
   IF dbg THEN PRINT(t); END;
 END;
 ```
+
+Nie nazywaj takiej funkcji `DEBUG`: to wbudowane polecenie, które uruchamia debuger (sekcja 22.3), a własna funkcja o tej nazwie by je przesłoniła.
 
 ## 22.5. Obsługa błędów w czasie działania — IFERR
 

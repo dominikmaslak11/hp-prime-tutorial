@@ -18,6 +18,7 @@ struct CommandInfo {
     std::string chapter;     // tutorial chapter file, e.g. "07-wejscie.md"
     int minArgs = -1;        // -1 = unknown
     int maxArgs = -1;        // -1 = unlimited / unknown
+    bool fromHpList = false; // only in HP's name list (data/hp-names.tsv), not described in the tutorial
     bool hasArgInfo() const { return minArgs >= 0; }
 };
 
@@ -26,6 +27,7 @@ struct VariableGroup {
     std::string description;
     std::string chapter;
     std::vector<std::string> names;
+    bool fromHpList = false; // app variables known only from HP's name list
 };
 
 class CommandDatabase {
@@ -34,6 +36,8 @@ public:
     static const CommandDatabase &instance();
 
     bool load(std::string_view json, std::string *error = nullptr);
+    // Adds the names from HP's list (name, kind, group, menu, syntax, source) missing from the JSON.
+    void addHpNames(std::string_view tsv);
 
     // Exact match first, then ASCII case-insensitive match.
     const CommandInfo *findCommand(std::u32string_view name) const;
@@ -62,6 +66,7 @@ private:
     std::map<std::u32string, size_t> m_exact;
     std::map<std::u32string, size_t> m_upper;
     std::map<std::u32string, size_t> m_variables;
+    void index();
 };
 
 } // namespace ppl

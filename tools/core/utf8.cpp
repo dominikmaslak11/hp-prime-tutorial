@@ -100,6 +100,8 @@ bool isLetter(char32_t c)
         return true;
     if (c < 0x80)
         return false;
+    if (c == 0x00B5) // µ (micro sign) — the calculator spells Inference.µ₀ with it
+        return true;
     // Latin-1 supplement and Latin extended letters (Polish letters etc.)
     if (c >= 0x00C0 && c <= 0x024F && c != 0x00D7 && c != 0x00F7)
         return true;

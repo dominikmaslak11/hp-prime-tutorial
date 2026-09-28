@@ -2,7 +2,7 @@
   "name": "hp-prime-ppl",
   "displayName": "HP Prime PPL",
   "description": "Język HP PPL (kalkulator HP Prime): kolorowanie, podpowiedzi, sprawdzanie błędów na żywo, formatowanie i narzędzia MCP dla asystentów AI.",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "publisher": "dominikmaslak11",
   "license": "SEE LICENSE IN README.md",
   "repository": {
@@ -88,6 +88,17 @@
         "category": "HP PPL"
       },
       {
+        "command": "hpppl.buildProgramFile",
+        "title": "Zbuduj plik programu (.hpprgm) dla Connectivity Kit",
+        "category": "HP PPL",
+        "icon": "$(package)"
+      },
+      {
+        "command": "hpppl.openProgramFile",
+        "title": "Otwórz plik programu (.hpprgm)…",
+        "category": "HP PPL"
+      },
+      {
         "command": "hpppl.commandReference",
         "title": "Opis komendy…",
         "category": "HP PPL"
@@ -124,6 +135,18 @@
           "command": "hpppl.copyForCalculator",
           "when": "editorLangId == hpppl",
           "group": "navigation@90"
+        },
+        {
+          "command": "hpppl.buildProgramFile",
+          "when": "editorLangId == hpppl",
+          "group": "navigation@95"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "hpppl.openProgramFile",
+          "when": "resourceExtname == .hpprgm",
+          "group": "navigation@50"
         }
       ],
       "editor/context": [

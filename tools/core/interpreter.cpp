@@ -3,6 +3,7 @@
 #include "utf8.h"
 
 #include <algorithm>
+#include <set>
 #include <cmath>
 
 namespace ppl {
@@ -107,6 +108,8 @@ void Interpreter::initSystemVariables()
     set(U"AComplex", Value::real(0));
     set(U"AFormat", Value::real(0));
     set(U"ADigits", Value::real(4));
+    set(U"ANote", Value::string(U""));
+    set(U"AProgram", Value::string(U""));
     // Function app plot window (defaults of the calculator)
     set(U"Xmin", Value::real(-15.9));
     set(U"Xmax", Value::real(15.9));
@@ -124,7 +127,7 @@ void Interpreter::initSystemVariables()
     for (const auto &g : m_db.variableGroups())
         for (const auto &n : g.names) {
             std::u32string k = u32(n);
-            if (!m_system.count(k) && g.group != "Stałe")
+            if (!m_system.count(k) && g.group != "Stałe" && !g.fromHpList)
                 m_system[k] = Value::real(0);
         }
     // computed on access by built-ins
@@ -322,6 +325,11 @@ void Interpreter::setVariable(const std::u32string &name, const Value &v, bool c
     if (dot != std::u32string::npos)
         sysName = name.substr(dot + 1);
     if (Value *s = findSystem(sysName)) {
+        static const std::set<std::u32string> kStatResults = {
+            U"NbItem", U"MinVal", U"Q1", U"MedVal", U"Q3", U"MaxVal", U"ΣX", U"ΣX2", U"MeanX", U"sX", U"σX", U"serrX",
+            U"ssX", U"ΣY", U"ΣY2", U"ΣXY", U"MeanY", U"sY", U"σY", U"serrY", U"ssY", U"sCov", U"σCov", U"Corr", U"CoefDet"};
+        if (kStatResults.count(sysName))
+            throw RuntimeError(u8(sysName) + " to wynik statystyki (Do1VStats/Do2VStats) — tylko do odczytu.");
         checkSystemType(sysName, v);
         Value stored = v;
         if (sysKind(sysName) == SysKind::Equation && v.isNumber())
@@ -332,6 +340,8 @@ void Interpreter::setVariable(const std::u32string &name, const Value &v, bool c
     const CommandInfo *c = m_db.findCommand(name);
     if (c && c->kind != "keyword")
         throw RuntimeError("Nie można przypisać wartości do komendy " + c->name + ".");
+    if (const VariableGroup *g = m_db.findVariable(name); g && g->fromHpList)
+        unsupported(name);
     if (!create)
         throw RuntimeError("Przypisanie do niezadeklarowanej zmiennej " + u8(name)
                                + ". Zadeklaruj ją przez LOCAL albo EXPORT.",
@@ -899,6 +909,8 @@ Value Interpreter::index(const Value &target, const std::vector<Value> &idx, con
             return index(Value::makeList(sub), rest, what);
         }
         int i = first.toInt("indeks");
+        if (i == 0 && !l.empty()) // L(0) reads the last element on the calculator
+            i = static_cast<int>(l.size());
         if (i < 1 || i > static_cast<int>(l.size()))
             throw badIndex(i, static_cast<int>(l.size()));
         return index(l[i - 1], rest, what);
@@ -1105,6 +1117,29 @@ Value Interpreter::evalText(const std::u32string &text)
     return eval(*e);
 }
 
+Value Interpreter::execText(const std::u32string &text)
+{
+    // expressions are the common case and are cached
+    try {
+        return evalText(text);
+    } catch (const RuntimeError &e) {
+        if (std::string(e.what()).rfind("Błąd składni w wyrażeniu", 0) != 0)
+            throw;
+    }
+    StmtList stmts;
+    try {
+        stmts = parseStatements(text);
+    } catch (const ParseError &pe) {
+        throw RuntimeError("Błąd składni w EXPR(\"" + u8(text) + "\"): " + pe.message);
+    }
+    Value saved = m_last;
+    m_last = Value::real(0);
+    execList(stmts);
+    Value r = m_last;
+    m_last = saved;
+    return r;
+}
+
 double Interpreter::evalFunctionOf(const std::u32string &exprText, const std::u32string &var, double x)
 {
     FullPrecision fp;
@@ -1142,6 +1177,8 @@ Value Interpreter::eval(const Expr &e)
         std::u32string plain = n.substr(n.rfind(U'.') == std::u32string::npos ? 0 : n.rfind(U'.') + 1);
         if (findFunction(n, u, fn) || m_builtins.count(asciiUpper(plain)) || asciiUpper(n).rfind(U"CAS.", 0) == 0)
             return call(callExpr);
+        if (m_db.findVariable(plain) || m_db.findCommand(plain))
+            unsupported(plain);
         throw RuntimeError("Nieznana nazwa " + u8(n) + ".", 2);
     }
     case ExprKind::Call: return call(e);

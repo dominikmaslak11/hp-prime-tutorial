@@ -538,7 +538,7 @@ std::string languageGuide(const CommandDatabase &db)
     std::string g = R"GUIDE(# HP PPL — przewodnik dla asystenta AI
 
 HP PPL (HP Prime Programming Language) to język kalkulatora graficznego HP Prime, podobny do Pascala.
-Kod sprawdzaj narzędziem `ppl_validate` przed pokazaniem go użytkownikowi, a działanie narzędziem `ppl_run` (symulator: wynik, błędy wykonania, zrzut ekranu; dane dla INPUT i klawisze podajesz z góry). Nie wymyślaj komend: jeśli nie masz pewności, użyj `ppl_search_commands` / `ppl_command_help`.
+Kod sprawdzaj narzędziem `ppl_validate` przed pokazaniem go użytkownikowi, a działanie narzędziem `ppl_run` (symulator: wynik, błędy wykonania, zrzut ekranu; dane dla INPUT i klawisze podajesz z góry). Gotowy program zapiszesz jako plik `.hpprgm` dla Connectivity Kit narzędziem `ppl_build`. Nie wymyślaj komend: jeśli nie masz pewności, użyj `ppl_search_commands` / `ppl_command_help`.
 
 ## Struktura programu
 ```ppl
@@ -558,7 +558,9 @@ END;
 ```
 
 ## Najważniejsze zasady
-- Każde polecenie kończy się średnikiem `;`, także `END;` i `UNTIL warunek;`.
+- Każde polecenie kończy się średnikiem `;`, także `END;` i `UNTIL warunek;`. Bez `;` po `END` kończącym funkcję program się nie skompiluje.
+- Jedno `LOCAL` deklaruje najwyżej 8 zmiennych; potrzebujesz więcej, napisz drugie `LOCAL`.
+- Nie indeksuj wyniku wywołania (`F()(2)` się nie kompiluje): `t := F(); t(2)`.
 - Przypisanie `:=` (albo `wartość ▶ zmienna`). Porównanie `==`. Różne `<>` (lub `≠`), `<=`, `>=`. Operatory logiczne `AND OR XOR NOT`, reszta `MOD`.
 - Bloki: `IF w THEN … [ELSE …] END;` · `CASE IF w THEN … END; … DEFAULT … END;` · `IFERR … THEN … [ELSE …] END;`
   · `FOR i FROM a TO b [STEP k] DO … END;` · `FOR i FROM a DOWNTO b DO … END;` · `WHILE w DO … END;` · `REPEAT … UNTIL w;` · `BREAK;` `CONTINUE;`
@@ -567,7 +569,7 @@ END;
 - Zmienne robocze deklaruj przez `LOCAL` (domyślna wartość 0). Wielkość liter ma znaczenie.
 - Zmienne systemowe mają stały typ: `A`–`Z` liczby rzeczywiste, `Z0`–`Z9` zespolone, `L0`–`L9` listy, `M0`–`M9` macierze, `G0`–`G9` grafika (G0 = ekran). Nie nadpisuj ich bez potrzeby.
 - Funkcje CAS wywołuj z prefiksem: `CAS.idivis(12)`, `CAS.isprime(n)`.
-- Listy `{1,2,3}` (indeks od 1: `L(1)`), macierze `[[1,2],[3,4]]`, teksty `"…"` (łączenie `+`, znak `"` jako `""`).
+- Listy `{1,2,3}` (indeks od 1: `L(1)`; `L(0)` daje ostatni element), macierze `[[1,2],[3,4]]`, teksty `"…"` (łączenie `+`, znak `"` jako `""`). `STRING("ab")` dodaje cudzysłowy (4 znaki); do łączenia tekstu z liczbą wystarczy `"x=" + x`.
 - Kolory: `RGB(r,g,b)` albo `#RRGGBBh`. Liczby całkowite w systemach: `#FFh`, `#1101b`.
 - Komentarze: `// …`.
 
@@ -593,7 +595,7 @@ END;
 )GUIDE";
     std::map<std::string, std::vector<std::string>> byCat;
     for (const auto &c : db.commands())
-        if (c.kind != "keyword")
+        if (c.kind != "keyword" && !c.fromHpList)
             byCat[c.category].push_back(c.kind == "cas" ? "CAS." + c.name : c.name);
     for (const auto &[cat, names] : byCat) {
         g += "- **" + cat + "**: ";

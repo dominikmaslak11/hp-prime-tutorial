@@ -68,7 +68,14 @@ ValueList listOrEmpty(Interpreter &in, const std::u32string &name)
     return v->items();
 }
 
-void setSys(Interpreter &in, const char32_t *name, double v) { in.setVariable(name, Value::real(v), true); }
+// Results of Do1VStats/Do2VStats: programs may read them, but not assign (the emulator refuses).
+void setSys(Interpreter &in, const char32_t *name, double v)
+{
+    if (Value *s = in.systemVariable(name))
+        *s = Value::real(v);
+    else
+        in.setVariable(name, Value::real(v), true);
+}
 
 // ---- TVM: PV·(1+i)^n + PMT·(1+i·b)·((1+i)^n − 1)/i + FV = 0
 struct Tvm {
@@ -251,7 +258,7 @@ void registerAppBuiltins(Interpreter &, BuiltinTable &t)
                            int n = a.integer(0);
                            std::u32string key = equationPrefix(a.in.app().current) + toU32(std::to_string(n));
                            a.in.app().checked[key] = on;
-                           return Value::real(0);
+                           return Value::real(1);
                        }};
     };
     t[U"CHECK"] = check(true);
@@ -384,21 +391,28 @@ void registerAppBuiltins(Interpreter &, BuiltinTable &t)
     t[U"LINSOLVE"] = {1, 1, false, [linsolve](CallArgs &a) {
                           if (!a[0].isMatrix())
                               throw RuntimeError("LinSolve: oczekiwano macierzy rozszerzonej [A|b].");
+                          if (a[0].mat->cols != a[0].mat->rows + 1)
+                              throw RuntimeError("LinSolve: macierz rozszerzona n×(n+1) (współczynniki i wyrazy wolne).");
                           std::vector<std::vector<double>> m(a[0].mat->rows, std::vector<double>(a[0].mat->cols));
                           for (int i = 0; i < a[0].mat->rows; ++i)
                               for (int j = 0; j < a[0].mat->cols; ++j)
                                   m[i][j] = a[0].mat->at(i, j).toReal();
-                          return linsolve(m);
+                          return Value::makeList(linsolve(m).mat->data); // a list on the emulator: {2,1}
                       }};
 
     // ------------------------------------------------------------------ Statistics
-    auto setPair = [](std::map<std::u32string, std::u32string> &(*sel)(Interpreter &)) {
-        return Builtin{2, 2, true, [sel](CallArgs &a) {
+    // Statistics_1Var.H1 → H1
+    auto unqualified = [](const std::u32string &n) {
+        size_t dot = n.rfind(U'.');
+        return dot == std::u32string::npos ? n : n.substr(dot + 1);
+    };
+    auto setPair = [unqualified](std::map<std::u32string, std::u32string> &(*sel)(Interpreter &)) {
+        return Builtin{2, 2, true, [sel, unqualified](CallArgs &a) {
                            if (a.exprs[0]->kind != ExprKind::Ident)
                                throw RuntimeError(u8(a.name) + ": pierwszy argument to nazwa analizy (H1–H5 / S1–S5).");
                            std::u32string col = a.exprs[1]->kind == ExprKind::Ident ? a.exprs[1]->text
                                                                                       : a.in.format(a.in.eval(*a.exprs[1]), false);
-                           sel(a.in)[a.exprs[0]->text] = col;
+                           sel(a.in)[unqualified(a.exprs[0]->text)] = col;
                            return Value::real(0);
                        }};
     };
@@ -406,9 +420,9 @@ void registerAppBuiltins(Interpreter &, BuiltinTable &t)
     t[U"SETFREQ"] = setPair([](Interpreter &in) -> std::map<std::u32string, std::u32string> & { return in.app().freq; });
     t[U"SETINDEP"] = setPair([](Interpreter &in) -> std::map<std::u32string, std::u32string> & { return in.app().indep; });
     t[U"SETDEPEND"] = setPair([](Interpreter &in) -> std::map<std::u32string, std::u32string> & { return in.app().depend; });
-    t[U"DO1VSTATS"] = {1, 1, true, [](CallArgs &a) {
+    t[U"DO1VSTATS"] = {1, 1, true, [unqualified](CallArgs &a) {
                            Interpreter &in = a.in;
-                           std::u32string h = a.exprs[0]->text;
+                           std::u32string h = unqualified(a.exprs[0]->text);
                            std::u32string sample = in.app().sample.count(h) ? in.app().sample[h] : U"D" + h.substr(1);
                            ValueList data = listOrEmpty(in, sample);
                            std::vector<double> xs;
@@ -446,9 +460,9 @@ void registerAppBuiltins(Interpreter &, BuiltinTable &t)
                            setSys(in, U"serrX", n > 1 ? std::sqrt(std::max(0.0, ss / (n - 1))) / std::sqrt(n) : 0);
                            return Value::real(0);
                        }};
-    t[U"DO2VSTATS"] = {1, 1, true, [](CallArgs &a) {
+    t[U"DO2VSTATS"] = {1, 1, true, [unqualified](CallArgs &a) {
                            Interpreter &in = a.in;
-                           std::u32string s = a.exprs[0]->text;
+                           std::u32string s = unqualified(a.exprs[0]->text);
                            int k = s.size() > 1 ? s[1] - U'0' : 1;
                            std::u32string xi = in.app().indep.count(s) ? in.app().indep[s] : U"C" + toU32(std::to_string(2 * k - 1));
                            std::u32string yi = in.app().depend.count(s) ? in.app().depend[s] : U"C" + toU32(std::to_string(2 * k));
@@ -469,6 +483,9 @@ void registerAppBuiltins(Interpreter &, BuiltinTable &t)
                            setSys(in, U"ΣX", sx); setSys(in, U"ΣY", sy); setSys(in, U"ΣX2", sxx); setSys(in, U"ΣY2", syy); setSys(in, U"ΣXY", sxy);
                            setSys(in, U"sX", std::sqrt(cxx / (N - 1))); setSys(in, U"sY", std::sqrt(cyy / (N - 1)));
                            setSys(in, U"σX", std::sqrt(cxx / N)); setSys(in, U"σY", std::sqrt(cyy / N));
+                           setSys(in, U"ssX", cxx); setSys(in, U"ssY", cyy);
+                           setSys(in, U"serrX", std::sqrt(cxx / (N - 1)) / std::sqrt(N));
+                           setSys(in, U"serrY", std::sqrt(cyy / (N - 1)) / std::sqrt(N));
                            setSys(in, U"sCov", cxy / (N - 1)); setSys(in, U"σCov", cxy / N);
                            setSys(in, U"Corr", r); setSys(in, U"CoefDet", r * r);
                            in.avars()[U"__slope"] = Value::real(cxy / cxx);
