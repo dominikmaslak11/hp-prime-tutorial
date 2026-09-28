@@ -67,7 +67,56 @@ UDL z kolorowaniem PPL, autouzupełnianie z podpowiedziami parametrów (generowa
 6. [x] Pakiet Notepad++
 7. [x] Dokumentacja użytkownika (README w `tools/`), skrypt budowania, commit i push
 
-## Później (poza zakresem pierwszej wersji)
+---
+
+# Wersja 2: uruchamianie i debugowanie programów
+
+Decyzja z 28.09.2026 (użytkownik dał wolną rękę). Kalkulator, oficjalny emulator i Connectivity Kit nie mają interfejsu do zdalnego debugowania. Dlatego piszemy **własny interpreter PPL** w rdzeniu C++ i udostępniamy go:
+- w linii poleceń (`ppl run`),
+- w VS Code jako debugger zgodny z **Debug Adapter Protocol** (`ppl dap`),
+- agentom AI jako narzędzie MCP `ppl_run`: agent uruchamia program i widzi wynik oraz zrzut ekranu.
+
+Interpreter to **symulator**, a nie emulator firmware. Tam, gdzie nie odtwarza kalkulatora wiernie, mówi to wprost i nie zgaduje.
+
+## Architektura v2
+
+```
+core/
+├── ast.h / parser.cpp       drzewo składni (osobny parser; analyzer zostaje walidatorem)
+├── value.h / value.cpp      wartości: liczba rzeczywista (zaokrąglanie do 12 cyfr jak w kalkulatorze),
+│                             całkowita #…h/b/o/d (rozmiar słowa, system), zespolona, tekst, lista, macierz
+├── interpreter.h/.cpp       wykonywanie: zasięgi LOCAL/plik/globalne, zmienne systemowe z typami,
+│                             funkcje, rekurencja, BREAK/CONTINUE/RETURN/KILL, IFERR, haki dla debuggera
+├── builtins_*.cpp           ~180 komend: matematyka, listy, teksty, macierze, bity, ∂ ∫ Σ numerycznie,
+│                             wybrane CAS (idivis, isprime, gcd…), aplikacje (F0–F9, ROOT, SLOPE, AREA, SOLVE,
+│                             statystyka 1Var), Notes/Programs/HVars/AVars
+├── graphics.h/.cpp          ekran 320×240 + bufory G0–G9: linie, prostokąty, wielokąty, łuki, trójkąty
+│                             (gradient), tekst (czcionka bitmapowa), BLIT ze skalowaniem, INVERT, PNG
+└── host.h                   interfejs wejścia/wyjścia: PRINT, MSGBOX, INPUT, CHOOSE, klawisze, dotyk, czas
+ppl/
+├── run.cpp                  ppl run PLIK "WYWOŁANIE" [--input …] [--keys …] [--screen ekran.png]
+└── dap.cpp                  ppl dap: serwer Debug Adapter Protocol (osobny wątek interpretera)
+vscode/
+├── debugger                 konfiguracja uruchamiania (F5, Ctrl+F5), pytanie o wywołanie np. SQIN(5)
+├── dialogi                  MSGBOX/INPUT/CHOOSE jako okna VS Code
+└── ekran                    panel z ekranem kalkulatora na żywo + klawiatura i dotyk (GETKEY, MOUSE)
+```
+
+## Funkcje debuggera
+F5 / Ctrl+F5, pułapki (także warunkowe i logujące), Step Over / Into / Out, pauza, stos wywołań, zmienne (lokalne, pliku, systemowe; rozwijane listy i macierze), obserwowane wyrażenia, obliczanie w konsoli debugowania, zmiana wartości zmiennej, zatrzymanie na błędzie wykonania, PRINT do konsoli, wynik funkcji po zakończeniu.
+
+## Poza zakresem v2 (jasny komunikat „nieobsługiwane w symulatorze”)
+Symboliczny CAS (`diff`, `solve` symbolicznie…), pełne widoki aplikacji HP (wykresy, tabele), jednostki fizyczne, zaawansowane formy 3D `LINE_P`/`TRIANGLE_P`, `AFiles`, bity trybu egzaminacyjnego.
+
+## Etapy v2
+
+8. [ ] Parser AST + wartości + interpreter + wbudowane komendy (bez grafiki) + `ppl run` + testy „złotych wyników” z kursu (SQIN, MOPMT, SUMDIV, ULAM, SUBEXAM, CALCDEMO, TERMVEL…)
+9. [ ] Wejście/wyjście (host), skryptowane dane w CLI, silnik graficzny + czcionka + zapis PNG; testy obrazu
+10. [ ] Serwer DAP + debugger w VS Code (pułapki, kroki, zmienne, konsola, dialogi MSGBOX/INPUT/CHOOSE)
+11. [ ] Panel ekranu kalkulatora w VS Code (grafika na żywo, klawiatura → GETKEY/ISKEYDOWN, mysz → MOUSE)
+12. [ ] Narzędzie MCP `ppl_run` (tekst + zrzut ekranu), dokumentacja, testy integracyjne, commit i push
+
+## Później
 - eksport/import binarnych plików `.hpprgm` (Connectivity Kit),
-- uruchamianie emulatora HP Prime z edytora,
-- własne IDE w Qt korzystające z tego samego rdzenia.
+- własne IDE w Qt korzystające z tego samego rdzenia,
+- dokładna arytmetyka dziesiętna (BCD) zamiast zaokrąglania double do 12 cyfr.
