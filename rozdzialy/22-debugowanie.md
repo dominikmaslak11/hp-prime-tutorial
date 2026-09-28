@@ -65,7 +65,7 @@ Po zakończeniu testów usuń te linie albo zamień je na komentarze `//`. Może
 ```
 dbg := 1;                         // zmienna pliku: 1 = debug włączony
 
-LOG(t)
+DEBUG(t)                          // wywołuj: DEBUG("i="+i);
 BEGIN
   IF dbg THEN PRINT(t); END;
 END;
@@ -168,6 +168,7 @@ W `INPUT` walidację robi się w pętli `REPEAT … UNTIL poprawne;` (wzorzec GE
 W programie poniżej jest 6 błędów. Znajdź je.
 
 ```
+// Ten program celowo zawiera błędy.
 EXPORT SREDNIA(lst)
 BEGIN
   LOCAL i, s = 0

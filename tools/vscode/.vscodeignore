@@ -1,0 +1,5 @@
+.vscode/**
+test/**
+**/*.map
+node_modules/@vscode/vsce/**
+node_modules/.bin/**

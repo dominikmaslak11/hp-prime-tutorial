@@ -1,0 +1,1764 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Wygenerowane przez: ppl gen notepadpp. Autouzupełnianie HP PPL dla Notepad++ -->
+<NotepadPlus>
+    <AutoComplete language="HP PPL">
+        <Environment ignoreCase="yes" startFunc="(" stopFunc=")" paramSeparator="," terminal=";" additionalWordChar="_.→" />
+        <KeyWord name="%CHANGE" func="yes">
+            <Overload retVal="" descr="Zmiana procentowa z x na y.">
+                <Param name="x" />
+                <Param name="y" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="%TOTAL" func="yes">
+            <Overload retVal="" descr="Jakim procentem x jest y.">
+                <Param name="x" />
+                <Param name="y" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="A" />
+        <KeyWord name="AAngle" />
+        <KeyWord name="AAS" func="yes">
+            <Overload retVal="" descr="Trójkąt z dwóch kątów i boku.">
+                <Param name="kąt" />
+                <Param name="kąt" />
+                <Param name="bok" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ABS" func="yes">
+            <Overload retVal="" descr="Wartość bezwzględna; dla liczby zespolonej moduł, dla macierzy norma.">
+                <Param name="x" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="AComplex" />
+        <KeyWord name="ACOS" func="yes">
+            <Overload retVal="" descr="Arcus cosinus.">
+                <Param name="x" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ADDCOL" func="yes">
+            <Overload retVal="" descr="Wstawia kolumnę przed kolumną nr.">
+                <Param name="macierz" />
+                <Param name="wektor" />
+                <Param name="nr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ADDROW" func="yes">
+            <Overload retVal="" descr="Wstawia wiersz przed wierszem nr.">
+                <Param name="macierz" />
+                <Param name="wektor" />
+                <Param name="nr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ADigits" />
+        <KeyWord name="AFiles" func="yes">
+            <Overload retVal="" descr="Pliki aplikacji: lista, odczyt i zapis (AFiles(&quot;nazwa&quot;) := obiekt).">
+                <Param name="[&quot;nazwa&quot;]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="AFilesB" func="yes">
+            <Overload retVal="" descr="Pliki binarne aplikacji.">
+                <Param name="[&quot;nazwa&quot;]" />
+                <Param name="[pozycja]" />
+                <Param name="[n]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="AFormat" />
+        <KeyWord name="ALOG" func="yes">
+            <Overload retVal="" descr="10 do potęgi x.">
+                <Param name="x" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="AND" />
+        <KeyWord name="AngleA" />
+        <KeyWord name="AngleB" />
+        <KeyWord name="AngleC" />
+        <KeyWord name="ANote" />
+        <KeyWord name="Ans" />
+        <KeyWord name="AProgram" />
+        <KeyWord name="ARC" func="yes">
+            <Overload retVal="" descr="Okrąg lub łuk (środek kartezjański, promień w pikselach). r może być {rx,ry}, kolor {krawędź,wnętrze}.">
+                <Param name="[G]" />
+                <Param name="x" />
+                <Param name="y" />
+                <Param name="r" />
+                <Param name="[a1]" />
+                <Param name="[a2]" />
+                <Param name="[kolor]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ARC_P" func="yes">
+            <Overload retVal="" descr="Okrąg, łuk lub elipsa w pikselach. r = {rx,ry} daje elipsę, kolor = {krawędź,wnętrze} wypełnienie. Kąty według HAngle.">
+                <Param name="[G]" />
+                <Param name="x" />
+                <Param name="y" />
+                <Param name="r" />
+                <Param name="[a1]" />
+                <Param name="[a2]" />
+                <Param name="[kolor]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="AREA" func="yes">
+            <Overload retVal="" descr="Pole ze znakiem pod krzywą lub między krzywymi (Function).">
+                <Param name="Fn" />
+                <Param name="[Fm]" />
+                <Param name="a" />
+                <Param name="b" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ARG" func="yes">
+            <Overload retVal="" descr="Argument liczby zespolonej.">
+                <Param name="z" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ASA" func="yes">
+            <Overload retVal="" descr="Trójkąt z boku i dwóch kątów przyległych.">
+                <Param name="kąt" />
+                <Param name="bok" />
+                <Param name="kąt" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ASC" func="yes">
+            <Overload retVal="" descr="Wektor kodów znaków.">
+                <Param name="tekst" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ASIN" func="yes">
+            <Overload retVal="" descr="Arcus sinus.">
+                <Param name="x" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ATAN" func="yes">
+            <Overload retVal="" descr="Arcus tangens.">
+                <Param name="x" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="AVars" func="yes">
+            <Overload retVal="" descr="Zmienne aplikacji (trwałe dane aplikacji).">
+                <Param name="[n_lub_&quot;nazwa&quot;]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Axes" />
+        <KeyWord name="B" />
+        <KeyWord name="Base" />
+        <KeyWord name="BEG" />
+        <KeyWord name="BEGIN" />
+        <KeyWord name="BITAND" func="yes">
+            <Overload retVal="" descr="Iloczyn bitowy.">
+                <Param name="a" />
+                <Param name="b" />
+                <Param name="…" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="BITNOT" func="yes">
+            <Overload retVal="" descr="Negacja bitowa w bieżącym rozmiarze słowa.">
+                <Param name="a" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="BITOR" func="yes">
+            <Overload retVal="" descr="Suma bitowa.">
+                <Param name="a" />
+                <Param name="b" />
+                <Param name="…" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Bits" />
+        <KeyWord name="BITSL" func="yes">
+            <Overload retVal="" descr="Przesunięcie bitów w lewo (domyślnie o 1).">
+                <Param name="a" />
+                <Param name="[n]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="BITSR" func="yes">
+            <Overload retVal="" descr="Przesunięcie bitów w prawo (domyślnie o 1).">
+                <Param name="a" />
+                <Param name="[n]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="BITXOR" func="yes">
+            <Overload retVal="" descr="Różnica symetryczna bitów.">
+                <Param name="a" />
+                <Param name="b" />
+                <Param name="…" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="BLIT" func="yes">
+            <Overload retVal="" descr="Kopiuje (i skaluje) fragment grafiki (kartezjańskie).">
+                <Param name="[cel]" />
+                <Param name="[dx1]" />
+                <Param name="[dy1]" />
+                <Param name="[dx2]" />
+                <Param name="[dy2]" />
+                <Param name="źródło" />
+                <Param name="[sx1]" />
+                <Param name="[sy1]" />
+                <Param name="[sx2]" />
+                <Param name="[sy2]" />
+                <Param name="[pomijany_kolor]" />
+                <Param name="[alfa]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="BLIT_P" func="yes">
+            <Overload retVal="" descr="Kopiuje (i skaluje) fragment grafiki. Najczęściej BLIT_P(G0, G1) przenosi bufor na ekran.">
+                <Param name="[cel]" />
+                <Param name="[dx1]" />
+                <Param name="[dy1]" />
+                <Param name="[dx2]" />
+                <Param name="[dy2]" />
+                <Param name="źródło" />
+                <Param name="[sx1]" />
+                <Param name="[sy1]" />
+                <Param name="[sx2]" />
+                <Param name="[sy2]" />
+                <Param name="[pomijany_kolor]" />
+                <Param name="[alfa]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="BREAK" />
+        <KeyWord name="B→R" func="yes">
+            <Overload retVal="" descr="Liczba z # na liczbę rzeczywistą.">
+                <Param name="#n" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="C" />
+        <KeyWord name="C0" />
+        <KeyWord name="C1" />
+        <KeyWord name="C2" />
+        <KeyWord name="C3" />
+        <KeyWord name="C4" />
+        <KeyWord name="C5" />
+        <KeyWord name="C6" />
+        <KeyWord name="C7" />
+        <KeyWord name="C8" />
+        <KeyWord name="C9" />
+        <KeyWord name="CalcFV" func="yes">
+            <Overload retVal="" descr="Oblicza wartość przyszłą (Finance).">
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CalcIPYR" func="yes">
+            <Overload retVal="" descr="Oblicza oprocentowanie (Finance).">
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CalcNbPmt" func="yes">
+            <Overload retVal="" descr="Oblicza liczbę rat (Finance).">
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CalcPMT" func="yes">
+            <Overload retVal="" descr="Oblicza ratę (Finance, na podstawie NbPmt, IPYR, PV, FV…).">
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CalcPV" func="yes">
+            <Overload retVal="" descr="Oblicza wartość bieżącą (Finance).">
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS" func="yes">
+            <Overload retVal="" descr="Wywołanie funkcji lub zmiennej CAS z programu PPL.">
+                <Param name="argumenty" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.approx" func="yes">
+            <Overload retVal="" descr="Przybliżenie numeryczne.">
+                <Param name="wyrażenie" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.diff" func="yes">
+            <Overload retVal="" descr="Pochodna symboliczna (CAS).">
+                <Param name="wyrażenie" />
+                <Param name="zmienna" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.gcd" func="yes">
+            <Overload retVal="" descr="Największy wspólny dzielnik.">
+                <Param name="a" />
+                <Param name="b" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.idivis" func="yes">
+            <Overload retVal="" descr="Dzielniki liczby całkowitej.">
+                <Param name="n" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.ifactor" func="yes">
+            <Overload retVal="" descr="Rozkład na czynniki pierwsze.">
+                <Param name="n" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.ifactors" func="yes">
+            <Overload retVal="" descr="Lista czynników pierwszych z krotnościami.">
+                <Param name="n" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.int" func="yes">
+            <Overload retVal="" descr="Całka symboliczna lub oznaczona (CAS).">
+                <Param name="wyrażenie" />
+                <Param name="zmienna" />
+                <Param name="[a]" />
+                <Param name="[b]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.isprime" func="yes">
+            <Overload retVal="" descr="1, jeśli liczba jest pierwsza.">
+                <Param name="n" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.lcm" func="yes">
+            <Overload retVal="" descr="Najmniejsza wspólna wielokrotność.">
+                <Param name="a" />
+                <Param name="b" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.list2mat" func="yes">
+            <Overload retVal="" descr="Lista na macierz.">
+                <Param name="lista" />
+                <Param name="kolumny" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.mat2list" func="yes">
+            <Overload retVal="" descr="Macierz na listę.">
+                <Param name="macierz" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.nextprime" func="yes">
+            <Overload retVal="" descr="Najmniejsza liczba pierwsza większa od n.">
+                <Param name="n" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.proot" func="yes">
+            <Overload retVal="" descr="Pierwiastki wielomianu.">
+                <Param name="współczynniki" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CAS.solve" func="yes">
+            <Overload retVal="" descr="Rozwiązanie symboliczne (CAS).">
+                <Param name="równanie" />
+                <Param name="zmienna" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CASE" />
+        <KeyWord name="CEILING" func="yes">
+            <Overload retVal="" descr="Najmniejsza liczba całkowita ≥ x.">
+                <Param name="x" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CHAR" func="yes">
+            <Overload retVal="" descr="Znak lub znaki o podanych kodach.">
+                <Param name="kod_lub_wektor" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CHECK" func="yes">
+            <Overload retVal="" descr="Zaznacza równanie nr n (0–9) w bieżącej aplikacji. Bezpieczniej: Function.CHECK(n).">
+                <Param name="n" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CHOOSE" func="yes">
+            <Overload retVal="" descr="Okno wyboru. Zmienna dostaje numer opcji (1, 2, …) albo 0 po anulowaniu. Opcje można podać jako listę.">
+                <Param name="zmienna" />
+                <Param name="&quot;tytuł&quot;" />
+                <Param name="&quot;opcja1&quot;" />
+                <Param name="&quot;opcja2&quot;" />
+                <Param name="…" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CoefDet" />
+        <KeyWord name="COLOR" />
+        <KeyWord name="COMB" func="yes">
+            <Overload retVal="" descr="Liczba kombinacji.">
+                <Param name="n" />
+                <Param name="k" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CONCAT" func="yes">
+            <Overload retVal="" descr="Łączy listy (także teksty i wektory).">
+                <Param name="lista1" />
+                <Param name="lista2" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CONJ" func="yes">
+            <Overload retVal="" descr="Sprzężenie liczby zespolonej.">
+                <Param name="z" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CONTINUE" />
+        <KeyWord name="ContribList" />
+        <KeyWord name="ContribMat" />
+        <KeyWord name="CONVERT" func="yes">
+            <Overload retVal="" descr="Przeliczanie jednostek.">
+                <Param name="wartość_z_jednostką" />
+                <Param name="jednostka_docelowa" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Corr" />
+        <KeyWord name="COS" func="yes">
+            <Overload retVal="" descr="Cosinus (tryb kątów: HAngle).">
+                <Param name="x" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="COSH" func="yes">
+            <Overload retVal="" descr="Cosinus hiperboliczny.">
+                <Param name="x" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="COT" func="yes">
+            <Overload retVal="" descr="Cotangens.">
+                <Param name="x" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CPYR" />
+        <KeyWord name="CritScore" />
+        <KeyWord name="CritVal1" />
+        <KeyWord name="CritVal2" />
+        <KeyWord name="CROSS" func="yes">
+            <Overload retVal="" descr="Iloczyn wektorowy.">
+                <Param name="v1" />
+                <Param name="v2" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CSC" func="yes">
+            <Overload retVal="" descr="Cosecans.">
+                <Param name="x" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Cursor" />
+        <KeyWord name="C→PX" func="yes">
+            <Overload retVal="" descr="Współrzędne kartezjańskie na piksele.">
+                <Param name="x" />
+                <Param name="y" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="D" />
+        <KeyWord name="D0" />
+        <KeyWord name="D1" />
+        <KeyWord name="D2" />
+        <KeyWord name="D3" />
+        <KeyWord name="D4" />
+        <KeyWord name="D5" />
+        <KeyWord name="D6" />
+        <KeyWord name="D7" />
+        <KeyWord name="D8" />
+        <KeyWord name="D9" />
+        <KeyWord name="Date" />
+        <KeyWord name="DEFAULT" />
+        <KeyWord name="DelAFiles" func="yes">
+            <Overload retVal="" descr="Usuwa plik aplikacji.">
+                <Param name="&quot;nazwa&quot;" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="DelAVars" func="yes">
+            <Overload retVal="" descr="Usuwa zmienną aplikacji.">
+                <Param name="n_lub_&quot;nazwa&quot;" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="DELCOL" func="yes">
+            <Overload retVal="" descr="Usuwa kolumnę.">
+                <Param name="macierz" />
+                <Param name="nr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="DelHVars" func="yes">
+            <Overload retVal="" descr="Usuwa zmienną użytkownika Home.">
+                <Param name="n_lub_&quot;nazwa&quot;" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="DELROW" func="yes">
+            <Overload retVal="" descr="Usuwa wiersz.">
+                <Param name="macierz" />
+                <Param name="nr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="DET" func="yes">
+            <Overload retVal="" descr="Wyznacznik.">
+                <Param name="macierz" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="DF" />
+        <KeyWord name="DIFFERENCE" func="yes">
+            <Overload retVal="" descr="Elementy, które nie są wspólne.">
+                <Param name="lista1" />
+                <Param name="lista2" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="DIM" func="yes">
+            <Overload retVal="" descr="Długość tekstu; dla wektora/ciągu {długość}, dla macierzy {wiersze, kolumny}. Długość listy podaje SIZE.">
+                <Param name="obiekt" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="DIMGROB" func="yes">
+            <Overload retVal="" descr="Ustawia wymiary GROB-a (kartezjańskie).">
+                <Param name="G" />
+                <Param name="w" />
+                <Param name="h" />
+                <Param name="[kolor]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="DIMGROB_P" func="yes">
+            <Overload retVal="" descr="Tworzy bufor graficzny G1–G9 o wymiarach w×h, albo DIMGROB_P(G, lista_danych).">
+                <Param name="G" />
+                <Param name="w" />
+                <Param name="h" />
+                <Param name="[kolor]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="DO" />
+        <KeyWord name="Do1VStats" func="yes">
+            <Overload retVal="" descr="Oblicza statystyki analizy Hn (Statistics 1Var) i zapisuje je w zmiennych wyników (MeanX, MedVal…).">
+                <Param name="Hn" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Do2VStats" func="yes">
+            <Overload retVal="" descr="Oblicza statystyki analizy Sn (Statistics 2Var).">
+                <Param name="Sn" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="DoFinance" func="yes">
+            <Overload retVal="" descr="Oblicza aplikację Finance.">
+            </Overload>
+        </KeyWord>
+        <KeyWord name="DoInference" func="yes">
+            <Overload retVal="" descr="Wykonuje bieżący test lub przedział (Inference).">
+            </Overload>
+        </KeyWord>
+        <KeyWord name="DoSolve" func="yes">
+            <Overload retVal="" descr="Rozwiązuje trójkąt z bieżących danych (Triangle Solver).">
+            </Overload>
+        </KeyWord>
+        <KeyWord name="DOT" func="yes">
+            <Overload retVal="" descr="Iloczyn skalarny.">
+                <Param name="v1" />
+                <Param name="v2" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="DOWNTO" />
+        <KeyWord name="DRAWMENU" func="yes">
+            <Overload retVal="" descr="Rysuje pasek 6 przycisków na dole ekranu. Dotknięcia obsłuż komendą MOUSE.">
+                <Param name="&quot;e1&quot;" />
+                <Param name="&quot;e2&quot;" />
+                <Param name="&quot;e3&quot;" />
+                <Param name="&quot;e4&quot;" />
+                <Param name="&quot;e5&quot;" />
+                <Param name="&quot;e6&quot;" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="E" />
+        <KeyWord name="E0" />
+        <KeyWord name="E1" />
+        <KeyWord name="E2" />
+        <KeyWord name="E3" />
+        <KeyWord name="E4" />
+        <KeyWord name="E5" />
+        <KeyWord name="E6" />
+        <KeyWord name="E7" />
+        <KeyWord name="E8" />
+        <KeyWord name="E9" />
+        <KeyWord name="EDITLIST" func="yes">
+            <Overload retVal="" descr="Otwiera edytor listy i czeka na OK.">
+                <Param name="lista" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="EDITMAT" func="yes">
+            <Overload retVal="" descr="Otwiera edytor macierzy. Tytuł może być listą {&quot;tytuł&quot;, {wiersze}, {kolumny}}.">
+                <Param name="macierz" />
+                <Param name="[tytuł]" />
+                <Param name="[tylko_odczyt]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="EIGENVAL" func="yes">
+            <Overload retVal="" descr="Wartości własne.">
+                <Param name="macierz" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="EIGENVV" func="yes">
+            <Overload retVal="" descr="Wektory i wartości własne.">
+                <Param name="macierz" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ELSE" />
+        <KeyWord name="END" />
+        <KeyWord name="Entry" />
+        <KeyWord name="EVALLIST" func="yes">
+            <Overload retVal="" descr="Oblicza każdy element listy.">
+                <Param name="lista" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="EXECON" func="yes">
+            <Overload retVal="" descr="Nowa lista z wyrażenia na elementach (&amp;1 bieżący, &amp;2 następny; przy kilku listach &amp;1, &amp;2 = listy).">
+                <Param name="&quot;wyrażenie z &amp;&quot;" />
+                <Param name="lista1" />
+                <Param name="[lista2]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="EXP" func="yes">
+            <Overload retVal="" descr="e do potęgi x.">
+                <Param name="x" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ExpList" />
+        <KeyWord name="EXPM1" func="yes">
+            <Overload retVal="" descr="e^x − 1 z dużą dokładnością dla małych x.">
+                <Param name="x" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ExpMat" />
+        <KeyWord name="EXPORT" />
+        <KeyWord name="EXPR" func="yes">
+            <Overload retVal="" descr="Oblicza tekst jako wyrażenie.">
+                <Param name="tekst" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="EXTREMUM" func="yes">
+            <Overload retVal="" descr="Ekstremum funkcji Fn (Function).">
+                <Param name="Fn" />
+                <Param name="start" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="F" />
+        <KeyWord name="F0" />
+        <KeyWord name="F1" />
+        <KeyWord name="F2" />
+        <KeyWord name="F3" />
+        <KeyWord name="F4" />
+        <KeyWord name="F5" />
+        <KeyWord name="F6" />
+        <KeyWord name="F7" />
+        <KeyWord name="F8" />
+        <KeyWord name="F9" />
+        <KeyWord name="FILLPOLY" func="yes">
+            <Overload retVal="" descr="Wypełniony wielokąt (kartezjańskie).">
+                <Param name="[G]" />
+                <Param name="{(x1,y1), …}" />
+                <Param name="kolor" />
+                <Param name="[alfa]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="FILLPOLY_P" func="yes">
+            <Overload retVal="" descr="Wypełniony wielokąt (pikselowe). Alfa 0–255.">
+                <Param name="[G]" />
+                <Param name="{(x1,y1), …}" />
+                <Param name="kolor" />
+                <Param name="[alfa]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="FLOOR" func="yes">
+            <Overload retVal="" descr="Największa liczba całkowita ≤ x.">
+                <Param name="x" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="FOR" />
+        <KeyWord name="FP" func="yes">
+            <Overload retVal="" descr="Część ułamkowa.">
+                <Param name="x" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="FREEZE" />
+        <KeyWord name="FROM" />
+        <KeyWord name="FV" />
+        <KeyWord name="FZ0" />
+        <KeyWord name="FZ1" />
+        <KeyWord name="FZ2" />
+        <KeyWord name="FZ3" />
+        <KeyWord name="FZ4" />
+        <KeyWord name="FZ5" />
+        <KeyWord name="FZ6" />
+        <KeyWord name="FZ7" />
+        <KeyWord name="FZ8" />
+        <KeyWord name="FZ9" />
+        <KeyWord name="G" />
+        <KeyWord name="G0" />
+        <KeyWord name="G1" />
+        <KeyWord name="G2" />
+        <KeyWord name="G3" />
+        <KeyWord name="G4" />
+        <KeyWord name="G5" />
+        <KeyWord name="G6" />
+        <KeyWord name="G7" />
+        <KeyWord name="G8" />
+        <KeyWord name="G9" />
+        <KeyWord name="GETBASE" func="yes">
+            <Overload retVal="" descr="System liczby: 0 domyślny, 1 bin, 2 okt, 3 hex.">
+                <Param name="#n" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="GETBITS" func="yes">
+            <Overload retVal="" descr="Liczba bitów użytych do zapisu liczby.">
+                <Param name="#n" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="GETKEY" />
+        <KeyWord name="GETPIX" func="yes">
+            <Overload retVal="" descr="Kolor piksela (kartezjańskie).">
+                <Param name="[G]" />
+                <Param name="x" />
+                <Param name="y" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="GETPIX_P" func="yes">
+            <Overload retVal="" descr="Kolor piksela (pikselowe).">
+                <Param name="[G]" />
+                <Param name="x" />
+                <Param name="y" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="GridDots" />
+        <KeyWord name="GridLines" />
+        <KeyWord name="GROBH" func="yes">
+            <Overload retVal="" descr="Wysokość GROB-a.">
+                <Param name="G" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="GROBH_P" func="yes">
+            <Overload retVal="" descr="Wysokość GROB-a w pikselach.">
+                <Param name="G" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="GROBW" func="yes">
+            <Overload retVal="" descr="Szerokość GROB-a.">
+                <Param name="G" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="GROBW_P" func="yes">
+            <Overload retVal="" descr="Szerokość GROB-a w pikselach.">
+                <Param name="G" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="GSize" />
+        <KeyWord name="H" />
+        <KeyWord name="H1" />
+        <KeyWord name="H1Type" />
+        <KeyWord name="H2" />
+        <KeyWord name="H2Type" />
+        <KeyWord name="H3" />
+        <KeyWord name="H3Type" />
+        <KeyWord name="H4" />
+        <KeyWord name="H4Type" />
+        <KeyWord name="H5" />
+        <KeyWord name="H5Type" />
+        <KeyWord name="HAngle" />
+        <KeyWord name="HComplex" />
+        <KeyWord name="HDigits" />
+        <KeyWord name="HFormat" />
+        <KeyWord name="Hmax" />
+        <KeyWord name="Hmin" />
+        <KeyWord name="HMS→" func="yes">
+            <Overload retVal="" descr="Zapis sześćdziesiątkowy na liczbę dziesiętną.">
+                <Param name="wartość" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="HVars" func="yes">
+            <Overload retVal="" descr="Zmienne użytkownika Home. HVars(&quot;nazwa&quot;) := wartość tworzy zmienną.">
+                <Param name="[n_lub_&quot;nazwa&quot;]" />
+                <Param name="[2]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Hwidth" />
+        <KeyWord name="i" />
+        <KeyWord name="IDENMAT" func="yes">
+            <Overload retVal="" descr="Macierz jednostkowa n×n.">
+                <Param name="n" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="IF" />
+        <KeyWord name="IFERR" />
+        <KeyWord name="IM" func="yes">
+            <Overload retVal="" descr="Część urojona.">
+                <Param name="z" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="INPUT" func="yes">
+            <Overload retVal="" descr="Formularz do wprowadzania danych. Zwraca 1 po OK i 0 po Cancel. Zmienna może być listą, a element listy {zm,1} to checkbox, {zm,{opcje}} lista wyboru, {zm,[typy],{poz}} pole z typem i pozycją.">
+                <Param name="zmienne" />
+                <Param name="[&quot;tytuł&quot;]" />
+                <Param name="[etykiety]" />
+                <Param name="[pomoc]" />
+                <Param name="[reset]" />
+                <Param name="[początkowe]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="INSTRING" func="yes">
+            <Overload retVal="" descr="Pozycja pierwszego wystąpienia, 0 gdy brak.">
+                <Param name="tekst" />
+                <Param name="szukany" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Inter" />
+        <KeyWord name="INTERSECT" func="yes">
+            <Overload retVal="" descr="Elementy wspólne.">
+                <Param name="lista1" />
+                <Param name="lista2" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="INVERT" func="yes">
+            <Overload retVal="" descr="Negatyw obszaru (kartezjańskie).">
+                <Param name="[G]" />
+                <Param name="[x1]" />
+                <Param name="[y1]" />
+                <Param name="[x2]" />
+                <Param name="[y2]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="INVERT_P" func="yes">
+            <Overload retVal="" descr="Negatyw obszaru (pikselowe).">
+                <Param name="[G]" />
+                <Param name="[x1]" />
+                <Param name="[y1]" />
+                <Param name="[x2]" />
+                <Param name="[y2]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="IP" func="yes">
+            <Overload retVal="" descr="Część całkowita.">
+                <Param name="x" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="IPYR" />
+        <KeyWord name="iquo" func="yes">
+            <Overload retVal="" descr="Iloraz całkowity.">
+                <Param name="a" />
+                <Param name="b" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="irem" func="yes">
+            <Overload retVal="" descr="Reszta z dzielenia całkowitego.">
+                <Param name="a" />
+                <Param name="b" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ISCHECK" func="yes">
+            <Overload retVal="" descr="1, jeśli równanie nr n jest zaznaczone.">
+                <Param name="n" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ISECT" func="yes">
+            <Overload retVal="" descr="Punkt przecięcia dwóch funkcji (Function).">
+                <Param name="Fn" />
+                <Param name="Fm" />
+                <Param name="start" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ISKEYDOWN" func="yes">
+            <Overload retVal="" descr="1, jeśli klawisz o danym kodzie jest w tej chwili wciśnięty.">
+                <Param name="kod" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ITERATE" func="yes">
+            <Overload retVal="" descr="n-krotne złożenie wyrażenia.">
+                <Param name="wyrażenie" />
+                <Param name="zmienna" />
+                <Param name="start" />
+                <Param name="n" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="J" />
+        <KeyWord name="K" />
+        <KeyWord name="KEY" />
+        <KeyWord name="KILL" />
+        <KeyWord name="L" />
+        <KeyWord name="L0" />
+        <KeyWord name="L1" />
+        <KeyWord name="L2" />
+        <KeyWord name="L3" />
+        <KeyWord name="L4" />
+        <KeyWord name="L5" />
+        <KeyWord name="L6" />
+        <KeyWord name="L7" />
+        <KeyWord name="L8" />
+        <KeyWord name="L9" />
+        <KeyWord name="Labels" />
+        <KeyWord name="Language" />
+        <KeyWord name="LEFT" func="yes">
+            <Overload retVal="" descr="Pierwsze n znaków.">
+                <Param name="tekst" />
+                <Param name="n" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="LINE" func="yes">
+            <Overload retVal="" descr="Linia we współrzędnych kartezjańskich. Forma zaawansowana: wiele linii i 3D.">
+                <Param name="[G]" />
+                <Param name="x1" />
+                <Param name="y1" />
+                <Param name="x2" />
+                <Param name="y2" />
+                <Param name="[kolor]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="LINE_P" func="yes">
+            <Overload retVal="" descr="Linia we współrzędnych pikselowych. Forma zaawansowana: LINE_P([G], punkty, linie, macierz_obrotu | {…}, [zstring]).">
+                <Param name="[G]" />
+                <Param name="x1" />
+                <Param name="y1" />
+                <Param name="x2" />
+                <Param name="y2" />
+                <Param name="[kolor]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="LinSolve" func="yes">
+            <Overload retVal="" descr="Rozwiązuje układ z macierzy rozszerzonej (Linear Solver).">
+                <Param name="macierz" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="LN" func="yes">
+            <Overload retVal="" descr="Logarytm naturalny.">
+                <Param name="x" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="LNP1" func="yes">
+            <Overload retVal="" descr="ln(1+x) z dużą dokładnością dla małych x.">
+                <Param name="x" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="LOCAL" />
+        <KeyWord name="LOG" func="yes">
+            <Overload retVal="" descr="Logarytm dziesiętny.">
+                <Param name="x" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="LOWER" func="yes">
+            <Overload retVal="" descr="Zamienia na małe litery.">
+                <Param name="tekst" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="LSQ" func="yes">
+            <Overload retVal="" descr="Rozwiązanie metodą najmniejszych kwadratów.">
+                <Param name="A" />
+                <Param name="b" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="LSystem" />
+        <KeyWord name="LU" func="yes">
+            <Overload retVal="" descr="Rozkład LU.">
+                <Param name="macierz" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="M" />
+        <KeyWord name="M0" />
+        <KeyWord name="M1" />
+        <KeyWord name="M2" />
+        <KeyWord name="M3" />
+        <KeyWord name="M4" />
+        <KeyWord name="M5" />
+        <KeyWord name="M6" />
+        <KeyWord name="M7" />
+        <KeyWord name="M8" />
+        <KeyWord name="M9" />
+        <KeyWord name="MAKELIST" func="yes">
+            <Overload retVal="" descr="Tworzy listę z wyrażenia.">
+                <Param name="wyrażenie" />
+                <Param name="zmienna" />
+                <Param name="początek" />
+                <Param name="koniec" />
+                <Param name="[krok]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="MAKEMAT" func="yes">
+            <Overload retVal="" descr="Tworzy macierz z wyrażenia w I (wiersz) i J (kolumna).">
+                <Param name="wyrażenie" />
+                <Param name="wiersze" />
+                <Param name="kolumny" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="MANT" func="yes">
+            <Overload retVal="" descr="Mantysa liczby.">
+                <Param name="x" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="MAX" func="yes">
+            <Overload retVal="" descr="Największa wartość; działa też na liście.">
+                <Param name="a" />
+                <Param name="b" />
+                <Param name="…" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="MAXREAL" />
+        <KeyWord name="MaxVal" />
+        <KeyWord name="MeanX" />
+        <KeyWord name="MeanY" />
+        <KeyWord name="MedVal" />
+        <KeyWord name="Method" />
+        <KeyWord name="MID" func="yes">
+            <Overload retVal="" descr="n znaków od pozycji; bez n do końca tekstu.">
+                <Param name="tekst" />
+                <Param name="pozycja" />
+                <Param name="[n]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="MIN" func="yes">
+            <Overload retVal="" descr="Najmniejsza wartość; działa też na liście.">
+                <Param name="a" />
+                <Param name="b" />
+                <Param name="…" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="MINREAL" />
+        <KeyWord name="MinVal" />
+        <KeyWord name="MKSA" func="yes">
+            <Overload retVal="" descr="Zamienia na jednostki podstawowe SI.">
+                <Param name="wartość" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="MOD" />
+        <KeyWord name="MOUSE" func="yes">
+            <Overload retVal="" descr="Stan ekranu dotykowego: dwie listy {x, y, x0, y0, typ}. Typ: 0 nowy, 1 zakończony, 2 przeciąganie, 3 rozciąganie, 4 obrót, 5 długie przytrzymanie.">
+                <Param name="[indeks]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="MSGBOX" func="yes">
+            <Overload retVal="" descr="Okno komunikatu. Zwraca 1 po OK i 0 po Cancel.">
+                <Param name="wyrażenie" />
+                <Param name="[ok_cancel]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="N" />
+        <KeyWord name="NbItem" />
+        <KeyWord name="NbPmt" />
+        <KeyWord name="Nmax" />
+        <KeyWord name="Nmin" />
+        <KeyWord name="NOT" />
+        <KeyWord name="Notes" func="yes">
+            <Overload retVal="" descr="Notatki. Notes(&quot;nazwa&quot;) := &quot;tekst&quot; tworzy lub nadpisuje notatkę, pusty tekst ją usuwa.">
+                <Param name="[n_lub_&quot;nazwa&quot;]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="NumIndep" />
+        <KeyWord name="NumStart" />
+        <KeyWord name="NumStep" />
+        <KeyWord name="NumType" />
+        <KeyWord name="NumXStart" />
+        <KeyWord name="NumXStep" />
+        <KeyWord name="NumXZoom" />
+        <KeyWord name="NumYStart" />
+        <KeyWord name="NumYStep" />
+        <KeyWord name="NumYZoom" />
+        <KeyWord name="NumZoom" />
+        <KeyWord name="O" />
+        <KeyWord name="OR" />
+        <KeyWord name="P" />
+        <KeyWord name="PERM" func="yes">
+            <Overload retVal="" descr="Liczba permutacji (wariacji bez powtórzeń).">
+                <Param name="n" />
+                <Param name="k" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="PI" />
+        <KeyWord name="PIXOFF" func="yes">
+            <Overload retVal="" descr="Ustawia piksel na biały (kartezjańskie).">
+                <Param name="[G]" />
+                <Param name="x" />
+                <Param name="y" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="PIXOFF_P" func="yes">
+            <Overload retVal="" descr="Ustawia piksel na biały (pikselowe).">
+                <Param name="[G]" />
+                <Param name="x" />
+                <Param name="y" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="PIXON" func="yes">
+            <Overload retVal="" descr="Zapala piksel (współrzędne kartezjańskie).">
+                <Param name="[G]" />
+                <Param name="x" />
+                <Param name="y" />
+                <Param name="[kolor]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="PIXON_P" func="yes">
+            <Overload retVal="" descr="Zapala piksel (współrzędne pikselowe).">
+                <Param name="[G]" />
+                <Param name="x" />
+                <Param name="y" />
+                <Param name="[kolor]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="PixSize" />
+        <KeyWord name="PMT" />
+        <KeyWord name="POS" func="yes">
+            <Overload retVal="" descr="Pozycja pierwszego wystąpienia, 0 gdy brak.">
+                <Param name="lista" />
+                <Param name="element" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="PPYR" />
+        <KeyWord name="PredX" func="yes">
+            <Overload retVal="" descr="Przewidywane x z dopasowania (Statistics 2Var).">
+                <Param name="y" />
+                <Param name="[Sn]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="PredY" func="yes">
+            <Overload retVal="" descr="Przewidywane y z dopasowania (Statistics 2Var).">
+                <Param name="x" />
+                <Param name="[Sn]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="PRINT" func="yes">
+            <Overload retVal="" descr="Wypisuje linię w terminalu. PRINT() bez argumentu czyści terminal.">
+                <Param name="[wyrażenie]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Prob" />
+        <KeyWord name="Programs" func="yes">
+            <Overload retVal="" descr="Kod źródłowy programów jako tekst. Programs(&quot;nazwa&quot;) := &quot;kod&quot; tworzy program, pusty tekst go usuwa.">
+                <Param name="[n_lub_&quot;nazwa&quot;]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="PV" />
+        <KeyWord name="PX→C" func="yes">
+            <Overload retVal="" descr="Piksele na współrzędne kartezjańskie.">
+                <Param name="x" />
+                <Param name="y" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Q" />
+        <KeyWord name="Q1" />
+        <KeyWord name="Q3" />
+        <KeyWord name="QR" func="yes">
+            <Overload retVal="" descr="Rozkład QR.">
+                <Param name="macierz" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="R" />
+        <KeyWord name="R0" />
+        <KeyWord name="R1" />
+        <KeyWord name="R2" />
+        <KeyWord name="R3" />
+        <KeyWord name="R4" />
+        <KeyWord name="R5" />
+        <KeyWord name="R6" />
+        <KeyWord name="R7" />
+        <KeyWord name="R8" />
+        <KeyWord name="R9" />
+        <KeyWord name="RANDINT" func="yes">
+            <Overload retVal="" descr="Losowa liczba całkowita z [a,b] (lub z [0,b]); z n: lista n liczb.">
+                <Param name="[n]" />
+                <Param name="a" />
+                <Param name="b" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="randMat" func="yes">
+            <Overload retVal="" descr="Macierz losowych liczb całkowitych.">
+                <Param name="n" />
+                <Param name="[m]" />
+                <Param name="[dolna]" />
+                <Param name="[górna]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="RANDOM" func="yes">
+            <Overload retVal="" descr="Losowa liczba rzeczywista z [0,1) albo z podanego zakresu.">
+                <Param name="[a]" />
+                <Param name="[b]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="RANDSEED" func="yes">
+            <Overload retVal="" descr="Ustawia ziarno generatora losowego.">
+                <Param name="wartość" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="RANK" func="yes">
+            <Overload retVal="" descr="Rząd macierzy.">
+                <Param name="macierz" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="RE" func="yes">
+            <Overload retVal="" descr="Część rzeczywista.">
+                <Param name="z" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Recenter" />
+        <KeyWord name="RECT" func="yes">
+            <Overload retVal="" descr="Prostokąt we współrzędnych kartezjańskich. RECT() czyści ekran na biało, RECT(kolor) wypełnia ekran kolorem.">
+                <Param name="[G]" />
+                <Param name="[x1]" />
+                <Param name="[y1]" />
+                <Param name="[x2]" />
+                <Param name="[y2]" />
+                <Param name="[krawędź]" />
+                <Param name="[wypełnienie]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="RECT_P" func="yes">
+            <Overload retVal="" descr="Prostokąt we współrzędnych pikselowych. Argumenty opcjonalne wypełniane są od lewej.">
+                <Param name="[G]" />
+                <Param name="[x1]" />
+                <Param name="[y1]" />
+                <Param name="[x2]" />
+                <Param name="[y2]" />
+                <Param name="[krawędź]" />
+                <Param name="[wypełnienie]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="REDIM" func="yes">
+            <Overload retVal="" descr="Zmienia wymiary, zachowując dane i dopełniając zerami.">
+                <Param name="macierz" />
+                <Param name="{w, k}" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="REPEAT" />
+        <KeyWord name="REPLACE" func="yes">
+            <Overload retVal="" descr="Nadpisuje fragment tekstu, listy, macierzy lub grafiki od pozycji start.">
+                <Param name="obiekt" />
+                <Param name="start" />
+                <Param name="wstawka" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Resid" func="yes">
+            <Overload retVal="" descr="Reszty dopasowania.">
+                <Param name="[Sn]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Result" />
+        <KeyWord name="RETURN" />
+        <KeyWord name="REVERSE" func="yes">
+            <Overload retVal="" descr="Odwraca kolejność.">
+                <Param name="lista" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="RGB" func="yes">
+            <Overload retVal="" descr="Kod koloru ze składowych 0–255. Kolor można też zapisać jako #RRGGBBh.">
+                <Param name="r" />
+                <Param name="g" />
+                <Param name="b" />
+                <Param name="[alfa]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="RIGHT" func="yes">
+            <Overload retVal="" descr="Ostatnie n znaków.">
+                <Param name="tekst" />
+                <Param name="n" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Root" />
+        <KeyWord name="ROTATE" func="yes">
+            <Overload retVal="" descr="Przesunięcie cykliczne: n&gt;0 w lewo, n&lt;0 w prawo.">
+                <Param name="tekst" />
+                <Param name="n" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ROUND" func="yes">
+            <Overload retVal="" descr="Zaokrąglenie do n miejsc po przecinku.">
+                <Param name="x" />
+                <Param name="n" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="RREF" func="yes">
+            <Overload retVal="" descr="Zredukowana postać schodkowa.">
+                <Param name="macierz" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="R→B" func="yes">
+            <Overload retVal="" descr="Liczba rzeczywista na liczbę z # w systemie domyślnym.">
+                <Param name="n" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="S" />
+        <KeyWord name="S1" />
+        <KeyWord name="S1Fit" />
+        <KeyWord name="S1mark" />
+        <KeyWord name="S2" />
+        <KeyWord name="S2Fit" />
+        <KeyWord name="S2mark" />
+        <KeyWord name="S3" />
+        <KeyWord name="S3Fit" />
+        <KeyWord name="S3mark" />
+        <KeyWord name="S4" />
+        <KeyWord name="S4Fit" />
+        <KeyWord name="S4mark" />
+        <KeyWord name="S5" />
+        <KeyWord name="S5Fit" />
+        <KeyWord name="S5mark" />
+        <KeyWord name="SAS" func="yes">
+            <Overload retVal="" descr="Trójkąt z dwóch boków i kąta między nimi.">
+                <Param name="a" />
+                <Param name="kąt" />
+                <Param name="b" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="SCALE" func="yes">
+            <Overload retVal="" descr="Mnoży wiersz przez wartość.">
+                <Param name="macierz" />
+                <Param name="wartość" />
+                <Param name="wiersz" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="SCALEADD" func="yes">
+            <Overload retVal="" descr="Operacja wierszowa: wiersz w1 razy wartość dodany do wiersza w2.">
+                <Param name="macierz" />
+                <Param name="wartość" />
+                <Param name="w1" />
+                <Param name="w2" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="sCov" />
+        <KeyWord name="ScrollText" />
+        <KeyWord name="SEC" func="yes">
+            <Overload retVal="" descr="Secans.">
+                <Param name="x" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="SeqPlot" />
+        <KeyWord name="serrInter" />
+        <KeyWord name="serrLine" />
+        <KeyWord name="serrSlope" />
+        <KeyWord name="serrX" />
+        <KeyWord name="serrY" />
+        <KeyWord name="SETBASE" func="yes">
+            <Overload retVal="" descr="Pokazuje liczbę w innym systemie: 1 bin, 2 okt, 3 hex.">
+                <Param name="#n" />
+                <Param name="[system]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="SETBITS" func="yes">
+            <Overload retVal="" descr="Ustala liczbę bitów reprezentacji.">
+                <Param name="#n" />
+                <Param name="[bity]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="SetDepend" func="yes">
+            <Overload retVal="" descr="Ustawia kolumnę zmiennej zależnej (Statistics 2Var).">
+                <Param name="Sn" />
+                <Param name="Cn" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="SetFreq" func="yes">
+            <Overload retVal="" descr="Ustawia częstości analizy Hn.">
+                <Param name="Hn" />
+                <Param name="Dn_lub_wartość" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="SetIndep" func="yes">
+            <Overload retVal="" descr="Ustawia kolumnę zmiennej niezależnej (Statistics 2Var).">
+                <Param name="Sn" />
+                <Param name="Cn" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="SetSample" func="yes">
+            <Overload retVal="" descr="Ustawia kolumnę danych analizy Hn.">
+                <Param name="Hn" />
+                <Param name="Dn" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="SideA" />
+        <KeyWord name="SideB" />
+        <KeyWord name="SideC" />
+        <KeyWord name="Signed" />
+        <KeyWord name="SignedArea" />
+        <KeyWord name="SIN" func="yes">
+            <Overload retVal="" descr="Sinus (tryb kątów: HAngle).">
+                <Param name="x" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="SINH" func="yes">
+            <Overload retVal="" descr="Sinus hiperboliczny.">
+                <Param name="x" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="SIZE" func="yes">
+            <Overload retVal="" descr="Liczba elementów listy; dla macierzy lista wymiarów.">
+                <Param name="obiekt" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="SLOPE" func="yes">
+            <Overload retVal="" descr="Nachylenie funkcji w punkcie (Function).">
+                <Param name="Fn" />
+                <Param name="x" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="SOLVE" func="yes">
+            <Overload retVal="" descr="Rozwiązanie równania numerycznie (Solve). Przykład z instrukcji: SOLVE(X^2-X-2,X,3) = 2.">
+                <Param name="En" />
+                <Param name="zmienna" />
+                <Param name="start" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Solve2x2" func="yes">
+            <Overload retVal="" descr="Układ 2×2: ax+by=c, dx+ey=f (Linear Solver).">
+                <Param name="a" />
+                <Param name="b" />
+                <Param name="c" />
+                <Param name="d" />
+                <Param name="e" />
+                <Param name="f" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Solve3x3" func="yes">
+            <Overload retVal="" descr="Układ 3×3 (Linear Solver).">
+                <Param name="a" />
+                <Param name="b" />
+                <Param name="c" />
+                <Param name="d" />
+                <Param name="e" />
+                <Param name="f" />
+                <Param name="g" />
+                <Param name="h" />
+                <Param name="i" />
+                <Param name="j" />
+                <Param name="k" />
+                <Param name="l" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="SORT" func="yes">
+            <Overload retVal="" descr="Sortuje rosnąco.">
+                <Param name="lista" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="SSA" func="yes">
+            <Overload retVal="" descr="Trójkąt z dwóch boków i kąta nieprzyległego.">
+                <Param name="bok" />
+                <Param name="bok" />
+                <Param name="kąt" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="SSS" func="yes">
+            <Overload retVal="" descr="Trójkąt z trzech boków (Triangle Solver).">
+                <Param name="a" />
+                <Param name="b" />
+                <Param name="c" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ssX" />
+        <KeyWord name="ssY" />
+        <KeyWord name="STARTAPP" func="yes">
+            <Overload retVal="" descr="Uruchamia aplikację (i jej funkcję START).">
+                <Param name="&quot;nazwa&quot;" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="STARTVIEW" func="yes">
+            <Overload retVal="" descr="Otwiera widok: 0 Symb, 1 Plot, 2 Num, 3–5 Setup, 6 Info, 7 menu View, -1 Home, -2 ustawienia, -3 pamięć, -4 aplikacje, -5 macierze, -6 listy, -7 programy, -8 notatki.">
+                <Param name="n" />
+                <Param name="[przerysuj]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="STEP" />
+        <KeyWord name="STRING" func="yes">
+            <Overload retVal="" descr="Wynik jako tekst. Tryb: 1 Standard, 2 Fixed, 3 Sci, 4 Eng, 5 Floating, 6 Rounded (+7 ułamek, +14 ułamek mieszany).">
+                <Param name="wyrażenie" />
+                <Param name="[tryb]" />
+                <Param name="[precyzja]" />
+                <Param name="[separator]" />
+                <Param name="[rozmiar]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="STRINGFROMID" func="yes">
+            <Overload retVal="" descr="Wbudowany napis systemowy o numerze n.">
+                <Param name="n" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="SUB" func="yes">
+            <Overload retVal="" descr="Wycina fragment listy, macierzy lub grafiki.">
+                <Param name="nazwa" />
+                <Param name="początek" />
+                <Param name="koniec" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="SUBGROB" func="yes">
+            <Overload retVal="" descr="Kopiuje fragment grafiki do GROB-a cel (nie G0).">
+                <Param name="źródło" />
+                <Param name="[x1]" />
+                <Param name="[y1]" />
+                <Param name="[x2]" />
+                <Param name="[y2]" />
+                <Param name="cel" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="SUBGROB_P" func="yes">
+            <Overload retVal="" descr="Kopiuje fragment grafiki do GROB-a cel (nie G0).">
+                <Param name="źródło" />
+                <Param name="[x1]" />
+                <Param name="[y1]" />
+                <Param name="[x2]" />
+                <Param name="[y2]" />
+                <Param name="cel" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="SVD" func="yes">
+            <Overload retVal="" descr="Rozkład według wartości osobliwych.">
+                <Param name="macierz" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="SWAPCOL" func="yes">
+            <Overload retVal="" descr="Zamienia kolumny.">
+                <Param name="macierz" />
+                <Param name="k1" />
+                <Param name="k2" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="SWAPROW" func="yes">
+            <Overload retVal="" descr="Zamienia wiersze.">
+                <Param name="macierz" />
+                <Param name="w1" />
+                <Param name="w2" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="sX" />
+        <KeyWord name="sY" />
+        <KeyWord name="T" />
+        <KeyWord name="TAN" func="yes">
+            <Overload retVal="" descr="Tangens (tryb kątów: HAngle).">
+                <Param name="x" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="TANH" func="yes">
+            <Overload retVal="" descr="Tangens hiperboliczny.">
+                <Param name="x" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="TestScore" />
+        <KeyWord name="TestValue" />
+        <KeyWord name="TEVAL" func="yes">
+            <Overload retVal="" descr="Czas obliczenia wyrażenia w sekundach.">
+                <Param name="wyrażenie" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="TEXTOUT" func="yes">
+            <Overload retVal="" descr="Tekst na grafice (kartezjańskie). Zwraca x końca tekstu.">
+                <Param name="tekst" />
+                <Param name="[G]" />
+                <Param name="x" />
+                <Param name="y" />
+                <Param name="[czcionka]" />
+                <Param name="[kolor]" />
+                <Param name="[szerokość]" />
+                <Param name="[tło]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="TEXTOUT_P" func="yes">
+            <Overload retVal="" descr="Tekst na grafice (pikselowe). Czcionka: 0 z ustawień, 1–7 = 10–22 pt (fw 13441+). Zwraca x końca tekstu.">
+                <Param name="tekst" />
+                <Param name="[G]" />
+                <Param name="x" />
+                <Param name="y" />
+                <Param name="[czcionka]" />
+                <Param name="[kolor]" />
+                <Param name="[szerokość]" />
+                <Param name="[tło]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="THEN" />
+        <KeyWord name="TICKS" />
+        <KeyWord name="Time" />
+        <KeyWord name="Tmax" />
+        <KeyWord name="Tmin" />
+        <KeyWord name="TO" />
+        <KeyWord name="TOff" />
+        <KeyWord name="TRACE" func="yes">
+            <Overload retVal="" descr="Ślad macierzy.">
+                <Param name="macierz" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="TRIANGLE" func="yes">
+            <Overload retVal="" descr="Trójkąt (kartezjańskie). Trzy kolory dają gradient. Ma też formy 3D.">
+                <Param name="[G]" />
+                <Param name="x1" />
+                <Param name="y1" />
+                <Param name="x2" />
+                <Param name="y2" />
+                <Param name="x3" />
+                <Param name="y3" />
+                <Param name="kolor" />
+                <Param name="[k2]" />
+                <Param name="[k3]" />
+                <Param name="[alfa]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="TRIANGLE_P" func="yes">
+            <Overload retVal="" descr="Trójkąt (pikselowe). Trzy kolory dają gradient. Ma też formy 3D z punktami i macierzą obrotu. TRIANGLE_P([G]) tworzy z-bufor.">
+                <Param name="[G]" />
+                <Param name="x1" />
+                <Param name="y1" />
+                <Param name="x2" />
+                <Param name="y2" />
+                <Param name="x3" />
+                <Param name="y3" />
+                <Param name="kolor" />
+                <Param name="[k2]" />
+                <Param name="[k3]" />
+                <Param name="[alfa]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="TriType" />
+        <KeyWord name="TRN" func="yes">
+            <Overload retVal="" descr="Transpozycja.">
+                <Param name="macierz" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="TRUNCATE" func="yes">
+            <Overload retVal="" descr="Obcięcie do n miejsc po przecinku.">
+                <Param name="x" />
+                <Param name="n" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Tstep" />
+        <KeyWord name="TYPE" func="yes">
+            <Overload retVal="" descr="Typ: 0 rzeczywista, 1 całkowita #, 2 tekst, 3 zespolona, 4 macierz, 5 błąd, 6 lista, 8 funkcja, 9 jednostka, 14.x CAS.">
+                <Param name="obiekt" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="U" />
+        <KeyWord name="U0" />
+        <KeyWord name="U1" />
+        <KeyWord name="U2" />
+        <KeyWord name="U3" />
+        <KeyWord name="U4" />
+        <KeyWord name="U5" />
+        <KeyWord name="U6" />
+        <KeyWord name="U7" />
+        <KeyWord name="U8" />
+        <KeyWord name="U9" />
+        <KeyWord name="UFACTOR" func="yes">
+            <Overload retVal="" descr="Rozkłada jednostkę względem podanej.">
+                <Param name="wartość" />
+                <Param name="jednostka" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="UNCHECK" func="yes">
+            <Overload retVal="" descr="Odznacza równanie nr n.">
+                <Param name="n" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="UNTIL" />
+        <KeyWord name="UPPER" func="yes">
+            <Overload retVal="" descr="Zamienia na wielkie litery.">
+                <Param name="tekst" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="USIMPLIFY" func="yes">
+            <Overload retVal="" descr="Upraszcza jednostki.">
+                <Param name="wartość" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="V" />
+        <KeyWord name="V0" />
+        <KeyWord name="V1" />
+        <KeyWord name="V2" />
+        <KeyWord name="V3" />
+        <KeyWord name="V4" />
+        <KeyWord name="V5" />
+        <KeyWord name="V6" />
+        <KeyWord name="V7" />
+        <KeyWord name="V8" />
+        <KeyWord name="V9" />
+        <KeyWord name="VIEW" />
+        <KeyWord name="W" />
+        <KeyWord name="WAIT" func="yes">
+            <Overload retVal="" descr="Pauza n sekund. WAIT(0)/WAIT: według fw 13441 czeka na klawisz, według instrukcji 2016 czeka minutę. WAIT(-1) (nowsze fw) czeka na klawisz lub dotyk.">
+                <Param name="[sekundy]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="when" func="yes">
+            <Overload retVal="" descr="Warunek jako wyrażenie.">
+                <Param name="warunek" />
+                <Param name="gdy_prawda" />
+                <Param name="gdy_fałsz" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="WHILE" />
+        <KeyWord name="X" />
+        <KeyWord name="X0" />
+        <KeyWord name="X1" />
+        <KeyWord name="X2" />
+        <KeyWord name="X3" />
+        <KeyWord name="X4" />
+        <KeyWord name="X5" />
+        <KeyWord name="X6" />
+        <KeyWord name="X7" />
+        <KeyWord name="X8" />
+        <KeyWord name="X9" />
+        <KeyWord name="Xmax" />
+        <KeyWord name="Xmin" />
+        <KeyWord name="XOR" />
+        <KeyWord name="XPON" func="yes">
+            <Overload retVal="" descr="Wykładnik liczby.">
+                <Param name="x" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Xtick" />
+        <KeyWord name="Xzoom" />
+        <KeyWord name="Y" />
+        <KeyWord name="Y0" />
+        <KeyWord name="Y1" />
+        <KeyWord name="Y2" />
+        <KeyWord name="Y3" />
+        <KeyWord name="Y4" />
+        <KeyWord name="Y5" />
+        <KeyWord name="Y6" />
+        <KeyWord name="Y7" />
+        <KeyWord name="Y8" />
+        <KeyWord name="Y9" />
+        <KeyWord name="Ymax" />
+        <KeyWord name="Ymin" />
+        <KeyWord name="Ytick" />
+        <KeyWord name="Yval" />
+        <KeyWord name="Yzoom" />
+        <KeyWord name="Z" />
+        <KeyWord name="Z0" />
+        <KeyWord name="Z1" />
+        <KeyWord name="Z2" />
+        <KeyWord name="Z3" />
+        <KeyWord name="Z4" />
+        <KeyWord name="Z5" />
+        <KeyWord name="Z6" />
+        <KeyWord name="Z7" />
+        <KeyWord name="Z8" />
+        <KeyWord name="Z9" />
+        <KeyWord name="ΔLIST" func="yes">
+            <Overload retVal="" descr="Różnice kolejnych elementów.">
+                <Param name="lista" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Π" func="yes">
+            <Overload retVal="" descr="Iloczyn.">
+                <Param name="wyrażenie" />
+                <Param name="zmienna" />
+                <Param name="od" />
+                <Param name="do" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ΠLIST" func="yes">
+            <Overload retVal="" descr="Iloczyn elementów.">
+                <Param name="lista" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Σ" func="yes">
+            <Overload retVal="" descr="Suma (krok 1).">
+                <Param name="wyrażenie" />
+                <Param name="zmienna" />
+                <Param name="od" />
+                <Param name="do" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ΣLIST" func="yes">
+            <Overload retVal="" descr="Suma elementów.">
+                <Param name="lista" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ΣX" />
+        <KeyWord name="ΣX2" />
+        <KeyWord name="ΣXY" />
+        <KeyWord name="ΣY" />
+        <KeyWord name="ΣY2" />
+        <KeyWord name="θ" />
+        <KeyWord name="θmax" />
+        <KeyWord name="θmin" />
+        <KeyWord name="θstep" />
+        <KeyWord name="π" />
+        <KeyWord name="σCov" />
+        <KeyWord name="σX" />
+        <KeyWord name="σY" />
+        <KeyWord name="→HMS" func="yes">
+            <Overload retVal="" descr="Liczba dziesiętna na zapis sześćdziesiątkowy (°′″).">
+                <Param name="wartość" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="∂" func="yes">
+            <Overload retVal="" descr="Pochodna w punkcie (numerycznie w programie PPL).">
+                <Param name="wyrażenie" />
+                <Param name="zmienna=wartość" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="∞" />
+        <KeyWord name="∫" func="yes">
+            <Overload retVal="" descr="Całka oznaczona.">
+                <Param name="wyrażenie" />
+                <Param name="zmienna" />
+                <Param name="a" />
+                <Param name="b" />
+            </Overload>
+        </KeyWord>
+    </AutoComplete>
+</NotepadPlus>

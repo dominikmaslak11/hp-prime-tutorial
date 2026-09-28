@@ -67,6 +67,17 @@ oryginał.
 
 ---
 
+## Narzędzia: VS Code, Notepad++ i asystenci AI
+
+W katalogu [`tools/`](tools/README.md) jest zestaw narzędzi do pisania programów PPL na komputerze:
+- **rozszerzenie VS Code**: kolorowanie, sprawdzanie błędów na żywo, podpowiedzi komend z opisami po polsku, formatowanie, kopiowanie programu do Connectivity Kit,
+- **pakiet Notepad++**: kolorowanie, autouzupełnianie, sprawdzanie błędów,
+- **`ppl.exe`**: walidator z linii poleceń oraz serwer MCP dla agentów AI (Claude, ChatGPT, Gemini, DeepSeek). Agent sam sprawdza napisany program PPL i poprawia błędy.
+
+Wszystkie programy z tego kursu są automatycznie sprawdzane tym walidatorem.
+
+---
+
 ## Konwencje używane w kursie
 
 | Zapis | Znaczenie | Przykład |

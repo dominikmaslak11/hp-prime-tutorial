@@ -236,7 +236,7 @@ Pełna lista: [dodatek C](../dodatki/C-tabele.md).
 
 1. Co zwróci program poniżej i jaką wartość będzie miało globalne `B` po jego wykonaniu, jeśli wcześniej w Home wykonano `B:=10`?
    ```
-   EXPORT Q1()
+   EXPORT ZADANIE1()
    BEGIN
      LOCAL B := 3;
      B := B*2;

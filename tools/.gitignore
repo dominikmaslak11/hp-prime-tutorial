@@ -1,0 +1,6 @@
+build/
+dist/
+vscode/node_modules/
+vscode/bin/
+vscode/data/
+*.vsix

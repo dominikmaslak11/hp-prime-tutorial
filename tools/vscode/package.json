@@ -1,0 +1,204 @@
+{
+  "name": "hp-prime-ppl",
+  "displayName": "HP Prime PPL",
+  "description": "Język HP PPL (kalkulator HP Prime): kolorowanie, podpowiedzi, sprawdzanie błędów na żywo, formatowanie i narzędzia MCP dla asystentów AI.",
+  "version": "1.0.0",
+  "publisher": "dominikmaslak11",
+  "license": "SEE LICENSE IN README.md",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dominikmaslak11/hp-prime-tutorial"
+  },
+  "engines": {
+    "vscode": "^1.101.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Linters",
+    "Formatters",
+    "Snippets",
+    "AI"
+  ],
+  "keywords": [
+    "HP Prime",
+    "PPL",
+    "HP PPL",
+    "kalkulator",
+    "calculator",
+    "MCP"
+  ],
+  "main": "./extension.js",
+  "activationEvents": [
+    "onLanguage:hpppl"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "hpppl",
+        "aliases": [
+          "HP PPL",
+          "HP Prime PPL",
+          "hpppl"
+        ],
+        "extensions": [
+          ".hpppl",
+          ".ppl",
+          ".hpprgm.txt"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "hpppl",
+        "scopeName": "source.hpppl",
+        "path": "./syntaxes/hpppl.tmLanguage.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "hpppl.check",
+        "title": "Sprawdź program",
+        "category": "HP PPL"
+      },
+      {
+        "command": "hpppl.format",
+        "title": "Formatuj program",
+        "category": "HP PPL"
+      },
+      {
+        "command": "hpppl.toAscii",
+        "title": "Zamień symbole ≠ ≤ ≥ na ASCII (<> <= >=)",
+        "category": "HP PPL"
+      },
+      {
+        "command": "hpppl.toSymbols",
+        "title": "Zamień <> <= >= na symbole kalkulatora (≠ ≤ ≥)",
+        "category": "HP PPL"
+      },
+      {
+        "command": "hpppl.copyForCalculator",
+        "title": "Kopiuj program do schowka (dla Connectivity Kit)",
+        "category": "HP PPL"
+      },
+      {
+        "command": "hpppl.commandReference",
+        "title": "Opis komendy…",
+        "category": "HP PPL"
+      },
+      {
+        "command": "hpppl.newProgram",
+        "title": "Nowy program",
+        "category": "HP PPL"
+      },
+      {
+        "command": "hpppl.setupAi",
+        "title": "Skonfiguruj asystentów AI dla tego projektu (MCP + instrukcje)",
+        "category": "HP PPL"
+      },
+      {
+        "command": "hpppl.showLanguageGuide",
+        "title": "Przewodnik po języku PPL",
+        "category": "HP PPL"
+      },
+      {
+        "command": "hpppl.restartServer",
+        "title": "Uruchom ponownie serwer języka",
+        "category": "HP PPL"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "hpppl.copyForCalculator",
+          "when": "editorLangId == hpppl",
+          "group": "navigation@90"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "hpppl.commandReference",
+          "when": "editorLangId == hpppl",
+          "group": "hpppl@1"
+        },
+        {
+          "command": "hpppl.copyForCalculator",
+          "when": "editorLangId == hpppl",
+          "group": "hpppl@2"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "hpppl.check",
+        "key": "f7",
+        "when": "editorLangId == hpppl"
+      },
+      {
+        "command": "hpppl.commandReference",
+        "key": "ctrl+f1",
+        "when": "editorLangId == hpppl"
+      },
+      {
+        "command": "hpppl.copyForCalculator",
+        "key": "ctrl+alt+c",
+        "when": "editorLangId == hpppl"
+      }
+    ],
+    "configuration": {
+      "title": "HP Prime PPL",
+      "properties": {
+        "hpppl.serverPath": {
+          "type": "string",
+          "default": "",
+          "description": "Ścieżka do ppl.exe. Puste = program dołączony do rozszerzenia."
+        },
+        "hpppl.copy.useCalculatorSymbols": {
+          "type": "boolean",
+          "default": false,
+          "description": "Przy kopiowaniu do schowka zamieniaj <> <= >= na ≠ ≤ ≥."
+        },
+        "hpppl.mcp.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Udostępniaj narzędzia PPL (walidacja, opis komend) agentom AI w VS Code przez MCP."
+        },
+        "hpppl.trace.server": {
+          "type": "string",
+          "enum": [
+            "off",
+            "messages",
+            "verbose"
+          ],
+          "default": "off",
+          "description": "Śledzenie komunikacji z serwerem języka (diagnostyka rozszerzenia)."
+        }
+      }
+    },
+    "configurationDefaults": {
+      "[hpppl]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+        "editor.wordBasedSuggestions": "off",
+        "editor.suggest.showWords": false,
+        "files.encoding": "utf8"
+      }
+    },
+    "mcpServerDefinitionProviders": [
+      {
+        "id": "hpppl.mcp",
+        "label": "HP Prime PPL"
+      }
+    ]
+  },
+  "scripts": {
+    "package": "vsce package --skip-license --out ../dist/"
+  },
+  "dependencies": {
+    "vscode-languageclient": "^9.0.1"
+  },
+  "devDependencies": {
+    "@vscode/test-electron": "^3.1.0",
+    "@vscode/vsce": "^3.2.0"
+  }
+}
