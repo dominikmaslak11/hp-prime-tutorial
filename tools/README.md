@@ -71,7 +71,9 @@ ppl run PROG.hpppl "F(3)" --json                          wynik w JSON (dla skry
 
 Testy (`tools/tests`) uruchamiają w symulatorze programy z kursu i porównują wyniki z wartościami podanymi w kursie, w tutorialu Shore'a i w instrukcji HP. Są to m.in. SQIN, MOPMT, SUMDIV, ULAM, QROOTS, SUBEXAM, TERMVEL, AREAC, CALCDEMO, a także rysunki (DRAWHOUSE, DRAWPENT, DRAWARCS) i gra SNAKE.
 
-**Test zgodności z emulatorem HP.** Projekt [hp-prime-kit](https://github.com/JordiRigau/hp-prime-kit) (licencja MIT) zmierzył na *HP Prime Virtual Calculator 2.4* odpowiedzi na ok. 1250 wywołań z dokumentacji. Test `conformance_with_virtual_calculator` porównuje z nimi symulator i walidator, a rozbieżności zapisuje w `build/conformance-report.txt`. Obecnie: 695 odpowiedzi zgodnych, 284 dotyczą funkcji nieobsługiwanych w symulatorze (CAS, geometria…), pozostałe to głównie ustawienia emulatora z chwili pomiaru (bieżąca aplikacja, zdefiniowane F1, okno wykresu). Walidator zgadza się z emulatorem w 30 z 31 przypadków „kompiluje się / nie kompiluje się”.
+**Przykłady z kursu.** Test `interp_tutorial_examples_match_simulator` wyszukuje w rozdziałach przykłady `wyrażenie` → wynik i `wyrażenie  // wynik`, wylicza je w symulatorze i zgłasza każdą niezgodność (obecnie 93 przykłady, 0 niezgodności).
+
+**Test zgodności z emulatorem HP.** Projekt [hp-prime-kit](https://github.com/JordiRigau/hp-prime-kit) (licencja MIT) zmierzył na *HP Prime Virtual Calculator 2.4* odpowiedzi na ok. 1250 wywołań z dokumentacji. Test `conformance_with_virtual_calculator` porównuje z nimi symulator i walidator, a rozbieżności zapisuje w `build/conformance-report.txt`. Obecnie: 700 odpowiedzi zgodnych, 284 dotyczą funkcji nieobsługiwanych w symulatorze (CAS, geometria…), pozostałe to głównie ustawienia emulatora z chwili pomiaru (bieżąca aplikacja, zdefiniowane F1, okno wykresu). Walidator zgadza się z emulatorem w 30 z 31 przypadków „kompiluje się / nie kompiluje się”.
 
 ---
 

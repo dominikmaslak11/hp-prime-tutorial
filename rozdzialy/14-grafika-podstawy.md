@@ -64,10 +64,10 @@ Zalecany wzorzec: kończ program pętlą oczekiwania na klawisz ([rozdział 17](
 RGB(czerwony, zielony, niebieski [, alfa])     // składowe 0..255
 ```
 
-Zwraca liczbę całkowitą, którą przekazujesz do komend rysujących. Według instrukcji alfa > 128 oznacza kolor przezroczysty, a na Prime nie ma mieszania kanału alfa w `RGB`. Przezroczystość obsługują natomiast osobne parametry `alpha` w `FILLPOLY`, `BLIT` i `TRIANGLE`.
+Zwraca liczbę całkowitą w zapisie szesnastkowym (`#…h`, zob. [rozdz. 12](12-liczby-calkowite.md)), którą przekazujesz do komend rysujących. Według instrukcji alfa > 128 oznacza kolor przezroczysty, a na Prime nie ma mieszania kanału alfa w `RGB`. Przezroczystość obsługują natomiast osobne parametry `alpha` w `FILLPOLY`, `BLIT` i `TRIANGLE`.
 
 ```
-RGB(255,0,128)     // 16711808
+RGB(255,0,128)     // #FF0080h, czyli 16711808 (emulator 2.4 pokazuje zapis #…h)
 RECT(RGB(0,0,255));          // niebieski ekran
 LINE(0,0,8,8,RGB(0,255,0));  // zielona linia
 ```

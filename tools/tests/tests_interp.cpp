@@ -6,7 +6,9 @@
 #include "scripthost.h"
 #include "utf8.h"
 
+#include <algorithm>
 #include <cmath>
+#include <tuple>
 #include <filesystem>
 #include <fstream>
 #include <iterator>
@@ -317,4 +319,136 @@ TEST(interp_graphics_programs)
     Run sito = runProgram(program("SITO"), "SIZE(SITO())", {}, {30});
     EXPECT_RESULT(sito, "78");
 }
+// Every example of the form `expr` → result in the text, and `expr   // result` in code blocks,
+// evaluated by the simulator. A wrong example in the course fails the test.
+TEST(interp_tutorial_examples_match_simulator)
+{
+    namespace fs = std::filesystem;
+    // examples that depend on earlier lines of the chapter (M1 defined above)
+    const std::vector<std::string> needContext = {"SIZE(M1)", "DIM(M1)"};
+    auto trim = [](std::string s) {
+        size_t a = s.find_first_not_of(" \t"), b = s.find_last_not_of(" \t");
+        return a == std::string::npos ? std::string() : s.substr(a, b - a + 1);
+    };
+    auto noSpaces = [](std::string s) {
+        std::string o;
+        for (char c : s)
+            if (c != ' ')
+                o += c;
+        return o;
+    };
+    auto isValue = [](const std::string &s) {
+        if (s.empty())
+            return false;
+        char c = s[0];
+        return c == '{' || c == '[' || c == '"' || c == '#' || c == '-' || (c >= '0' && c <= '9');
+    };
+    // "-948.10," → matches -948.100001209 to the printed number of decimals
+    auto same = [](const std::string &got, std::string want) {
+        while (!want.empty() && (want.back() == '.' || want.back() == ','))
+            want.pop_back();
+        if (got == want)
+            return true;
+        char *e1 = nullptr, *e2 = nullptr;
+        double a = std::strtod(got.c_str(), &e1), b = std::strtod(want.c_str(), &e2);
+        if (*e1 || *e2 || want.empty())
+            return false;
+        size_t dot = want.find('.');
+        int decimals = dot == std::string::npos ? 0 : static_cast<int>(want.size() - dot - 1);
+        return std::fabs(a - b) <= 0.5 * std::pow(10.0, -decimals) + 1e-12;
+    };
+
+    std::vector<std::tuple<std::string, std::string, std::string>> examples; // where, expr, result
+    for (const auto &e : fs::directory_iterator(fs::path(PPL_REPO_ROOT) / "rozdzialy")) {
+        std::ifstream f(e.path(), std::ios::binary);
+        std::string line;
+        int n = 0;
+        bool code = false;
+        while (std::getline(f, line)) {
+            ++n;
+            if (!line.empty() && line.back() == '\r')
+                line.pop_back();
+            std::string where = e.path().filename().string() + ":" + std::to_string(n);
+            if (line.rfind("```", 0) == 0) {
+                code = !code;
+                continue;
+            }
+            if (code) {
+                size_t c = line.find("//");
+                if (c == std::string::npos || line.find('"') < c)
+                    continue;
+                std::string expr = trim(line.substr(0, c)), res = trim(line.substr(c + 2));
+                if (!expr.empty() && expr.back() == ';')
+                    expr.pop_back();
+                // the value: "…", balanced {…}/[…], or a token; "10 zer", "20 rzutów" are prose
+                if (res[0] == '"') {
+                    res = res.substr(0, res.find('"', 1) + 1);
+                } else if (res[0] == '{' || res[0] == '[') {
+                    int depth = 0;
+                    size_t k = 0;
+                    for (; k < res.size(); ++k) {
+                        depth += (res[k] == '{' || res[k] == '[') - (res[k] == '}' || res[k] == ']');
+                        if (depth == 0)
+                            break;
+                    }
+                    res = res.substr(0, k + 1);
+                } else {
+                    size_t sp = res.find_first_of(" ,");
+                    bool prose = sp != std::string::npos && res[sp] == ' ' && sp + 1 < res.size()
+                                 && static_cast<unsigned char>(res[sp + 1]) >= 'a';
+                    if (prose)
+                        continue;
+                    res = res.substr(0, sp);
+                }
+                if (expr.rfind("PRINT(", 0) == 0 && expr.back() == ')') // PRINT(x)  // wynik
+                    expr = expr.substr(6, expr.size() - 7);
+                if (res.find("...") != std::string::npos || (res.size() > 1 && res.back() == 'w'))
+                    continue;
+                if (expr.empty() || !isValue(res) || expr.find(":=") != std::string::npos || expr.find(' ') == 0)
+                    continue;
+                std::string up = expr.substr(0, 6);
+                if (up.rfind("LOCAL", 0) == 0 || up.rfind("RETURN", 0) == 0 || up.rfind("IF", 0) == 0 || up.rfind("FOR", 0) == 0)
+                    continue;
+                examples.emplace_back(where, expr, res);
+                continue;
+            }
+            // `expr` → result
+            for (size_t p = 0; (p = line.find("` \xE2\x86\x92 ", p)) != std::string::npos; ++p) {
+                size_t open = line.rfind('`', p - 1);
+                if (open == std::string::npos)
+                    break;
+                std::string expr = line.substr(open + 1, p - open - 1);
+                std::string rest = trim(line.substr(p + 6));
+                std::string res;
+                if (!rest.empty() && rest[0] == '`')
+                    res = rest.substr(1, rest.find('`', 1) - 1);
+                else
+                    res = rest.substr(0, rest.find_first_of(" ;|"));
+                if (isValue(res) && res.find("...") == std::string::npos)
+                    examples.emplace_back(where, expr, res);
+            }
+        }
+    }
+    int ok = 0, skipped = 0;
+    std::string diffs;
+    for (const auto &[where, expr, res] : examples) {
+        if (std::find(needContext.begin(), needContext.end(), expr) != needContext.end()) {
+            ++skipped;
+            continue;
+        }
+        Run r = runProgram("EXPORT ZZEX()\nBEGIN\n  RETURN " + expr + ";\nEND;\n", "ZZEX()");
+        if (!r.error.empty()) {
+            ++skipped; // needs a program from the chapter, or not an expression
+            continue;
+        }
+        if (same(noSpaces(r.result), noSpaces(res)))
+            ++ok;
+        else
+            diffs += "\n    " + where + ": " + expr + " → kurs: " + res + ", symulator: " + r.result;
+    }
+    std::printf("  przykłady z kursu: %d zgodnych, %d pominiętych (kontekst)\n", ok, skipped);
+    CHECK_MSG(diffs.empty(), "przykłady niezgodne z symulatorem:" + diffs);
+    CHECK(ok >= 90);
+}
+
 int main() { return testing::runAll(); }

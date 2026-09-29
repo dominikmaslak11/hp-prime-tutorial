@@ -49,10 +49,22 @@ if (-not $SkipVsix) {
     Push-Location vscode
     try {
         if (-not (Test-Path 'node_modules')) { Run npm @('install', '--no-audit', '--no-fund') }
-        Run node @('node_modules\@vscode\vsce\vsce', 'package', '--skip-license', '--out', '..\dist\')
+        # Node z MSYS2 bywa niestabilny przy uruchamianiu procesów potomnych (bad_weak_ptr);
+        # wtedy używamy Node wbudowanego w VS Code (ELECTRON_RUN_AS_NODE).
+        $vscodeNode = Join-Path $env:LOCALAPPDATA 'Programs\Microsoft VS Code\Code.exe'
+        function RunNode([string[]]$arguments) {
+            & node @arguments
+            if ($LASTEXITCODE -eq 0) { return }
+            if (-not (Test-Path $vscodeNode)) { throw "node $($arguments -join ' ') zakończył się kodem $LASTEXITCODE" }
+            Write-Host "node zakończył się kodem $LASTEXITCODE; ponawiam z Node z VS Code" -ForegroundColor Yellow
+            $env:ELECTRON_RUN_AS_NODE = '1'
+            try { & $vscodeNode @arguments } finally { Remove-Item Env:ELECTRON_RUN_AS_NODE }
+            if ($LASTEXITCODE -ne 0) { throw "node $($arguments -join ' ') zakończył się kodem $LASTEXITCODE" }
+        }
+        RunNode @('node_modules\@vscode\vsce\vsce', 'package', '--skip-license', '--out', '..\dist\')
         if ($VsCodeTests) {
             Step 'Testy integracyjne w VS Code'
-            Run node @('test\run.js')
+            RunNode @('test\run.js')
         }
     } finally { Pop-Location }
 }

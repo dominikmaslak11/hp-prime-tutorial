@@ -40,9 +40,9 @@ Przykłady z instrukcji:
 | `B→R(#n)` | liczba z `#` na zwykłą liczbę rzeczywistą | `B→R(#1101b)` → 13 |
 | `R→B(n)` | liczba rzeczywista na liczbę z `#` w systemie domyślnym | `R→B(13)` → `#Dh` (przy domyślnym hex) |
 | `SETBASE(#n, c)` | pokazuje liczbę w innym systemie: c = 1 dwójkowy, 2 ósemkowy, 3 szesnastkowy | `SETBASE(#34o,1)` → `#11100b` |
-| `GETBASE(#n)` | system liczby: 0 domyślny, 1 bin, 2 okt, 3 hex | |
+| `GETBASE(#n)` | system liczby; instrukcja: 0 domyślny, 1 bin, 2 okt, 3 hex | emulator 2.4: `GETBASE(#12h)` → `#4h`, więc obecne oprogramowanie numeruje chyba 1 bin, 2 okt, 3 dec, 4 hex. Sprawdź na swoim kalkulatorze, zanim użyjesz `SETBASE(…,3)` |
 | `SETBITS(#n, bity)` | ustala liczbę bitów reprezentacji (-63…64) | `SETBITS(#1111b,15)` → `#1111:15b` |
-| `GETBITS(#n)` | liczba bitów użytych do zapisu | `GETBITS(#22122)` → 32 |
+| `GETBITS(#n)` | liczba bitów użytych do zapisu | `GETBITS(#22122)` → 32; argument musi być liczbą `#` (`GETBITS(12)` to błąd) |
 
 ## 12.3. Operacje bitowe
 
@@ -51,7 +51,7 @@ Przykłady z instrukcji:
 | `BITAND(a,b,...)` | iloczyn bitowy | `BITAND(20,13)` → 4 |
 | `BITOR(a,b,...)` | suma bitowa | `BITOR(9,26)` → 27 |
 | `BITXOR(a,b,...)` | różnica symetryczna | `BITXOR(9,26)` → 19 |
-| `BITNOT(a)` | negacja (w bieżącym rozmiarze słowa) | `BITNOT(47)` → 549755813840 |
+| `BITNOT(a)` | negacja bitowa; dla `#n` w rozmiarze słowa tej liczby, dla zwykłej liczby w 39 bitach | `BITNOT(47)` → 549755813840 (= 2³⁹−1−47; potwierdzone na emulatorze) |
 | `BITSL(a[,n])` | przesunięcie w lewo o n bitów (domyślnie 1) | `BITSL(28,2)` → 112; `BITSL(5)` → 10 |
 | `BITSR(a[,n])` | przesunięcie w prawo | `BITSR(112,2)` → 28; `BITSR(10)` → 5 |
 

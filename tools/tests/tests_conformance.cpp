@@ -27,7 +27,7 @@ using namespace ppl;
 
 namespace {
 
-const int kBaselinePasses = 690;  // raised as the simulator improves (see the report)
+const int kBaselinePasses = 695;  // raised as the simulator improves (see the report)
 const int kBaselineCompile = 30;  // "*compiles*" / "*does not compile*" rows the validator gets right
 
 bool parseNumber(const std::string &s, double &v)

@@ -474,7 +474,10 @@ void registerCoreBuiltins(Interpreter &, BuiltinTable &t)
     t[U"BITOR"] = bitOp([](int64_t x, int64_t y) { return x | y; });
     t[U"BITXOR"] = bitOp([](int64_t x, int64_t y) { return x ^ y; });
     t[U"BITNOT"] = {1, 1, false, [intOf](CallArgs &a) {
-                        int bits = a[0].type == Value::Type::Integer && a[0].bits ? a[0].bits : a.in.formatSettings().bitsDefault;
+                        // A real argument is complemented in 39 bits: BITNOT(47) = 549755813840 (UG example,
+                        // confirmed by BITNOT(12) = 549755813875 on the Virtual Calculator 2.4).
+                        int bits = a[0].type != Value::Type::Integer ? 39
+                                   : a[0].bits ? a[0].bits : a.in.formatSettings().bitsDefault;
                         uint64_t mask = bits >= 64 ? ~0ULL : ((1ULL << bits) - 1);
                         int64_t r = static_cast<int64_t>(~static_cast<uint64_t>(intOf(a[0])) & mask);
                         return a[0].type == Value::Type::Integer ? Value::integer(r, a[0].base, a[0].bits) : Value::real(static_cast<double>(r));
@@ -493,7 +496,11 @@ void registerCoreBuiltins(Interpreter &, BuiltinTable &t)
     t[U"R→B"] = {1, 1, false, [intOf](CallArgs &a) {
                      Value base = a.in.getVariable(U"Base");
                      int b = static_cast<int>(base.toReal());
-                     return Value::integer(intOf(a[0]), b == 0 ? 'b' : b == 1 ? 'o' : b == 2 ? 'd' : 'h');
+                     int bits = a.in.formatSettings().bitsDefault;
+                     int64_t v = intOf(a[0]);
+                     if (bits < 64 && v > static_cast<int64_t>((1ULL << bits) - 1)) // Bits:=8 → R→B(300) = #FFh
+                         v = static_cast<int64_t>((1ULL << bits) - 1);
+                     return Value::integer(v, b == 0 ? 'b' : b == 1 ? 'o' : b == 2 ? 'd' : 'h');
                  }};
     t[U"SETBASE"] = {1, 2, false, [intOf](CallArgs &a) {
                          int c = a.size() > 1 ? a.integer(1) : 3;
@@ -501,15 +508,20 @@ void registerCoreBuiltins(Interpreter &, BuiltinTable &t)
                          return Value::integer(intOf(a[0]), base, a[0].bits);
                      }};
     t[U"GETBASE"] = {1, 1, false, [](CallArgs &a) {
+                         // firmware 2.4 answers GETBASE(#12h) = #4h: 1 bin, 2 oct, 3 dec, 4 hex (the UG says 3 = hex)
+                         if (a[0].type != Value::Type::Integer)
+                             throw RuntimeError("GETBASE: oczekiwano liczby całkowitej #…");
                          char b = a[0].base;
-                         return Value::integer(b == 'b' ? 1 : b == 'o' ? 2 : b == 'h' ? 3 : 0, 'h');
+                         return Value::integer(b == 'b' ? 1 : b == 'o' ? 2 : b == 'd' ? 3 : 4, 'h');
                      }};
     t[U"SETBITS"] = {1, 2, false, [intOf](CallArgs &a) {
-                         int bits = a.size() > 1 ? a.integer(1) : a.in.formatSettings().bitsDefault;
-                         return Value::integer(intOf(a[0]), a[0].type == Value::Type::Integer ? a[0].base : 'h', std::abs(bits));
+                         int bits = a.size() > 1 ? std::abs(a.integer(1)) : 0; // SETBITS(12) = #Ch (default size)
+                         return Value::integer(intOf(a[0]), a[0].type == Value::Type::Integer ? a[0].base : 'h', bits);
                      }};
     t[U"GETBITS"] = {0, 1, false, [](CallArgs &a) {
-                         int b = a.size() && a[0].type == Value::Type::Integer && a[0].bits ? a[0].bits : a.in.formatSettings().bitsDefault;
+                         if (a.size() && a[0].type != Value::Type::Integer) // GETBITS(12) is an error on the calculator
+                             throw RuntimeError("GETBITS: oczekiwano liczby całkowitej #…");
+                         int b = a.size() && a[0].bits ? a[0].bits : a.in.formatSettings().bitsDefault;
                          return Value::real(b);
                      }};
 
@@ -678,7 +690,7 @@ void registerCoreBuiltins(Interpreter &, BuiltinTable &t)
                       }};
     t[U"SORT"] = {1, 2, false, [](CallArgs &a) {
                       ValueList l = listArg(a, 0);
-                      // SORT(list, n): by the n-th element of sublists, or from the n-th character of strings
+                      // SORT(list, n): strings from the n-th character (measured on the emulator); sublists by the n-th element (guess)
                       int k = a.size() > 1 ? a.integer(1) : 1;
                       auto key = [k](const Value &v) {
                           if (k > 1 && v.isList() && static_cast<int>(v.items().size()) >= k)

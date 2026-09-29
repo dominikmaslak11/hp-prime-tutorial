@@ -290,7 +290,7 @@
             </Overload>
         </KeyWord>
         <KeyWord name="BITNOT" func="yes">
-            <Overload retVal="" descr="Negacja bitowa w bieżącym rozmiarze słowa.">
+            <Overload retVal="" descr="Negacja bitowa: dla #n w rozmiarze słowa liczby, dla zwykłej liczby w 39 bitach.">
                 <Param name="a" />
             </Overload>
         </KeyWord>
@@ -3636,12 +3636,12 @@
         </KeyWord>
         <KeyWord name="geometric_icdf" />
         <KeyWord name="GETBASE" func="yes">
-            <Overload retVal="" descr="System liczby: 0 domyślny, 1 bin, 2 okt, 3 hex.">
+            <Overload retVal="" descr="System liczby. Instrukcja: 1 bin, 2 okt, 3 hex; emulator 2.4 zwraca 4 dla hex (1 bin, 2 okt, 3 dec, 4 hex).">
                 <Param name="#n" />
             </Overload>
         </KeyWord>
         <KeyWord name="GETBITS" func="yes">
-            <Overload retVal="" descr="Liczba bitów użytych do zapisu liczby.">
+            <Overload retVal="" descr="Liczba bitów użytych do zapisu liczby #…; GETBITS(12) to błąd.">
                 <Param name="#n" />
             </Overload>
         </KeyWord>
@@ -4058,7 +4058,7 @@
         <KeyWord name="Labels" />
         <KeyWord name="Language" />
         <KeyWord name="LEFT" func="yes">
-            <Overload retVal="" descr="Pierwsze n znaków.">
+            <Overload retVal="" descr="Pierwsze n znaków. LEFT(s,0) zwraca cały tekst (emulator 2.4).">
                 <Param name="tekst" />
                 <Param name="n" />
             </Overload>
@@ -4242,7 +4242,7 @@
         <KeyWord name="Markup" />
         <KeyWord name="MatDate" />
         <KeyWord name="MAX" func="yes">
-            <Overload retVal="" descr="Największa wartość; działa też na liście.">
+            <Overload retVal="" descr="Największa wartość; działa też na liście, a dla dwóch list element po elemencie.">
                 <Param name="a" />
                 <Param name="b" />
                 <Param name="…" />
@@ -4270,7 +4270,7 @@
         <KeyWord name="MEMORY" />
         <KeyWord name="Method" />
         <KeyWord name="MID" func="yes">
-            <Overload retVal="" descr="n znaków od pozycji; bez n do końca tekstu.">
+            <Overload retVal="" descr="n znaków od pozycji (od 1; pozycja 0 to błąd); bez n do końca tekstu.">
                 <Param name="tekst" />
                 <Param name="pozycja" />
                 <Param name="[n]" />
@@ -4282,7 +4282,7 @@
             </Overload>
         </KeyWord>
         <KeyWord name="MIN" func="yes">
-            <Overload retVal="" descr="Najmniejsza wartość; działa też na liście.">
+            <Overload retVal="" descr="Najmniejsza wartość; działa też na liście, a dla dwóch list element po elemencie.">
                 <Param name="a" />
                 <Param name="b" />
                 <Param name="…" />
@@ -4838,7 +4838,7 @@
             </Overload>
         </KeyWord>
         <KeyWord name="RGB" func="yes">
-            <Overload retVal="" descr="Kod koloru ze składowych 0–255. Kolor można też zapisać jako #RRGGBBh.">
+            <Overload retVal="" descr="Kod koloru ze składowych 0–255, jako liczba #…h. Kolor można też zapisać wprost jako #RRGGBBh.">
                 <Param name="r" />
                 <Param name="g" />
                 <Param name="b" />
@@ -4853,7 +4853,7 @@
             </Overload>
         </KeyWord>
         <KeyWord name="RIGHT" func="yes">
-            <Overload retVal="" descr="Ostatnie n znaków.">
+            <Overload retVal="" descr="Ostatnie n znaków. RIGHT(s,0) zwraca cały tekst (emulator 2.4).">
                 <Param name="tekst" />
                 <Param name="n" />
             </Overload>
@@ -5088,8 +5088,9 @@
         </KeyWord>
         <KeyWord name="Solve3×3" />
         <KeyWord name="SORT" func="yes">
-            <Overload retVal="" descr="Sortuje rosnąco.">
+            <Overload retVal="" descr="Sortuje rosnąco. Drugi argument (nieopisany w instrukcji): teksty według n-tego znaku, zmierzone na emulatorze 2.4.">
                 <Param name="lista" />
+                <Param name="[n]" />
             </Overload>
         </KeyWord>
         <KeyWord name="SPECNORM" func="yes">

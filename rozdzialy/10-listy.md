@@ -65,7 +65,7 @@ Są w [Toolbox] (Math) › 6 List. Domyślnie menu pokazuje nazwy opisowe („Co
 |---|---|---|
 | `SIZE(l)` | liczba elementów (dla macierzy wymiary) | `SIZE({1,2,3})` → 3; `SIZE([[1,2,3],[4,5,6]])` → `{2,3}` |
 | `MAKELIST(wyr,zm,od,do,krok)` | tworzy listę z wyrażenia | `MAKELIST(X^2,X,23,27,1)` → `{529,576,625,676,729}` |
-| `SORT(l)` | sortuje rosnąco | `SORT({2,5,3})` → `{2,3,5}` |
+| `SORT(l)` | sortuje rosnąco | `SORT({2,5,3})` → `{2,3,5}`. Instrukcja nie opisuje drugiego argumentu, ale emulator 2.4 go przyjmuje: `SORT({"foo","bar","bra"},2)` → `{"bar","foo","bra"}` (według 2. znaku) |
 | `REVERSE(l)` | odwraca kolejność | `REVERSE({1,2,3})` → `{3,2,1}` |
 | `CONCAT(l1,l2)` | łączy listy | `CONCAT({1,2,3},{4})` → `{1,2,3,4}` |
 | `POS(l,el)` | pozycja pierwszego wystąpienia (0 gdy brak) | `POS({3,7,12,19},12)` → 3 |
@@ -74,7 +74,7 @@ Są w [Toolbox] (Math) › 6 List. Domyślnie menu pokazuje nazwy opisowe („Co
 | `ΠLIST(l)` | iloczyn elementów | `ΠLIST({2,3,4})` → 24 |
 | `DIFFERENCE(l1,l2)` | elementy, które nie są wspólne | `DIFFERENCE({1,2,3,4},{1,3,5,7})` → `{2,4,5,7}` |
 | `INTERSECT(l1,l2)` | elementy wspólne | `INTERSECT({1,2,3,4},{1,3,5,7})` → `{1,3}` |
-| `MAX(l)`, `MIN(l)` | największy / najmniejszy element | |
+| `MAX(l)`, `MIN(l)` | największy / najmniejszy element; dla dwóch list element po elemencie | `MAX({1,8,2},{2,4,6})` → `{2,8,6}` |
 | `EVALLIST(l)` | oblicza każdy element listy | |
 | `EXECON("wyr",l1[,l2])` | przekształca listę według wyrażenia z `&` | zob. 10.5 |
 
